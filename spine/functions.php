@@ -6,6 +6,29 @@ $wsuwp_spine_theme_version = '0.1.2';
 include_once( 'includes/main-header.php' ); // Include main header functionality.
 include_once( 'includes/customizer/customizer.php' ); // Include customizer functionality.
 
+/**
+ * Creates a script version based on this theme, the WSUWP Platform, and
+ * the platform's current version of WordPress if available.
+ *
+ * In individual installations, only this theme's version will be used. In
+ * the platform installation, this will help break cache on any major change.
+ */
+function spine_get_script_version() {
+	global $wsuwp_spine_theme_version, $wsuwp_global_version, $wsuwp_wp_changeset;
+
+	$script_version = $wsuwp_spine_theme_version;
+
+	if ( null !== $wsuwp_global_version ) {
+		$script_version .= '-' . $wsuwp_global_version;
+	}
+
+	if ( null !== $wsuwp_wp_changeset ) {
+		$script_version .= '-' . $wsuwp_wp_changeset;
+	}
+
+	return $script_version;
+}
+
 add_action( 'init', 'spine_load_builder_module', 10 );
 /**
  * If enabled at the platform or installation level, include the
@@ -35,28 +58,6 @@ function spine_show_builder_page_template( $page_templates ) {
 	return $page_templates;
 }
 
-/**
- * Creates a script version based on this theme, the WSUWP Platform, and
- * the platform's current version of WordPress if available.
- *
- * In individual installations, only this theme's version will be used. In
- * the platform installation, this will help break cache on any major change.
- */
-function spine_get_script_version() {
-	global $wsuwp_spine_theme_version, $wsuwp_global_version, $wsuwp_wp_changeset;
-
-	$script_version = $wsuwp_spine_theme_version;
-
-	if ( null !== $wsuwp_global_version ) {
-		$script_version .= '-' . $wsuwp_global_version;
-	}
-
-	if ( null !== $wsuwp_wp_changeset ) {
-		$script_version .= '-' . $wsuwp_wp_changeset;
-	}
-
-	return $script_version;
-}
 
 /**
  * Retrieve the requested spine option from the database.
@@ -75,7 +76,8 @@ function spine_get_option( $option_name ) {
 		'large_format'              => '',
 		'theme_style'               => 'bookmark',
 		'broken_binding'            => false,
-		'bleed'                     => false,
+		'bleed'                     => true,
+		'open_sans'                 => false,
 		'contact_name'              => 'Washington State University',
 		'contact_department'        => '',
 		'contact_url'               => 'http://wsu.edu',
@@ -179,6 +181,10 @@ function spine_wp_enqueue_scripts() {
 		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
 		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
 	}
+	
+	if ( true == spine_get_option( 'open_sans' ) ) {
+		wp_enqueue_style( 'wsu-spine-opensans', '//repo.wsu.edu/spine/1/styles/opensans.css', array(), spine_get_script_version() );
+	}
 
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
@@ -233,9 +239,11 @@ function spine_theme_setup_theme() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 198, 198, true );
 
-	add_image_size( 'teaser-image', 198, 198, true );
-	add_image_size( 'header-image', 792, 99163 );
-	add_image_size( 'billboard-image', 1584, 99163 );
+	add_image_size( 'spine-thumbnail_size', 198, 198, true );
+	add_image_size( 'spine-small_size', 396, 99164 );
+	add_image_size( 'spine-medium_size', 792, 99164 );
+	add_image_size( 'spine-large_size', 990, 99164 );
+	add_image_size( 'spine-xlarge_size', 1188, 99164 );
 }
 
 add_filter( 'nav_menu_css_class', 'spine_abbridged_menu_classes', 10 );
@@ -257,18 +265,41 @@ function spine_abbridged_menu_classes( $classes ) {
 	return array();
 }
 
-add_action( 'admin_init', 'spine_theme_image_options' );
-function spine_theme_image_options() {
-	// Default Image Sizes
-	update_option( 'thumbnail_size_w', 198   );
-	update_option( 'thumbnail_size_h', 198   );
-	update_option( 'medium_size_w',    396   );
-	update_option( 'medium_size_h',    99163 );
-	update_option( 'large_size_w',     792   );
-	update_option( 'large_size_h',     99163 );
-	// update_option('full_size_w', 1980);
-	// update_option('full_size_h', 99163);
+// Custom Excerpt
+function spine_trim_excerpt($text) {
+$raw_excerpt = $text;
+if ( '' == $text ) {
+    //Retrieve the post content. 
+    $text = get_the_content('');
+ 
+    //Delete all shortcode tags from the content. 
+    $text = strip_shortcodes( $text );
+ 
+    $text = apply_filters('the_content', $text);
+    $text = str_replace(']]>', ']]&gt;', $text);
+     
+    $allowed_tags = '<p>,<a>,<em>,<strong>,<img>';
+    $text = strip_tags($text, $allowed_tags);
+     
+    $excerpt_word_count = 105;
+    $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
+     
+    $excerpt_end = '... <a href="'.get_permalink(). '">' . '&raquo; More ...' . '</a>';
+    $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
+     
+    $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+    if ( count($words) > $excerpt_length ) {
+        array_pop($words);
+        $text = implode(' ', $words);
+        $text = $text . $excerpt_more;
+    } else {
+        $text = implode(' ', $words);
+    }
 }
+return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
+}
+//remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter('get_the_excerpt', 'spine_trim_excerpt',5);
 
 /* Default Image Markup */
 
@@ -399,9 +430,25 @@ function spine_sectioned_body_classes( $classes ) {
 	return array_unique( $classes );
 }
 
-// Default Read More
-function spine_theme_excerpt_more() {
-	return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '" >More</a>';
-}
-add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
+add_filter( 'wsuwp_install_default_image_sizes', 'spine_install_default_image_sizes' );
+/**
+ * Use the filter provided by the WSUWP Platform to modify the default image
+ * sizes whenever a new site is installed. Rather than using the passed parameters,
+ * we're currently overwriting the defaults with our own.
+ *
+ * @param array $image_sizes List of default image sizes.
+ *
+ * @return array Modified list of default image sizes.
+ */
+function spine_install_default_image_sizes( $image_sizes ) {
+	$image_sizes = array(
+		'thumbnail_size_w' => 198,
+		'thumbnail_size_h' => 198,
+		'medium_size_w'    => 396,
+		'medium_size_h'    => 99164,
+		'large_size_w'     => 792,
+		'large_size_h'     => 99164,
+	);
 
+	return $image_sizes;
+}
