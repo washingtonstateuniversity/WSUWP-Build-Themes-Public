@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.1.0\n"
+"Project-Id-Version: Make 1.1.1\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support\n"
-"POT-Creation-Date: 2014-06-24 22:15:46+00:00\n"
+"POT-Creation-Date: 2014-07-09 22:50:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -802,7 +802,7 @@ msgid "Show social icons in header bar"
 msgstr ""
 
 #: inc/customizer/sections/header.php:393
-msgid "Show search field in header"
+msgid "Show search field in header bar"
 msgstr ""
 
 #: inc/customizer/sections/layout-archive.php:30

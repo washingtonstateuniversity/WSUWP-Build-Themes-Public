@@ -390,7 +390,7 @@ function ttfmake_customizer_header( $wp_customize, $section ) {
 		array(
 			'settings' => $setting_id,
 			'section'  => $section,
-			'label'    => __( 'Show search field in header', 'make' ),
+			'label'    => __( 'Show search field in header bar', 'make' ),
 			'type'     => 'checkbox',
 			'priority' => $priority->add()
 		)

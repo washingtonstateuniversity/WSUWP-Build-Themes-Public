@@ -9,7 +9,7 @@ $footer_credit = apply_filters( 'ttfmake_show_footer_credit', true );
 
 <?php if ( $footer_text ) : ?>
 <div class="footer-text">
-	<?php echo ttfmake_sanitize_text( $footer_text ); ?>
+	<?php echo $footer_text; ?>
 </div>
 <?php endif; ?>
 

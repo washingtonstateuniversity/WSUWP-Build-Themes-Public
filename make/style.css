@@ -4,7 +4,7 @@
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Create your website without touching a line of code. Make's flexible customization features and a powerful drag and drop page builder make designing your site fun and easy. Build almost anything: a simple portfolio or photography site, an ecommerce business site, a minimalist blog, or even a professional magazine. You'll start by customizing your background, layouts, fonts, colors, and logo. Next, add and organize your content using the drag and drop page builder. Add a photo, a video, a gallery, or even a slider to any page on your website. Make is responsive, so your website will naturally look great on phones, tablets, and desktop screens. It's also fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and WP PageNavi.
- * Version:     1.1.0
+ * Version:     1.1.1
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
@@ -697,8 +697,8 @@ a {
 	.site-navigation .menu .sub-menu, .site-navigation .menu .children, .site-navigation .nav-menu .sub-menu, .site-navigation .nav-menu .children {
 		position: absolute;
 		z-index: 99999;
+		display: none;
 		overflow: hidden;
-		clip: rect(1px, 1px, 1px, 1px);
 		background-color: #eaecee;
 	}
 	.site-navigation .menu .sub-menu li:first-of-type a, .site-navigation .menu .children li:first-of-type a, .site-navigation .nav-menu .sub-menu li:first-of-type a, .site-navigation .nav-menu .children li:first-of-type a {
@@ -775,8 +775,8 @@ a {
 		color: #fff;
 	}
 	.site-navigation ul.menu li:hover > ul, .site-navigation .menu ul li:hover > ul, .site-navigation ul.menu .focus > ul, .site-navigation .menu .focus > ul {
+		display: block;
 		overflow: inherit;
-		clip: inherit;
 		width: inherit;
 		height: inherit;
 	}

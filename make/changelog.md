@@ -1,3 +1,11 @@
+## 1.1.1
+
+* Added Japanese translations
+* Added license information file
+* Fixed an incorrect label in the Customizer
+* Fixed issue where footer text was double sanitized
+* Fixed issue with dropdown menus being unreachable on an iPad
+
 ## 1.1.0
 
 * Added control for showing comment count
