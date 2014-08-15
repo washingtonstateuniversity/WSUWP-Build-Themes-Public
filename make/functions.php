@@ -6,25 +6,12 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.1.1' );
-
-if ( ! function_exists( 'ttfmake_is_wpcom' ) ) :
-/**
- * Whether or not the current environment is WordPress.com.
- *
- * @since  1.0.0.
- *
- * @return bool    Whether or not the current environment is WordPress.com.
- */
-function ttfmake_is_wpcom() {
-	return ( defined( 'IS_WPCOM' ) && true === IS_WPCOM );
-}
-endif;
+define( 'TTFMAKE_VERSION', '1.2.1' );
 
 /**
  * The suffix to use for scripts.
  */
-if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) || ttfmake_is_wpcom() ) {
+if ( ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ) {
 	define( 'TTFMAKE_SUFFIX', '' );
 } else {
 	define( 'TTFMAKE_SUFFIX', '.min' );
@@ -155,8 +142,9 @@ function ttfmake_setup() {
 
 	// Menu locations
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'make' ),
-		'social'  => __( 'Social Profile Links', 'make' )
+		'primary'    => __( 'Primary Menu', 'make' ),
+		'social'     => __( 'Social Profile Links', 'make' ),
+		'header-bar' => __( 'Header Bar Menu', 'make' ),
 	) );
 
 	// Editor styles
@@ -289,13 +277,16 @@ function ttfmake_scripts() {
 	}
 
 	// Font Awesome
-	wp_enqueue_style(
-		'ttfmake-font-awesome',
-		get_template_directory_uri() . '/css/font-awesome.css',
-		$style_dependencies,
-		'4.1.0'
-	);
-	$style_dependencies[] = 'ttfmake-font-awesome';
+	$font_awesome_url = ttfmake_theme_file_url( array( 'font-awesome.css', 'css/font-awesome.css' ) );
+	if ( '' !== $font_awesome_url ) {
+		wp_enqueue_style(
+			'ttfmake-font-awesome',
+			$font_awesome_url,
+			$style_dependencies,
+			'4.1.0'
+		);
+		$style_dependencies[] = 'ttfmake-font-awesome';
+	}
 
 	// Main stylesheet
 	wp_enqueue_style(
@@ -307,13 +298,16 @@ function ttfmake_scripts() {
 	$style_dependencies[] = 'ttfmake-main-style';
 
 	// Print stylesheet
-	wp_enqueue_style(
-		'ttfmake-print-style',
-		get_template_directory_uri() . '/css/print.css',
-		$style_dependencies,
-		TTFMAKE_VERSION,
-		'print'
-	);
+	$print_url = ttfmake_theme_file_url( array( 'print.css', 'css/print.css' ) );
+	if ( '' !== $print_url ) {
+		wp_enqueue_style(
+			'ttfmake-print-style',
+			$print_url,
+			$style_dependencies,
+			TTFMAKE_VERSION,
+			'print'
+		);
+	}
 
 	// Scripts
 	$script_dependencies = array();
@@ -362,13 +356,16 @@ function ttfmake_scripts() {
 	$script_dependencies[] = 'ttfmake-fitvids';
 
 	// Global script
-	wp_enqueue_script(
-		'ttfmake-global',
-		get_template_directory_uri() . '/js/global' . TTFMAKE_SUFFIX . '.js',
-		$script_dependencies,
-		TTFMAKE_VERSION,
-		true
-	);
+	$global_url = ttfmake_theme_file_url( array( 'global' . TTFMAKE_SUFFIX . '.js', 'js/global' . TTFMAKE_SUFFIX . '.js' ) );
+	if ( '' !== $global_url ) {
+		wp_enqueue_script(
+			'ttfmake-global',
+			$global_url,
+			$script_dependencies,
+			TTFMAKE_VERSION,
+			true
+		);
+	}
 
 	// Comment reply script
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -447,6 +444,50 @@ function ttfmake_head_late() { ?>
 endif;
 
 add_action( 'wp_head', 'ttfmake_head_late', 99 );
+
+if ( ! function_exists( 'ttfmake_theme_file_url' ) ) :
+/**
+ * Retrieve the URL of the highest priority version of a theme file.
+ *
+ * Uses locate_template() to search first in a child theme directory, and then
+ * in the parent theme directory for the given file names.
+ *
+ * @since 1.2.0.
+ *
+ * @param  string|array    $file_names    One or more filenames to search for.
+ * @return string                         The URL to the file.
+ */
+function ttfmake_theme_file_url( $file_names ) {
+	$located_path = locate_template( $file_names );
+	$file_url = '';
+
+	if ( '' !== $located_path ) {
+		$stylesheet_dir = get_stylesheet_directory();
+		$template_dir = get_template_directory();
+		if ( preg_match( "#$stylesheet_dir#", $located_path ) ) {
+			$file_url = get_stylesheet_directory_uri() . str_replace( $stylesheet_dir, '', $located_path );
+		} else if ( preg_match( "#$template_dir#", $located_path ) ) {
+			$file_url = get_template_directory_uri() . str_replace( $template_dir, '', $located_path );
+		}
+	}
+
+	return esc_url( $file_url );
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_is_preview' ) ) :
+/**
+ * Check if the current view is rendering in the Customizer preview pane.
+ *
+ * @since 1.2.0.
+ *
+ * @return bool    True if in the preview pane.
+ */
+function ttfmake_is_preview() {
+	global $wp_customize;
+	return ( isset( $wp_customize ) && $wp_customize->is_preview() );
+}
+endif;
 
 /**
  * Determine if the companion plugin is installed.
