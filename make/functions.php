@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.2.1' );
+define( 'TTFMAKE_VERSION', '1.2.2' );
 
 /**
  * The suffix to use for scripts.
@@ -277,16 +277,13 @@ function ttfmake_scripts() {
 	}
 
 	// Font Awesome
-	$font_awesome_url = ttfmake_theme_file_url( array( 'font-awesome.css', 'css/font-awesome.css' ) );
-	if ( '' !== $font_awesome_url ) {
-		wp_enqueue_style(
-			'ttfmake-font-awesome',
-			$font_awesome_url,
-			$style_dependencies,
-			'4.1.0'
-		);
-		$style_dependencies[] = 'ttfmake-font-awesome';
-	}
+	wp_enqueue_style(
+		'ttfmake-font-awesome',
+		get_template_directory_uri() . '/css/font-awesome.css',
+		$style_dependencies,
+		'4.1.0'
+	);
+	$style_dependencies[] = 'ttfmake-font-awesome';
 
 	// Main stylesheet
 	wp_enqueue_style(
@@ -298,16 +295,13 @@ function ttfmake_scripts() {
 	$style_dependencies[] = 'ttfmake-main-style';
 
 	// Print stylesheet
-	$print_url = ttfmake_theme_file_url( array( 'print.css', 'css/print.css' ) );
-	if ( '' !== $print_url ) {
-		wp_enqueue_style(
-			'ttfmake-print-style',
-			$print_url,
-			$style_dependencies,
-			TTFMAKE_VERSION,
-			'print'
-		);
-	}
+	wp_enqueue_style(
+		'ttfmake-print-style',
+		get_template_directory_uri() . '/css/print.css',
+		$style_dependencies,
+		TTFMAKE_VERSION,
+		'print'
+	);
 
 	// Scripts
 	$script_dependencies = array();
@@ -356,16 +350,13 @@ function ttfmake_scripts() {
 	$script_dependencies[] = 'ttfmake-fitvids';
 
 	// Global script
-	$global_url = ttfmake_theme_file_url( array( 'global' . TTFMAKE_SUFFIX . '.js', 'js/global' . TTFMAKE_SUFFIX . '.js' ) );
-	if ( '' !== $global_url ) {
-		wp_enqueue_script(
-			'ttfmake-global',
-			$global_url,
-			$script_dependencies,
-			TTFMAKE_VERSION,
-			true
-		);
-	}
+	wp_enqueue_script(
+		'ttfmake-global',
+		get_template_directory_uri() . '/js/global' . TTFMAKE_SUFFIX . '.js',
+		$script_dependencies,
+		TTFMAKE_VERSION,
+		true
+	);
 
 	// Comment reply script
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -444,36 +435,6 @@ function ttfmake_head_late() { ?>
 endif;
 
 add_action( 'wp_head', 'ttfmake_head_late', 99 );
-
-if ( ! function_exists( 'ttfmake_theme_file_url' ) ) :
-/**
- * Retrieve the URL of the highest priority version of a theme file.
- *
- * Uses locate_template() to search first in a child theme directory, and then
- * in the parent theme directory for the given file names.
- *
- * @since 1.2.0.
- *
- * @param  string|array    $file_names    One or more filenames to search for.
- * @return string                         The URL to the file.
- */
-function ttfmake_theme_file_url( $file_names ) {
-	$located_path = locate_template( $file_names );
-	$file_url = '';
-
-	if ( '' !== $located_path ) {
-		$stylesheet_dir = get_stylesheet_directory();
-		$template_dir = get_template_directory();
-		if ( preg_match( "#$stylesheet_dir#", $located_path ) ) {
-			$file_url = get_stylesheet_directory_uri() . str_replace( $stylesheet_dir, '', $located_path );
-		} else if ( preg_match( "#$template_dir#", $located_path ) ) {
-			$file_url = get_template_directory_uri() . str_replace( $template_dir, '', $located_path );
-		}
-	}
-
-	return esc_url( $file_url );
-}
-endif;
 
 if ( ! function_exists( 'ttfmake_is_preview' ) ) :
 /**

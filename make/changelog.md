@@ -1,3 +1,7 @@
+## 1.2.2
+
+* Fixed a bug that caused some style and script assets to not load correctly on some web host configurations
+
 ## 1.2.1
 
 * Fixed issue where Page Builder was hidden in certain situations when adding a new page
