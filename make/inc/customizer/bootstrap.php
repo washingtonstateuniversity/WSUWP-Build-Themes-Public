@@ -16,6 +16,7 @@ function ttfmake_customizer_init() {
 
 	// Always load
 	require_once( $path . 'controls.php' );
+	require_once( $path . 'google-fonts.php' );
 	require_once( $path . 'helpers.php' );
 	require_once( $path . 'helpers-css.php' );
 	require_once( $path . 'helpers-defaults.php' );
