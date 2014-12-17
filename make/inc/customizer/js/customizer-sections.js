@@ -43,12 +43,14 @@
 		insertChoices: function() {
 			$.each(fontChoices.cache.options, function(key, element) {
 				element.html(fontChoices.cache.choices);
-
 			});
 		}
 	};
 
-	fontChoices.init();
+	// Load font choices after Customizer initialization is complete.
+	$(document).ready(function() {
+		fontChoices.init();
+	});
 
 	/**
 	 * Visibility toggling for some controls

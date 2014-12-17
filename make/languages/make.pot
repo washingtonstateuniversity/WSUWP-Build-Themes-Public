@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.4.5\n"
+"Project-Id-Version: Make 1.4.6\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2014-11-25 01:14:07+00:00\n"
+"POT-Creation-Date: 2014-12-13 00:14:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -421,82 +421,82 @@ msgid ""
 "class=\"%3$s\">hide</a>"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:66 inc/customizer/bootstrap.php:359
+#: inc/customizer/bootstrap.php:67 inc/customizer/bootstrap.php:360
 #: inc/customizer/sections/color-scheme.php:24
 msgid "General"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:67
+#: inc/customizer/bootstrap.php:68
 msgid "Typography"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:68
+#: inc/customizer/bootstrap.php:69
 msgid "Color Scheme"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:69 inc/customizer/bootstrap.php:363
+#: inc/customizer/bootstrap.php:70 inc/customizer/bootstrap.php:364
 #: inc/customizer/sections/color-scheme.php:89
 msgid "Header"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:70
+#: inc/customizer/bootstrap.php:71
 msgid "Content & Layout"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:71 inc/customizer/bootstrap.php:371
+#: inc/customizer/bootstrap.php:72 inc/customizer/bootstrap.php:372
 #: inc/customizer/sections/color-scheme.php:177
 msgid "Footer"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:112
+#: inc/customizer/bootstrap.php:113
 msgid "Sidebars & Widgets"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:360 inc/customizer/sections/stylekit.php:23
+#: inc/customizer/bootstrap.php:361 inc/customizer/sections/stylekit.php:23
 msgid "Style Kits"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:361
+#: inc/customizer/bootstrap.php:362
 msgid "Fonts"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:362
+#: inc/customizer/bootstrap.php:363
 msgid "Colors"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:364 inc/customizer/sections/general.php:31
+#: inc/customizer/bootstrap.php:365 inc/customizer/sections/general.php:31
 msgid "Logo"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:365
+#: inc/customizer/bootstrap.php:366
 msgid "Main"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:366
+#: inc/customizer/bootstrap.php:367
 msgid "Layout: Blog (Posts Page)"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:367
+#: inc/customizer/bootstrap.php:368
 msgid "Layout: Archives"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:368
+#: inc/customizer/bootstrap.php:369
 msgid "Layout: Search Results"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:369
+#: inc/customizer/bootstrap.php:370
 msgid "Layout: Posts"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:370
+#: inc/customizer/bootstrap.php:371
 msgid "Layout: Pages"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:372 inc/customizer/sections/general.php:92
+#: inc/customizer/bootstrap.php:373 inc/customizer/sections/general.php:92
 msgid "Social Profiles &amp; RSS"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:511
+#: inc/customizer/bootstrap.php:512
 #: inc/customizer/legacy_sections/stylekit.php:32
 #: inc/customizer/sections/stylekit.php:29
 msgid "Upgrade to Make Plus"
@@ -547,18 +547,22 @@ msgid "Latin Extended"
 msgstr ""
 
 #: inc/customizer/helpers-fonts.php:565
+msgid "Telugu"
+msgstr ""
+
+#: inc/customizer/helpers-fonts.php:566
 msgid "Vietnamese"
 msgstr ""
 
-#: inc/customizer/helpers-fonts.php:610
+#: inc/customizer/helpers-fonts.php:611
 msgid "Loading&hellip;"
 msgstr ""
 
-#: inc/customizer/helpers-fonts.php:672
+#: inc/customizer/helpers-fonts.php:673
 msgid "Standard Fonts"
 msgstr ""
 
-#: inc/customizer/helpers-fonts.php:674
+#: inc/customizer/helpers-fonts.php:675
 msgid "Google Fonts"
 msgstr ""
 
@@ -1857,10 +1861,6 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: partials/entry-date.php:18
-msgid "%s ago"
-msgstr ""
-
 #: partials/entry-pagination.php:12
 msgid "Pages:"
 msgstr ""
@@ -1986,17 +1986,17 @@ msgctxt "section name"
 msgid "Gallery"
 msgstr ""
 
-#: inc/customizer/helpers-fonts.php:706
+#: inc/customizer/helpers-fonts.php:707
 msgctxt "font style"
 msgid "Serif"
 msgstr ""
 
-#: inc/customizer/helpers-fonts.php:710
+#: inc/customizer/helpers-fonts.php:711
 msgctxt "font style"
 msgid "Sans Serif"
 msgstr ""
 
-#: inc/customizer/helpers-fonts.php:714
+#: inc/customizer/helpers-fonts.php:715
 msgctxt "font style"
 msgid "Monospaced"
 msgstr ""
@@ -2144,6 +2144,11 @@ msgstr ""
 #: partials/entry-author.php:26
 msgctxt "author byline"
 msgid "by %s"
+msgstr ""
+
+#: partials/entry-date.php:13
+msgctxt "time period"
+msgid "%s ago"
 msgstr ""
 
 #: partials/footer-credit.php:27

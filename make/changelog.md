@@ -1,3 +1,9 @@
+## 1.4.6
+
+* Fixed several small compatibility issues in WordPress 4.1
+* Fixed error thrown by Format Builder on some admin screens
+* Fixed entry date layout issue in Chrome caused by excess whitespace in HTML
+
 ## 1.4.5
 
 * Fixed raw CSS appearing in rich snippet content in some situations

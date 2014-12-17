@@ -85,6 +85,12 @@ class TTFMAKE_Logo {
 			return false;
 		}
 
+		// Function introduced in 4.0
+		if ( function_exists( 'attachment_url_to_postid' ) ) {
+			$attachment_id = attachment_url_to_postid( $url );
+			return ( $attachment_id ) ? $attachment_id : 0;
+		}
+
 		global $wpdb;
 
 		// First try this
