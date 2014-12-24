@@ -42,7 +42,10 @@
 		// Insert the HTML into each font family select
 		insertChoices: function() {
 			$.each(fontChoices.cache.options, function(key, element) {
-				element.html(fontChoices.cache.choices);
+				api( key, function( setting ) {
+					var v = setting.get();
+					element.html(fontChoices.cache.choices).val( v );
+				} );
 			});
 		}
 	};

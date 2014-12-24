@@ -1,3 +1,10 @@
+## 1.4.7
+
+* Fixed bug where Customizer's font-family options weren't showing correct selected choice
+* Fixed issue with the custom logo not appearing correctly in some server environments
+* Added additional inline documentation for some action and filter hooks
+* Added Estonian translation
+
 ## 1.4.6
 
 * Fixed several small compatibility issues in WordPress 4.1
