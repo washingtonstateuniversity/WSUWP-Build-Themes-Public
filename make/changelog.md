@@ -1,3 +1,12 @@
+## 1.4.9
+
+* Fixed bug that displayed page duplication info on custom post type screens.
+* Fixed undefined function error in WP versions less than 4.0.
+* Fixed doubled content in document title tag.
+* Added formal system for showing/hiding admin notices.
+* Added a notice when Make is installed on a site running a WordPress version older than 3.9.
+* Added notices for when an older version of Make Plus is installed.
+
 ## 1.4.8
 
 * Fixed bug preventing Builder section duplication in some cases

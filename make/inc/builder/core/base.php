@@ -676,7 +676,8 @@ class TTFMAKE_Builder_Base {
 	 * @return void
 	 */
 	public function post_submitbox_misc_actions() {
-	?>
+		global $typenow;
+		if ( 'page' === $typenow ) : ?>
 		<div class="misc-pub-section ttfmake-duplicator">
 			<p style="font-style:italic;margin:0 0 7px 3px;">
 				<?php
@@ -692,7 +693,7 @@ class TTFMAKE_Builder_Base {
 			</p>
 			<div class="clear"></div>
 		</div>
-	<?php
+	<?php endif;
 	}
 }
 endif;

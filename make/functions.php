@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.4.8' );
+define( 'TTFMAKE_VERSION', '1.4.9' );
 
 /**
  * The suffix to use for scripts.
@@ -97,6 +97,9 @@ if ( is_admin() ) {
 
 	// Page Builder
 	require get_template_directory() . '/inc/builder/core/base.php';
+
+	// Admin notices
+	require get_template_directory() . '/inc/admin-notice/admin-notice.php';
 }
 
 /**
@@ -256,7 +259,7 @@ if ( ! function_exists( 'ttfmake_head_early' ) ) :
  */
 function ttfmake_head_early() {
 	// Title tag fallback
-	if ( ! function_exists( '_wp_render_title_tag' ) ) : ?>
+	if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) : ?>
 		<title><?php wp_title( '|', true, 'right' ); ?></title>
 <?php
 	endif;
