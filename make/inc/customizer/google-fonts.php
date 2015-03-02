@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * Updated: 2015-01-27T01:01:05+00:00
+ * Updated: 2015-02-17T07:09:17+00:00
  *
  * @since  1.0.0.
  *
@@ -1246,6 +1246,21 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'handwriting',
 		),
+		'Cambay' => array(
+			'label' => 'Cambay',
+			'variants' => array(
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
 		'Cambo' => array(
 			'label' => 'Cambo',
 			'variants' => array(
@@ -1920,6 +1935,18 @@ function ttfmake_get_google_fonts() {
 				'latin',
 			),
 			'category' => 'sans-serif',
+		),
+		'Dekko' => array(
+			'label' => 'Dekko',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'handwriting',
 		),
 		'Delius' => array(
 			'label' => 'Delius',
@@ -3825,6 +3852,22 @@ function ttfmake_get_google_fonts() {
 				'khmer',
 			),
 			'category' => 'display',
+		),
+		'Khula' => array(
+			'label' => 'Khula',
+			'variants' => array(
+				'300',
+				'600',
+				'700',
+				'800',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
 		),
 		'Kite One' => array(
 			'label' => 'Kite One',
@@ -6227,6 +6270,19 @@ function ttfmake_get_google_fonts() {
 				'latin',
 			),
 			'category' => 'handwriting',
+		),
+		'Ranga' => array(
+			'label' => 'Ranga',
+			'variants' => array(
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'display',
 		),
 		'Rationale' => array(
 			'label' => 'Rationale',
