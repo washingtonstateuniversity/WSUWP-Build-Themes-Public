@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.5.1\n"
+"Project-Id-Version: Make 1.5.2\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2015-02-26 02:05:40+00:00\n"
+"POT-Creation-Date: 2015-04-20 20:48:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -466,7 +466,7 @@ msgstr ""
 msgid "follow these steps"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:71 inc/customizer/bootstrap.php:388
+#: inc/customizer/bootstrap.php:71 inc/customizer/bootstrap.php:390
 msgid "General"
 msgstr ""
 
@@ -488,13 +488,13 @@ msgstr ""
 msgid "Layout"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:76 inc/customizer/bootstrap.php:392
+#: inc/customizer/bootstrap.php:76 inc/customizer/bootstrap.php:394
 #: inc/customizer/sections/background-images.php:24
 #: inc/customizer/sections/content-layout.php:47
 msgid "Header"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:77 inc/customizer/bootstrap.php:400
+#: inc/customizer/bootstrap.php:77 inc/customizer/bootstrap.php:402
 #: inc/customizer/sections/background-images.php:42
 #: inc/customizer/sections/color-scheme.php:584
 #: inc/customizer/sections/content-layout.php:172
@@ -506,59 +506,59 @@ msgstr ""
 msgid "Sidebars & Widgets"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:389 inc/customizer/sections/stylekit.php:23
+#: inc/customizer/bootstrap.php:391 inc/customizer/sections/stylekit.php:23
 msgid "Style Kits"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:390
+#: inc/customizer/bootstrap.php:392
 msgid "Fonts"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:391
+#: inc/customizer/bootstrap.php:393
 msgid "Colors"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:393 inc/customizer/sections/general.php:31
+#: inc/customizer/bootstrap.php:395 inc/customizer/sections/general.php:31
 msgid "Logo"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:394
+#: inc/customizer/bootstrap.php:396
 msgid "Main"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:395
+#: inc/customizer/bootstrap.php:397
 msgid "Layout: Blog (Posts Page)"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:396
+#: inc/customizer/bootstrap.php:398
 msgid "Layout: Archives"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:397
+#: inc/customizer/bootstrap.php:399
 msgid "Layout: Search Results"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:398
+#: inc/customizer/bootstrap.php:400
 msgid "Layout: Posts"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:399
+#: inc/customizer/bootstrap.php:401
 msgid "Layout: Pages"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:401
+#: inc/customizer/bootstrap.php:403
 msgid "Social Profiles &amp; RSS"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:568
+#: inc/customizer/bootstrap.php:570
 msgid "No results match"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:569
+#: inc/customizer/bootstrap.php:571
 msgid "No matching fonts"
 msgstr ""
 
-#: inc/customizer/bootstrap.php:571
+#: inc/customizer/bootstrap.php:573
 #: inc/customizer/legacy_sections/stylekit.php:32
 #: inc/customizer/sections/stylekit.php:29
 msgid "Upgrade to Make Plus"
@@ -728,55 +728,63 @@ msgstr ""
 msgid "Read more"
 msgstr ""
 
-#: inc/customizer/fonts.php:219
+#: inc/customizer/fonts.php:226
 msgid "All"
 msgstr ""
 
-#: inc/customizer/fonts.php:220
-msgid "Cyrillic"
-msgstr ""
-
-#: inc/customizer/fonts.php:221
-msgid "Cyrillic Extended"
-msgstr ""
-
-#: inc/customizer/fonts.php:222
-msgid "Devanagari"
-msgstr ""
-
-#: inc/customizer/fonts.php:223
-msgid "Greek"
-msgstr ""
-
-#: inc/customizer/fonts.php:224
-msgid "Greek Extended"
-msgstr ""
-
-#: inc/customizer/fonts.php:225
-msgid "Khmer"
-msgstr ""
-
-#: inc/customizer/fonts.php:226
-msgid "Latin"
-msgstr ""
-
 #: inc/customizer/fonts.php:227
-msgid "Latin Extended"
+msgid "Arabic"
 msgstr ""
 
 #: inc/customizer/fonts.php:228
-msgid "Telugu"
+msgid "Cyrillic"
 msgstr ""
 
 #: inc/customizer/fonts.php:229
+msgid "Cyrillic Extended"
+msgstr ""
+
+#: inc/customizer/fonts.php:230
+msgid "Devanagari"
+msgstr ""
+
+#: inc/customizer/fonts.php:231
+msgid "Greek"
+msgstr ""
+
+#: inc/customizer/fonts.php:232
+msgid "Greek Extended"
+msgstr ""
+
+#: inc/customizer/fonts.php:233
+msgid "Hebrew"
+msgstr ""
+
+#: inc/customizer/fonts.php:234
+msgid "Khmer"
+msgstr ""
+
+#: inc/customizer/fonts.php:235
+msgid "Latin"
+msgstr ""
+
+#: inc/customizer/fonts.php:236
+msgid "Latin Extended"
+msgstr ""
+
+#: inc/customizer/fonts.php:237
+msgid "Telugu"
+msgstr ""
+
+#: inc/customizer/fonts.php:238
 msgid "Vietnamese"
 msgstr ""
 
-#: inc/customizer/fonts.php:347
+#: inc/customizer/fonts.php:356
 msgid "Standard Fonts"
 msgstr ""
 
-#: inc/customizer/fonts.php:349
+#: inc/customizer/fonts.php:358
 msgid "Google Fonts"
 msgstr ""
 
@@ -858,7 +866,7 @@ msgid "Body"
 msgstr ""
 
 #: inc/customizer/legacy_sections/font.php:119
-#: inc/customizer/sections/typography.php:199
+#: inc/customizer/sections/typography.php:206
 msgid "Typekit"
 msgstr ""
 
@@ -869,7 +877,7 @@ msgstr ""
 #: inc/customizer/legacy_sections/font.php:139
 #: inc/customizer/legacy_sections/footer.php:355
 #: inc/customizer/sections/general.php:320
-#: inc/customizer/sections/typography.php:210
+#: inc/customizer/sections/typography.php:217
 msgid "Upgrade to %1$s"
 msgstr ""
 
@@ -903,7 +911,6 @@ msgid "Character Subset"
 msgstr ""
 
 #: inc/customizer/legacy_sections/font.php:335
-#: inc/customizer/sections/typography.php:187
 msgid "Not all fonts provide each of these subsets."
 msgstr ""
 
@@ -1708,7 +1715,7 @@ msgstr ""
 
 #: inc/customizer/sections/typography.php:41
 #: inc/customizer/sections/typography.php:118
-#: inc/customizer/sections/typography.php:287 inc/formatting/formatting.php:211
+#: inc/customizer/sections/typography.php:294 inc/formatting/formatting.php:211
 msgid "Font Weight"
 msgstr ""
 
@@ -1770,43 +1777,53 @@ msgstr ""
 msgid "Google Font Subsets"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:200
+#: inc/customizer/sections/typography.php:188
+msgid ""
+"Not all fonts provide each of these subsets. Please visit the %s to see "
+"which subsets are available for each font."
+msgstr ""
+
+#: inc/customizer/sections/typography.php:192
+msgid "Google Fonts website"
+msgstr ""
+
+#: inc/customizer/sections/typography.php:207
 msgid "Looking to add premium fonts from Typekit to your website?"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:261
+#: inc/customizer/sections/typography.php:268
 msgid "Font Family"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:272 inc/formatting/formatting.php:187
+#: inc/customizer/sections/typography.php:279 inc/formatting/formatting.php:187
 msgid "Font Size (px)"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:299
+#: inc/customizer/sections/typography.php:306
 msgid "Font Style"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:311
+#: inc/customizer/sections/typography.php:318
 msgid "Text Transform"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:323
+#: inc/customizer/sections/typography.php:330
 msgid "Line Height (em)"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:338
+#: inc/customizer/sections/typography.php:345
 msgid "Letter Spacing (px)"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:353
+#: inc/customizer/sections/typography.php:360
 msgid "Word Spacing (px)"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:368
+#: inc/customizer/sections/typography.php:375
 msgid "Link Underline"
 msgstr ""
 
-#: inc/customizer/sections/typography.php:397
+#: inc/customizer/sections/typography.php:404
 msgid "Loading&hellip;"
 msgstr ""
 

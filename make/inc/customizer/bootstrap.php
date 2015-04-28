@@ -376,7 +376,9 @@ function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
 	$section_path = $path . 'legacy_sections/';
 
 	// Get the custom controls
-	require_once( $path . 'controls.php' );
+	require_once( $path . 'priority.php' );
+	require_once( $path . 'controls/TTFMAKE_Customize_Image_Control.php' );
+	require_once( $path . 'controls/TTFMAKE_Customize_Misc_Control.php' );
 
 	// Modifications for existing sections
 	require_once( $section_path . 'background.php' );
@@ -412,7 +414,7 @@ function ttfmake_customizer_add_legacy_sections( $wp_customize ) {
 
 	// Add and populate each section, if it exists
 	foreach ( $sections as $section => $data ) {
-		$file = trailingslashit( $data[ 'path' ] ) . $section . '.php';
+		$file = ( isset( $data[ 'path' ] ) ) ? trailingslashit( $data[ 'path' ] ) . $section . '.php' : '';
 
 		if ( file_exists( $file ) ) {
 			// First load the file

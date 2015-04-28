@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * Updated: 2015-02-26T02:06:04+00:00
+ * Updated: 2015-04-20T20:32:58+00:00
  *
  * @since  1.0.0.
  *
@@ -162,6 +162,7 @@ function ttfmake_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
+				'hebrew',
 				'latin',
 			),
 			'category' => 'sans-serif',
@@ -418,6 +419,20 @@ function ttfmake_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
+				'latin',
+			),
+			'category' => 'serif',
+		),
+		'Amiri' => array(
+			'label' => 'Amiri',
+			'variants' => array(
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'arabic',
 				'latin',
 			),
 			'category' => 'serif',
@@ -4001,6 +4016,17 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Lateef' => array(
+			'label' => 'Lateef',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'arabic',
+				'latin',
+			),
+			'category' => 'handwriting',
+		),
 		'Lato' => array(
 			'label' => 'Lato',
 			'variants' => array(
@@ -4428,6 +4454,24 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'sans-serif',
 		),
+		'Martel Sans' => array(
+			'label' => 'Martel Sans',
+			'variants' => array(
+				'200',
+				'300',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
 		'Marvel' => array(
 			'label' => 'Marvel',
 			'variants' => array(
@@ -4699,6 +4743,18 @@ function ttfmake_get_google_fonts() {
 				'latin-ext',
 			),
 			'category' => 'handwriting',
+		),
+		'Modak' => array(
+			'label' => 'Modak',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'display',
 		),
 		'Modern Antiqua' => array(
 			'label' => 'Modern Antiqua',
@@ -6790,6 +6846,17 @@ function ttfmake_get_google_fonts() {
 				'latin-ext',
 			),
 			'category' => 'sans-serif',
+		),
+		'Scheherazade' => array(
+			'label' => 'Scheherazade',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'arabic',
+				'latin',
+			),
+			'category' => 'serif',
 		),
 		'Schoolbell' => array(
 			'label' => 'Schoolbell',

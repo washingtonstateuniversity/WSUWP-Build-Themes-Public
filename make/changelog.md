@@ -1,3 +1,14 @@
+## 1.5.2
+
+* Added options for Arabic and Hebrew in Google Fonts character subsets.
+* Fixed url encoding issues with Google Fonts URL.
+* Fixed issue causing Format Builder's button URL to not update correctly.
+* Fixed some instances of default stylesheet overriding Customizer typography settings.
+* Fixed wrong version number for FontAwesome library in some places.
+* Fixed fatal error in Customizer for WP versions before 4.0.
+* Updated Google Fonts.
+* Updated Dutch translation. Props @LeoOosterloo.
+
 ## 1.5.1
 
 * Added Customizer options to remove header and footer boundary padding.

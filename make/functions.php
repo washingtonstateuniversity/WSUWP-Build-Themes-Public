@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.5.1' );
+define( 'TTFMAKE_VERSION', '1.5.2' );
 
 /**
  * The suffix to use for scripts.
@@ -313,7 +313,7 @@ function ttfmake_scripts() {
 		'ttfmake-font-awesome',
 		get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
 		$style_dependencies,
-		'4.2.0'
+		'4.3.0'
 	);
 	$style_dependencies[] = 'ttfmake-font-awesome';
 

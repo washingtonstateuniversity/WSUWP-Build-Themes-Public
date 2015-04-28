@@ -40,6 +40,7 @@
 			this.cache.$document.on( 'ready', function() {
 				self.navigationInit();
 				self.skipLinkFocusFix();
+				self.navigationHoverFix();
 				self.fitVidsInit();
 			} );
 		},
@@ -112,6 +113,24 @@
 					}
 				}, false );
 			}
+		},
+
+		/**
+		 * Bind a click event to nav menu items with sub menus.
+		 *
+		 * Fixes an issue with the sub menus not appearing correctly in some situations on iPads.
+		 *
+		 * @link http://blog.travelvictoria.com.au/2012/03/31/make-sure-your-websites-drop-down-menus-work-on-an-ipad/
+		 *
+		 * @since
+		 *
+		 * @return void
+		 */
+		navigationHoverFix: function() {
+			this.cache.$dropdown = this.cache.$dropdown || $('li:has(ul)', '#site-navigation');
+			this.cache.$dropdown.on('click', function() {
+				return true;
+			});
 		},
 
 		/**
