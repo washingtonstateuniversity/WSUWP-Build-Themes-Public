@@ -8,7 +8,7 @@ $banner_slides = ttfmake_builder_get_banner_array( $ttfmake_section_data );
 $is_slider = ( count( $banner_slides ) > 1 ) ? true : false;
 ?>
 
-<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="builder-section <?php echo esc_attr( ttfmake_builder_get_banner_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>">
+<section id="<?php echo esc_attr( ttfmake_get_builder_save()->section_html_id( $ttfmake_section_data ) ); ?>" class="builder-section <?php echo esc_attr( ttfmake_builder_get_banner_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>">
 	<?php if ( '' !== $ttfmake_section_data['title'] ) : ?>
 	<h3 class="builder-banner-section-title">
 		<?php echo apply_filters( 'the_title', $ttfmake_section_data['title'] ); ?>

@@ -1,3 +1,16 @@
+## 1.6.0.
+
+* Improved: Video embeds can now be set to specific widths and alignments while still behaving responsively on narrow screens.
+* Improved: Make now enqueues the parent stylesheet if the child theme is version 1.1 or higher (instead of relying on a CSS @import statement).
+* Improved: Several minor Builder UI tweaks.
+* Fixed: Builder content preview panes sometimes weren't refreshing in Firefox.
+* Fixed: Google Maps embeds now only resize to specific dimensions when added in post content.
+* Fixed: Taxonomy icons now align with their lists properly in the post footer even when other meta elements are present.
+* New filter: `make_builder_js_templates` modifies the array of JS templates loaded on the Page Builder screen.
+* Updated: The latest list of Google fonts.
+* Changed: Make now only supports WordPress 4.0 and higher.
+* Changed: New theme screenshot. CC0 compatible.
+
 ## 1.5.2
 
 * Added options for Arabic and Hebrew in Google Fonts character subsets.

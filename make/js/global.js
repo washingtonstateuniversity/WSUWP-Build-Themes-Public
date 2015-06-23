@@ -3,8 +3,8 @@
  *
  * @since 1.0.0
  */
-/* global jQuery, ttfmakeFitVids */
-(function($) {
+/* global jQuery, ttfmakeGlobal */
+(function($, Make) {
 	'use strict';
 
 	var ttfmake = {
@@ -37,12 +37,19 @@
 		bindEvents: function() {
 			var self = this;
 
-			this.cache.$document.on( 'ready', function() {
+			self.cache.$document.ready(function() {
 				self.navigationInit();
 				self.skipLinkFocusFix();
 				self.navigationHoverFix();
-				self.fitVidsInit();
+				self.fitVidsInit($('.ttfmake-embed-wrapper'), Make);
 			} );
+
+			// Infinite Scroll support
+			self.cache.$document.on('post-load', function() {
+				// FitVids
+				var $elements = $('.ttfmake-embed-wrapper:not(:has(".fluid-width-video-wrapper"))');
+				self.fitVidsInit($elements, Make);
+			});
 		},
 
 		/**
@@ -140,30 +147,29 @@
 		 *
 		 * @return void
 		 */
-		fitVidsInit: function() {
+		fitVidsInit: function($elements, Make) {
 			// Make sure lib is loaded.
-			if (!$.fn.fitVids) {
+			if (! $.fn.fitVids) {
 				return;
 			}
 
-			// Update the cache
-			this.cache.$container = $('.container');
-
-			var args = {};
+			var $container = $elements || $('.ttfmake-embed-wrapper'),
+				selectors = Make.fitvids.selectors || '',
+				args = {};
 
 			// Get custom selectors
-			if ('object' === typeof ttfmakeFitVids) {
-				args.customSelector = ttfmakeFitVids.selectors;
+			if (selectors) {
+				args.customSelector = selectors;
 			}
 
 			// Run FitVids
-			this.cache.$container.fitVids(args);
+			$container.fitVids(args);
 
 			// Fix padding issue with Blip.tv. Note that this *must* happen after Fitvids runs.
 			// The selector finds the Blip.tv iFrame, then grabs the .fluid-width-video-wrapper div sibling.
-			this.cache.$container.find('.fluid-width-video-wrapper:nth-child(2)').css({ 'paddingTop': 0 });
+			$container.find('.fluid-width-video-wrapper:nth-child(2)').css({ 'paddingTop': 0 });
 		}
 	};
 
 	ttfmake.init();
-})(jQuery);
+})(jQuery, ttfmakeGlobal);

@@ -72,21 +72,14 @@ if ( ! function_exists( 'ttfmake_get_google_font_uri' ) ) :
  */
 function ttfmake_get_google_font_uri() {
 	// Grab the font choices
-	if ( ttfmake_customizer_supports_panels() ) {
-		$all_keys = array_keys( ttfmake_option_defaults() );
-		$font_keys = array();
-		foreach ( $all_keys as $key ) {
-			if ( false !== strpos( $key, 'font-family-' ) ) {
-				$font_keys[] = $key;
-			}
+	$all_keys = array_keys( ttfmake_option_defaults() );
+	$font_keys = array();
+	foreach ( $all_keys as $key ) {
+		if ( false !== strpos( $key, 'font-family-' ) ) {
+			$font_keys[] = $key;
 		}
-	} else {
-		$font_keys = array(
-			'font-site-title',
-			'font-header',
-			'font-body',
-		);
 	}
+
 	$fonts = array();
 	foreach ( $font_keys as $key ) {
 		$fonts[] = get_theme_mod( $key, ttfmake_get_default( $key ) );

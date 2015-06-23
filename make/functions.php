@@ -6,7 +6,12 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.5.2' );
+define( 'TTFMAKE_VERSION', '1.6.0' );
+
+/**
+ * The minimum version of WordPress required for Finder.
+ */
+define( 'TTFMAKE_MIN_WP_VERSION', '4.0' );
 
 /**
  * The suffix to use for scripts.
@@ -317,6 +322,27 @@ function ttfmake_scripts() {
 	);
 	$style_dependencies[] = 'ttfmake-font-awesome';
 
+	// Parent stylesheet, if child theme is active
+	// @link http://justintadlock.com/archives/2014/11/03/loading-parent-styles-for-child-themes
+	if ( is_child_theme() && defined( 'TTFMAKE_CHILD_VERSION' ) && version_compare( TTFMAKE_CHILD_VERSION, '1.1.0', '>=' ) ) {
+		/**
+		 * Toggle for loading the parent stylesheet along with the child one.
+		 *
+		 * @since 1.6.0.
+		 *
+		 * @param bool    $enqueue    True enqueues the parent stylesheet.
+		 */
+		if ( true === apply_filters( 'make_enqueue_parent_stylesheet', true ) ) {
+			wp_enqueue_style(
+				'ttfmake-parent-style',
+				get_template_directory_uri() . '/style.css',
+				$style_dependencies,
+				TTFMAKE_VERSION
+			);
+			$style_dependencies[] = 'ttfmake-parent-style';
+		}
+	}
+
 	// Main stylesheet
 	wp_enqueue_style(
 		'ttfmake-main-style',
@@ -338,6 +364,16 @@ function ttfmake_scripts() {
 	// Scripts
 	$script_dependencies = array();
 
+	// FitVids
+	// Register only. Enqueued when necessary by the embed shortcode.
+	wp_register_script(
+		'ttfmake-fitvids',
+		get_template_directory_uri() . '/js/libs/fitvids/jquery.fitvids' . TTFMAKE_SUFFIX . '.js',
+		array( 'jquery' ),
+		'1.1',
+		true
+	);
+
 	// jQuery
 	$script_dependencies[] = 'jquery';
 
@@ -345,16 +381,16 @@ function ttfmake_scripts() {
 	ttfmake_cycle2_script_setup( $script_dependencies );
 	$script_dependencies[] = 'ttfmake-cycle2';
 
-	// FitVids
+	// Global script
 	wp_enqueue_script(
-		'ttfmake-fitvids',
-		get_template_directory_uri() . '/js/libs/fitvids/jquery.fitvids' . TTFMAKE_SUFFIX . '.js',
+		'ttfmake-global',
+		get_template_directory_uri() . '/js/global' . TTFMAKE_SUFFIX . '.js',
 		$script_dependencies,
-		'1.1',
+		TTFMAKE_VERSION,
 		true
 	);
 
-	// Default selectors
+	// FitVids selectors
 	$selector_array = array(
 		"iframe[src*='www.viddler.com']",
 		"iframe[src*='money.cnn.com']",
@@ -375,25 +411,16 @@ function ttfmake_scripts() {
 
 	// Compile selectors
 	$fitvids_custom_selectors = array(
-		'selectors' => implode( ',', $selector_array )
+		'fitvids' => array(
+			'selectors' => implode( ',', $selector_array )
+		),
 	);
 
 	// Send to the script
 	wp_localize_script(
-		'ttfmake-fitvids',
-		'ttfmakeFitVids',
-		$fitvids_custom_selectors
-	);
-
-	$script_dependencies[] = 'ttfmake-fitvids';
-
-	// Global script
-	wp_enqueue_script(
 		'ttfmake-global',
-		get_template_directory_uri() . '/js/global' . TTFMAKE_SUFFIX . '.js',
-		$script_dependencies,
-		TTFMAKE_VERSION,
-		true
+		'ttfmakeGlobal',
+		$fitvids_custom_selectors
 	);
 
 	// Comment reply script
@@ -538,7 +565,8 @@ function ttfmake_plus_styles() {
 	.make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before,
 	.ttfmp-import-message strong:after,
 	#accordion-section-ttfmake_stylekit h3:before,
-	a.ttfmake-customize-plus {
+	a.ttfmake-customize-plus,
+	#ttfmake-menu-list-item-link-plus h4:after {
 		content: "Plus";
 		position: relative;
 		top: -1px;
@@ -609,7 +637,7 @@ add_action( 'customize_controls_print_styles', 'ttfmake_plus_styles', 20 );
  * @param  string    $deprecated    This parameter is no longer used.
  * @return string                   The link.
  */
-function ttfmake_get_plus_link( $deprecated ) {
+function ttfmake_get_plus_link( $deprecated = '' ) {
 	$url = 'https://thethemefoundry.com/make-buy/';
 	return esc_url( $url );
 }

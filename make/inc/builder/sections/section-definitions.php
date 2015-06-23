@@ -617,9 +617,20 @@ class TTFMAKE_Section_Definitions {
 		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
 			return;
 		}
-
-		// Define the templates to print
-		$templates = array(
+		
+		/**
+		 * Array of items to print as JS templates in the footer of the Builder screen.
+		 *
+		 * Each item is represented as an associative array and includes the following items:
+		 * - id                  The ID of the template
+		 * - builder_template    The relative path to the PHP template
+		 * - path                The path to the base directory
+		 *
+		 * @since 1.6.0.
+		 *
+		 * @param array    $templates    The
+		 */
+		$templates = apply_filters( 'make_builder_js_templates', array(
 			array(
 				'id' => 'gallery-item',
 				'builder_template' => 'sections/builder-templates/gallery-item',
@@ -630,7 +641,7 @@ class TTFMAKE_Section_Definitions {
 				'builder_template' => 'sections/builder-templates/banner-slide',
 				'path' => 'inc/builder/',
 			),
-		);
+		) );
 
 		// Print the templates
 		foreach ( $templates as $template ) : ?>
