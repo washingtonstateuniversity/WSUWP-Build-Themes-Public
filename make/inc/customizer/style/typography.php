@@ -61,12 +61,12 @@ function ttfmake_css_fonts() {
 	 * H1
 	 */
 	$element = 'h1';
-	$selectors = array( 'h1', 'h1 a', '.font-header' );
+	$selectors = array( 'h1:not(.site-title)', 'h1:not(.site-title) a', '.font-header' );
 	$declarations = ttfmake_parse_font_properties( $element );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 	}
-	$link_rule = ttfmake_parse_link_underline( $element, array( 'h1 a' ) );
+	$link_rule = ttfmake_parse_link_underline( $element, array( 'h1:not(.site-title) a' ) );
 	if ( ! empty( $link_rule ) ) {
 		ttfmake_get_css()->add( $link_rule );
 	}

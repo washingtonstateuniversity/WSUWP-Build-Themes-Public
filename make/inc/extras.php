@@ -827,6 +827,47 @@ function ttfmake_is_builder_page( $post_id = 0 ) {
 }
 endif;
 
+/**
+ * Handle frontend scripts for use with the existing sections on the current Builder page.
+ *
+ * @since 1.6.1.
+ *
+ * @return void
+ */
+function ttfmake_frontend_builder_scripts() {
+	if ( ttfmake_is_builder_page() ) {
+		$sections = ttfmake_get_section_data( get_the_ID() );
+		// Bail if there are no sections
+		if ( empty( $sections ) ) {
+			return;
+		}
+		// Parse the sections included on the page.
+		$sections      = ttfmake_get_section_data( get_the_ID() );
+		$section_types = wp_list_pluck( $sections, 'section-type' );
+
+		foreach ( $section_types as $section_id => $section_type ) {
+			switch ( $section_type ) {
+				default :
+					break;
+				case 'banner' :
+					// Add Cycle2 as a dependency for the Frontend script
+					global $wp_scripts;
+					$script = $wp_scripts->query( 'ttfmake-global', 'registered' );
+					if ( $script && ! in_array( 'ttfmake-cycle2', $script->deps ) ) {
+						$script->deps[] = 'ttfmake-cycle2';
+						if ( ! defined( 'TTFMAKE_SUFFIX' ) || '.min' !== TTFMAKE_SUFFIX ) {
+							$script->deps[] = 'ttfmake-cycle2-center';
+							$script->deps[] = 'ttfmake-cycle2-swipe';
+						}
+					}
+					break;
+			}
+		}
+	}
+}
+
+add_action( 'wp_head', 'ttfmake_frontend_builder_scripts' );
+
 if ( ! function_exists( 'ttfmake_builder_css' ) ) :
 /**
  * Trigger an action hook for each section on a Builder page for the purpose

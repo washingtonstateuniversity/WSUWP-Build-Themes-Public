@@ -1,4 +1,13 @@
-## 1.6.0.
+## 1.6.1
+
+* New feature: All default sections now have background image and background color options.
+* Improved: Cycle2 slider script only loads when content requires it.
+* Bug fix: H1 typography settings no longer affect the site title (which has its own typography settings).
+* Updated: Mobile navigation script now matches latest version in the _s theme.
+* New filter: `make_required_files` modifies the list of theme files to load.
+* Changed: Prevent Make from activating if WordPress version is less than 4.0.
+
+## 1.6.0
 
 * Improved: Video embeds can now be set to specific widths and alignments while still behaving responsively on narrow screens.
 * Improved: Make now enqueues the parent stylesheet if the child theme is version 1.1 or higher (instead of relying on a CSS @import statement).

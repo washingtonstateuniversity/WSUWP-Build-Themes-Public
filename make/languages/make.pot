@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.6.0\n"
+"Project-Id-Version: Make 1.6.1\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2015-06-03 00:26:41+00:00\n"
+"POT-Creation-Date: 2015-06-20 03:40:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,40 +29,46 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:168
+#: functions.php:179
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:169
+#: functions.php:180
 msgid "Social Profile Links"
 msgstr ""
 
-#: functions.php:170
+#: functions.php:181
 msgid "Header Bar Menu"
 msgstr ""
 
-#: functions.php:200
+#: functions.php:211
 msgid "Left Sidebar"
 msgstr ""
 
-#: functions.php:209
+#: functions.php:220
 msgid "Right Sidebar"
 msgstr ""
 
-#: functions.php:218
+#: functions.php:229
 msgid "Footer 1"
 msgstr ""
 
-#: functions.php:227
+#: functions.php:238
 msgid "Footer 2"
 msgstr ""
 
-#: functions.php:236
+#: functions.php:247
 msgid "Footer 3"
 msgstr ""
 
-#: functions.php:245
+#: functions.php:256
 msgid "Footer 4"
+msgstr ""
+
+#: inc/activation.php:34
+msgid ""
+"Make requires at least WordPress version %1$s. You are running version "
+"%2$s. Please upgrade and try again."
 msgstr ""
 
 #: inc/admin-notice/template.php:8
@@ -181,9 +187,9 @@ msgid "Content position"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/banner-slide.php:77
-#: inc/builder/sections/section-definitions.php:208
-#: inc/builder/sections/section-definitions.php:343
-#: inc/builder/sections/section-definitions.php:354
+#: inc/builder/sections/section-definitions.php:257
+#: inc/builder/sections/section-definitions.php:441
+#: inc/builder/sections/section-definitions.php:452
 #: inc/customizer/choices.php:87 inc/customizer/choices.php:209
 #: inc/customizer/choices.php:232 inc/customizer/choices.php:243
 #: inc/customizer/choices.php:254 inc/gallery-slider/gallery-slider.php:118
@@ -203,12 +209,16 @@ msgid "Right"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/banner-slide.php:84
-#: inc/builder/sections/section-definitions.php:375
+#: inc/builder/sections/section-definitions.php:109
+#: inc/builder/sections/section-definitions.php:285
+#: inc/builder/sections/section-definitions.php:473
 msgid "Darken background to improve readability"
 msgstr ""
 
 #: inc/builder/sections/builder-templates/banner-slide.php:90
-#: inc/builder/sections/section-definitions.php:391
+#: inc/builder/sections/section-definitions.php:125
+#: inc/builder/sections/section-definitions.php:301
+#: inc/builder/sections/section-definitions.php:489
 msgid "Background color"
 msgstr ""
 
@@ -283,140 +293,148 @@ msgid "Create rearrangeable columns of content and images."
 msgstr ""
 
 #: inc/builder/sections/section-definitions.php:85
-#: inc/builder/sections/section-definitions.php:173
-#: inc/builder/sections/section-definitions.php:318
+#: inc/builder/sections/section-definitions.php:222
+#: inc/builder/sections/section-definitions.php:416
 msgid "Enter section title"
 msgstr ""
 
 #: inc/builder/sections/section-definitions.php:92
-#: inc/builder/sections/section-definitions.php:324
+#: inc/builder/sections/section-definitions.php:422
 msgid "Columns"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:163
+#: inc/builder/sections/section-definitions.php:104
+#: inc/builder/sections/section-definitions.php:280
+#: inc/builder/sections/section-definitions.php:468
+msgid "Background image"
+msgstr ""
+
+#: inc/builder/sections/section-definitions.php:116
+#: inc/builder/sections/section-definitions.php:292
+#: inc/builder/sections/section-definitions.php:480
+msgid "Background style"
+msgstr ""
+
+#: inc/builder/sections/section-definitions.php:119
+#: inc/builder/sections/section-definitions.php:295
+#: inc/builder/sections/section-definitions.php:483
+#: inc/customizer/choices.php:121
+msgid "Tile"
+msgstr ""
+
+#: inc/builder/sections/section-definitions.php:120
+#: inc/builder/sections/section-definitions.php:296
+#: inc/builder/sections/section-definitions.php:484
+#: inc/customizer/choices.php:157
+msgid "Cover"
+msgstr ""
+
+#: inc/builder/sections/section-definitions.php:212
 msgid "Display multiple types of content in a banner or a slider."
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:178
+#: inc/builder/sections/section-definitions.php:227
 #: inc/gallery-slider/gallery-slider.php:98
 msgid "Hide navigation arrows"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:184
+#: inc/builder/sections/section-definitions.php:233
 #: inc/gallery-slider/gallery-slider.php:102
 msgid "Hide navigation dots"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:190
+#: inc/builder/sections/section-definitions.php:239
 msgid "Autoplay slideshow"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:196
+#: inc/builder/sections/section-definitions.php:245
 #: inc/gallery-slider/gallery-slider.php:110
 msgid "Time between slides (ms)"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:202
+#: inc/builder/sections/section-definitions.php:251
 msgid "Transition effect"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:206
+#: inc/builder/sections/section-definitions.php:255
 #: inc/gallery-slider/gallery-slider.php:116
 msgid "Slide horizontal"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:207
+#: inc/builder/sections/section-definitions.php:256
 #: inc/gallery-slider/gallery-slider.php:117
 msgid "Fade"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:213
+#: inc/builder/sections/section-definitions.php:262
 msgid "Section height (px)"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:219
+#: inc/builder/sections/section-definitions.php:268
 msgid "Responsive behavior"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:222
+#: inc/builder/sections/section-definitions.php:271
 msgid ""
 "Choose how the Banner will respond to varying screen widths. Default is "
 "ideal for large amounts of written content, while Aspect is better for "
 "showing your images."
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:224
+#: inc/builder/sections/section-definitions.php:273
 #: inc/customizer/choices.php:182 inc/customizer/sections/stylekit.php:48
 #: inc/customizer/sections/typography.php:26
 msgid "Default"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:225
+#: inc/builder/sections/section-definitions.php:274
 msgid "Aspect"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:308
+#: inc/builder/sections/section-definitions.php:406
 msgid "Display your images in various grid combinations."
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:337
+#: inc/builder/sections/section-definitions.php:435
 msgid "Aspect ratio"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:340
+#: inc/builder/sections/section-definitions.php:438
 msgid "Square"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:341
+#: inc/builder/sections/section-definitions.php:439
 msgid "Landscape"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:342
+#: inc/builder/sections/section-definitions.php:440
 msgid "Portrait"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:349
+#: inc/builder/sections/section-definitions.php:447
 msgid "Caption style"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:352
+#: inc/builder/sections/section-definitions.php:450
 msgid "Reveal"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:353
+#: inc/builder/sections/section-definitions.php:451
 msgid "Overlay"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:360
+#: inc/builder/sections/section-definitions.php:458
 msgid "Caption color"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:363
+#: inc/builder/sections/section-definitions.php:461
 #: inc/customizer/sections/stylekit.php:50
 msgid "Light"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:364
+#: inc/builder/sections/section-definitions.php:462
 #: inc/customizer/sections/stylekit.php:51
 msgid "Dark"
-msgstr ""
-
-#: inc/builder/sections/section-definitions.php:370
-msgid "Background image"
-msgstr ""
-
-#: inc/builder/sections/section-definitions.php:382
-msgid "Background style"
-msgstr ""
-
-#: inc/builder/sections/section-definitions.php:385
-#: inc/customizer/choices.php:121
-msgid "Tile"
-msgstr ""
-
-#: inc/builder/sections/section-definitions.php:386
-#: inc/customizer/choices.php:157
-msgid "Cover"
 msgstr ""
 
 #: inc/compatibility.php:35
@@ -1867,12 +1885,12 @@ msgctxt "section name"
 msgid "Columns"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:161
+#: inc/builder/sections/section-definitions.php:210
 msgctxt "section name"
 msgid "Banner"
 msgstr ""
 
-#: inc/builder/sections/section-definitions.php:306
+#: inc/builder/sections/section-definitions.php:404
 msgctxt "section name"
 msgid "Gallery"
 msgstr ""

@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * Updated: 2015-06-03T00:26:49+00:00
+ * Updated: 2015-06-20T03:41:09+00:00
  *
  * @since  1.0.0.
  *
@@ -448,7 +448,7 @@ function ttfmake_get_google_fonts() {
 				'latin',
 				'latin-ext',
 			),
-			'category' => 'monospace',
+			'category' => 'handwriting',
 		),
 		'Anaheim' => array(
 			'label' => 'Anaheim',
@@ -721,6 +721,18 @@ function ttfmake_get_google_fonts() {
 				'latin-ext',
 			),
 			'category' => 'sans-serif',
+		),
+		'Asar' => array(
+			'label' => 'Asar',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'serif',
 		),
 		'Asset' => array(
 			'label' => 'Asset',
@@ -2298,6 +2310,22 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'sans-serif',
 		),
+		'Eczar' => array(
+			'label' => 'Eczar',
+			'variants' => array(
+				'500',
+				'600',
+				'700',
+				'800',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'serif',
+		),
 		'Ek Mukta' => array(
 			'label' => 'Ek Mukta',
 			'variants' => array(
@@ -3525,6 +3553,24 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'serif',
 		),
+		'Inknut Antiqua' => array(
+			'label' => 'Inknut Antiqua',
+			'variants' => array(
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'serif',
+		),
 		'Irish Grover' => array(
 			'label' => 'Irish Grover',
 			'variants' => array(
@@ -3768,6 +3814,18 @@ function ttfmake_get_google_fonts() {
 				'latin-ext',
 			),
 			'category' => 'handwriting',
+		),
+		'Kadwa' => array(
+			'label' => 'Kadwa',
+			'variants' => array(
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+			),
+			'category' => 'serif',
 		),
 		'Kalam' => array(
 			'label' => 'Kalam',
@@ -4252,6 +4310,7 @@ function ttfmake_get_google_fonts() {
 				'cyrillic',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -6109,6 +6168,22 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'sans-serif',
 		),
+		'Poppins' => array(
+			'label' => 'Poppins',
+			'variants' => array(
+				'300',
+				'500',
+				'600',
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
 		'Port Lligat Sans' => array(
 			'label' => 'Port Lligat Sans',
 			'variants' => array(
@@ -6527,6 +6602,18 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Rhodium Libre' => array(
+			'label' => 'Rhodium Libre',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'serif',
+		),
 		'Ribeye' => array(
 			'label' => 'Ribeye',
 			'variants' => array(
@@ -6901,6 +6988,18 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'handwriting',
 		),
+		'Sahitya' => array(
+			'label' => 'Sahitya',
+			'variants' => array(
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+			),
+			'category' => 'serif',
+		),
 		'Sail' => array(
 			'label' => 'Sail',
 			'variants' => array(
@@ -6953,6 +7052,19 @@ function ttfmake_get_google_fonts() {
 				'latin',
 			),
 			'category' => 'display',
+		),
+		'Sarala' => array(
+			'label' => 'Sarala',
+			'variants' => array(
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
 		),
 		'Sarina' => array(
 			'label' => 'Sarina',
@@ -7618,6 +7730,19 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Sura' => array(
+			'label' => 'Sura',
+			'variants' => array(
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'serif',
+		),
 		'Suranna' => array(
 			'label' => 'Suranna',
 			'variants' => array(
@@ -7784,6 +7909,22 @@ function ttfmake_get_google_fonts() {
 				'latin',
 			),
 			'category' => 'serif',
+		),
+		'Tillana' => array(
+			'label' => 'Tillana',
+			'variants' => array(
+				'500',
+				'600',
+				'700',
+				'800',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'handwriting',
 		),
 		'Timmana' => array(
 			'label' => 'Timmana',
@@ -8278,6 +8419,23 @@ function ttfmake_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
+		'Yantramanav' => array(
+			'label' => 'Yantramanav',
+			'variants' => array(
+				'100',
+				'300',
+				'500',
+				'700',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
 				'latin',
 				'latin-ext',
 			),

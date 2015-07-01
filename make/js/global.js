@@ -60,7 +60,7 @@
 		 * @return void
 		 */
 		navigationInit: function() {
-			var container, button, menu;
+			var container, button, menu, links, subMenus;
 
 			container = document.getElementById( 'site-navigation' );
 			if ( ! container ) {
@@ -80,6 +80,7 @@
 				return;
 			}
 
+			menu.setAttribute( 'aria-expanded', 'false' );
 			if ( -1 === menu.className.indexOf( 'nav-menu' ) ) {
 				menu.className += ' nav-menu';
 			}
@@ -87,10 +88,51 @@
 			button.onclick = function() {
 				if ( -1 !== container.className.indexOf( 'toggled' ) ) {
 					container.className = container.className.replace( ' toggled', '' );
+					button.setAttribute( 'aria-expanded', 'false' );
+					menu.setAttribute( 'aria-expanded', 'false' );
 				} else {
 					container.className += ' toggled';
+					button.setAttribute( 'aria-expanded', 'true' );
+					menu.setAttribute( 'aria-expanded', 'true' );
 				}
 			};
+
+			// Get all the link elements within the menu.
+			links    = menu.getElementsByTagName( 'a' );
+			subMenus = menu.getElementsByTagName( 'ul' );
+
+			// Set menu items with submenus to aria-haspopup="true".
+			for ( var i = 0, len = subMenus.length; i < len; i++ ) {
+				subMenus[i].parentNode.setAttribute( 'aria-haspopup', 'true' );
+			}
+
+			// Each time a menu link is focused or blurred, toggle focus.
+			for ( i = 0, len = links.length; i < len; i++ ) {
+				links[i].addEventListener( 'focus', toggleFocus, true );
+				links[i].addEventListener( 'blur', toggleFocus, true );
+			}
+
+			/**
+			 * Sets or removes .focus class on an element.
+			 */
+			function toggleFocus() {
+				var self = this;
+
+				// Move up through the ancestors of the current link until we hit .nav-menu.
+				while ( -1 === self.className.indexOf( 'nav-menu' ) ) {
+
+					// On li elements toggle the class .focus.
+					if ( 'li' === self.tagName.toLowerCase() ) {
+						if ( -1 !== self.className.indexOf( 'focus' ) ) {
+							self.className = self.className.replace( ' focus', '' );
+						} else {
+							self.className += ' focus';
+						}
+					}
+
+					self = self.parentElement;
+				}
+			}
 		},
 
 		/**
@@ -103,16 +145,21 @@
 		skipLinkFocusFix: function() {
 			var is_webkit = navigator.userAgent.toLowerCase().indexOf( 'webkit' ) > -1,
 				is_opera  = navigator.userAgent.toLowerCase().indexOf( 'opera' )  > -1,
-				is_ie     = navigator.userAgent.toLowerCase().indexOf( 'msie' )   > -1,
-				eventMethod;
+				is_ie     = navigator.userAgent.toLowerCase().indexOf( 'msie' )   > -1;
 
-			if ( ( is_webkit || is_opera || is_ie ) && 'undefined' !== typeof( document.getElementById ) ) {
-				eventMethod = ( window.addEventListener ) ? 'addEventListener' : 'attachEvent';
-				window[ eventMethod ]( 'hashchange', function() {
-					var element = document.getElementById( location.hash.substring( 1 ) );
+			if ( ( is_webkit || is_opera || is_ie ) && document.getElementById && window.addEventListener ) {
+				window.addEventListener( 'hashchange', function() {
+					var id = location.hash.substring( 1 ),
+						element;
+
+					if ( ! ( /^[A-z0-9_-]+$/.test( id ) ) ) {
+						return;
+					}
+
+					element = document.getElementById( id );
 
 					if ( element ) {
-						if ( ! /^(?:a|select|input|button|textarea)$/i.test( element.tagName ) ) {
+						if ( ! ( /^(?:a|select|input|button|textarea)$/i.test( element.tagName ) ) ) {
 							element.tabIndex = -1;
 						}
 

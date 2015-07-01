@@ -4,7 +4,7 @@
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Create your website without touching a line of code. Make's flexible customization features and a powerful drag and drop page builder make designing your site fun and easy. Build almost anything: a simple portfolio or photography site, an ecommerce business site, a minimalist blog, or even a professional magazine. You'll start by customizing your background, layouts, fonts, colors, and logo. Next, add and organize your content using the drag and drop page builder. Add a photo, a video, a gallery, or even a slider to any page on your website. Make is responsive, so your website will naturally look great on phones, tablets, and desktop screens. It's also fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and WP PageNavi.
- * Version:     1.6.0
+ * Version:     1.6.1
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
@@ -2514,6 +2514,7 @@ div.wp-video-shortcode {
 }
 
 .builder-section {
+	position: relative; 
 	margin-bottom: 44px;
 	margin-bottom: 4.4rem;
 }
@@ -2541,6 +2542,24 @@ div.wp-video-shortcode {
 .builder-text-section-title {
 	margin-bottom: 22px;
 	margin-bottom: 2.2rem;
+}
+
+.builder-section-content,
+.builder-text-section-title,
+.builder-gallery-section-title,
+.builder-banner-section-title {
+	position: relative;
+	z-index: 2;
+}
+
+
+/*---------------------------------------------------------
+ Text section (_pages.scss)
+-------------------------------------------------------- */
+
+.builder-section-text.has-background {
+	padding: 52px 0 22px;
+	padding: 5.2rem 0 2.2rem;
 }
 
 
@@ -2580,6 +2599,16 @@ div.wp-video-shortcode {
 	margin-bottom: 22px;
 	margin-bottom: 2.2rem; 
 	text-align: center;
+}
+
+
+/*---------------------------------------------------------
+ Banner section (_pages.scss)
+-------------------------------------------------------- */
+
+.builder-section-banner.has-background {
+	padding: 52px 0 0;
+	padding: 5.2rem 0 0;
 }
 
 
