@@ -51,32 +51,55 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 					'context'      => $theme_prefix . 'logo-retina',
 				),
 			),
-			'logo-favicon'         => array(
-				'setting' => array(
-					'sanitize_callback' => 'esc_url_raw',
-				),
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Image_Control',
-					'label'        => __( 'Favicon', 'make' ),
-					'description'  => __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'make' ),
-					'context'      => $theme_prefix . 'logo-favicon',
-					'extensions'   => array( 'png', 'ico' ),
-				),
+		),
+	);
+
+	// Transition to new Site Icon setting in core
+	$site_icon = array(
+		'logo-favicon'         => array(
+			'setting' => array(
+				'sanitize_callback' => 'esc_url_raw',
 			),
-			'logo-apple-touch'      => array(
-				'setting' => array(
-					'sanitize_callback' => 'esc_url_raw',
-				),
-				'control' => array(
-					'control_type' => 'TTFMAKE_Customize_Image_Control',
-					'label'        => __( 'Apple Touch Icon', 'make' ),
-					'description'  => __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'make' ),
-					'context'      => $theme_prefix . 'logo-apple-touch',
-					'extensions'   => array( 'png' ),
-				),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Image_Control',
+				'label'        => __( 'Favicon', 'make' ),
+				'description'  => __( 'File must be <strong>.png</strong> or <strong>.ico</strong> format. Optimal dimensions: <strong>32px x 32px</strong>.', 'make' ),
+				'context'      => $theme_prefix . 'logo-favicon',
+				'extensions'   => array( 'png', 'ico' ),
+			),
+		),
+		'logo-apple-touch'      => array(
+			'setting' => array(
+				'sanitize_callback' => 'esc_url_raw',
+			),
+			'control' => array(
+				'control_type' => 'TTFMAKE_Customize_Image_Control',
+				'label'        => __( 'Apple Touch Icon', 'make' ),
+				'description'  => __( 'File must be <strong>.png</strong> format. Optimal dimensions: <strong>152px x 152px</strong>.', 'make' ),
+				'context'      => $theme_prefix . 'logo-apple-touch',
+				'extensions'   => array( 'png' ),
 			),
 		),
 	);
+	if ( function_exists( 'has_site_icon' ) ) {
+		$site_icon = array(
+			'logo-icons-heading'   => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Favicon & Apple Touch Icon', 'make' ),
+					'type'  => 'heading',
+				),
+			),
+			'logo-icons-text'      => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'description'   => __( 'These options have been deprecated in favor of the Site Icon setting in WordPress core. Please visit the Site Identity section to configure your site icon.', 'make' ),
+					'type'  => 'text',
+				),
+			),
+		);
+	}
+	$general_sections['logo']['options'] = array_merge( $general_sections['logo']['options'], $site_icon );
 
 	/**
 	 * Navigation
@@ -90,7 +113,6 @@ function ttfmake_customizer_define_general_sections( $sections ) {
 	$general_sections['labels'] = array(
 		'panel'       => $panel,
 		'title'       => __( 'Labels', 'make' ),
-		//'description' => __( 'Enter the complete URL to your profile for each service below that you would like to share.', 'make' ),
 		'options'     => array(
 			'navigation-mobile-label' => array(
 				'setting' => array(

@@ -7,11 +7,12 @@ global $ttfmake_section_data, $ttfmake_is_js_template;
 
 $links = array(
 	100 => array(
-	'href'  => '#',
-	'class' => 'ttfmake-section-remove',
-	'label' => __( 'Delete section', 'make' ),
-	'title' => __( 'Delete section', 'make' ),
-) );
+		'href'  => '#',
+		'class' => 'ttfmake-section-remove',
+		'label' => __( 'Delete section', 'make' ),
+		'title' => __( 'Delete section', 'make' ),
+	)
+);
 
 if ( ! empty( $ttfmake_section_data['section']['config'] ) ) {
 	$id = ( true === $ttfmake_is_js_template ) ? '{{{ id }}}' : esc_attr( $ttfmake_section_data['data']['id'] );

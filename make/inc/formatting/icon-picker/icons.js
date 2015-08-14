@@ -67,6 +67,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f1c7"
     },
     {
+      "name": "Balance Scale",
+      "id": "fa-balance-scale",
+      "unicode": "f24e"
+    },
+    {
       "name": "ban",
       "id": "fa-ban",
       "unicode": "f05e"
@@ -85,6 +90,31 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Bars",
       "id": "fa-bars",
       "unicode": "f0c9"
+    },
+    {
+      "name": "Battery 1/2 Full",
+      "id": "fa-battery-half",
+      "unicode": "f242"
+    },
+    {
+      "name": "Battery 1/4 Full",
+      "id": "fa-battery-quarter",
+      "unicode": "f243"
+    },
+    {
+      "name": "Battery 3/4 Full",
+      "id": "fa-battery-three-quarters",
+      "unicode": "f241"
+    },
+    {
+      "name": "Battery Empty",
+      "id": "fa-battery-empty",
+      "unicode": "f244"
+    },
+    {
+      "name": "Battery Full",
+      "id": "fa-battery-full",
+      "unicode": "f240"
     },
     {
       "name": "Bed",
@@ -197,6 +227,26 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f073"
     },
     {
+      "name": "Calendar Check Outlined",
+      "id": "fa-calendar-check-o",
+      "unicode": "f274"
+    },
+    {
+      "name": "Calendar Minus Outlined",
+      "id": "fa-calendar-minus-o",
+      "unicode": "f272"
+    },
+    {
+      "name": "Calendar Plus Outlined",
+      "id": "fa-calendar-plus-o",
+      "unicode": "f271"
+    },
+    {
+      "name": "Calendar Times Outlined",
+      "id": "fa-calendar-times-o",
+      "unicode": "f273"
+    },
+    {
       "name": "calendar-o",
       "id": "fa-calendar-o",
       "unicode": "f133"
@@ -297,6 +347,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f017"
     },
     {
+      "name": "Clone",
+      "id": "fa-clone",
+      "unicode": "f24d"
+    },
+    {
       "name": "Closed Captions",
       "id": "fa-cc",
       "unicode": "f20a"
@@ -357,6 +412,16 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f0e5"
     },
     {
+      "name": "Commenting",
+      "id": "fa-commenting",
+      "unicode": "f27a"
+    },
+    {
+      "name": "Commenting Outlined",
+      "id": "fa-commenting-o",
+      "unicode": "f27b"
+    },
+    {
       "name": "comments",
       "id": "fa-comments",
       "unicode": "f086"
@@ -375,6 +440,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Copyright",
       "id": "fa-copyright",
       "unicode": "f1f9"
+    },
+    {
+      "name": "Creative Commons",
+      "id": "fa-creative-commons",
+      "unicode": "f25e"
     },
     {
       "name": "credit-card",
@@ -627,6 +697,16 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f19d"
     },
     {
+      "name": "Hand Peace",
+      "id": "fa-hand-peace-o",
+      "unicode": "f25b"
+    },
+    {
+      "name": "Hand Pointer",
+      "id": "fa-hand-pointer-o",
+      "unicode": "f25a"
+    },
+    {
       "name": "HDD",
       "id": "fa-hdd-o",
       "unicode": "f0a0"
@@ -662,6 +742,36 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f015"
     },
     {
+      "name": "Hourglass",
+      "id": "fa-hourglass",
+      "unicode": "f254"
+    },
+    {
+      "name": "Hourglass End",
+      "id": "fa-hourglass-end",
+      "unicode": "f253"
+    },
+    {
+      "name": "Hourglass Half",
+      "id": "fa-hourglass-half",
+      "unicode": "f252"
+    },
+    {
+      "name": "Hourglass Outlined",
+      "id": "fa-hourglass-o",
+      "unicode": "f250"
+    },
+    {
+      "name": "Hourglass Start",
+      "id": "fa-hourglass-start",
+      "unicode": "f251"
+    },
+    {
+      "name": "I Beam Cursor",
+      "id": "fa-i-cursor",
+      "unicode": "f246"
+    },
+    {
       "name": "Image File Outlined",
       "id": "fa-file-image-o",
       "unicode": "f1c5"
@@ -670,6 +780,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "inbox",
       "id": "fa-inbox",
       "unicode": "f01c"
+    },
+    {
+      "name": "Industry",
+      "id": "fa-industry",
+      "unicode": "f275"
     },
     {
       "name": "Info",
@@ -742,6 +857,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f201"
     },
     {
+      "name": "Lizard (Hand)",
+      "id": "fa-hand-lizard-o",
+      "unicode": "f258"
+    },
+    {
       "name": "location-arrow",
       "id": "fa-location-arrow",
       "unicode": "f124"
@@ -765,6 +885,26 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Male",
       "id": "fa-male",
       "unicode": "f183"
+    },
+    {
+      "name": "Map",
+      "id": "fa-map",
+      "unicode": "f279"
+    },
+    {
+      "name": "Map Outline",
+      "id": "fa-map-o",
+      "unicode": "f278"
+    },
+    {
+      "name": "Map Pin",
+      "id": "fa-map-pin",
+      "unicode": "f276"
+    },
+    {
+      "name": "Map Signs",
+      "id": "fa-map-signs",
+      "unicode": "f277"
     },
     {
       "name": "map-marker",
@@ -827,6 +967,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f21c"
     },
     {
+      "name": "Mouse Pointer",
+      "id": "fa-mouse-pointer",
+      "unicode": "f245"
+    },
+    {
       "name": "Music",
       "id": "fa-music",
       "unicode": "f001"
@@ -837,9 +982,24 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f1ea"
     },
     {
+      "name": "Object Group",
+      "id": "fa-object-group",
+      "unicode": "f247"
+    },
+    {
+      "name": "Object Ungroup",
+      "id": "fa-object-ungroup",
+      "unicode": "f248"
+    },
+    {
       "name": "Paint Brush",
       "id": "fa-paint-brush",
       "unicode": "f1fc"
+    },
+    {
+      "name": "Paper (Hand)",
+      "id": "fa-hand-paper-o",
+      "unicode": "f256"
     },
     {
       "name": "Paper Plane",
@@ -987,6 +1147,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f021"
     },
     {
+      "name": "Registered Trademark",
+      "id": "fa-registered",
+      "unicode": "f25d"
+    },
+    {
       "name": "Remove User",
       "id": "fa-user-times",
       "unicode": "f235"
@@ -1012,6 +1177,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f018"
     },
     {
+      "name": "Rock (Hand)",
+      "id": "fa-hand-rock-o",
+      "unicode": "f255"
+    },
+    {
       "name": "rocket",
       "id": "fa-rocket",
       "unicode": "f135"
@@ -1025,6 +1195,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "RSS Square",
       "id": "fa-rss-square",
       "unicode": "f143"
+    },
+    {
+      "name": "Scissors (Hand)",
+      "id": "fa-hand-scissors-o",
+      "unicode": "f257"
     },
     {
       "name": "Search",
@@ -1177,6 +1352,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f110"
     },
     {
+      "name": "Spock (Hand)",
+      "id": "fa-hand-spock-o",
+      "unicode": "f259"
+    },
+    {
       "name": "spoon",
       "id": "fa-spoon",
       "unicode": "f1b1"
@@ -1210,6 +1390,16 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "star-half",
       "id": "fa-star-half",
       "unicode": "f089"
+    },
+    {
+      "name": "Sticky Note",
+      "id": "fa-sticky-note",
+      "unicode": "f249"
+    },
+    {
+      "name": "Sticky Note Outlined",
+      "id": "fa-sticky-note-o",
+      "unicode": "f24a"
     },
     {
       "name": "Street View",
@@ -1255,6 +1445,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Taxi",
       "id": "fa-taxi",
       "unicode": "f1ba"
+    },
+    {
+      "name": "Television",
+      "id": "fa-television",
+      "unicode": "f26c"
     },
     {
       "name": "Terminal",
@@ -1320,6 +1515,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Toggle On",
       "id": "fa-toggle-on",
       "unicode": "f205"
+    },
+    {
+      "name": "Trademark",
+      "id": "fa-trademark",
+      "unicode": "f25c"
     },
     {
       "name": "Trash",
@@ -1987,6 +2187,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f077"
     },
     {
+      "name": "Exchange",
+      "id": "fa-exchange",
+      "unicode": "f0ec"
+    },
+    {
       "name": "Hand Outlined Down",
       "id": "fa-hand-o-down",
       "unicode": "f0a7"
@@ -2087,6 +2292,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Play Circle Outlined",
       "id": "fa-play-circle-o",
       "unicode": "f01d"
+    },
+    {
+      "name": "random",
+      "id": "fa-random",
+      "unicode": "f074"
     },
     {
       "name": "step-backward",
@@ -2267,6 +2477,16 @@ ttfmakeIconObj["fontawesome"] = {
   ],
   "Brand Icons": [
     {
+      "name": "500px",
+      "id": "fa-500px",
+      "unicode": "f26e"
+    },
+    {
+      "name": "Amazon",
+      "id": "fa-amazon",
+      "unicode": "f270"
+    },
+    {
       "name": "American Express Credit Card",
       "id": "fa-cc-amex",
       "unicode": "f1f3"
@@ -2322,6 +2542,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f20d"
     },
     {
+      "name": "Chrome",
+      "id": "fa-chrome",
+      "unicode": "f268"
+    },
+    {
       "name": "Codepen",
       "id": "fa-codepen",
       "unicode": "f1cb"
@@ -2330,6 +2555,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Connect Develop",
       "id": "fa-connectdevelop",
       "unicode": "f20e"
+    },
+    {
+      "name": "Contao",
+      "id": "fa-contao",
+      "unicode": "f26d"
     },
     {
       "name": "CSS 3 Logo",
@@ -2357,6 +2587,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f1a6"
     },
     {
+      "name": "Diner's Club Credit Card",
+      "id": "fa-cc-diners-club",
+      "unicode": "f24c"
+    },
+    {
       "name": "Discover Credit Card",
       "id": "fa-cc-discover",
       "unicode": "f1f2"
@@ -2377,6 +2612,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f1a9"
     },
     {
+      "name": "ExpeditedSSL",
+      "id": "fa-expeditedssl",
+      "unicode": "f23e"
+    },
+    {
       "name": "Facebook",
       "id": "fa-facebook",
       "unicode": "f09a"
@@ -2392,9 +2632,24 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f082"
     },
     {
+      "name": "Firefox",
+      "id": "fa-firefox",
+      "unicode": "f269"
+    },
+    {
       "name": "Flickr",
       "id": "fa-flickr",
       "unicode": "f16e"
+    },
+    {
+      "name": "Font Awesome Black Tie",
+      "id": "fa-black-tie",
+      "unicode": "f27e"
+    },
+    {
+      "name": "Fonticons",
+      "id": "fa-fonticons",
+      "unicode": "f280"
     },
     {
       "name": "Forumbee",
@@ -2410,6 +2665,21 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Galactic Empire",
       "id": "fa-empire",
       "unicode": "f1d1"
+    },
+    {
+      "name": "Get Pocket",
+      "id": "fa-get-pocket",
+      "unicode": "f265"
+    },
+    {
+      "name": "GG Currency",
+      "id": "fa-gg",
+      "unicode": "f260"
+    },
+    {
+      "name": "GG Currency Circle",
+      "id": "fa-gg-circle",
+      "unicode": "f261"
     },
     {
       "name": "Git",
@@ -2452,7 +2722,7 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f0d4"
     },
     {
-      "name": "Goole Wallet",
+      "name": "Google Wallet",
       "id": "fa-google-wallet",
       "unicode": "f1ee"
     },
@@ -2467,6 +2737,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f1d4"
     },
     {
+      "name": "Houzz",
+      "id": "fa-houzz",
+      "unicode": "f27c"
+    },
+    {
       "name": "HTML 5 Logo",
       "id": "fa-html5",
       "unicode": "f13b"
@@ -2477,9 +2752,19 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f16d"
     },
     {
+      "name": "Internet-explorer",
+      "id": "fa-internet-explorer",
+      "unicode": "f26b"
+    },
+    {
       "name": "ioxhost",
       "id": "fa-ioxhost",
       "unicode": "f208"
+    },
+    {
+      "name": "JCB Credit Card",
+      "id": "fa-cc-jcb",
+      "unicode": "f24b"
     },
     {
       "name": "Joomla Logo",
@@ -2542,9 +2827,34 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f23a"
     },
     {
+      "name": "Odnoklassniki",
+      "id": "fa-odnoklassniki",
+      "unicode": "f263"
+    },
+    {
+      "name": "Odnoklassniki Square",
+      "id": "fa-odnoklassniki-square",
+      "unicode": "f264"
+    },
+    {
+      "name": "OpenCart",
+      "id": "fa-opencart",
+      "unicode": "f23d"
+    },
+    {
       "name": "OpenID",
       "id": "fa-openid",
       "unicode": "f19b"
+    },
+    {
+      "name": "Opera",
+      "id": "fa-opera",
+      "unicode": "f26a"
+    },
+    {
+      "name": "Optin Monster",
+      "id": "fa-optin-monster",
+      "unicode": "f23c"
     },
     {
       "name": "Pagelines",
@@ -2610,6 +2920,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Renren",
       "id": "fa-renren",
       "unicode": "f18b"
+    },
+    {
+      "name": "Safari",
+      "id": "fa-safari",
+      "unicode": "f267"
     },
     {
       "name": "Sellsy",
@@ -2712,6 +3027,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f181"
     },
     {
+      "name": "TripAdvisor",
+      "id": "fa-tripadvisor",
+      "unicode": "f262"
+    },
+    {
       "name": "Tumblr",
       "id": "fa-tumblr",
       "unicode": "f173"
@@ -2740,6 +3060,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Viacoin",
       "id": "fa-viacoin",
       "unicode": "f237"
+    },
+    {
+      "name": "Vimeo",
+      "id": "fa-vimeo",
+      "unicode": "f27d"
     },
     {
       "name": "Vimeo Square",
@@ -2777,12 +3102,17 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f232"
     },
     {
+      "name": "Wikipedia W",
+      "id": "fa-wikipedia-w",
+      "unicode": "f266"
+    },
+    {
       "name": "Windows",
       "id": "fa-windows",
       "unicode": "f17a"
     },
     {
-      "name": "Wordpress Logo",
+      "name": "WordPress Logo",
       "id": "fa-wordpress",
       "unicode": "f19a"
     },
@@ -2795,6 +3125,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Xing Square",
       "id": "fa-xing-square",
       "unicode": "f169"
+    },
+    {
+      "name": "Y Combinator",
+      "id": "fa-y-combinator",
+      "unicode": "f23b"
     },
     {
       "name": "Yahoo Logo",
@@ -2822,6 +3157,83 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f166"
     }
   ],
+  "Hand Icons": [
+    {
+      "name": "Hand Outlined Down",
+      "id": "fa-hand-o-down",
+      "unicode": "f0a7"
+    },
+    {
+      "name": "Hand Outlined Left",
+      "id": "fa-hand-o-left",
+      "unicode": "f0a5"
+    },
+    {
+      "name": "Hand Outlined Right",
+      "id": "fa-hand-o-right",
+      "unicode": "f0a4"
+    },
+    {
+      "name": "Hand Outlined Up",
+      "id": "fa-hand-o-up",
+      "unicode": "f0a6"
+    },
+    {
+      "name": "Hand Peace",
+      "id": "fa-hand-peace-o",
+      "unicode": "f25b"
+    },
+    {
+      "name": "Hand Pointer",
+      "id": "fa-hand-pointer-o",
+      "unicode": "f25a"
+    },
+    {
+      "name": "Lizard (Hand)",
+      "id": "fa-hand-lizard-o",
+      "unicode": "f258"
+    },
+    {
+      "name": "Paper (Hand)",
+      "id": "fa-hand-paper-o",
+      "unicode": "f256"
+    },
+    {
+      "name": "Rock (Hand)",
+      "id": "fa-hand-rock-o",
+      "unicode": "f255"
+    },
+    {
+      "name": "Scissors (Hand)",
+      "id": "fa-hand-scissors-o",
+      "unicode": "f257"
+    },
+    {
+      "name": "Spock (Hand)",
+      "id": "fa-hand-spock-o",
+      "unicode": "f259"
+    },
+    {
+      "name": "Thumbs Down Outlined",
+      "id": "fa-thumbs-o-down",
+      "unicode": "f088"
+    },
+    {
+      "name": "Thumbs Up Outlined",
+      "id": "fa-thumbs-o-up",
+      "unicode": "f087"
+    },
+    {
+      "name": "thumbs-down",
+      "id": "fa-thumbs-down",
+      "unicode": "f165"
+    },
+    {
+      "name": "thumbs-up",
+      "id": "fa-thumbs-up",
+      "unicode": "f164"
+    }
+  ],
   "Payment Icons": [
     {
       "name": "American Express Credit Card",
@@ -2834,14 +3246,24 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f09d"
     },
     {
+      "name": "Diner's Club Credit Card",
+      "id": "fa-cc-diners-club",
+      "unicode": "f24c"
+    },
+    {
       "name": "Discover Credit Card",
       "id": "fa-cc-discover",
       "unicode": "f1f2"
     },
     {
-      "name": "Goole Wallet",
+      "name": "Google Wallet",
       "id": "fa-google-wallet",
       "unicode": "f1ee"
+    },
+    {
+      "name": "JCB Credit Card",
+      "id": "fa-cc-jcb",
+      "unicode": "f24b"
     },
     {
       "name": "MasterCard Credit Card",
@@ -2886,6 +3308,16 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f154"
     },
     {
+      "name": "GG Currency",
+      "id": "fa-gg",
+      "unicode": "f260"
+    },
+    {
+      "name": "GG Currency Circle",
+      "id": "fa-gg-circle",
+      "unicode": "f261"
+    },
+    {
       "name": "Indian Rupee (INR)",
       "id": "fa-inr",
       "unicode": "f156"
@@ -2928,9 +3360,9 @@ ttfmakeIconObj["fontawesome"] = {
   ],
   "Gender Icons": [
     {
-      "name": "Circle Outlined Thin",
-      "id": "fa-circle-thin",
-      "unicode": "f1db"
+      "name": "Genderless",
+      "id": "fa-genderless",
+      "unicode": "f22d"
     },
     {
       "name": "Mars",

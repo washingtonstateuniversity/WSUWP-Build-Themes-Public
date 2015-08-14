@@ -23,7 +23,7 @@ function ttfmake_comment( $comment, $args, $depth ) {
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<div class="comment-body">
-			<?php _e( 'Pingback:', 'make' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'make' ), '<span class="edit-link">', '</span>' ); ?>
+			<?php esc_html_e( 'Pingback:', 'make' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__( 'Edit', 'make' ), '<span class="edit-link">', '</span>' ); ?>
 		</div>
 
 	<?php else : ?>
@@ -41,7 +41,7 @@ function ttfmake_comment( $comment, $args, $depth ) {
 						<time datetime="<?php comment_time( 'c' ); ?>">
 							<?php
 							printf(
-								_x( '%1$s at %2$s', '1: date, 2: time', 'make' ),
+								esc_html_x( '%1$s at %2$s', '1: date, 2: time', 'make' ),
 								get_comment_date(),
 								get_comment_time()
 							);
@@ -57,13 +57,14 @@ function ttfmake_comment( $comment, $args, $depth ) {
 							'<cite class="fn">%s</cite>',
 							get_comment_author_link()
 						),
-						_x( 'says:', 'e.g. Bob says hello.', 'make' )
+						// Translators: this string is a verb whose subject is a comment author. e.g. Bob says: Hello.
+						esc_html__( 'says:', 'make' )
 					);
 					?>
 				</div>
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'make' ); ?></p>
+				<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'make' ); ?></p>
 				<?php endif; ?>
 			</header>
 
@@ -355,13 +356,13 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 				$converted_ss = sprintf(
 					'1/%1$s %2$s',
 					number_format_i18n( $denominator, $decimal_places ),
-					_x( 'second', 'time', 'make' )
+					_x( 'second', 'time unit', 'make' )
 				);
 			} else {
 				$converted_ss = sprintf(
 					'%1$s %2$s',
 					number_format_i18n( $raw_ss, 1 ),
-					_x( 'seconds', 'time', 'make' )
+					_x( 'seconds', 'time unit', 'make' )
 				);
 			}
 
@@ -380,7 +381,8 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 		if ( 0 !== $image_meta[ 'aperture' ] ) {
 			$f_stop = sprintf(
 				'%1$s' . '%2$s',
-				_x( 'f/', 'camera f-stop', 'make' ),
+				// Translators: this string denotes a camera f-stop. e.g. f/3.5
+				__( 'f/', 'make' ),
 				number_format_i18n( pow( sqrt( 2 ), absint( $image_meta['aperture'] ) ) )
 			);
 
@@ -399,38 +401,38 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 
 		// Camera
 		if ( ! empty( $image_meta['camera'] ) ) {
-			$output .= '<li><span>' . _x( 'Camera:', 'camera setting', 'make' ) . '</span> ';
+			$output .= '<li><span>' . esc_html__( 'Camera:', 'make' ) . '</span> ';
 			$output .= esc_html( $image_meta['camera'] ) . "</li>\n";
 		}
 
 		// Creation Date
 		if ( ! empty( $image_meta['created_timestamp'] ) ) {
-			$output .= '<li><span>' . _x( 'Taken:', 'camera setting', 'make' ) . '</span> ';
+			$output .= '<li><span>' . /* Translators: this string is the label for the date that a photo was taken on. */ esc_html__( 'Taken:', 'make' ) . '</span> ';
 			$date    = new DateTime( gmdate( "Y-m-d\TH:i:s\Z", $image_meta['created_timestamp'] ) );
 			$output .= esc_html( $date->format( get_option( 'date_format' ) ) ) . "</li>\n";
 		}
 
 		// Focal length
 		if ( ! empty( $image_meta['focal_length'] ) ) {
-			$output .= '<li><span>' . _x( 'Focal length:', 'camera setting', 'make' ) . '</span> ';
-			$output .= number_format_i18n( absint( $image_meta['focal_length'] ), 0 ) . _x( 'mm', 'millimeters', 'make' ) . "</li>\n";
+			$output .= '<li><span>' . esc_html__( 'Focal length:', 'make' ) . '</span> ';
+			$output .= number_format_i18n( absint( $image_meta['focal_length'] ), 0 ) . esc_html_x( 'mm', 'millimeters', 'make' ) . "</li>\n";
 		}
 
 		// Aperture
 		if ( ! empty( $image_meta['aperture'] ) ) {
-			$output .= '<li><span>' . _x( 'Aperture:', 'camera setting', 'make' ) . '</span> ';
+			$output .= '<li><span>' . esc_html__( 'Aperture:', 'make' ) . '</span> ';
 			$output .= esc_html( $image_meta['aperture'] ) . "</li>\n";
 		}
 
 		// Exposure
 		if ( ! empty( $image_meta['shutter_speed'] ) ) {
-			$output .= '<li><span>' . _x( 'Exposure:', 'camera setting', 'make' ) . '</span> ';
+			$output .= '<li><span>' . esc_html__( 'Exposure:', 'make' ) . '</span> ';
 			$output .= esc_html( $image_meta['shutter_speed'] ) . "</li>\n";
 		}
 
 		// ISO
 		if ( ! empty( $image_meta['iso'] ) ) {
-			$output .= '<li><span>' . _x( 'ISO:', 'camera setting', 'make' ) . '</span> ';
+			$output .= '<li><span>' . /* Translators: this string is an acronym that refers to a camera's sensitivity to light. */ esc_html__( 'ISO:', 'make' ) . '</span> ';
 			$output .= absint( $image_meta['iso'] ) . "</li>\n";
 		}
 

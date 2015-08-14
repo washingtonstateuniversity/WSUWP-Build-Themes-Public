@@ -88,7 +88,7 @@ function ttfmake_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 ) {
-		$title .= " $sep " . sprintf( __( 'Page %s', 'make' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'make' ), max( $paged, $page ) );
 	}
 
 	return $title;
@@ -143,7 +143,7 @@ function ttfmake_sanitize_text( $string ) {
 	 * @param array     $expandedtags    The list of allowed tags and attributes.
 	 * @param string    $string          The text string being sanitized.
 	 */
-	apply_filters( 'make_sanitize_text_allowed_tags', $expandedtags, $string );
+	$expandedtags = apply_filters( 'make_sanitize_text_allowed_tags', $expandedtags, $string );
 
 	return wp_kses( $string, $expandedtags );
 }
@@ -319,7 +319,7 @@ function ttfmake_has_sidebar( $location ) {
 	$show_sidebar = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttfmake_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
 
 	// Builder template doesn't support sidebars
-	if ( 'page' === $view && 'template-builder.php' === get_page_template_slug() ) {
+	if ( 'template-builder.php' === get_page_template_slug() ) {
 		$show_sidebar = false;
 	}
 
@@ -366,13 +366,13 @@ function ttfmake_sidebar_description( $sidebar_id ) {
 
 		// Not enabled anywhere
 		if ( empty( $enabled_views ) ) {
-			$description = __( 'This widget area is currently disabled. Enable it in the "Content & Layout" panel of the Customizer.', 'make' );
+			$description = __( 'This widget area is currently disabled. Enable it in the "Layout" panel of the Customizer.', 'make' );
 		}
 		// List enabled views
 		else {
 			$description = sprintf(
-				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Content & Layout" panel of the Customizer.', 'make' ),
-				esc_html( implode( _x( ', ', 'list item separator', 'make' ), $enabled_views ) )
+				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Layout" panel of the Customizer.', 'make' ),
+				implode( _x( ', ', 'list item separator', 'make' ), $enabled_views )
 			);
 		}
 	}
@@ -571,6 +571,8 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 	 * @param array    $icons    The array of supported social icons.
 	 */
 	$supported_icons = apply_filters( 'make_supported_social_icons', array(
+		'500px.com'          => 'fa-500px',
+		'amazon.com'         => 'fa-amazon',
 		'angel.co'           => 'fa-angellist',
 		'app.net'            => 'fa-adn',
 		'behance.net'        => 'fa-behance',
@@ -586,12 +588,14 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 		'github.com'         => 'fa-github',
 		'gittip.com'         => 'fa-gittip',
 		'plus.google.com'    => 'fa-google-plus-square',
+		'houzz.com'          => 'fa-houzz',
 		'instagram.com'      => 'fa-instagram',
 		'jsfiddle.net'       => 'fa-jsfiddle',
 		'last.fm'            => 'fa-lastfm',
 		'leanpub.com'        => 'fa-leanpub',
 		'linkedin.com'       => 'fa-linkedin',
 		'medium.com'         => 'fa-medium',
+		'ok.ru'              => 'fa-odnoklassniki',
 		'pinterest.com'      => 'fa-pinterest',
 		'qzone.qq.com'       => 'fa-qq',
 		'reddit.com'         => 'fa-reddit',
@@ -969,17 +973,19 @@ add_action( 'make_builder_banner_css', 'ttfmake_builder_banner_css', 10, 2 );
  * @return string             The wrapped HTML.
  */
 function ttfmake_embed_container( $html, $url, $attr ) {
-	// Bail if this is the admin
-	if ( is_admin() ) {
+	// Bail if this is the admin or an RSS feed
+	if ( is_admin() || is_feed() ) {
 		return $html;
 	}
 
 	if ( isset( $attr['width'] ) ) {
 		// Add FitVids as a dependency for the Frontend script
 		global $wp_scripts;
-		$script = $wp_scripts->query( 'ttfmake-global', 'registered' );
-		if ( $script && ! in_array( 'ttfmake-fitvids', $script->deps ) ) {
-			$script->deps[] = 'ttfmake-fitvids';
+		if ( is_object( $wp_scripts ) && 'WP_Dependencies' === get_class( $wp_scripts ) ) {
+			$script = $wp_scripts->query( 'ttfmake-global', 'registered' );
+			if ( $script && ! in_array( 'ttfmake-fitvids', $script->deps ) ) {
+				$script->deps[] = 'ttfmake-fitvids';
+			}
 		}
 
 		// Get classes

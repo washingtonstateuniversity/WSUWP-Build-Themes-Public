@@ -36,17 +36,17 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 
 	<a href="#" class="configure-banner-slide-link ttfmake-banner-slide-configure ttfmake-overlay-open" title="<?php esc_attr_e( 'Configure slide', 'make' ); ?>" data-overlay="#<?php echo $overlay_id; ?>">
 		<span>
-			<?php _e( 'Configure slide', 'make' ); ?>
+			<?php esc_html_e( 'Configure slide', 'make' ); ?>
 		</span>
 	</a>
 	<a href="#" class="edit-content-link edit-banner-slide-link<?php if ( ! empty( $content ) ) : ?> item-has-content<?php endif; ?>" title="<?php esc_attr_e( 'Edit content', 'make' ); ?>" data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
 		<span>
-			<?php _e( 'Edit content', 'make' ); ?>
+			<?php esc_html_e( 'Edit content', 'make' ); ?>
 		</span>
 	</a>
 	<a href="#" class="remove-banner-slide-link ttfmake-banner-slide-remove" title="<?php esc_attr_e( 'Delete slide', 'make' ); ?>">
 		<span>
-			<?php _e( 'Delete slide', 'make' ); ?>
+			<?php esc_html_e( 'Delete slide', 'make' ); ?>
 		</span>
 	</a>
 

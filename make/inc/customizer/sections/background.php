@@ -18,6 +18,11 @@ function ttfmake_customizer_background() {
 	$section = $wp_customize->get_section( $section_id );
 	$priority = new TTFMAKE_Prioritizer( 10, 5 );
 
+	// Bail if the section isn't registered
+	if ( ! is_object( $section ) || 'WP_Customize_Section' !== get_class( $section ) ) {
+		return;
+	}
+
 	// Move and rename Background Color control to Global section of Color panel
 	$wp_customize->get_control( 'background_color' )->section = $theme_prefix . 'color';
 	$wp_customize->get_control( 'background_color' )->label = __( 'Site Background Color', 'make' );
@@ -86,4 +91,4 @@ function ttfmake_customizer_background() {
 }
 endif;
 
-add_action( 'customize_register', 'ttfmake_customizer_background', 20 );
+add_action( 'customize_register', 'ttfmake_customizer_background', 99 );

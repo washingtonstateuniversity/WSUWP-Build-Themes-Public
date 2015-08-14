@@ -25,7 +25,7 @@ function ttfmake_create_config_select( $section_name, $args, $section_data ) {
 		$options = '';
 
 		foreach ( $args['options'] as $key => $value ) {
-			$options .= '<option value="' . esc_attr( $key ) . '"' . selected( $key, $current_value, false ) . '>' . $value . '</option>';
+			$options .= '<option value="' . esc_attr( $key ) . '"' . selected( $key, $current_value, false ) . '>' . esc_html( $value ) . '</option>';
 		}
 
 		$return = $label . sprintf( $select, $options ) . $description;
@@ -48,7 +48,7 @@ if ( ! function_exists( 'ttfmake_create_config_checkbox' ) ) :
  */
 function ttfmake_create_config_checkbox( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
-	$id          = $section_name . '[' . $args['name'] . ']';
+	$id          = $section_name . '[' . esc_attr( $args['name'] ) . ']';
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $args['label'] ) . '</label>' : '';
 	$description = ( isset( $args['description'] ) ) ? '<div class="ttfmake-configuration-description">' . esc_html( $args['description'] ) . '</div>': '';
 	$args        = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1"' . checked( 1, $current_value, false ) . '>' . $description;
@@ -70,10 +70,10 @@ if ( ! function_exists( 'ttfmake_create_config_text' ) ) :
  */
 function ttfmake_create_config_text( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
-	$id          = $section_name . '[' . $args['name'] . ']';
+	$id          = $section_name . '[' . esc_attr( $args['name'] ) . ']';
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $args['label'] ) . '</label>' : '';
 
-	return  $label . '<input type="text" id="' . $id . '" name="' . $id . '" value="' . $current_value . '" />';
+	return  $label . '<input type="text" id="' . $id . '" name="' . $id . '" value="' . esc_attr( $current_value ) . '" />';
 }
 endif;
 
@@ -90,7 +90,7 @@ if ( ! function_exists( 'ttfmake_create_config_image' ) ) :
  */
 function ttfmake_create_config_image( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
-	$name        = $section_name . '[' . $args['name'] . ']';
+	$name        = $section_name . '[' . esc_attr( $args['name'] ) . ']';
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $name . '">' . esc_html( $args['label'] ) . '</label>' : '';
 	
 	return $label . ttfmake_get_builder_base()->add_uploader( $name, $current_value, __( 'Set image', 'make' ) );
@@ -110,11 +110,11 @@ if ( ! function_exists( 'ttfmake_create_config_color' ) ) :
  */
 function ttfmake_create_config_color( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
-	$name        = $section_name . '[' . $args['name'] . ']';
+	$name        = $section_name . '[' . esc_attr( $args['name'] ) . ']';
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $name . '">' . esc_html( $args['label'] ) . '</label>' : '';
 	$class       = ( isset( $args['class'] ) ) ? ' class="' . esc_attr( $args['class'] ) . '"' : '';
 
-	return  $label . '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' value="' . $current_value . '" />';
+	return  $label . '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' value="' . esc_attr( $current_value ) . '" />';
 }
 endif;
 
@@ -135,7 +135,7 @@ function ttfmake_create_config_section_title( $section_name, $args, $section_dat
 	$name        = 'name="' . $section_name . '[' . esc_attr( $args['name'] ) . ']"';
 	$class       = ( isset( $args['class'] ) ) ? ' ' . esc_attr( $args['class'] ) : '';
 
-	return  '<input' . $placeholder . ' type="text" ' . $name . ' value="' . $current_value . '" class="ttfmake-title' . $class . '" autocomplete="off">';
+	return  '<input' . $placeholder . ' type="text" ' . $name . ' value="' . esc_attr( $current_value ) . '" class="ttfmake-title' . $class . '" autocomplete="off">';
 }
 endif;
 

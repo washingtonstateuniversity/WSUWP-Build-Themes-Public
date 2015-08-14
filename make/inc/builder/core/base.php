@@ -94,7 +94,7 @@ class TTFMAKE_Builder_Base {
 		foreach ( ttfmake_get_post_types_supporting_builder() as $name ) {
 			add_meta_box(
 				'ttfmake-builder',
-				__( 'Page Builder', 'make' ),
+				esc_html__( 'Page Builder', 'make' ),
 				array( $this, 'display_builder' ),
 				$name,
 				'normal',
@@ -125,7 +125,7 @@ class TTFMAKE_Builder_Base {
 	?>
 		<div class="misc-pub-section">
 			<input type="checkbox" value="1" name="use-builder" id="use-builder"<?php checked( $using_builder, 1 ); ?> />
-			&nbsp;<label for="use-builder"><?php _e( 'Use Page Builder', 'make' ); ?></label>
+			&nbsp;<label for="use-builder"><?php esc_html_e( 'Use Page Builder', 'make' ); ?></label>
 		</div>
 	<?php
 	}
@@ -331,7 +331,7 @@ class TTFMAKE_Builder_Base {
 		$data = array(
 			'pageID'        => get_the_ID(),
 			'postRefresh'   => true,
-			'confirmString' => __( 'Delete the section?', 'make' ),
+			'confirmString' => esc_html__( 'Delete the section?', 'make' ),
 		);
 
 		wp_localize_script(
@@ -428,7 +428,7 @@ class TTFMAKE_Builder_Base {
 	 */
 	public function add_uploader( $section_name, $image_id = 0, $title = '' ) {
 		$image = ttfmake_get_image_src( $image_id, 'large' );
-		$title = ( ! empty( $title ) ) ? $title : __( 'Set image', 'make' );
+		$title = ( ! empty( $title ) ) ? $title : esc_html__( 'Set image', 'make' );
 		ob_start();
 		?>
 		<div class="ttfmake-uploader<?php if ( ! empty( $image[0] ) ) : ?> ttfmake-has-image-set<?php endif; ?>">
@@ -461,7 +461,7 @@ class TTFMAKE_Builder_Base {
 			<div class="ttfmake-iframe-overlay">
 				<a href="#" class="edit-content-link" data-textarea="<?php echo esc_attr( $textarea_id ); ?>" data-iframe="<?php echo esc_attr( $iframe_id ); ?>">
 					<span class="screen-reader-text">
-						<?php _e( 'Edit content', 'make' ); ?>
+						<?php esc_html_e( 'Edit content', 'make' ); ?>
 					</span>
 				</a>
 			</div>
@@ -547,9 +547,9 @@ class TTFMAKE_Builder_Base {
 		?>
 			<script type="text/html" id="tmpl-ttfmake-remove-image">
 				<div class="ttfmake-remove-current-image">
-					<h3><?php _e( 'Current image', 'make' ); ?></h3>
+					<h3><?php esc_html_e( 'Current image', 'make' ); ?></h3>
 					<a href="#" class="ttfmake-remove-image-from-modal">
-						<?php _e( 'Remove Current Image', 'make' ); ?>
+						<?php esc_html_e( 'Remove Current Image', 'make' ); ?>
 					</a>
 				</div>
 			</script>
@@ -653,7 +653,7 @@ class TTFMAKE_Builder_Base {
 			<p style="font-style:italic;margin:0 0 7px 3px;">
 				<?php
 				printf(
-					__( 'Duplicate this page with %s.', 'make' ),
+					esc_html__( 'Duplicate this page with %s.', 'make' ),
 					sprintf(
 						'<a href="%1$s" target="_blank">%2$s</a>',
 						esc_url( ttfmake_get_plus_link( 'duplicator' ) ),
@@ -1044,15 +1044,15 @@ function ttfmake_plus_quick_start() {
 	?>
 	<div id="message" class="error below-h2 ttfmp-import-message<?php echo esc_attr( $additional_classes ); ?>">
 		<p>
-			<strong><?php _e( 'Want some ideas?', 'make' ); ?></strong><br />
+			<strong><?php esc_html_e( 'Want some ideas?', 'make' ); ?></strong><br />
 			<?php
 			printf(
-				__( '%s and get a quick start with pre-made designer builder templates.', 'make' ),
+				esc_html__( '%s and get a quick start with pre-made designer builder templates.', 'make' ),
 				sprintf(
 					'<a href="%1$s" target="_blank">%2$s</a>',
 					esc_url( ttfmake_get_plus_link( 'quick-start' ) ),
 					sprintf(
-						__( 'Upgrade to %s', 'make' ),
+						esc_html__( 'Upgrade to %s', 'make' ),
 						'Make Plus'
 					)
 				)

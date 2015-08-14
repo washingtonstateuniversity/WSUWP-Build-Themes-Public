@@ -4,10 +4,6 @@
 }
 span.description {
 	margin-bottom: 10px;
-	font-style: normal;
-}
-#customize-controls .description {
-	color: #999;
 }
 
 /* Misc control styles */
@@ -56,7 +52,7 @@ li .image.ui-buttonset label.ui-button {
 }
 .ttfmake-control-buttonset label,
 .ttfmake-control-background-position label {
-	border-color: #fff;
+	border-color: #eee;
 }
 .ttfmake-control-buttonset label.ui-state-default,
 .ttfmake-control-background-position label.ui-state-default {
@@ -65,8 +61,6 @@ li .image.ui-buttonset label.ui-button {
 .ttfmake-control-buttonset label.ui-state-hover,
 .ttfmake-control-background-position label.ui-state-hover {
 	color: #0074a2;
-	background-color: #fff;
-	background-color: rgba(255, 255, 255, .25);
 }
 .ttfmake-control-buttonset label.ui-state-active,
 .ttfmake-control-background-position label.ui-state-active {
@@ -89,43 +83,36 @@ li .image.ui-buttonset label.ui-button {
 	height: 28px;
 	width: 28px;
 }
-.ttfmake-control-background-position label.ui-state-default:hover {
-	background-color: #fff;
-	background-color: rgba(255, 255, 255, .25);
-}
-.ttfmake-control-background-position label.ui-state-active:hover {
-	background-color: #fff;
-}
 .ttfmake-control-background-position .choice-1 {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 0px;
 }
 .ttfmake-control-background-position .choice-2 {
-	border-left-color: transparent;
-	border-right-color: transparent;
+	border-left-color: #cccccc;
+	border-right-color: #cccccc;
 }
 .ttfmake-control-background-position .choice-3 {
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 0px;
 }
 .ttfmake-control-background-position .choice-4 {
-	border-top-color: transparent;
-	border-bottom-color: transparent;
+	border-top-color: #cccccc;
+	border-bottom-color: #cccccc;
 }
 .ttfmake-control-background-position .choice-5 {
-	border-color: transparent;
+	border-color: #cccccc;
 }
 .ttfmake-control-background-position .choice-6 {
-	border-top-color: transparent;
-	border-bottom-color: transparent;
+	border-top-color: #cccccc;
+	border-bottom-color: #cccccc;
 }
 .ttfmake-control-background-position .choice-7 {
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 4px;
 }
 .ttfmake-control-background-position .choice-8 {
-	border-left-color: transparent;
-	border-right-color: transparent;
+	border-left-color: #cccccc;
+	border-right-color: #cccccc;
 }
 .ttfmake-control-background-position .choice-9 {
 	border-top-right-radius: 0px;
@@ -155,15 +142,8 @@ li.customize-control.customize-control-range .ui-slider-handle {
 }
 li.customize-control.customize-control-range .ui-slider-horizontal {
 	height: .6em;
-	border-color: #fff;
-	background: #fff;
-}
-
-li.customize-control.customize-control-range .ui-slider-handle {
-	border-radius: 100%;
-}
-li.customize-control.customize-control-range .ui-slider-handle:hover {
-	cursor: pointer;
+	border-color: #eee;
+	background: #eee;
 }
 
 /* jQuery UI theme tweaks */

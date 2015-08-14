@@ -185,11 +185,11 @@ function ttfmake_get_choices( $setting ) {
 			break;
 		case 'footer-widget-areas' :
 			$choices = array(
-				0 => _x( '0', 'footer widget area number', 'make' ),
-				1 => _x( '1', 'footer widget area number', 'make' ),
-				2 => _x( '2', 'footer widget area number', 'make' ),
-				3 => _x( '3', 'footer widget area number', 'make' ),
-				4 => _x( '4', 'footer widget area number', 'make' )
+				0 => __( '0', 'make' ),
+				1 => __( '1', 'make' ),
+				2 => __( '2', 'make' ),
+				3 => __( '3', 'make' ),
+				4 => __( '4', 'make' )
 			);
 			break;
 		case 'footer-layout' :

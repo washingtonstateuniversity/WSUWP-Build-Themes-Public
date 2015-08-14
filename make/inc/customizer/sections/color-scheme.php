@@ -96,7 +96,7 @@ function ttfmake_customizer_define_colorscheme_sections( $sections ) {
 				'control' => array(
 					'control_type' => 'WP_Customize_Color_Control',
 					'label'        => __( 'Link Hover/Focus Color', 'make' ),
-					'description'  => __( 'The default link color is controlled by the "Primary Color" option above.' ),
+					'description'  => __( 'The default link color is controlled by the "Primary Color" option above.', 'make' ),
 				),
 			),
 			'color-group-global-background' => array(
