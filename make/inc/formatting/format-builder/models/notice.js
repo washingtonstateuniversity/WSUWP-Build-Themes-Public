@@ -65,15 +65,15 @@ var ttfmakeFormatBuilder = ttfmakeFormatBuilder || {};
 			fontSize: ttfmakeFormatBuilderVars.userSettings.fontSizeBody,
 			icon: '',
 			iconSize: (parseInt(ttfmakeFormatBuilderVars.userSettings.fontSizeBody) * 2) + '',
-			colorIcon: '#808080',
+			colorIcon: ttfmakeFormatBuilderVars.userSettings.colorPrimary,
 			iconPosition: 'left',
 			paddingHorz: '20',
 			paddingVert: '10',
 			borderWidth: '2',
 			borderStyle: 'solid',
-			colorBorder: '#808080',
-			colorBackground: '#e5e5e5',
-			colorText: '#808080'
+			colorBorder: ttfmakeFormatBuilderVars.userSettings.colorPrimary,
+			colorBackground: ttfmakeFormatBuilderVars.userSettings.colorSecondary,
+			colorText: ttfmakeFormatBuilderVars.userSettings.colorPrimary
 		},
 
 		/**

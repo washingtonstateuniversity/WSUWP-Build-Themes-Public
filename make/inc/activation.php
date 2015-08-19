@@ -35,5 +35,5 @@ function ttfmake_activation_notice() {
 		esc_html( TTFMAKE_MIN_WP_VERSION ),
 		esc_html( $GLOBALS['wp_version'] )
 	);
-	printf( '<div class="error"><p>%s</p></div>', $message );
+	printf( '<div class="error"><p>%s</p></div>', esc_html( $message ) );
 }

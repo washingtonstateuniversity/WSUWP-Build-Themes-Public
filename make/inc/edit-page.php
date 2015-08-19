@@ -26,7 +26,7 @@ function ttfmake_edit_page_script() {
 		'ttfmake-admin-edit-page',
 		'ttfmakeEditPageData',
 		array(
-			'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'make' ),
+			'featuredImage' => esc_html__( 'Note: the Builder Template does not display a featured image.', 'make' ),
 			'pageNow'       => esc_js( $pagenow ),
 		)
 	);
@@ -61,7 +61,7 @@ function ttfmake_add_plus_metabox() {
 	foreach ( $post_types as $type ) {
 		add_meta_box(
 			'ttfmake-plus-metabox',
-			__( 'Layout Settings', 'make' ),
+			esc_html__( 'Layout Settings', 'make' ),
 			'ttfmake_render_plus_metabox',
 			$type,
 			'side',
@@ -87,13 +87,13 @@ function ttfmake_render_plus_metabox( $post ) {
 
 	echo '<p class="howto">';
 	printf(
-		__( 'Looking to configure a unique layout for this %1$s? %2$s.', 'make' ),
+		esc_html__( 'Looking to configure a unique layout for this %1$s? %2$s', 'make' ),
 		esc_html( strtolower( $label ) ),
 		sprintf(
 			'<a href="%1$s" target="_blank">%2$s</a>',
 			esc_url( ttfmake_get_plus_link( 'layout-settings' ) ),
 			sprintf(
-				__( 'Upgrade to %s', 'make' ),
+				esc_html__( 'Upgrade to %s.', 'make' ),
 				'Make Plus'
 			)
 		)

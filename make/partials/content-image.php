@@ -20,7 +20,7 @@ $entry_footer = trim( ob_get_clean() );
 		<?php get_template_part( 'partials/entry', 'content' ); ?>
 		<?php if ( '' !== $exif_data = ttfmake_get_exif_data() ) : ?>
 		<div class="entry-exif">
-			<h4 class="entry-exif-label"><?php _e( 'Technical Details', 'make' ); ?></h4>
+			<h4 class="entry-exif-label"><?php esc_html_e( 'Technical Details', 'make' ); ?></h4>
 			<?php echo $exif_data; ?>
 		</div>
 		<?php endif; ?>

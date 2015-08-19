@@ -18,11 +18,13 @@ $tag_option      = (bool) get_theme_mod( $tag_key, ttfmake_get_default( $tag_key
 
 	// Categories
 	if ( $category_option && $category_list ) :
+		// Translators: this HTML markup will display an icon representing blog categories.
 		$taxonomy_output .= __( '<i class="fa fa-file"></i> ', 'make' ) . '%1$s';
 	endif;
 
 	// Tags
 	if ( $tag_option && $tag_list ) :
+		// Translators: this HTML markup will display an icon representing blog tags.
 		$taxonomy_output .= __( '<i class="fa fa-tag"></i> ', 'make' ) . '%2$s';
 	endif;
 

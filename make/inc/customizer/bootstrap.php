@@ -30,6 +30,7 @@ function ttfmake_customizer_init() {
 	require_once( $path . 'style/typography.php' );
 
 	// Hook up functions
+	add_action( 'customize_register', 'ttfmake_customizer_register_autoload', 1 );
 	add_action( 'customize_register', 'ttfmake_customizer_add_panels' );
 	add_action( 'customize_register', 'ttfmake_customizer_add_sections' );
 	add_action( 'customize_register', 'ttfmake_customizer_set_transport' );
@@ -40,6 +41,47 @@ function ttfmake_customizer_init() {
 endif;
 
 add_action( 'after_setup_theme', 'ttfmake_customizer_init' );
+
+/**
+ * Register autoloaders for Customizer-related classes.
+ *
+ * This function is hooked to customize_register so that it is only registered within the Customizer.
+ *
+ * @since 1.6.3.
+ *
+ * @return void
+ */
+function ttfmake_customizer_register_autoload() {
+	spl_autoload_register( 'ttfmake_customizer_control_autoload' );
+}
+
+/**
+ * Autoloader callback for loading Make's custom Customizer control classes.
+ *
+ * @since 1.6.3.
+ *
+ * @param string    $class    The name of the class that is attempting to load.
+ *
+ * @return void
+ */
+function ttfmake_customizer_control_autoload( $class ) {
+	if ( 0 === strpos( $class, 'TTFMAKE_Customize_' ) ) {
+		/**
+		 * Filter for the path to the directory containing control classes.
+		 *
+		 * @since
+		 *
+		 * @param string    $control_path    The directory path.
+		 * @param string    $class           The name of the class.
+		 */
+		$control_path = apply_filters( 'make_customizer_control_path', get_template_directory() . '/inc/customizer/controls/' , $class );
+		$filename = trailingslashit( $control_path ) . $class . '.php';
+
+		if ( is_readable( $filename ) ) {
+			require_once $filename;
+		}
+	}
+}
 
 if ( ! function_exists( 'ttfmake_customizer_get_panels' ) ) :
 /**
@@ -302,17 +344,13 @@ function ttfmake_customizer_add_section_options( $section, $args, $initial_prior
 			if ( isset( $control['control_type'] ) ) {
 				$class = $control['control_type'];
 
-				$control_path = apply_filters( 'make_customizer_control_path', get_template_directory() . '/inc/customizer/controls/' , $control );
-				$control_file = $control_path . $class . '.php';
-				if ( file_exists( $control_file ) ) {
-					require_once( $control_file );
-				}
+				// Autoload the class
+				$reflection = new ReflectionClass( $class );
 
 				if ( class_exists( $class ) ) {
 					unset( $control['control_type'] );
 
 					// Dynamically generate a new class instance
-					$reflection = new ReflectionClass( $class );
 					$class_instance = $reflection->newInstanceArgs( array( $wp_customize, $control_id, $control ) );
 
 					$wp_customize->add_control( $class_instance );
@@ -389,9 +427,16 @@ function ttfmake_customizer_scripts() {
 		array(),
 		'1.3.0'
 	);
+
+	// Custom styling depends on version of WP
+	// Nav menu panel was introduced in 4.3
+	$suffix = '';
+	if ( ! class_exists( 'WP_Customize_Nav_Menus' ) ) {
+		$suffix = '-legacy';
+	}
 	wp_enqueue_style(
 		'ttfmake-customizer-sections',
-		get_template_directory_uri() . '/inc/customizer/css/customizer-sections.css',
+		get_template_directory_uri() . "/inc/customizer/css/customizer-sections{$suffix}.css",
 		array( 'ttfmake-customizer-jquery-ui', 'ttfmake-customizer-chosen' ),
 		TTFMAKE_VERSION
 	);
@@ -422,10 +467,10 @@ function ttfmake_customizer_scripts() {
 	// Add localization strings
 	if ( ! ttfmake_is_plus() ) {
 		$localize = array(
-			'chosen_no_results_default' => __( 'No results match', 'make' ),
-			'chosen_no_results_fonts'   => __( 'No matching fonts', 'make' ),
+			'chosen_no_results_default' => esc_html__( 'No results match', 'make' ),
+			'chosen_no_results_fonts'   => esc_html__( 'No matching fonts', 'make' ),
 			'plusURL'			        => esc_url( ttfmake_get_plus_link( 'customize-head' ) ),
-			'plusLabel'		        	=> __( 'Upgrade to Make Plus', 'make' ),
+			'plusLabel'		        	=> esc_html__( 'Upgrade to Make Plus', 'make' ),
 		);
 		$data = $data + $localize;
 	}

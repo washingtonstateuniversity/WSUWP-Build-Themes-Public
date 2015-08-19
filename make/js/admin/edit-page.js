@@ -63,7 +63,7 @@
 				self.cache.$builder.show();
 				self.cache.$duplicator.show();
 				self.cache.$builderHide.prop('checked', true).parent().show();
-				self.featuredImageToggle('hide');
+				self.featuredImageToggle('message');
 				self.cache.$body.addClass('ttfmake-builder-active').removeClass('ttfmake-default-active');
 			} else {
 				self.cache.$mainEditor.show();
@@ -77,22 +77,19 @@
 
 		featuredImageToggle: function(state) {
 			var self = ttfmakeEditPage,
-				unavailable;
-
-			self.cache.$featuredImage.find('.ttfmake-message').remove();
+				container, message;
 
 			if ('undefined' !== typeof ttfmakeEditPageData) {
-				unavailable = ttfmakeEditPageData.featuredImage;
+				message = ttfmakeEditPageData.featuredImage;
 			} else {
-				unavailable = 'Featured images are not available for this page while using the current page template.';
+				message = 'Note: the Builder Template does not display a featured image.';
 			}
+			container = $('<div class="ttfmake-metabox-message"></div>').css('padding', '0 12px 12px').html(message).wrapInner('<p class="hide-if-no-js">');
 
-			unavailable = '<div class="ttfmake-message inside"><p class="hide-if-no-js">'+unavailable+'</p></div>';
+			self.cache.$featuredImage.find('.ttfmake-metabox-message').remove();
 
-			if ('show' === state) {
-				self.cache.$featuredImage.find('.inside').show();
-			} else {
-				self.cache.$featuredImage.find('.inside').before(unavailable).hide();
+			if ('message' === state) {
+				self.cache.$featuredImage.find('.inside').after(container);
 			}
 		}
 	};

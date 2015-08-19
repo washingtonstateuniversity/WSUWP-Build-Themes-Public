@@ -19,12 +19,12 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 		<em>
 		<?php
 		printf(
-			__( '%s and convert any column into an area for widgets.', 'make' ),
+			esc_html__( '%s and convert any column into an area for widgets.', 'make' ),
 			sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
 				esc_url( ttfmake_get_plus_link( 'widget-area' ) ),
 				sprintf(
-					__( 'Upgrade to %s', 'make' ),
+					esc_html__( 'Upgrade to %s', 'make' ),
 					'Make Plus'
 				)
 			)

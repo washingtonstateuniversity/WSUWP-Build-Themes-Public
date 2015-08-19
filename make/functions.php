@@ -6,10 +6,10 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.6.1' );
+define( 'TTFMAKE_VERSION', '1.6.2.1' );
 
 /**
- * The minimum version of WordPress required for Finder.
+ * The minimum version of WordPress required for Make.
  */
 define( 'TTFMAKE_MIN_WP_VERSION', '4.0' );
 
@@ -42,6 +42,8 @@ function ttfmake_require_files() {
 		get_template_directory() . '/inc/activation.php',
 		// Compatibility
 		get_template_directory() . '/inc/compatibility.php',
+		// Localization
+		get_template_directory() . '/inc/l10n.php',
 		// Customizer
 		get_template_directory() . '/inc/customizer/bootstrap.php',
 		// Gallery slider
@@ -142,10 +144,8 @@ if ( ! function_exists( 'ttfmake_setup' ) ) :
  * @return void
  */
 function ttfmake_setup() {
-	// Attempt to load text domain from child theme first
-	if ( ! load_theme_textdomain( 'make', get_stylesheet_directory() . '/languages' ) ) {
-		load_theme_textdomain( 'make', get_template_directory() . '/languages' );
-	}
+	// Load translation strings
+	ttfmake_load_textdomains();
 
 	// Feed links
 	add_theme_support( 'automatic-feed-links' );
@@ -187,8 +187,8 @@ function ttfmake_setup() {
 		$editor_styles[] = $google_request;
 	}
 
-	$editor_styles[] = 'css/font-awesome.css';
-	$editor_styles[] = 'css/editor-style.css';
+	$editor_styles[] = add_query_arg( 'ver', '4.4.0', esc_url( get_template_directory_uri() . '/css/font-awesome.css' ) );
+	$editor_styles[] = add_query_arg( 'ver', TTFMAKE_VERSION, esc_url( get_template_directory_uri() . '/css/editor-style.css' ) );
 
 	// Another editor stylesheet is added via ttfmake_mce_css() in inc/customizer/bootstrap.php
 	add_editor_style( $editor_styles );
@@ -329,7 +329,7 @@ function ttfmake_scripts() {
 		'ttfmake-font-awesome',
 		get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
 		$style_dependencies,
-		'4.3.0'
+		'4.4.0'
 	);
 	$style_dependencies[] = 'ttfmake-font-awesome';
 
@@ -508,17 +508,20 @@ function ttfmake_head_late() {
 	// Pingback link ?>
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
-	// Favicon
-	$logo_favicon = get_theme_mod( 'logo-favicon', ttfmake_get_default( 'logo-favicon' ) );
-	if ( ! empty( $logo_favicon ) ) : ?>
-		<link rel="icon" href="<?php echo esc_url( $logo_favicon ); ?>" />
-	<?php endif;
+	// Core Site Icon option overrides Make's deprecated Favicon and Apple Touch Icon settings
+	if ( false === get_option( 'site_icon', false ) ) :
+		// Favicon
+		$logo_favicon = get_theme_mod( 'logo-favicon', ttfmake_get_default( 'logo-favicon' ) );
+		if ( ! empty( $logo_favicon ) ) : ?>
+			<link rel="icon" href="<?php echo esc_url( $logo_favicon ); ?>" />
+		<?php endif;
 
-	// Apple Touch icon
-	$logo_apple_touch = get_theme_mod( 'logo-apple-touch', ttfmake_get_default( 'logo-apple-touch' ) );
-	if ( ! empty( $logo_apple_touch ) ) : ?>
-		<link rel="apple-touch-icon" href="<?php echo esc_url( $logo_apple_touch ); ?>" />
-	<?php endif;
+		// Apple Touch icon
+		$logo_apple_touch = get_theme_mod( 'logo-apple-touch', ttfmake_get_default( 'logo-apple-touch' ) );
+		if ( ! empty( $logo_apple_touch ) ) : ?>
+			<link rel="apple-touch-icon" href="<?php echo esc_url( $logo_apple_touch ); ?>" />
+		<?php endif;
+	endif;
 }
 endif;
 

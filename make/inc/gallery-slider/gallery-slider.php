@@ -88,34 +88,34 @@ class TTFMAKE_Gallery_Slider {
 	function print_media_templates() {
 	?>
 		<script type="text/html" id="tmpl-ttfmake-gallery-settings">
-			<h3 style="float:left;margin-top:10px;"><?php _e( 'Slider Settings', 'make' ); ?></h3>
+			<h3 style="float:left;margin-top:10px;"><?php esc_html_e( 'Slider Settings', 'make' ); ?></h3>
 			<label class="setting">
-				<span><?php _e( 'Show gallery as slider', 'make' ); ?></span>
+				<span><?php esc_html_e( 'Show gallery as slider', 'make' ); ?></span>
 				<input id="ttfmake-slider" type="checkbox" data-setting="ttfmake_slider" />
 			</label>
 			<div id="ttfmake-slider-settings">
 				<label class="setting">
-					<span><?php _e( 'Hide navigation arrows', 'make' ); ?></span>
+					<span><?php esc_html_e( 'Hide navigation arrows', 'make' ); ?></span>
 					<input type="checkbox" data-setting="ttfmake_prevnext" />
 				</label>
 				<label class="setting">
-					<span><?php _e( 'Hide navigation dots', 'make' ); ?></span>
+					<span><?php esc_html_e( 'Hide navigation dots', 'make' ); ?></span>
 					<input type="checkbox" data-setting="ttfmake_pager" />
 				</label>
 				<label class="setting">
-					<span><?php _e( 'Autoplay', 'make' ); ?></span>
+					<span><?php esc_html_e( 'Autoplay', 'make' ); ?></span>
 					<input type="checkbox" data-setting="ttfmake_autoplay" />
 				</label>
 				<label class="setting">
-					<span><?php _e( 'Time between slides (ms)', 'make' ); ?></span>
+					<span><?php esc_html_e( 'Time between slides (ms)', 'make' ); ?></span>
 					<input type="text" data-setting="ttfmake_delay" style="float:left;width:25%;" />
 				</label>
 				<label class="setting">
-					<span><?php _e( 'Effect', 'make' ); ?></span>
+					<span><?php esc_html_e( 'Effect', 'make' ); ?></span>
 					<select data-setting="ttfmake_effect">
-						<option value="scrollHorz" selected="selected"><?php _e( 'Slide horizontal', 'make' ); ?></option>
-						<option value="fade"><?php _e( 'Fade', 'make' ); ?></option>
-						<option value="none"><?php _e( 'None', 'make' ); ?></option>
+						<option value="scrollHorz" selected="selected"><?php esc_html_e( 'Slide horizontal', 'make' ); ?></option>
+						<option value="fade"><?php esc_html_e( 'Fade', 'make' ); ?></option>
+						<option value="none"><?php esc_html_e( 'None', 'make' ); ?></option>
 					</select>
 				</label>
 			</div>

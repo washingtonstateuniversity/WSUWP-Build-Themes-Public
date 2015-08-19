@@ -70,7 +70,7 @@ class TTFMAKE_Section_Definitions {
 	public function register_text_section() {
 		ttfmake_add_section(
 			'text',
-			_x( 'Columns', 'section name', 'make' ),
+			__( 'Columns', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/text.png',
 			__( 'Create rearrangeable columns of content and images.', 'make' ),
 			array( $this, 'save_text' ),
@@ -207,7 +207,7 @@ class TTFMAKE_Section_Definitions {
 	public function register_banner_section() {
 		ttfmake_add_section(
 			'banner',
-			_x( 'Banner', 'section name', 'make' ),
+			__( 'Banner', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
 			__( 'Display multiple types of content in a banner or a slider.', 'make' ),
 			array( $this, 'save_banner' ),
@@ -401,7 +401,7 @@ class TTFMAKE_Section_Definitions {
 	public function register_gallery_section() {
 		ttfmake_add_section(
 			'gallery',
-			_x( 'Gallery', 'section name', 'make' ),
+			__( 'Gallery', 'make' ),
 			get_template_directory_uri() . '/inc/builder/sections/css/images/gallery.png',
 			__( 'Display your images in various grid combinations.', 'make' ),
 			array( $this, 'save_gallery' ),

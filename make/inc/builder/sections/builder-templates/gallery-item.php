@@ -34,17 +34,17 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 
 	<a href="#" class="configure-gallery-item-link ttfmake-overlay-open" title="<?php esc_attr_e( 'Configure item', 'make' ); ?>" data-overlay="#<?php echo $overlay_id; ?>">
 		<span>
-			<?php _e( 'Configure item', 'make' ); ?>
+			<?php esc_html_e( 'Configure item', 'make' ); ?>
 		</span>
 	</a>
 	<a href="#" class="edit-content-link edit-gallery-item-link<?php if ( ! empty( $description ) ) : ?> item-has-content<?php endif; ?>" data-textarea="ttfmake-content-<?php echo $combined_id; ?>" title="<?php esc_attr_e( 'Edit content', 'make' ); ?>">
 		<span>
-			<?php _e( 'Edit content', 'make' ); ?>
+			<?php esc_html_e( 'Edit content', 'make' ); ?>
 		</span>
 	</a>
 	<a href="#" class="remove-gallery-item-link ttfmake-gallery-item-remove" title="<?php esc_attr_e( 'Delete item', 'make' ); ?>">
 		<span>
-			<?php _e( 'Delete item', 'make' ); ?>
+			<?php esc_html_e( 'Delete item', 'make' ); ?>
 		</span>
 	</a>
 

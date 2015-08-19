@@ -23,7 +23,8 @@ $author_option = ttfmake_sanitize_choice( get_theme_mod( $author_key, ttfmake_ge
 	<div class="entry-author-byline">
 		<?php
 		printf(
-			_x( 'by %s', 'author byline', 'make' ),
+			// Translators: this string is an attribution of a post author. e.g. by Ernest Hemingway
+			esc_html__( 'by %s', 'make' ),
 			sprintf(
 				'<a class="vcard fn" href="%1$s">%2$s</a>',
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),

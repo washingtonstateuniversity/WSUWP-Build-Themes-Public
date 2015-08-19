@@ -18,6 +18,11 @@ function ttfmake_customizer_staticfrontpage() {
 	$section      = $wp_customize->get_section( $section_id );
 	$priority     = new TTFMAKE_Prioritizer( 10, 5 );
 
+	// Bail if the section isn't registered
+	if ( ! is_object( $section ) || 'WP_Customize_Section' !== get_class( $section ) ) {
+		return;
+	}
+
 	// Move Static Front Page section to General panel
 	$section->panel = $theme_prefix . 'general';
 
@@ -27,4 +32,4 @@ function ttfmake_customizer_staticfrontpage() {
 }
 endif;
 
-add_action( 'customize_register', 'ttfmake_customizer_staticfrontpage', 20 );
+add_action( 'customize_register', 'ttfmake_customizer_staticfrontpage', 99 );

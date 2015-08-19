@@ -195,22 +195,22 @@ class TTFMAKE_Formatting {
 			'Vertical Padding (px)' => __( 'Vertical Padding (px)', 'make' ),
 			'Border Style' => __( 'Border Style', 'make' ),
 			'none' => __( 'none', 'make' ),
-			'solid' => _x( 'solid', 'border style', 'make' ),
-			'dotted' => _x( 'dotted', 'border style', 'make' ),
-			'dashed' => _x( 'dashed', 'border style', 'make' ),
-			'double' => _x( 'double', 'border style', 'make' ),
-			'groove' => _x( 'groove', 'border style', 'make' ),
-			'ridge' => _x( 'ridge', 'border style', 'make' ),
-			'inset' => _x( 'inset', 'border style', 'make' ),
-			'outset' => _x( 'outset', 'border style', 'make' ),
+			'solid' => __( 'solid', 'make' ),
+			'dotted' => __( 'dotted', 'make' ),
+			'dashed' => __( 'dashed', 'make' ),
+			'double' => __( 'double', 'make' ),
+			'groove' => __( 'groove', 'make' ),
+			'ridge' => __( 'ridge', 'make' ),
+			'inset' => __( 'inset', 'make' ),
+			'outset' => __( 'outset', 'make' ),
 			'Border Width (px)' => __( 'Border Width (px)', 'make' ),
 			'Border Color' => __( 'Border Color', 'make' ),
 			'Button' => __( 'Button', 'make' ),
 			'URL' => __( 'URL', 'make' ),
 			'Open link in a new window/tab' => __( 'Open link in a new window/tab', 'make' ),
 			'Font Weight' => __( 'Font Weight', 'make' ),
-			'normal' => _x( 'normal', 'font weight', 'make' ),
-			'bold' => _x( 'bold', 'font weight', 'make' ),
+			'normal' => __( 'normal', 'make' ),
+			'bold' => __( 'bold', 'make' ),
 			'Background Color (hover)' => __( 'Background Color (hover)', 'make' ),
 			'Text Color (hover)' => __( 'Text Color (hover)', 'make' ),
 			'Border Radius (px)' => __( 'Border Radius (px)', 'make' ),
@@ -275,7 +275,9 @@ class TTFMAKE_Formatting {
 				'ttfmakeFormatBuilderVars',
 				array(
 					'userSettings' => array(
-						'fontSizeBody' => get_theme_mod( 'font-size-body', ttfmake_get_default( 'font-size-body' ) )
+						'fontSizeBody' => get_theme_mod( 'font-size-body', ttfmake_get_default( 'font-size-body' ) ),
+						'colorPrimary' => get_theme_mod( 'color-primary', ttfmake_get_default( 'color-primary' ) ),
+						'colorSecondary' => get_theme_mod( 'color-secondary', ttfmake_get_default( 'color-secondary' ) ),
 					)
 				)
 			);
@@ -345,7 +347,7 @@ class TTFMAKE_Formatting {
 				'ttfmake-font-awesome',
 				get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
 				array(),
-				'4.3.0'
+				'4.4.0'
 			);
 
 			// Icon definitions

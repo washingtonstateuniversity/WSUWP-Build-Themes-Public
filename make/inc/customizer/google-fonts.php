@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * Updated: 2015-06-20T03:41:09+00:00
+ * Updated: 2015-07-31T18:19:07+00:00
  *
  * @since  1.0.0.
  *
@@ -410,6 +410,7 @@ function ttfmake_get_google_fonts() {
 			),
 			'subsets' => array(
 				'latin',
+				'latin-ext',
 			),
 			'category' => 'handwriting',
 		),
@@ -6851,12 +6852,34 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'serif',
 		),
+		'Rubik' => array(
+			'label' => 'Rubik',
+			'variants' => array(
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'700',
+				'700italic',
+				'900',
+				'900italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
 		'Rubik Mono One' => array(
 			'label' => 'Rubik Mono One',
 			'variants' => array(
 				'regular',
 			),
 			'subsets' => array(
+				'cyrillic',
 				'latin',
 				'latin-ext',
 			),
@@ -6868,6 +6891,7 @@ function ttfmake_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
+				'cyrillic',
 				'latin',
 				'latin-ext',
 			),
@@ -8407,6 +8431,25 @@ function ttfmake_get_google_fonts() {
 			),
 			'subsets' => array(
 				'latin',
+			),
+			'category' => 'sans-serif',
+		),
+		'Work Sans' => array(
+			'label' => 'Work Sans',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
 			),
 			'category' => 'sans-serif',
 		),

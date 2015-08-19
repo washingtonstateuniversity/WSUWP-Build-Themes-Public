@@ -29,7 +29,7 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 	<a href="#" class="ttfmake-add-slide ttfmake-banner-add-item-link" title="<?php esc_attr_e( 'Add new slide', 'make' ); ?>">
 		<div class="ttfmake-banner-add-item">
 			<span>
-				<?php _e( 'Add Item', 'make' ); ?>
+				<?php esc_html_e( 'Add Item', 'make' ); ?>
 			</span>
 		</div>
 	</a>
