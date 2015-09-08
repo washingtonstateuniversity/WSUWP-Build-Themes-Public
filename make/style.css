@@ -4,7 +4,7 @@
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Create your website without touching a line of code. Make's flexible customization features and a powerful drag and drop page builder make designing your site fun and easy. Build almost anything: a simple portfolio or photography site, an ecommerce business site, a minimalist blog, or even a professional magazine. You'll start by customizing your background, layouts, fonts, colors, and logo. Next, add and organize your content using the drag and drop page builder. Add a photo, a video, a gallery, or even a slider to any page on your website. Make is responsive, so your website will naturally look great on phones, tablets, and desktop screens. It's also fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and WP PageNavi.
- * Version:     1.6.2.1
+ * Version:     1.6.4
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
@@ -395,8 +395,7 @@ h3,
 h4,
 h5,
 h6,
-pre,
-table {
+pre {
 	word-wrap: break-word; 
 	word-break: break-word;
 }
@@ -2430,6 +2429,9 @@ div.wp-video-shortcode {
  Gallery shortcode slider (_posts.scss)
 -------------------------------------------------------- */
 
+.ttfmake-shortcode-slider {
+	position: relative;
+}
 .ttfmake-shortcode-slider .cycle-slide {
 	position: relative;
 	width: 100%;
@@ -2453,10 +2455,6 @@ div.wp-video-shortcode {
 	.ttfmake-shortcode-slider .cycle-caption {
 		display: block;
 	}
-}
-.ttfmake-shortcode-slider .cycle-pager {
-	margin-top: 44px;
-	margin-top: 4.4rem;
 }
 
 
@@ -2517,6 +2515,9 @@ div.wp-video-shortcode {
 	position: relative; 
 	margin-bottom: 44px;
 	margin-bottom: 4.4rem;
+}
+.builder-section:focus {
+	outline: 0;
 }
 
 .builder-text-title,
@@ -2814,8 +2815,8 @@ div.wp-video-shortcode {
 
 .ttfmake-shortcode-slider .cycle-prev:before,
 .ttfmake-shortcode-slider .cycle-next:before {
-	top: -12px;
-	top: -1.2rem;
+	top: -24px;
+	top: -2.4rem;
 }
 
 
@@ -3677,6 +3678,55 @@ div.sharedaddy {
 	border: none;
 }
 
+.woocommerce .coupon,
+.woocommerce .coupon #coupon_code,
+.woocommerce table.cart td.actions input,
+.woocommerce table.cart td.actions .button {
+	width: 100% !important;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.woocommerce-page table.cart td.actions {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.woocommerce .coupon {
+	padding-top: 0;
+}
+
+.woocommerce .coupon #coupon_code {
+	margin-bottom: 0.5em;
+}
+
+.woocommerce .cart-collaterals .cart_totals,
+.woocommerce-page .cart-collaterals .cart_totals {
+	width: 100%;
+}
+
+@media screen and (min-width: 1100px) {
+	.woocommerce .cart-collaterals .cart_totals,
+	.woocommerce-page .cart-collaterals .cart_totals {
+		width: 48%;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.has-left-sidebar .woocommerce .cart-collaterals .cart_totals,
+	.has-left-sidebar .woocommerce-page .cart-collaterals .cart_totals,
+	.has-right-sidebar .woocommerce .cart-collaterals .cart_totals,
+	.has-right-sidebar .woocommerce-page .cart-collaterals .cart_totals {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.woocommerce ul.products li.product {
+		width: 100% !important;
+	}
+}
+
 
 /*---------------------------------------------------------
  Twitter (_support.scss)
@@ -3685,4 +3735,13 @@ div.sharedaddy {
 .twitter-tweet.twitter-tweet-rendered,
 .twitter-share-button.twitter-tweet-button {
 	margin-bottom: 22px !important;
+}
+
+
+/*---------------------------------------------------------
+ Yoast SEO (_support.scss)
+-------------------------------------------------------- */
+
+.yoast-seo-breadcrumb {
+	font-size: 0.8em;
 }

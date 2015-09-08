@@ -34,7 +34,7 @@ function ttfmake_customizer_stylekit( $sections ) {
 			'stylekit-heading' => array(
 				'control' => array(
 					'control_type'		=> 'TTFMAKE_Customize_Misc_Control',
-					'label'				=> __( 'Kits', 'make-plus' ),
+					'label'				=> __( 'Kits', 'make' ),
 					'type'				=> 'heading',
 				),
 			),

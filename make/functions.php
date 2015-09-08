@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.6.2.1' );
+define( 'TTFMAKE_VERSION', '1.6.4' );
 
 /**
  * The minimum version of WordPress required for Make.
@@ -176,9 +176,9 @@ function ttfmake_setup() {
 
 	// Menu locations
 	register_nav_menus( array(
-		'primary'    => __( 'Primary Menu', 'make' ),
+		'primary'    => __( 'Primary Navigation', 'make' ),
 		'social'     => __( 'Social Profile Links', 'make' ),
-		'header-bar' => __( 'Header Bar Menu', 'make' ),
+		'header-bar' => __( 'Header Bar Navigation', 'make' ),
 	) );
 
 	// Editor styles
@@ -192,6 +192,9 @@ function ttfmake_setup() {
 
 	// Another editor stylesheet is added via ttfmake_mce_css() in inc/customizer/bootstrap.php
 	add_editor_style( $editor_styles );
+
+	// Yoast SEO breadcrumbs
+	add_theme_support( 'yoast-seo-breadcrumbs' );
 }
 endif;
 
@@ -326,12 +329,12 @@ function ttfmake_scripts() {
 
 	// Font Awesome
 	wp_enqueue_style(
-		'ttfmake-font-awesome',
+		'font-awesome',
 		get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
 		$style_dependencies,
 		'4.4.0'
 	);
-	$style_dependencies[] = 'ttfmake-font-awesome';
+	$style_dependencies[] = 'font-awesome';
 
 	// Parent stylesheet, if child theme is active
 	// @link http://justintadlock.com/archives/2014/11/03/loading-parent-styles-for-child-themes
@@ -378,7 +381,7 @@ function ttfmake_scripts() {
 	// FitVids
 	// Register only. Enqueued when necessary by the embed shortcode.
 	wp_register_script(
-		'ttfmake-fitvids',
+		'fitvids',
 		get_template_directory_uri() . '/js/libs/fitvids/jquery.fitvids' . TTFMAKE_SUFFIX . '.js',
 		array( 'jquery' ),
 		'1.1',
@@ -459,7 +462,7 @@ if ( ! function_exists( 'ttfmake_cycle2_script_setup' ) ) :
 function ttfmake_cycle2_script_setup( $script_dependencies ) {
 	if ( defined( 'TTFMAKE_SUFFIX' ) && '.min' === TTFMAKE_SUFFIX ) {
 		wp_register_script(
-			'ttfmake-cycle2',
+			'cycle2',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2' . TTFMAKE_SUFFIX . '.js',
 			$script_dependencies,
 			TTFMAKE_VERSION,
@@ -468,7 +471,7 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 	} else {
 		// Core script
 		wp_register_script(
-			'ttfmake-cycle2',
+			'cycle2',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.js',
 			$script_dependencies,
 			'2.1.6',
@@ -477,18 +480,18 @@ function ttfmake_cycle2_script_setup( $script_dependencies ) {
 
 		// Vertical centering
 		wp_register_script(
-			'ttfmake-cycle2-center',
+			'cycle2-center',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.center.js',
-			'ttfmake-cycle2',
+			array( 'cycle2' ),
 			'20140121',
 			true
 		);
 
 		// Swipe support
 		wp_register_script(
-			'ttfmake-cycle2-swipe',
+			'cycle2-swipe',
 			get_template_directory_uri() . '/js/libs/cycle2/jquery.cycle2.swipe.js',
-			'ttfmake-cycle2',
+			array( 'cycle2' ),
 			'20121120',
 			true
 		);
@@ -652,6 +655,5 @@ add_action( 'customize_controls_print_styles', 'ttfmake_plus_styles', 20 );
  * @return string                   The link.
  */
 function ttfmake_get_plus_link( $deprecated = '' ) {
-	$url = 'https://thethemefoundry.com/make-buy/';
-	return esc_url( $url );
+	return 'https://thethemefoundry.com/make-buy/';
 }

@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.6.2.1\n"
+"Project-Id-Version: Make 1.6.4\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2015-08-03 18:16:19+00:00\n"
+"POT-Creation-Date: 2015-09-01 00:34:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,11 +33,11 @@ msgstr ""
 msgid "4"
 msgstr ""
 
-#: 404.php:12
+#: 404.php:13
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
-#: 404.php:18
+#: 404.php:19
 msgid "Maybe try searching this website:"
 msgstr ""
 
@@ -58,7 +58,7 @@ msgid "Comments are closed."
 msgstr ""
 
 #: functions.php:179
-msgid "Primary Menu"
+msgid "Primary Navigation"
 msgstr ""
 
 #: functions.php:180
@@ -66,30 +66,30 @@ msgid "Social Profile Links"
 msgstr ""
 
 #: functions.php:181
-msgid "Header Bar Menu"
+msgid "Header Bar Navigation"
 msgstr ""
 
-#: functions.php:211
+#: functions.php:214
 msgid "Left Sidebar"
 msgstr ""
 
-#: functions.php:220
+#: functions.php:223
 msgid "Right Sidebar"
 msgstr ""
 
-#: functions.php:229
+#: functions.php:232
 msgid "Footer 1"
 msgstr ""
 
-#: functions.php:238
+#: functions.php:241
 msgid "Footer 2"
 msgstr ""
 
-#: functions.php:247
+#: functions.php:250
 msgid "Footer 3"
 msgstr ""
 
-#: functions.php:256
+#: functions.php:259
 msgid "Footer 4"
 msgstr ""
 
@@ -774,18 +774,26 @@ msgid "Latin Extended"
 msgstr ""
 
 #: inc/customizer/fonts.php:230
-msgid "Telugu"
+msgid "Tamil"
 msgstr ""
 
 #: inc/customizer/fonts.php:231
+msgid "Telugu"
+msgstr ""
+
+#: inc/customizer/fonts.php:232
+msgid "Thai"
+msgstr ""
+
+#: inc/customizer/fonts.php:233
 msgid "Vietnamese"
 msgstr ""
 
-#: inc/customizer/fonts.php:349
+#: inc/customizer/fonts.php:351
 msgid "Standard Fonts"
 msgstr ""
 
-#: inc/customizer/fonts.php:351
+#: inc/customizer/fonts.php:353
 msgid "Google Fonts"
 msgstr ""
 
@@ -1146,101 +1154,113 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:322 inc/extras.php:399
+#: inc/customizer/sections/content-layout.php:323 inc/extras.php:399
 msgid "Search Results"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:341 inc/extras.php:400
+#: inc/customizer/sections/content-layout.php:343 inc/extras.php:400
 msgid "Posts"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:359 inc/extras.php:401
+#: inc/customizer/sections/content-layout.php:362 inc/extras.php:401
 msgid "Pages"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:367
+#: inc/customizer/sections/content-layout.php:370
 msgid "Sidebars are not available on pages using the Builder Template."
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:380
+#: inc/customizer/sections/content-layout.php:383
 msgid "Page Title"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:388
+#: inc/customizer/sections/content-layout.php:391
 msgid "Hide title"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:456
+#: inc/customizer/sections/content-layout.php:460
 msgid "Header, Footer, Sidebars"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:464
+#: inc/customizer/sections/content-layout.php:468
 msgid "Hide site header"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:473
+#: inc/customizer/sections/content-layout.php:477
 msgid "Hide site footer"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:482
+#: inc/customizer/sections/content-layout.php:486
 msgid "Show left sidebar"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:491
+#: inc/customizer/sections/content-layout.php:495
 msgid "Show right sidebar"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:515
+#: inc/customizer/sections/content-layout.php:519
 msgid "Featured Images"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:524
-#: inc/customizer/sections/content-layout.php:581
-#: inc/customizer/sections/content-layout.php:627
-#: inc/customizer/sections/content-layout.php:673
+#: inc/customizer/sections/content-layout.php:528
+#: inc/customizer/sections/content-layout.php:585
+#: inc/customizer/sections/content-layout.php:631
+#: inc/customizer/sections/content-layout.php:677
 msgid "Location"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:535
+#: inc/customizer/sections/content-layout.php:539
 msgid "Alignment"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:561
+#: inc/customizer/sections/content-layout.php:565
 msgid "Post Date"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:570
-#: inc/customizer/sections/content-layout.php:616
-#: inc/customizer/sections/content-layout.php:662
+#: inc/customizer/sections/content-layout.php:574
+#: inc/customizer/sections/content-layout.php:620
+#: inc/customizer/sections/content-layout.php:666
 msgid "Style"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:607
+#: inc/customizer/sections/content-layout.php:611
 msgid "Post Author"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:653
+#: inc/customizer/sections/content-layout.php:657
 msgid "Comment Count"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:699
+#: inc/customizer/sections/content-layout.php:703
 msgid "Post Meta"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:708
+#: inc/customizer/sections/content-layout.php:712
 msgid "Show categories"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:717
+#: inc/customizer/sections/content-layout.php:721
 msgid "Show tags"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:741
+#: inc/customizer/sections/content-layout.php:745
 msgid "Content"
 msgstr ""
 
-#: inc/customizer/sections/content-layout.php:750
+#: inc/customizer/sections/content-layout.php:754
 msgid "Generate excerpts automatically"
+msgstr ""
+
+#: inc/customizer/sections/content-layout.php:782
+msgid "Breadcrumbs"
+msgstr ""
+
+#: inc/customizer/sections/content-layout.php:783
+msgid "The Yoast SEO plugin enables this option."
+msgstr ""
+
+#: inc/customizer/sections/content-layout.php:792
+msgid "Show breadcrumbs"
 msgstr ""
 
 #: inc/customizer/sections/general.php:31
@@ -1853,37 +1873,60 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:385
-#. Translators: this string denotes a camera f-stop. e.g. f/3.5
-msgid "f/"
+#: inc/template-tags.php:358
+#. Translators: this string denotes a camera shutter speed as a fraction of a
+#. second. %s is a placeholder for the denominator of the fraction.
+msgid "1/%s second"
 msgstr ""
 
-#: inc/template-tags.php:404
-msgid "Camera:"
+#: inc/template-tags.php:364
+#. Translators: this string denotes a camera shutter speed as a number of
+#. seconds. %s is a placeholder for the number.
+msgid "%s seconds"
 msgstr ""
 
-#: inc/template-tags.php:410
-#. Translators: this string is the label for the date that a photo was taken
-#. on.
-msgid "Taken:"
+#: inc/template-tags.php:384
+#. Translators: this string denotes a camera f-stop. %s is a placeholder for
+#. the f-stop value. E.g. f/3.5
+msgid "f/%s"
 msgstr ""
 
-#: inc/template-tags.php:417
-msgid "Focal length:"
+#: inc/template-tags.php:405
+#. Translators: "Camera" refers to the model name of a camera. %s is a
+#. placeholder for the model name.
+msgid "Camera: %s"
 msgstr ""
 
-#: inc/template-tags.php:423
-msgid "Aperture:"
+#: inc/template-tags.php:415
+#. Translators: "Taken" refers to the date that a photograph was taken. %s is a
+#. placeholder for that date.
+msgid "Taken: %s"
 msgstr ""
 
-#: inc/template-tags.php:429
-msgid "Exposure:"
+#: inc/template-tags.php:424
+#. Translators: "Focal length" refers to the length of a camera's lens. %s is a
+#. placeholder for the focal length value, and "mm" is the units in
+#. millimeters.
+msgid "Focal length: %smm"
 msgstr ""
 
-#: inc/template-tags.php:435
-#. Translators: this string is an acronym that refers to a camera's sensitivity
-#. to light.
-msgid "ISO:"
+#: inc/template-tags.php:433
+#. Translators: "Aperture" refers to the amount of light passing through a
+#. camera lens. %s is a placeholder for the aperture value, represented as an
+#. f-stop.
+msgid "Aperture: %s"
+msgstr ""
+
+#: inc/template-tags.php:442
+#. Translators: "Exposure" refers to a camera's shutter speed. %s is a
+#. placeholder for the shutter speed value.
+msgid "Exposure: %s"
+msgstr ""
+
+#: inc/template-tags.php:451
+#. Translators: "ISO" is an acronym that refers to a camera's sensitivity to
+#. light. %s is a placeholder for the ISO value.
+msgid "ISO: %s"
 msgstr ""
 
 #: partials/content-attachment.php:11
@@ -1894,21 +1937,21 @@ msgstr ""
 msgid "Technical Details"
 msgstr ""
 
-#: partials/content-none.php:10
+#: partials/content-none.php:11
 msgid "Nothing found"
 msgstr ""
 
-#: partials/content-none.php:16
+#: partials/content-none.php:17
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
-#: partials/content-none.php:18
+#: partials/content-none.php:19
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
 msgstr ""
 
-#: partials/content-none.php:20
+#: partials/content-none.php:21
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
@@ -2064,27 +2107,12 @@ msgctxt "1: date, 2: time"
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: inc/template-tags.php:359
-msgctxt "time unit"
-msgid "second"
-msgstr ""
-
-#: inc/template-tags.php:365
-msgctxt "time unit"
-msgid "seconds"
-msgstr ""
-
-#: inc/template-tags.php:418
-msgctxt "millimeters"
-msgid "mm"
-msgstr ""
-
 #: partials/section-title.php:31
-msgctxt "monthly archives date format"
+msgctxt "date format code for month and year"
 msgid "F Y"
 msgstr ""
 
 #: partials/section-title.php:37
-msgctxt "yearly archives date format"
+msgctxt "date format code for year"
 msgid "Y"
 msgstr ""

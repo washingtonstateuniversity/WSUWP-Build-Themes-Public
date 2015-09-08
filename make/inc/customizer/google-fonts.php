@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * Updated: 2015-07-31T18:19:07+00:00
+ * Updated: 2015-09-01T00:34:34+00:00
  *
  * @since  1.0.0.
  *
@@ -1455,6 +1455,26 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Catamaran' => array(
+			'label' => 'Catamaran',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'tamil',
+			),
+			'category' => 'sans-serif',
+		),
 		'Caudex' => array(
 			'label' => 'Caudex',
 			'variants' => array(
@@ -1613,6 +1633,19 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'sans-serif',
 		),
+		'Chonburi' => array(
+			'label' => 'Chonburi',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'thai',
+				'vietnamese',
+			),
+			'category' => 'display',
+		),
 		'Cinzel' => array(
 			'label' => 'Cinzel',
 			'variants' => array(
@@ -1656,6 +1689,7 @@ function ttfmake_get_google_fonts() {
 			),
 			'subsets' => array(
 				'latin',
+				'latin-ext',
 			),
 			'category' => 'display',
 		),
@@ -1666,6 +1700,7 @@ function ttfmake_get_google_fonts() {
 			),
 			'subsets' => array(
 				'latin',
+				'latin-ext',
 			),
 			'category' => 'sans-serif',
 		),
@@ -1799,6 +1834,7 @@ function ttfmake_get_google_fonts() {
 			),
 			'subsets' => array(
 				'latin',
+				'latin-ext',
 			),
 			'category' => 'display',
 		),
@@ -3619,6 +3655,19 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'handwriting',
 		),
+		'Itim' => array(
+			'label' => 'Itim',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'thai',
+				'vietnamese',
+			),
+			'category' => 'handwriting',
+		),
 		'Jacques Francois' => array(
 			'label' => 'Jacques Francois',
 			'variants' => array(
@@ -4144,6 +4193,7 @@ function ttfmake_get_google_fonts() {
 			),
 			'subsets' => array(
 				'latin',
+				'latin-ext',
 			),
 			'category' => 'display',
 		),
@@ -7146,6 +7196,7 @@ function ttfmake_get_google_fonts() {
 		'Scheherazade' => array(
 			'label' => 'Scheherazade',
 			'variants' => array(
+				'700',
 				'regular',
 			),
 			'subsets' => array(

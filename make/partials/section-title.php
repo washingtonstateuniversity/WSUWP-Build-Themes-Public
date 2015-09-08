@@ -28,13 +28,13 @@
 		elseif ( is_month() ) :
 			printf(
 				esc_html__( 'From %s', 'make' ),
-				'<strong>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'make' ) ) . '</strong>'
+				'<strong>' . get_the_date( _x( 'F Y', 'date format code for month and year', 'make' ) ) . '</strong>'
 			);
 
 		elseif ( is_year() ) :
 			printf(
 				esc_html__( 'From %s', 'make' ),
-				'<strong>' . get_the_date( _x( 'Y', 'yearly archives date format', 'make' ) ) . '</strong>'
+				'<strong>' . get_the_date( _x( 'Y', 'date format code for year', 'make' ) ) . '</strong>'
 			);
 
 		elseif ( is_author() ) :

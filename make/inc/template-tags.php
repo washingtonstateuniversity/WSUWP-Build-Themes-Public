@@ -353,16 +353,16 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 				if ( in_array( number_format( $denominator, 1 ), array( 1.3, 1.5, 1.6, 2.5 ) ) ) {
 					$decimal_places = 1;
 				}
+				// Translators: this string denotes a camera shutter speed as a fraction of a second. %s is a placeholder for the denominator of the fraction.
 				$converted_ss = sprintf(
-					'1/%1$s %2$s',
-					number_format_i18n( $denominator, $decimal_places ),
-					_x( 'second', 'time unit', 'make' )
+					esc_html__( '1/%s second', 'make' ),
+					number_format_i18n( $denominator, $decimal_places )
 				);
 			} else {
+				// Translators: this string denotes a camera shutter speed as a number of seconds. %s is a placeholder for the number.
 				$converted_ss = sprintf(
-					'%1$s %2$s',
-					number_format_i18n( $raw_ss, 1 ),
-					_x( 'seconds', 'time unit', 'make' )
+					esc_html__( '%s seconds', 'make' ),
+					number_format_i18n( $raw_ss, 1 )
 				);
 			}
 
@@ -379,10 +379,9 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 
 		// Convert the aperture to an F-stop
 		if ( 0 !== $image_meta[ 'aperture' ] ) {
+			// Translators: this string denotes a camera f-stop. %s is a placeholder for the f-stop value. E.g. f/3.5
 			$f_stop = sprintf(
-				'%1$s' . '%2$s',
-				// Translators: this string denotes a camera f-stop. e.g. f/3.5
-				__( 'f/', 'make' ),
+				__( 'f/%s', 'make' ),
 				number_format_i18n( pow( sqrt( 2 ), absint( $image_meta['aperture'] ) ) )
 			);
 
@@ -401,39 +400,57 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 
 		// Camera
 		if ( ! empty( $image_meta['camera'] ) ) {
-			$output .= '<li><span>' . esc_html__( 'Camera:', 'make' ) . '</span> ';
-			$output .= esc_html( $image_meta['camera'] ) . "</li>\n";
+			// Translators: "Camera" refers to the model name of a camera. %s is a placeholder for the model name.
+			$output .= sprintf(
+				'<li>' . esc_html__( 'Camera: %s', 'make' ) . "</li>\n",
+				esc_html( $image_meta['camera'] )
+			);
 		}
 
 		// Creation Date
 		if ( ! empty( $image_meta['created_timestamp'] ) ) {
-			$output .= '<li><span>' . /* Translators: this string is the label for the date that a photo was taken on. */ esc_html__( 'Taken:', 'make' ) . '</span> ';
-			$date    = new DateTime( gmdate( "Y-m-d\TH:i:s\Z", $image_meta['created_timestamp'] ) );
-			$output .= esc_html( $date->format( get_option( 'date_format' ) ) ) . "</li>\n";
+			$date = new DateTime( gmdate( "Y-m-d\TH:i:s\Z", $image_meta['created_timestamp'] ) );
+			// Translators: "Taken" refers to the date that a photograph was taken. %s is a placeholder for that date.
+			$output .= sprintf(
+				'<li>' . esc_html__( 'Taken: %s', 'make' ) . "</li>\n",
+				esc_html( $date->format( get_option( 'date_format' ) ) )
+			);
 		}
 
 		// Focal length
 		if ( ! empty( $image_meta['focal_length'] ) ) {
-			$output .= '<li><span>' . esc_html__( 'Focal length:', 'make' ) . '</span> ';
-			$output .= number_format_i18n( absint( $image_meta['focal_length'] ), 0 ) . esc_html_x( 'mm', 'millimeters', 'make' ) . "</li>\n";
+			// Translators: "Focal length" refers to the length of a camera's lens. %s is a placeholder for the focal length value, and "mm" is the units in millimeters.
+			$output .= sprintf(
+				'<li>' . esc_html__( 'Focal length: %smm', 'make' ) . "</li>\n",
+				number_format_i18n( absint( $image_meta['focal_length'] ), 0 )
+			);
 		}
 
 		// Aperture
 		if ( ! empty( $image_meta['aperture'] ) ) {
-			$output .= '<li><span>' . esc_html__( 'Aperture:', 'make' ) . '</span> ';
-			$output .= esc_html( $image_meta['aperture'] ) . "</li>\n";
+			// Translators: "Aperture" refers to the amount of light passing through a camera lens. %s is a placeholder for the aperture value, represented as an f-stop.
+			$output .= sprintf(
+				'<li>' . esc_html__( 'Aperture: %s', 'make' ) . "</li>\n",
+				esc_html( $image_meta['aperture'] )
+			);
 		}
 
 		// Exposure
 		if ( ! empty( $image_meta['shutter_speed'] ) ) {
-			$output .= '<li><span>' . esc_html__( 'Exposure:', 'make' ) . '</span> ';
-			$output .= esc_html( $image_meta['shutter_speed'] ) . "</li>\n";
+			// Translators: "Exposure" refers to a camera's shutter speed. %s is a placeholder for the shutter speed value.
+			$output .= sprintf(
+				'<li>' . esc_html__( 'Exposure: %s', 'make' ) . "</li>\n",
+				esc_html( $image_meta['shutter_speed'] )
+			);
 		}
 
 		// ISO
 		if ( ! empty( $image_meta['iso'] ) ) {
-			$output .= '<li><span>' . /* Translators: this string is an acronym that refers to a camera's sensitivity to light. */ esc_html__( 'ISO:', 'make' ) . '</span> ';
-			$output .= absint( $image_meta['iso'] ) . "</li>\n";
+			// Translators: "ISO" is an acronym that refers to a camera's sensitivity to light. %s is a placeholder for the ISO value.
+			$output .= sprintf(
+				'<li>' . esc_html__( 'ISO: %s', 'make' ) . "</li>\n",
+				absint( $image_meta['iso'] )
+			);
 		}
 
 		$output .= "</ul>\n";
@@ -450,3 +467,21 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 	return apply_filters( 'make_get_exif_data', $output, $attachment_id );
 }
 endif;
+
+/**
+ * Add the Yoast SEO breadcrumb, if the plugin is activated.
+ *
+ * @since 1.6.4.
+ *
+ * @return void
+ */
+function ttfmake_yoast_seo_breadcrumb() {
+	if ( function_exists( 'yoast_breadcrumb' ) ) {
+		$key    = 'layout-' . ttfmake_get_view() . '-yoast-breadcrumb';
+		$option = absint( get_theme_mod( $key, ttfmake_get_default( $key ) ) );
+
+		if ( 1 === $option || is_404() ) {
+			yoast_breadcrumb( '<p class="yoast-seo-breadcrumb">', '</p>' );
+		}
+	}
+}

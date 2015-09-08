@@ -5,6 +5,7 @@
 
 // Header
 ob_start();
+ttfmake_yoast_seo_breadcrumb();
 get_template_part( 'partials/entry', 'meta-top' );
 get_template_part( 'partials/entry', 'title' );
 get_template_part( 'partials/entry', 'meta-before-content' );

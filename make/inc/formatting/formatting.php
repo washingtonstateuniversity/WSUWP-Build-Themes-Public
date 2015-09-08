@@ -344,7 +344,7 @@ class TTFMAKE_Formatting {
 			 */
 			// Icon styles
 			wp_enqueue_style(
-				'ttfmake-font-awesome',
+				'font-awesome',
 				get_template_directory_uri() . '/css/font-awesome' . TTFMAKE_SUFFIX . '.css',
 				array(),
 				'4.4.0'

@@ -308,7 +308,8 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 			ttfmake_customizer_layout_post_author_group_definitions( $view ),
 			ttfmake_customizer_layout_content_group_definitions( $view ),
 			ttfmake_customizer_layout_post_meta_group_definitions( $view ),
-			ttfmake_customizer_layout_comment_count_group_definitions( $view )
+			ttfmake_customizer_layout_comment_count_group_definitions( $view ),
+			ttfmake_customizer_layout_breadcrumb_group_definitions( $view )
 		),
 	);
 
@@ -327,7 +328,8 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 			ttfmake_customizer_layout_post_author_group_definitions( $view ),
 			ttfmake_customizer_layout_content_group_definitions( $view ),
 			ttfmake_customizer_layout_post_meta_group_definitions( $view ),
-			ttfmake_customizer_layout_comment_count_group_definitions( $view )
+			ttfmake_customizer_layout_comment_count_group_definitions( $view ),
+			ttfmake_customizer_layout_breadcrumb_group_definitions( $view )
 		),
 	);
 
@@ -345,7 +347,8 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 			ttfmake_customizer_layout_post_date_group_definitions( $view ),
 			ttfmake_customizer_layout_post_author_group_definitions( $view ),
 			ttfmake_customizer_layout_post_meta_group_definitions( $view ),
-			ttfmake_customizer_layout_comment_count_group_definitions( $view )
+			ttfmake_customizer_layout_comment_count_group_definitions( $view ),
+			ttfmake_customizer_layout_breadcrumb_group_definitions( $view )
 		),
 	);
 
@@ -389,7 +392,8 @@ function ttfmake_customizer_define_contentlayout_sections( $sections ) {
 						'type'  => 'checkbox',
 					),
 				),
-			)
+			),
+			ttfmake_customizer_layout_breadcrumb_group_definitions( $view )
 		),
 	);
 
@@ -752,6 +756,45 @@ function ttfmake_customizer_layout_content_group_definitions( $view ) {
 			),
 		),
 	);
+
+	return $definitions;
+}
+
+/**
+ * Generate an array of Customizer option definitions for a particular view.
+ *
+ * @since 1.6.4.
+ *
+ * @param  string    $view
+ *
+ * @return array
+ */
+function ttfmake_customizer_layout_breadcrumb_group_definitions( $view ) {
+	$definitions = array();
+
+	if ( function_exists( 'yoast_breadcrumb' ) ) {
+		$prefix = 'layout-' . $view . '-';
+
+		$definitions = array(
+			'breadcrumb-group-' . $view => array(
+				'control' => array(
+					'control_type' => 'TTFMAKE_Customize_Misc_Control',
+					'label'   => __( 'Breadcrumbs', 'make' ),
+					'description' => esc_html__( 'The Yoast SEO plugin enables this option.', 'make' ),
+					'type'  => 'group-title',
+				),
+			),
+			$prefix . 'yoast-breadcrumb' => array(
+				'setting' => array(
+					'sanitize_callback' => 'absint',
+				),
+				'control' => array(
+					'label' => __( 'Show breadcrumbs', 'make' ),
+					'type'  => 'checkbox',
+				),
+			),
+		);
+	}
 
 	return $definitions;
 }

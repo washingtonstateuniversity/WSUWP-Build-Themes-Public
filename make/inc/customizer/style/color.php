@@ -218,6 +218,8 @@ function ttfmake_css_color() {
 				'.color-detail-text',
 				'.builder-section-banner .cycle-pager .cycle-pager-active',
 				'.ttfmake-shortcode-slider .cycle-pager .cycle-pager-active',
+				'.entry-footer a',
+				'.entry-footer .fa',
 				'.post-categories li:after',
 				'.post-tags li:after',
 				'.comment-count-icon:before',

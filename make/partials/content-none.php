@@ -6,6 +6,7 @@
 
 <article class="no-results not-found">
 	<header class="entry-header">
+		<?php ttfmake_yoast_seo_breadcrumb(); ?>
 		<h1 class="entry-title">
 			<?php esc_html_e( 'Nothing found', 'make' ); ?>
 		</h1>

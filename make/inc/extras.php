@@ -857,11 +857,11 @@ function ttfmake_frontend_builder_scripts() {
 					// Add Cycle2 as a dependency for the Frontend script
 					global $wp_scripts;
 					$script = $wp_scripts->query( 'ttfmake-global', 'registered' );
-					if ( $script && ! in_array( 'ttfmake-cycle2', $script->deps ) ) {
-						$script->deps[] = 'ttfmake-cycle2';
+					if ( $script && ! in_array( 'cycle2', $script->deps ) ) {
+						$script->deps[] = 'cycle2';
 						if ( ! defined( 'TTFMAKE_SUFFIX' ) || '.min' !== TTFMAKE_SUFFIX ) {
-							$script->deps[] = 'ttfmake-cycle2-center';
-							$script->deps[] = 'ttfmake-cycle2-swipe';
+							$script->deps[] = 'cycle2-center';
+							$script->deps[] = 'cycle2-swipe';
 						}
 					}
 					break;
@@ -981,10 +981,10 @@ function ttfmake_embed_container( $html, $url, $attr ) {
 	if ( isset( $attr['width'] ) ) {
 		// Add FitVids as a dependency for the Frontend script
 		global $wp_scripts;
-		if ( is_object( $wp_scripts ) && 'WP_Dependencies' === get_class( $wp_scripts ) ) {
+		if ( is_object( $wp_scripts ) && 'WP_Scripts' === get_class( $wp_scripts ) ) {
 			$script = $wp_scripts->query( 'ttfmake-global', 'registered' );
-			if ( $script && ! in_array( 'ttfmake-fitvids', $script->deps ) ) {
-				$script->deps[] = 'ttfmake-fitvids';
+			if ( $script && ! in_array( 'fitvids', $script->deps ) ) {
+				$script->deps[] = 'fitvids';
 			}
 		}
 

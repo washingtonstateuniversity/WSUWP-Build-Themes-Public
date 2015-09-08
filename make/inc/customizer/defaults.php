@@ -365,6 +365,7 @@ function ttfmake_option_defaults() {
 		'layout-archive-post-author-location'      => 'post-footer',
 		'layout-archive-comment-count'             => 'none',
 		'layout-archive-comment-count-location'    => 'before-content',
+		'layout-archive-yoast-breadcrumb'          => 1,
 		// Search Results
 		'layout-search-hide-header'                => 0,
 		'layout-search-hide-footer'                => 0,
@@ -381,6 +382,7 @@ function ttfmake_option_defaults() {
 		'layout-search-post-author-location'       => 'post-footer',
 		'layout-search-comment-count'              => 'none',
 		'layout-search-comment-count-location'     => 'before-content',
+		'layout-search-yoast-breadcrumb'           => 1,
 		// Posts
 		'layout-post-hide-header'                  => 0,
 		'layout-post-hide-footer'                  => 0,
@@ -396,6 +398,7 @@ function ttfmake_option_defaults() {
 		'layout-post-post-author-location'         => 'post-footer',
 		'layout-post-comment-count'                => 'none',
 		'layout-post-comment-count-location'       => 'before-content',
+		'layout-post-yoast-breadcrumb'             => 1,
 		// Pages
 		'layout-page-hide-header'                  => 0,
 		'layout-page-hide-footer'                  => 0,
@@ -410,6 +413,7 @@ function ttfmake_option_defaults() {
 		'layout-page-comment-count'                => 'none',
 		'layout-page-comment-count-location'       => 'before-content',
 		'layout-page-hide-title'                   => 1,
+		'layout-page-yoast-breadcrumb'             => 1,
 
 		/**
 		 * Deprecated defaults

@@ -227,7 +227,9 @@ function ttfmake_get_google_font_subsets() {
 		'khmer'        => __( 'Khmer', 'make' ),
 		'latin'        => __( 'Latin', 'make' ),
 		'latin-ext'    => __( 'Latin Extended', 'make' ),
+		'tamil'        => __( 'Tamil', 'make' ),
 		'telugu'       => __( 'Telugu', 'make' ),
+		'thai'         => __( 'Thai', 'make' ),
 		'vietnamese'   => __( 'Vietnamese', 'make' ),
 	) );
 }

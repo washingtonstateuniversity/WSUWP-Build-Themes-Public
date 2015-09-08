@@ -8,6 +8,7 @@ $thumb_option = ttfmake_sanitize_choice( get_theme_mod( $thumb_key, ttfmake_get_
 
 // Header
 ob_start();
+ttfmake_yoast_seo_breadcrumb();
 get_template_part( 'partials/entry', 'meta-top' );
 get_template_part( 'partials/entry', 'sticky' );
 if ( 'post-header' === $thumb_option ) :

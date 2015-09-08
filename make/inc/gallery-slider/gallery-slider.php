@@ -138,11 +138,11 @@ class TTFMAKE_Gallery_Slider {
 			// Add Cycle2 as a dependency for the Frontend script
 			global $wp_scripts;
 			$script = $wp_scripts->query( 'ttfmake-global', 'registered' );
-			if ( $script && ! in_array( 'ttfmake-cycle2', $script->deps ) ) {
-				$script->deps[] = 'ttfmake-cycle2';
+			if ( $script && ! in_array( 'cycle2', $script->deps ) ) {
+				$script->deps[] = 'cycle2';
 				if ( ! defined( 'TTFMAKE_SUFFIX' ) || '.min' !== TTFMAKE_SUFFIX ) {
-					$script->deps[] = 'ttfmake-cycle2-center';
-					$script->deps[] = 'ttfmake-cycle2-swipe';
+					$script->deps[] = 'cycle2-center';
+					$script->deps[] = 'cycle2-swipe';
 				}
 			}
 
@@ -174,7 +174,7 @@ class TTFMAKE_Gallery_Slider {
 				'include'          => '',
 				'exclude'          => '',
 
-				// make slider
+				// Make slider
 				'ttfmake_slider'   => true,
 				'ttfmake_autoplay' => false,
 				'ttfmake_prevnext' => false,
@@ -239,15 +239,24 @@ class TTFMAKE_Gallery_Slider {
 			// End core code
 
 			// Classes
-			$classes = 'ttfmake-shortcode-slider cycle-slideshow';
+			$classes = 'cycle-slideshow';
 
 			// Data attributes
-			$data_attributes  = ' data-cycle-log="false"';
-			$data_attributes .= ' data-cycle-slides=".cycle-slide"';
+			$data_attributes  = ' data-cycle-slides=".cycle-slide"';
 			$data_attributes .= ' data-cycle-auto-height="calc"';
 			$data_attributes .= ' data-cycle-center-horz="true"';
     		$data_attributes .= ' data-cycle-center-vert="true"';
 			$data_attributes .= ' data-cycle-swipe="true"';
+			if ( true != $attr[ 'ttfmake_prevnext' ] ) {
+				$data_attributes .= ' data-cycle-prev="~ .cycle-prev"';
+				$data_attributes .= ' data-cycle-next="~ .cycle-next"';
+			}
+			if ( true != $attr[ 'ttfmake_pager' ] ) {
+				$data_attributes .= ' data-cycle-pager="~ .cycle-pager"';
+			}
+			if ( ! defined( 'SCRIPT_DEBUG' ) || false === SCRIPT_DEBUG ) {
+				$data_attributes .= ' data-cycle-log="false"';
+			}
 
 			// No autoplay
 			$autoplay = (bool) $attr['ttfmake_autoplay'];
@@ -277,17 +286,19 @@ class TTFMAKE_Gallery_Slider {
 
 			// Markup
 			ob_start(); ?>
-			<div class="<?php echo esc_attr( $classes ); ?>"<?php echo $data_attributes; ?>>
-				<?php foreach ( $attachments as $id => $attachment ) : ?>
-				<figure class="cycle-slide">
-					<?php echo wp_get_attachment_image( $id, $attr[ 'size' ], false ); ?>
-					<?php if ( trim( $attachment->post_excerpt ) ) : ?>
-					<figcaption class="cycle-caption">
-						<?php echo wptexturize( $attachment->post_excerpt ); ?>
-					</figcaption>
-					<?php endif; ?>
-				</figure>
-				<?php endforeach; ?>
+			<div class="ttfmake-shortcode-slider">
+				<div class="<?php echo esc_attr( $classes ); ?>"<?php echo $data_attributes; ?>>
+					<?php foreach ( $attachments as $id => $attachment ) : ?>
+					<figure class="cycle-slide">
+						<?php echo wp_get_attachment_image( $id, $attr[ 'size' ], false ); ?>
+						<?php if ( trim( $attachment->post_excerpt ) ) : ?>
+						<figcaption class="cycle-caption">
+							<?php echo wptexturize( $attachment->post_excerpt ); ?>
+						</figcaption>
+						<?php endif; ?>
+					</figure>
+					<?php endforeach; ?>
+				</div>
 				<?php if ( true != $attr[ 'ttfmake_prevnext' ] ) : ?>
 				<div class="cycle-prev"></div>
 				<div class="cycle-next"></div>

@@ -13,6 +13,7 @@ global $post;
 <?php if ( have_posts() ) : ?>
 
 	<header class="section-header">
+		<?php ttfmake_yoast_seo_breadcrumb(); ?>
 		<?php get_template_part( 'partials/section', 'title' ); ?>
 		<?php get_template_part( 'partials/section', 'description' ); ?>
 	</header>

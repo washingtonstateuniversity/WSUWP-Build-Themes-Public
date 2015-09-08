@@ -66,3 +66,9 @@ function ttfmake_woocommerce_after_main_content() {
 endif;
 
 add_action( 'woocommerce_after_main_content', 'ttfmake_woocommerce_after_main_content' );
+
+// Replace the WooCommerce breadcrumbs with Yoast SEO breadcrumbs, if available.
+if ( function_exists( 'yoast_breadcrumb' ) ) {
+	remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+	add_action( 'woocommerce_before_main_content', 'ttfmake_yoast_seo_breadcrumb', 20 );
+}
