@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.6.4' );
+define( 'TTFMAKE_VERSION', '1.6.5' );
 
 /**
  * The minimum version of WordPress required for Make.
@@ -61,7 +61,7 @@ function ttfmake_require_files() {
 	if ( is_admin() ) {
 		$admin_files = array(
 			// Admin notices
-			get_template_directory() . '/inc/admin-notice/admin-notice.php',
+			get_template_directory() . '/inc/admin-notice.php',
 			// Page customizations
 			get_template_directory() . '/inc/edit-page.php',
 			// Page Builder

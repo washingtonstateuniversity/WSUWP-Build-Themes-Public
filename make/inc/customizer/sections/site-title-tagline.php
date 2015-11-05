@@ -33,6 +33,7 @@ function ttfmake_customizer_sitetitletagline() {
 		'hide-site-title' => array(
 			'setting' => array(
 				'sanitize_callback' => 'absint',
+				'transport'         => 'postMessage',
 			),
 			'control' => array(
 				'label' => __( 'Hide Site Title', 'make' ),
@@ -51,6 +52,7 @@ function ttfmake_customizer_sitetitletagline() {
 		'hide-tagline' => array(
 			'setting' => array(
 				'sanitize_callback' => 'absint',
+				'transport'         => 'postMessage',
 			),
 			'control' => array(
 				'label' => __( 'Hide Tagline', 'make' ),

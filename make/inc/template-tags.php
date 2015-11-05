@@ -480,7 +480,7 @@ function ttfmake_yoast_seo_breadcrumb() {
 		$key    = 'layout-' . ttfmake_get_view() . '-yoast-breadcrumb';
 		$option = absint( get_theme_mod( $key, ttfmake_get_default( $key ) ) );
 
-		if ( 1 === $option || is_404() ) {
+		if ( ( 1 === $option && ! is_front_page() ) || is_404() ) {
 			yoast_breadcrumb( '<p class="yoast-seo-breadcrumb">', '</p>' );
 		}
 	}

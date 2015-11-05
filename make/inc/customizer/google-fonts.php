@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * Updated: 2015-09-01T00:34:34+00:00
+ * Updated: 2015-10-23T23:23:36+00:00
  *
  * @since  1.0.0.
  *
@@ -1490,6 +1490,29 @@ function ttfmake_get_google_fonts() {
 				'latin-ext',
 			),
 			'category' => 'serif',
+		),
+		'Caveat' => array(
+			'label' => 'Caveat',
+			'variants' => array(
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'handwriting',
+		),
+		'Caveat Brush' => array(
+			'label' => 'Caveat Brush',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'handwriting',
 		),
 		'Cedarville Cursive' => array(
 			'label' => 'Cedarville Cursive',
@@ -3378,6 +3401,38 @@ function ttfmake_get_google_fonts() {
 			),
 			'category' => 'sans-serif',
 		),
+		'Hind Siliguri' => array(
+			'label' => 'Hind Siliguri',
+			'variants' => array(
+				'300',
+				'500',
+				'600',
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'bengali',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
+		'Hind Vadodara' => array(
+			'label' => 'Hind Vadodara',
+			'variants' => array(
+				'300',
+				'500',
+				'600',
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'gujarati',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
 		'Holtwood One SC' => array(
 			'label' => 'Holtwood One SC',
 			'variants' => array(
@@ -3793,6 +3848,8 @@ function ttfmake_get_google_fonts() {
 			),
 			'subsets' => array(
 				'latin',
+				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),

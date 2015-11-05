@@ -270,19 +270,16 @@ function ttfmake_customizer_typography_group_definitions( $element, $label, $des
 				'choices' => ttfmake_font_choices_placeholder(),
 			),
 		),
-		'font-size-' . $element     => array(
+		'font-style-' . $element => array(
 			'setting' => array(
-				'sanitize_callback' => 'absint',
+				'sanitize_callback' => 'ttfmake_sanitize_choice',
 			),
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Range_Control',
-				'label'   => __( 'Font Size (px)', 'make' ),
-				'type'  => 'range',
-				'input_attrs' => array(
-					'min'  => 6,
-					'max'  => 100,
-					'step' => 1,
-				),
+				'control_type' => 'TTFMAKE_Customize_Radio_Control',
+				'label'   => __( 'Font Style', 'make' ),
+				'type'  => 'radio',
+				'mode'  => 'buttonset',
+				'choices' => ttfmake_get_choices( 'font-style-' . $element ),
 			),
 		),
 		'font-weight-' . $element => array(
@@ -297,16 +294,19 @@ function ttfmake_customizer_typography_group_definitions( $element, $label, $des
 				'choices' => ttfmake_get_choices( 'font-weight-' . $element ),
 			),
 		),
-		'font-style-' . $element => array(
+		'font-size-' . $element     => array(
 			'setting' => array(
-				'sanitize_callback' => 'ttfmake_sanitize_choice',
+				'sanitize_callback' => 'absint',
 			),
 			'control' => array(
-				'control_type' => 'TTFMAKE_Customize_Radio_Control',
-				'label'   => __( 'Font Style', 'make' ),
-				'type'  => 'radio',
-				'mode'  => 'buttonset',
-				'choices' => ttfmake_get_choices( 'font-style-' . $element ),
+				'control_type' => 'TTFMAKE_Customize_Range_Control',
+				'label'   => __( 'Font Size (px)', 'make' ),
+				'type'  => 'range',
+				'input_attrs' => array(
+					'min'  => 6,
+					'max'  => 100,
+					'step' => 1,
+				),
 			),
 		),
 		'text-transform-' . $element => array(

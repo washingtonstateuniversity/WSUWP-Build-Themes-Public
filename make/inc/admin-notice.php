@@ -17,32 +17,32 @@ class TTFMAKE_Admin_Notice {
 	 *
 	 * @since 1.4.9.
 	 *
-	 * @var    array    The array of registered notices.
+	 * @var array    The array of registered notices.
 	 */
-	var $notices = array();
+	private $notices = array();
 
 	/**
-	 * The path to the notice template file.
+	 * Stores results of tests for support of various admin notice features.
 	 *
-	 * @since 1.4.9.
+	 * @since 1.6.5.
 	 *
-	 * @var    string    The path to the notice template file.
+	 * @var array    The array of support test results.
 	 */
-	var $template = '';
+	private $support = array();
 
 	/**
 	 * The single instance of the class.
 	 *
 	 * @since 1.4.9.
 	 *
-	 * @var    object    The single instance of the class.
+	 * @var object    The single instance of the class.
 	 */
 	private static $instance;
 
 	/**
 	 * Instantiate or return the one TTFMAKE_Admin_Notice instance.
 	 *
-	 * @since  1.4.9.
+	 * @since 1.4.9.
 	 *
 	 * @return TTFMAKE_Admin_Notice
 	 */
@@ -58,27 +58,35 @@ class TTFMAKE_Admin_Notice {
 	 * Construct the object.
 	 *
 	 * @since 1.4.9.
+	 * @since 1.6.5. Populate the $support array.
 	 *
 	 * @return TTFMAKE_Admin_Notice
 	 */
-	public function __construct() {}
+	public function __construct() {
+		global $wp_version;
+
+		// Test for support of admin notice features
+		$this->support = array(
+			'dismissible' => version_compare( $wp_version, '4.2', '>=' ),
+			'types'       => version_compare( $wp_version, '4.2', '>=' ),
+		);
+	}
 
 	/**
-	 * Initialize the formatting functionality and hook into WordPress.
+	 * Initialize and hook into WordPress.
 	 *
 	 * @since 1.4.9.
 	 *
 	 * @return void
 	 */
 	public function init() {
-		// Define template path
-		$this->template = trailingslashit( dirname( __FILE__ ) ) . 'template.php';
-
-		// Register Ajax action
-		add_action( 'wp_ajax_make_hide_notice', array( $this, 'handle_ajax' ) );
-
 		// Hook up notices
 		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+
+		if ( is_admin() ) {
+			// Register Ajax action
+			add_action( 'wp_ajax_make_hide_notice', array( $this, 'handle_ajax' ) );
+		}
 	}
 
 	/**
@@ -92,25 +100,20 @@ class TTFMAKE_Admin_Notice {
 	 * @return void
 	 */
 	public function register_admin_notice( $id, $message, $args = array() ) {
-		// Prep id
-		$id = sanitize_title_with_dashes( $id );
-
-		// Prep message
-		$allowedtags = wp_kses_allowed_html();
-		$allowedtags['a']['target'] = true;
-		$message = wp_kses( $message, $allowedtags );
+		// Sanitize ID
+		$id = sanitize_key( $id );
 
 		// Prep args
 		$defaults = array(
 			'cap'     => 'switch_themes',      // User capability to see the notice
-			'dismiss' => true,                 // Whether notice is dismissable
+			'dismiss' => true,                 // Whether notice is dismissible
 			'screen'  => array( 'dashboard' ), // IDs/filenames of screens to show the notice on
 			'type'    => 'info',               // success, warning, error, info
 		);
 		$args = wp_parse_args( $args, $defaults );
 
 		// Register the notice
-		if ( $message ) {
+		if ( $id && $message ) {
 			$this->notices[ $id ] = array_merge( array( 'message' => $message ), $args );
 		}
 	}
@@ -161,7 +164,7 @@ class TTFMAKE_Admin_Notice {
 	 */
 	private function screen_is_enabled( $current_screen, $enabled_screens ) {
 		// Validate current screen variable
-		if ( ! is_object( $current_screen ) || 'WP_Screen' !== get_class( $current_screen ) ) {
+		if ( ! $current_screen instanceof WP_Screen ) {
 			return false;
 		}
 
@@ -187,8 +190,7 @@ class TTFMAKE_Admin_Notice {
 	public function admin_notices() {
 		$current_notices = $this->get_notices( get_current_screen() );
 
-		if ( ! empty( $current_notices ) && file_exists( $this->template ) ) {
-			add_action( 'admin_print_footer_scripts', array( $this, 'print_admin_notices_js' ) );
+		if ( ! empty( $current_notices ) ) {
 			$this->render_notices( $current_notices );
 		}
 	}
@@ -202,38 +204,62 @@ class TTFMAKE_Admin_Notice {
 	 * @return void
 	 */
 	private function render_notices( $notices ) {
-		global $wp_version;
-		?>
-		<style type="text/css">
-			.ttfmake-dismiss {
-				display: block;
-				float: right;
-				margin: 0.5em 0;
-				padding: 2px;
-			}
-			.rtl .ttfmake-dismiss {
-				float: left;
-			}
-		</style>
-	<?php
-		foreach ( $notices as $id => $args ) {
-			$message = $args['message'];
-			$dismiss = $args['dismiss'];
-			$type    = $args['type'];
-			$nonce   = wp_create_nonce( 'ttfmake_dismiss_' . $id );
+		// Add styles and script to page if necessary
+		if ( in_array( true, wp_list_pluck( $notices, 'dismiss' ) ) ) {
+			add_action( 'admin_print_footer_scripts', array( $this, 'print_admin_notices_js' ) );
 
-			// CSS and JS in older versions of WP rely on the error and updated classes.
-			$legacy_class = '';
-			if ( version_compare( $wp_version, '4.1', '<=' ) ) {
+			// Styles for pre-4.2 dismiss button
+			if ( false === $this->support['dismissible'] ) : ?>
+				<style type="text/css">
+					.ttfmake-dismiss {
+						display: block;
+						float: right;
+						margin: 0.5em 0;
+						padding: 2px;
+					}
+					.rtl .ttfmake-dismiss {
+						float: left;
+					}
+				</style>
+			<?php endif;
+		}
+
+		// Prep and render each notice
+		foreach ( $notices as $id => $args ) {
+			// Notice config
+			$id      = sanitize_key( $id );
+			$message = $this->sanitize_message( $args['message'] );
+			$dismiss = $args['dismiss'];
+			$type    = sanitize_key( $args['type'] );
+			$nonce   = wp_create_nonce( 'ttfmake_dismiss_' . $id );
+			$classes = array( 'notice', 'notice-' . $type );
+
+			// Add dismissible class
+			if ( true === $dismiss ) {
+				$classes[] = 'is-dismissible';
+			}
+
+			// CSS and JS in pre-4.2 rely on the error and updated classes
+			if ( false === $this->support['types'] ) {
 				if ( in_array( $type, array( 'warning', 'error' ) ) ) {
-					$legacy_class = 'error';
+					$classes[] = 'error';
 				} else if ( in_array( $type, array( 'success', 'info' ) ) ) {
-					$legacy_class = 'updated';
+					$classes[] = 'updated';
 				}
 			}
 
-			// Load the template
-			require( $this->template );
+			// Convert classes to string
+			$classes = implode( ' ', $classes );
+
+			// Render
+			?>
+			<div id="ttfmake-notice-<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classes ); ?>" data-nonce="<?php echo esc_attr( $nonce ); ?>">
+				<?php if ( true === $dismiss && false === $this->support['dismissible'] ) : ?>
+					<a class="ttfmake-dismiss" href="#"><?php esc_html_e( 'Hide', 'make' ); ?></a>
+				<?php endif; ?>
+				<?php echo wpautop( $message ); ?>
+			</div>
+		<?php
 		}
 	}
 
@@ -249,14 +275,14 @@ class TTFMAKE_Admin_Notice {
 		<script type="application/javascript">
 			/* Make admin notices */
 			/* <![CDATA[ */
-			( function( $ ) {
-				$('.notice').on('click', '.ttfmake-dismiss', function(evt) {
+			(function($) {
+				$('.notice').on('click', '.ttfmake-dismiss, .notice-dismiss', function(evt) {
 					evt.preventDefault();
 
 					var $target = $(evt.target),
 						$parent = $target.parents('.notice').first(),
-						nonce   = $target.data('nonce'),
-						id      = $parent.attr('id').replace('ttfmake-notice-', '');
+						id      = $parent.attr('id').replace('ttfmake-notice-', ''),
+						nonce   = $parent.data('nonce');
 
 					$.post(
 						ajaxurl,
@@ -266,14 +292,14 @@ class TTFMAKE_Admin_Notice {
 							nonce  : nonce
 						}
 					).done(function(data) {
-						if (1 === parseInt(data, 10)) {
+						if (1 === parseInt(data, 10) && $target.hasClass('ttfmake-dismiss')) {
 							$parent.fadeOut('slow', function() {
 								$(this).remove();
 							});
 						}
 					});
 				});
-			} )( jQuery );
+			})(jQuery);
 			/* ]]> */
 		</script>
 	<?php
@@ -287,18 +313,23 @@ class TTFMAKE_Admin_Notice {
 	 * @return void
 	 */
 	public function handle_ajax() {
+		// Get POST parameters
+		$nid   = isset( $_POST['nid'] )   ? sanitize_key( $_POST['nid'] ) : false;
+		$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce']               : false;
+
 		// Check requirements
 		if (
 			! defined( 'DOING_AJAX' ) ||
 			true !== DOING_AJAX ||
-			! isset( $_POST['nid'] ) ||
-			! isset( $_POST['nonce'] ) ||
-			! wp_verify_nonce( $_POST['nonce'], 'ttfmake_dismiss_' . $_POST['nid'] )
+			false === $nid ||
+			false === $nonce ||
+			! wp_verify_nonce( $nonce, 'ttfmake_dismiss_' . $nid )
 		) {
+			// Requirement check failed. Bail.
 			wp_die();
 		}
 
-		// Get array of dismissed notices
+		// Get the user's array of dismissed notices
 		$user_id = get_current_user_id();
 		$dismissed = get_user_meta( $user_id, 'ttfmake-dismissed-notices', true );
 		if ( ! $dismissed ) {
@@ -306,8 +337,7 @@ class TTFMAKE_Admin_Notice {
 		}
 
 		// Add a new notice to the array
-		$id = $_POST['nid'];
-		$dismissed[] = $id;
+		$dismissed[] = $nid;
 		$success = update_user_meta( $user_id, 'ttfmake-dismissed-notices', $dismissed );
 
 		// Return a success response.
@@ -315,6 +345,20 @@ class TTFMAKE_Admin_Notice {
 			echo 1;
 		}
 		wp_die();
+	}
+
+	/**
+	 * Sanitize an admin notice message.
+	 *
+	 * @since 1.6.5.
+	 *
+	 * @param  string    $message    The message string to sanitize.
+	 * @return string                The sanitized message string.
+	 */
+	public function sanitize_message( $message ) {
+		$allowedtags = wp_kses_allowed_html();
+		$allowedtags['a']['target'] = true;
+		return wp_kses( $message, $allowedtags );
 	}
 }
 
@@ -330,6 +374,11 @@ function ttfmake_admin_notice() {
 }
 
 /**
+ * Fire the init function immediately.
+ */
+ttfmake_admin_notice()->init();
+
+/**
  * Wrapper function to register an admin notice.
  *
  * @since 1.4.9.
@@ -342,9 +391,4 @@ function ttfmake_admin_notice() {
 function ttfmake_register_admin_notice( $id, $message, $args ) {
 	ttfmake_admin_notice()->register_admin_notice( $id, $message, $args );
 }
-
-/**
- * Fire the init function immediately.
- */
-ttfmake_admin_notice()->init();
 endif;

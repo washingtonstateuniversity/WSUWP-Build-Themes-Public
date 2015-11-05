@@ -344,6 +344,28 @@ function ttfmake_upgrade_notices() {
 			)
 		);
 	}
+
+	// Notice of upcoming drop of support for 4.0 and 4.1
+	if ( version_compare( $wp_version, '4.2', '<' ) ) {
+		ttfmake_register_admin_notice(
+			'make-wp-lt-42',
+			sprintf(
+				__( 'Make will soon be dropping support for WordPress versions 4.0 and 4.1. Please %2$s to ensure full compatibility.', 'make' ),
+				TTFMAKE_MIN_WP_VERSION,
+				sprintf(
+					'<a href="%1$s">%2$s</a>',
+					admin_url( 'update-core.php' ),
+					__( 'update WordPress', 'make' )
+				)
+			),
+			array(
+				'cap'     => 'update_core',
+				'dismiss' => true,
+				'screen'  => array( 'dashboard', 'themes.php', 'update-core.php' ),
+				'type'    => 'warning',
+			)
+		);
+	}
 }
 
 add_action( 'admin_init', 'ttfmake_upgrade_notices' );
