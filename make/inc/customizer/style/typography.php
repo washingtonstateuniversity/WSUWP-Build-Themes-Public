@@ -332,7 +332,8 @@ function ttfmake_css_fonts() {
 	 */
 	$element = 'widget';
 	$selectors = array( '.sidebar .widget', '.font-widget' );
-	$declarations = ttfmake_parse_font_properties( $element );
+	$force = get_theme_mod( 'font-family-body', ttfmake_get_default( 'font-family-body' ) ) !== ttfmake_get_default( 'font-family-body' );
+	$declarations = ttfmake_parse_font_properties( $element, $force );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 	}
@@ -360,7 +361,8 @@ function ttfmake_css_fonts() {
 	 */
 	$element = 'footer-widget';
 	$selectors = array( '.footer-widget-container .widget' );
-	$declarations = ttfmake_parse_font_properties( $element );
+	$force = get_theme_mod( 'font-family-body', ttfmake_get_default( 'font-family-body' ) ) !== ttfmake_get_default( 'font-family-body' );
+	$declarations = ttfmake_parse_font_properties( $element, $force );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 	}
@@ -374,7 +376,8 @@ function ttfmake_css_fonts() {
 	 */
 	$element = 'footer-text';
 	$selectors = array( '.footer-text' );
-	$declarations = ttfmake_parse_font_properties( $element );
+	$force = get_theme_mod( 'font-family-body', ttfmake_get_default( 'font-family-body' ) ) !== ttfmake_get_default( 'font-family-body' );
+	$declarations = ttfmake_parse_font_properties( $element, $force );
 	if ( ! empty( $declarations ) ) {
 		ttfmake_get_css()->add( array( 'selectors' => $selectors, 'declarations' => $declarations, ) );
 	}

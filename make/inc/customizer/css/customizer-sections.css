@@ -54,6 +54,20 @@ li .image.ui-buttonset label.ui-button {
 	margin-bottom: 10px;
 	margin-right: 15px;
 }
+.customize-control-radio-buttonset .ui-corner-left,
+.customize-control-radio-buttonset .ui-corner-right {
+	border-radius: 0;
+}
+.customize-control-radio-buttonset .ui-button {
+	margin-right: 0;
+}
+.customize-control-radio-buttonset label {
+	display: inline-block;
+	float: left;
+	font-size: 13px;
+	border: none;
+	outline: 1px solid #fff;
+}
 .ttfmake-control-buttonset label,
 .ttfmake-control-background-position label {
 	border-color: #fff;
@@ -64,7 +78,7 @@ li .image.ui-buttonset label.ui-button {
 }
 .ttfmake-control-buttonset label.ui-state-hover,
 .ttfmake-control-background-position label.ui-state-hover {
-	color: #0074a2;
+	color: #0073aa;
 	background-color: #fff;
 	background-color: rgba(255, 255, 255, .25);
 }
@@ -158,7 +172,6 @@ li.customize-control.customize-control-range .ui-slider-horizontal {
 	border-color: #fff;
 	background: #fff;
 }
-
 li.customize-control.customize-control-range .ui-slider-handle {
 	border-radius: 100%;
 }

@@ -125,16 +125,24 @@
 					max = parseFloat( $input.attr('max') ),
 					step = parseFloat( $input.attr('step') );
 
+				// Configure the slider
 				$slider.slider({
 					value : value,
 					min   : min,
 					max   : max,
 					step  : step,
-					slide : function(e, ui) {
-						$input.val(ui.value).keyup().trigger('change');
-					}
+					slide : function(e, ui) { $input.val(ui.value) }
 				});
-				$input.val( $slider.slider('value') );
+
+				// Debounce the slide event so the preview pane doesn't update too often
+				$slider.on('slide', _.debounce(function(e, ui) {
+					$input.keyup().trigger('change');
+				}, 300));
+
+				// Sync values of number input and slider
+				$input.val( $slider.slider('value')).on('change', function() {
+					$slider.slider('value', $(this).val());
+				});
 			});
 		}
 	};

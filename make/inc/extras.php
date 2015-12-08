@@ -587,7 +587,7 @@ function ttfmake_pre_wp_nav_menu_social( $output, $args ) {
 		'foursquare.com'     => 'fa-foursquare',
 		'github.com'         => 'fa-github',
 		'gittip.com'         => 'fa-gittip',
-		'plus.google.com'    => 'fa-google-plus-square',
+		'google.com'         => 'fa-google-plus-square',
 		'houzz.com'          => 'fa-houzz',
 		'instagram.com'      => 'fa-instagram',
 		'jsfiddle.net'       => 'fa-jsfiddle',

@@ -85,6 +85,14 @@ class TTFMAKE_Logo {
 			return false;
 		}
 
+		// Literal URL matches should always match canonical scheme for the site.
+		$upload_dir_paths = wp_upload_dir();
+		if ( set_url_scheme( $upload_dir_paths['baseurl'], 'https' ) === $upload_dir_paths['baseurl'] ) {
+			$url = set_url_scheme( $url, 'https' );
+		} else {
+			$url = set_url_scheme( $url, 'http' );
+		}
+
 		global $wpdb;
 		$attachment_id = 0;
 
@@ -110,7 +118,6 @@ class TTFMAKE_Logo {
 		}
 
 		// Then try this
-		$upload_dir_paths = wp_upload_dir();
 		if ( false !== strpos( $url, $upload_dir_paths['baseurl'] ) ) {
 			// If this is the URL of an auto-generated thumbnail, get the URL of the original image
 			$url = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif)$)/i', '', $url );

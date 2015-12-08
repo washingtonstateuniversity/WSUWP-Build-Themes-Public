@@ -83,7 +83,9 @@ ksort( $links );
 			<?php endforeach; ?>
 		</div>
 		<a href="#" class="ttfmake-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
-			<div class="handlediv"></div>
+			<div class="ttfmake-section-toggle__wrapper">
+				<span class="ttfmake-section-toggle__indicator"></span>
+			</div>
 		</a>
 	</div>
 	<div class="clear"></div>

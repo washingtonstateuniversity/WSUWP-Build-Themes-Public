@@ -453,7 +453,7 @@ function ttfmake_customizer_scripts() {
 	wp_enqueue_script(
 		'ttfmake-customizer-sections',
 		get_template_directory_uri() . '/inc/customizer/js/customizer-sections' . TTFMAKE_SUFFIX . '.js',
-		array( 'customize-controls', 'ttfmake-customizer-chosen' ),
+		array( 'underscore', 'customize-controls', 'ttfmake-customizer-chosen' ),
 		TTFMAKE_VERSION,
 		true
 	);

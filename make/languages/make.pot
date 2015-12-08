@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.6.5\n"
+"Project-Id-Version: Make 1.6.6\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2015-10-23 23:28:14+00:00\n"
+"POT-Creation-Date: 2015-11-25 00:44:58+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -111,16 +111,16 @@ msgstr ""
 msgid "Use Page Builder"
 msgstr ""
 
-#: inc/builder/core/base.php:334
+#: inc/builder/core/base.php:335
 msgid "Delete the section?"
 msgstr ""
 
-#: inc/builder/core/base.php:431 inc/builder/core/configuration-helpers.php:96
+#: inc/builder/core/base.php:432 inc/builder/core/configuration-helpers.php:96
 #: inc/builder/sections/builder-templates/text.php:142
 msgid "Set image"
 msgstr ""
 
-#: inc/builder/core/base.php:464
+#: inc/builder/core/base.php:465
 #: inc/builder/core/templates/overlay-tinymce.php:4
 #: inc/builder/sections/builder-templates/banner-slide.php:42
 #: inc/builder/sections/builder-templates/banner-slide.php:44
@@ -130,27 +130,27 @@ msgstr ""
 msgid "Edit content"
 msgstr ""
 
-#: inc/builder/core/base.php:550
+#: inc/builder/core/base.php:551
 msgid "Current image"
 msgstr ""
 
-#: inc/builder/core/base.php:552
+#: inc/builder/core/base.php:553
 msgid "Remove Current Image"
 msgstr ""
 
-#: inc/builder/core/base.php:656
+#: inc/builder/core/base.php:657
 msgid "Duplicate this page with %s."
 msgstr ""
 
-#: inc/builder/core/base.php:1047
+#: inc/builder/core/base.php:1048
 msgid "Want some ideas?"
 msgstr ""
 
-#: inc/builder/core/base.php:1050
+#: inc/builder/core/base.php:1051
 msgid "%s and get a quick start with pre-made designer builder templates."
 msgstr ""
 
-#: inc/builder/core/base.php:1055
+#: inc/builder/core/base.php:1056
 #: inc/builder/sections/builder-templates/text.php:27
 msgid "Upgrade to %s"
 msgstr ""

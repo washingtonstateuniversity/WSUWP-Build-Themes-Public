@@ -269,6 +269,8 @@
 .ttfmake-section-header h3 {
 	float: left;
 	width: 100%;
+	margin: 0;
+	padding: 8px 12px;
 	color: #23282d;
 	font-size: 13px !important;
 	font-weight: 700 !important;
@@ -311,63 +313,8 @@
 .ttfmake-section-open .ttfmake-section-header em {
 	color: #bbb;
 }
-.ttfmake-section .handlediv {
-	position: relative;
-	height: 40px;
-	padding-left: 10px;
-	border-left: 1px solid #e5e5e5;
-}
-.ttfmake-section:hover .handlediv {
-	border-left-color: #999;
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-section .handlediv {
-		height: 48px;
-		margin-top: 0; /*reset*/
-	}
-}
-.ttfmake-section-open .handlediv,
-.ttfmake-section-open:hover .handlediv {
-	border-left-color: #999;
-}
 .ttfmake-section-toggle:focus {
 	border: none !important;
-}
-.ttfmake-section-toggle .handlediv,
-.ttfmake-banner-slide-toggle .handlediv {
-	top: -40px;
-	right: 0; /*reset*/
-	margin-bottom: -40px;
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-section-toggle .handlediv,
-	.ttfmake-banner-slide-toggle .handlediv {
-		top: -48px;
-		margin-bottom: -48px;
-	}
-}
-.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
-.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:before {
-	content: '\f140';
-	top: 1px;
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
-	.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:before {
-		top: 5px;
-	}
-}
-.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:hover:before,
-.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:hover:before {
-	color: #23282d;
-}
-.ttfmake-stage .ttfmake-section-open .ttfmake-section-header .handlediv:hover:before,
-.ttfmake-stage .ttfmake-section-open .ttfmake-banner-slide-header .handlediv:hover:before {
-	color: #fff;
-}
-.ttfmake-stage .ttfmake-section.ttfmake-section-open .ttfmake-section-header .handlediv:before,
-.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-open .ttfmake-banner-slide-header .handlediv:before {
-	content: '\f142';
 }
 .ttfmake-media-link-wrap {
 	margin-bottom: 8px;
@@ -395,7 +342,7 @@
 .ttfmp-duplicate-section {
 	display: inline-block;
 	height: 100%;
-	padding: 0 10px 0 7px;
+	padding: 0 8px;
 	color: #aaa;
 	text-decoration: none;  /*reset*/
 }
@@ -459,7 +406,7 @@
 	.ttfmake-section-remove:before,
 	.ttfmake-section-configure:before,
 	.ttfmp-duplicate-section:before {
-		line-height: 48px;
+		line-height: 40px;
 	}
 }
 /*---------------------------------------------------------
@@ -750,4 +697,37 @@
 }
 .ttfmake-builder-uploader .ttfmake-remove-current-image a.ttfmake-remove-image-from-modal:hover {
 	color: red;
+}
+/*---------------------------------------------------------
+ Section toggle (builder.css)
+-------------------------------------------------------- */
+.ttfmake-section-toggle__wrapper {
+	position: absolute;
+	height: 40px;
+	right: 0;
+	padding: 0 8px;
+	border-left: 1px solid #e5e5e5;
+	line-height: 40px;
+}
+.ttfmake-section:hover .ttfmake-section-toggle__wrapper {
+	border-color: #999;
+}
+.ttfmake-section-open:hover .ttfmake-section-toggle__wrapper {
+	border-color: #e5e5e5;
+}
+.ttfmake-section-toggle__indicator {
+	color: #bbb;
+}
+.ttfmake-section .ttfmake-section-toggle__wrapper:hover .ttfmake-section-toggle__indicator {
+	color: #23282d;
+}
+.ttfmake-section-open .ttfmake-section-toggle__wrapper:hover .ttfmake-section-toggle__indicator {
+	color: #fff;
+}
+.ttfmake-section-toggle__indicator:before {
+	content: '\f140';
+	font: 400 20px/40px dashicons;
+}
+.ttfmake-section-open .ttfmake-section-toggle__indicator:before {
+	content: '\f142';
 }
