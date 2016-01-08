@@ -161,7 +161,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 
 	oneApp.setMakeContent = function (content) {
 		if (oneApp.isVisualActive()) {
-			tinyMCE.get('make').setContent(content);
+			tinyMCE.get('make').setContent(switchEditors.wpautop(content));
 		} else {
 			oneApp.cache.$makeTextArea.val(switchEditors.pre_wpautop(content));
 		}

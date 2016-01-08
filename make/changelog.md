@@ -1,3 +1,11 @@
+## 1.6.7
+
+* Bug fix: Builder content would lose paragraphs and line breaks in some situations when switching between editors.
+* Improved: Better styling of the WooCommerce cart page on narrow screens < 480px wide.
+* Updated: Font Awesome icon library updated to version 4.5.0.
+* Updated: The latest list of Google fonts.
+* Changed: Make now only supports WordPress 4.2 and higher.
+
 ## 1.6.6
 
 * Updated: Styles in the Builder and Customizer are now compatible with WordPress 4.4.

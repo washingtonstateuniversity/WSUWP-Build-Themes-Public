@@ -7,7 +7,7 @@ if ( ! function_exists( 'ttfmake_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * Updated: 2015-11-25T00:45:10+00:00
+ * Updated: 2015-12-17T22:49:16+00:00
  *
  * @since  1.0.0.
  *
@@ -3958,6 +3958,36 @@ function ttfmake_get_google_fonts() {
 				'latin',
 			),
 			'category' => 'serif',
+		),
+		'Kanit' => array(
+			'label' => 'Kanit',
+			'variants' => array(
+				'100',
+				'100italic',
+				'200',
+				'200italic',
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'800',
+				'800italic',
+				'900',
+				'900italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'thai',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
 		),
 		'Kantumruy' => array(
 			'label' => 'Kantumruy',

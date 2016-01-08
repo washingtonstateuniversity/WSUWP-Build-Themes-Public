@@ -22,15 +22,6 @@ class TTFMAKE_Admin_Notice {
 	private $notices = array();
 
 	/**
-	 * Stores results of tests for support of various admin notice features.
-	 *
-	 * @since 1.6.5.
-	 *
-	 * @var array    The array of support test results.
-	 */
-	private $support = array();
-
-	/**
 	 * The single instance of the class.
 	 *
 	 * @since 1.4.9.
@@ -59,18 +50,11 @@ class TTFMAKE_Admin_Notice {
 	 *
 	 * @since 1.4.9.
 	 * @since 1.6.5. Populate the $support array.
+	 * @since 1.6.7. Support array deprecated.
 	 *
 	 * @return TTFMAKE_Admin_Notice
 	 */
-	public function __construct() {
-		global $wp_version;
-
-		// Test for support of admin notice features
-		$this->support = array(
-			'dismissible' => version_compare( $wp_version, '4.2', '>=' ),
-			'types'       => version_compare( $wp_version, '4.2', '>=' ),
-		);
-	}
+	public function __construct() {}
 
 	/**
 	 * Initialize and hook into WordPress.
@@ -207,21 +191,6 @@ class TTFMAKE_Admin_Notice {
 		// Add styles and script to page if necessary
 		if ( in_array( true, wp_list_pluck( $notices, 'dismiss' ) ) ) {
 			add_action( 'admin_print_footer_scripts', array( $this, 'print_admin_notices_js' ) );
-
-			// Styles for pre-4.2 dismiss button
-			if ( false === $this->support['dismissible'] ) : ?>
-				<style type="text/css">
-					.ttfmake-dismiss {
-						display: block;
-						float: right;
-						margin: 0.5em 0;
-						padding: 2px;
-					}
-					.rtl .ttfmake-dismiss {
-						float: left;
-					}
-				</style>
-			<?php endif;
 		}
 
 		// Prep and render each notice
@@ -239,24 +208,12 @@ class TTFMAKE_Admin_Notice {
 				$classes[] = 'is-dismissible';
 			}
 
-			// CSS and JS in pre-4.2 rely on the error and updated classes
-			if ( false === $this->support['types'] ) {
-				if ( in_array( $type, array( 'warning', 'error' ) ) ) {
-					$classes[] = 'error';
-				} else if ( in_array( $type, array( 'success', 'info' ) ) ) {
-					$classes[] = 'updated';
-				}
-			}
-
 			// Convert classes to string
 			$classes = implode( ' ', $classes );
 
 			// Render
 			?>
 			<div id="ttfmake-notice-<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classes ); ?>" data-nonce="<?php echo esc_attr( $nonce ); ?>">
-				<?php if ( true === $dismiss && false === $this->support['dismissible'] ) : ?>
-					<a class="ttfmake-dismiss" href="#"><?php esc_html_e( 'Hide', 'make' ); ?></a>
-				<?php endif; ?>
 				<?php echo wpautop( $message ); ?>
 			</div>
 		<?php
@@ -276,7 +233,7 @@ class TTFMAKE_Admin_Notice {
 			/* Make admin notices */
 			/* <![CDATA[ */
 			(function($) {
-				$('.notice').on('click', '.ttfmake-dismiss, .notice-dismiss', function(evt) {
+				$('.notice').on('click', '.notice-dismiss', function(evt) {
 					evt.preventDefault();
 
 					var $target = $(evt.target),
@@ -291,13 +248,7 @@ class TTFMAKE_Admin_Notice {
 							nid    : id,
 							nonce  : nonce
 						}
-					).done(function(data) {
-						if (1 === parseInt(data, 10) && $target.hasClass('ttfmake-dismiss')) {
-							$parent.fadeOut('slow', function() {
-								$(this).remove();
-							});
-						}
-					});
+					);
 				});
 			})(jQuery);
 			/* ]]> */

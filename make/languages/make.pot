@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make 1.6.6\n"
+"Project-Id-Version: Make 1.6.7\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support/\n"
-"POT-Creation-Date: 2015-11-25 00:44:58+00:00\n"
+"POT-Creation-Date: 2015-12-17 22:49:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -97,10 +97,6 @@ msgstr ""
 msgid ""
 "Make requires at least WordPress version %1$s. You are running version "
 "%2$s. Please upgrade and try again."
-msgstr ""
-
-#: inc/admin-notice.php:258
-msgid "Hide"
 msgstr ""
 
 #: inc/builder/core/base.php:97
@@ -483,27 +479,21 @@ msgid ""
 "full compatibility."
 msgstr ""
 
-#: inc/compatibility.php:336 inc/compatibility.php:358
+#: inc/compatibility.php:336
 msgid "update WordPress"
 msgstr ""
 
-#: inc/compatibility.php:353
-msgid ""
-"Make will soon be dropping support for WordPress versions 4.0 and 4.1. "
-"Please %2$s to ensure full compatibility."
-msgstr ""
-
-#: inc/compatibility.php:388
+#: inc/compatibility.php:366
 msgid ""
 "A new version of Make Plus is available. If you encounter problems updating "
 "through %1$s, please %2$s to update manually."
 msgstr ""
 
-#: inc/compatibility.php:392
+#: inc/compatibility.php:370
 msgid "the WordPress interface"
 msgstr ""
 
-#: inc/compatibility.php:397
+#: inc/compatibility.php:375
 msgid "follow these steps"
 msgstr ""
 
@@ -2086,17 +2076,19 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Create your website without touching a line of code. Make's flexible "
-"customization features and a powerful drag and drop page builder make "
-"designing your site fun and easy. Build almost anything: a simple portfolio "
-"or photography site, an ecommerce business site, a minimalist blog, or even "
-"a professional magazine. You'll start by customizing your background, "
-"layouts, fonts, colors, and logo. Next, add and organize your content using "
-"the drag and drop page builder. Add a photo, a video, a gallery, or even a "
-"slider to any page on your website. Make is responsive, so your website "
-"will naturally look great on phones, tablets, and desktop screens. It's "
-"also fully compatible with popular plugins like WooCommerce, Gravity Forms, "
-"Contact Form 7, Jetpack, and WP PageNavi."
+"Build a website that means business. With Make’s powerful drag and drop "
+"page builder and hundreds of Customizer options, you can effortlessly brand "
+"your site without touching a line of code. Add full-width banners, columns, "
+"and galleries to showcase your best work. The intuitive builder delivers "
+"clean, lean code — not shortcodes — so you can trust your content remains "
+"portable. Make lets you control page layout options, including sidebar "
+"display, on all your posts and pages. Choose from hundreds of Google Fonts "
+"and upload custom backgrounds everywhere. Built on a fully responsive grid, "
+"Make renders as beautifully on tablets and phone screens as it does on "
+"desktop. Make scales with your business and is fully compatible with "
+"popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, "
+"and others. For documentation on the page builder and getting started with "
+"Make, see: https://thethemefoundry.com/make-help/"
 msgstr ""
 
 #. Author of the plugin/theme

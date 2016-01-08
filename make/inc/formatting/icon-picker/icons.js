@@ -162,6 +162,16 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f1fd"
     },
     {
+      "name": "Bluetooth",
+      "id": "fa-bluetooth",
+      "unicode": "f293"
+    },
+    {
+      "name": "Bluetooth",
+      "id": "fa-bluetooth-b",
+      "unicode": "f294"
+    },
+    {
       "name": "Bomb",
       "id": "fa-bomb",
       "unicode": "f1e2"
@@ -707,6 +717,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f25a"
     },
     {
+      "name": "Hashtag",
+      "id": "fa-hashtag",
+      "unicode": "f292"
+    },
+    {
       "name": "HDD",
       "id": "fa-hdd-o",
       "unicode": "f0a0"
@@ -1037,6 +1052,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f044"
     },
     {
+      "name": "Percent",
+      "id": "fa-percent",
+      "unicode": "f295"
+    },
+    {
       "name": "Phone",
       "id": "fa-phone",
       "unicode": "f095"
@@ -1255,6 +1275,16 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Ship",
       "id": "fa-ship",
       "unicode": "f21a"
+    },
+    {
+      "name": "Shopping Bag",
+      "id": "fa-shopping-bag",
+      "unicode": "f290"
+    },
+    {
+      "name": "Shopping Basket",
+      "id": "fa-shopping-basket",
+      "unicode": "f291"
     },
     {
       "name": "Shopping Cart Arrow Down",
@@ -2279,6 +2309,16 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f04c"
     },
     {
+      "name": "Pause Circle",
+      "id": "fa-pause-circle",
+      "unicode": "f28b"
+    },
+    {
+      "name": "Pause Circle Outlined",
+      "id": "fa-pause-circle-o",
+      "unicode": "f28c"
+    },
+    {
       "name": "play",
       "id": "fa-play",
       "unicode": "f04b"
@@ -2312,6 +2352,16 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "stop",
       "id": "fa-stop",
       "unicode": "f04d"
+    },
+    {
+      "name": "Stop Circle",
+      "id": "fa-stop-circle",
+      "unicode": "f28d"
+    },
+    {
+      "name": "Stop Circle Outlined",
+      "id": "fa-stop-circle-o",
+      "unicode": "f28e"
     },
     {
       "name": "YouTube Play",
@@ -2537,6 +2587,16 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f15a"
     },
     {
+      "name": "Bluetooth",
+      "id": "fa-bluetooth-b",
+      "unicode": "f294"
+    },
+    {
+      "name": "Bluetooth",
+      "id": "fa-bluetooth",
+      "unicode": "f293"
+    },
+    {
       "name": "BuySellAds",
       "id": "fa-buysellads",
       "unicode": "f20d"
@@ -2552,6 +2612,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f1cb"
     },
     {
+      "name": "Codie Pie",
+      "id": "fa-codiepie",
+      "unicode": "f284"
+    },
+    {
       "name": "Connect Develop",
       "id": "fa-connectdevelop",
       "unicode": "f20e"
@@ -2560,6 +2625,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Contao",
       "id": "fa-contao",
       "unicode": "f26d"
+    },
+    {
+      "name": "Credit Card",
+      "id": "fa-credit-card-alt",
+      "unicode": "f283"
     },
     {
       "name": "CSS 3 Logo",
@@ -2612,6 +2682,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f1a9"
     },
     {
+      "name": "Edge Browser",
+      "id": "fa-edge",
+      "unicode": "f282"
+    },
+    {
       "name": "ExpeditedSSL",
       "id": "fa-expeditedssl",
       "unicode": "f23e"
@@ -2650,6 +2725,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Fonticons",
       "id": "fa-fonticons",
       "unicode": "f280"
+    },
+    {
+      "name": "Fort Awesome",
+      "id": "fa-fort-awesome",
+      "unicode": "f286"
     },
     {
       "name": "Forumbee",
@@ -2827,6 +2907,16 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f23a"
     },
     {
+      "name": "Mixcloud",
+      "id": "fa-mixcloud",
+      "unicode": "f289"
+    },
+    {
+      "name": "MODX",
+      "id": "fa-modx",
+      "unicode": "f285"
+    },
+    {
       "name": "Odnoklassniki",
       "id": "fa-odnoklassniki",
       "unicode": "f263"
@@ -2897,6 +2987,11 @@ ttfmakeIconObj["fontawesome"] = {
       "unicode": "f0d3"
     },
     {
+      "name": "Product Hunt",
+      "id": "fa-product-hunt",
+      "unicode": "f288"
+    },
+    {
       "name": "QQ",
       "id": "fa-qq",
       "unicode": "f1d6"
@@ -2905,6 +3000,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Rebel Alliance",
       "id": "fa-rebel",
       "unicode": "f1d0"
+    },
+    {
+      "name": "reddit Alien",
+      "id": "fa-reddit-alien",
+      "unicode": "f281"
     },
     {
       "name": "reddit Logo",
@@ -2925,6 +3025,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Safari",
       "id": "fa-safari",
       "unicode": "f267"
+    },
+    {
+      "name": "Scribd",
+      "id": "fa-scribd",
+      "unicode": "f28a"
     },
     {
       "name": "Sellsy",
@@ -3055,6 +3160,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "Twitter Square",
       "id": "fa-twitter-square",
       "unicode": "f081"
+    },
+    {
+      "name": "USB",
+      "id": "fa-usb",
+      "unicode": "f287"
     },
     {
       "name": "Viacoin",
@@ -3239,6 +3349,11 @@ ttfmakeIconObj["fontawesome"] = {
       "name": "American Express Credit Card",
       "id": "fa-cc-amex",
       "unicode": "f1f3"
+    },
+    {
+      "name": "Credit Card",
+      "id": "fa-credit-card-alt",
+      "unicode": "f283"
     },
     {
       "name": "credit-card",
