@@ -71,7 +71,7 @@ class TTFMAKE_Section_Definitions {
 		ttfmake_add_section(
 			'text',
 			__( 'Columns', 'make' ),
-			get_template_directory_uri() . '/inc/builder/sections/css/images/text.png',
+			Make()->scripts()->get_css_directory_uri() . '/builder/sections/images/text.png',
 			__( 'Create rearrangeable columns of content and images.', 'make' ),
 			array( $this, 'save_text' ),
 			'sections/builder-templates/text',
@@ -208,7 +208,7 @@ class TTFMAKE_Section_Definitions {
 		ttfmake_add_section(
 			'banner',
 			__( 'Banner', 'make' ),
-			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
+			Make()->scripts()->get_css_directory_uri() . '/builder/sections/images/banner.png',
 			__( 'Display multiple types of content in a banner or a slider.', 'make' ),
 			array( $this, 'save_banner' ),
 			'sections/builder-templates/banner',
@@ -402,7 +402,7 @@ class TTFMAKE_Section_Definitions {
 		ttfmake_add_section(
 			'gallery',
 			__( 'Gallery', 'make' ),
-			get_template_directory_uri() . '/inc/builder/sections/css/images/gallery.png',
+			Make()->scripts()->get_css_directory_uri() . '/builder/sections/images/gallery.png',
 			__( 'Display your images in various grid combinations.', 'make' ),
 			array( $this, 'save_gallery' ),
 			'sections/builder-templates/gallery',
@@ -597,7 +597,7 @@ class TTFMAKE_Section_Definitions {
 
 		wp_register_script(
 			'ttfmake-sections/js/models/gallery-item.js',
-			get_template_directory_uri() . '/inc/builder/sections/js/models/gallery-item.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/sections/models/gallery-item.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -605,7 +605,7 @@ class TTFMAKE_Section_Definitions {
 
 		wp_register_script(
 			'ttfmake-sections/js/views/gallery-item.js',
-			get_template_directory_uri() . '/inc/builder/sections/js/views/gallery-item.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/sections/views/gallery-item.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -613,7 +613,7 @@ class TTFMAKE_Section_Definitions {
 
 		wp_register_script(
 			'ttfmake-sections/js/views/gallery.js',
-			get_template_directory_uri() . '/inc/builder/sections/js/views/gallery.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/sections/views/gallery.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -621,7 +621,7 @@ class TTFMAKE_Section_Definitions {
 
 		wp_register_script(
 			'ttfmake-sections/js/views/text.js',
-			get_template_directory_uri() . '/inc/builder/sections/js/views/text.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/sections/views/text.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -629,7 +629,7 @@ class TTFMAKE_Section_Definitions {
 
 		wp_register_script(
 			'ttfmake-sections/js/models/banner-slide.js',
-			get_template_directory_uri() . '/inc/builder/sections/js/models/banner-slide.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/sections/models/banner-slide.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -637,7 +637,7 @@ class TTFMAKE_Section_Definitions {
 
 		wp_register_script(
 			'ttfmake-sections/js/views/banner-slide.js',
-			get_template_directory_uri() . '/inc/builder/sections/js/views/banner-slide.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/sections/views/banner-slide.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -645,31 +645,19 @@ class TTFMAKE_Section_Definitions {
 
 		wp_register_script(
 			'ttfmake-sections/js/views/banner.js',
-			get_template_directory_uri() . '/inc/builder/sections/js/views/banner.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/sections/views/banner.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
 		);
 
-		if ( false === ttfmake_is_plus() ) {
-			wp_enqueue_script(
-				'ttfmake-sections/js/quick-start.js',
-				get_template_directory_uri() . '/inc/builder/sections/js/quick-start.js',
-				array(
-					'ttfmake-builder',
-				),
-				TTFMAKE_VERSION,
-				true
-			);
-		}
-
 		// Add additional dependencies to the Builder JS
-		add_filter( 'ttfmake_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
+		add_filter( 'make_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
 
 		// Add the section CSS
 		wp_enqueue_style(
 			'ttfmake-sections/css/sections.css',
-			get_template_directory_uri() . '/inc/builder/sections/css/sections.css',
+			Make()->scripts()->get_css_directory_uri() . '/builder/sections/sections.css',
 			array(),
 			TTFMAKE_VERSION,
 			'all'

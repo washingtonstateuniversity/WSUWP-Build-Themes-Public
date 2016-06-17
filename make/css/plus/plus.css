@@ -1,0 +1,71 @@
+a.ttfmake-customize-plus {
+	display: inline-block;
+	position: relative;
+	top: -1px;
+	margin-left: 8px;
+	padding: 3px 6px !important;
+	line-height: 1.5 !important;
+	font-size: 9px !important;
+	color: #ffffff !important;
+	background-color: #d54e21;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	-webkit-font-smoothing: subpixel-antialiased !important;
+	margin-left: 0;
+}
+#ttfmake-plus-metabox h3:after,
+#customize-control-ttfmake_footer-whitelabel-heading span:after,
+#customize-control-ttfmake_font-typekit-font-heading span:after,
+.ttfmake-section-text .ttfmake-plus-info p:after,
+.make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before,
+.ttfmp-import-message strong:after,
+#accordion-section-ttfmake_stylekit h3:before,
+#ttfmake-menu-list-item-link-plus h4:after {
+	content: "Plus";
+	position: relative;
+	top: -1px;
+	margin-left: 8px;
+	padding: 3px 6px !important;
+	line-height: 1.5 !important;
+	font-size: 9px !important;
+	color: #ffffff !important;
+	background-color: #d54e21;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	-webkit-font-smoothing: subpixel-antialiased !important;
+}
+.ttfmake-plus-info p {
+	margin-top: 0;
+	margin-left: 10px;
+}
+.ttfmake-section-text .ttfmake-titlediv {
+	padding-right: 45px;
+}
+.edit-text-column-link {
+	right: 0;
+}
+.ttfmp-import-message strong {
+	display: inline-block;
+	font-size: 14px;
+	margin-bottom: 4px;
+}
+.make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before {
+	position: relative;
+	top: 32px;
+	margin-left: -2px;
+	text-align: center;
+}
+.make-plus-products .section-type-description {
+	color: #777777;
+}
+.ttfmake-menu-list-item.make-plus-products:hover .ttfmake-menu-list-item-link-icon-wrapper {
+	border-color: #dfdfdf;
+}
+.make-plus-products .section-type-description a {
+	color: #0074a2 !important;
+	text-decoration: underline;
+}
+.make-plus-products .section-type-description a:hover,
+.make-plus-products .section-type-description a:focus {
+	color: #2ea2cc !important;
+}

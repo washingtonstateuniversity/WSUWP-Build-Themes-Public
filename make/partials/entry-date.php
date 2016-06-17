@@ -3,8 +3,8 @@
  * @package Make
  */
 
-$date_key    = 'layout-' . ttfmake_get_view() . '-post-date';
-$date_option = ttfmake_sanitize_choice( get_theme_mod( $date_key, ttfmake_get_default( $date_key ) ), $date_key );
+$date_key    = 'layout-' . make_get_current_view() . '-post-date';
+$date_option = make_get_thememod_value( $date_key );
 
 // Get date string
 $date_string = get_the_date();

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Make 1.0.0\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support\n"
 "POT-Creation-Date: 2014-09-23 16:55:38+00:00\n"
-"PO-Revision-Date: 2014-09-24 15:23+0100\n"
+"PO-Revision-Date: 2016-05-02 09:51-0800\n"
 "Last-Translator: Patloq <pblessauvages@mac.com>\n"
 "Language-Team: The Theme Foundry <timm@dertimm.de>\n"
 "Language: de_DE\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: 404.php:12
@@ -495,7 +495,7 @@ msgstr "Upgraden auf Make Plus"
 
 #: inc/customizer/helpers-defaults.php:118
 msgid "Menu"
-msgstr "Meü"
+msgstr "Menü"
 
 #: inc/customizer/helpers-defaults.php:132
 msgid "Featured"
@@ -645,8 +645,7 @@ msgstr "Mit Piktrogramm (Icon)"
 msgid "With text"
 msgstr "Mit Text"
 
-#: inc/customizer/helpers.php:326
-#: inc/customizer/legacy_sections/social.php:261
+#: inc/customizer/helpers.php:326 inc/customizer/legacy_sections/social.php:261
 msgid "Email"
 msgstr "Email"
 

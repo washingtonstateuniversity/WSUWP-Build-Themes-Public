@@ -7,46 +7,7 @@
 <h1 class="section-title">
 	<?php
 	if ( is_archive() ) :
-		if ( is_category() ) :
-			printf(
-				esc_html__( 'From %s', 'make' ),
-				'<strong>' . single_cat_title( '', false ) . '</strong>'
-			);
-
-		elseif ( is_tag() ) :
-			printf(
-				esc_html__( 'Tagged %s', 'make' ),
-				'<strong>' . single_tag_title( '', false ) . '</strong>'
-			);
-
-		elseif ( is_day() ) :
-			printf(
-				esc_html__( 'From %s', 'make' ),
-				'<strong>' . get_the_date() . '</strong>'
-			);
-
-		elseif ( is_month() ) :
-			printf(
-				esc_html__( 'From %s', 'make' ),
-				'<strong>' . get_the_date( _x( 'F Y', 'date format code for month and year', 'make' ) ) . '</strong>'
-			);
-
-		elseif ( is_year() ) :
-			printf(
-				esc_html__( 'From %s', 'make' ),
-				'<strong>' . get_the_date( _x( 'Y', 'date format code for year', 'make' ) ) . '</strong>'
-			);
-
-		elseif ( is_author() ) :
-			printf(
-				esc_html__( 'By %s', 'make' ),
-				'<strong class="vcard">' . get_the_author() . '</strong>'
-			);
-
-		else :
-			esc_html_e( 'Archive', 'make' );
-
-		endif;
+		the_archive_title();
 
 	elseif ( is_search() ) :
 		printf(

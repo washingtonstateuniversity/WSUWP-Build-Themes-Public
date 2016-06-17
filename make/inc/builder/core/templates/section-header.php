@@ -31,6 +31,7 @@ if ( ! empty( $ttfmake_section_data['section']['config'] ) ) {
  * This filter is deprecated. Use make_builder_section_links instead.
  *
  * @since 1.0.7.
+ * @deprecated 1.4.0.
  *
  * @param array    $links    The link definition array.
  */

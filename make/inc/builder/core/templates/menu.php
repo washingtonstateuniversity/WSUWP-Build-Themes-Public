@@ -33,25 +33,6 @@ $class = ( 'c' === get_user_setting( 'ttfmakemt' . get_the_ID() ) ) ? 'closed' :
 				</li>
 				</a>
 			<?php endforeach; ?>
-			<?php if ( ! ttfmake_is_plus() ) : ?>
-				<li id="ttfmake-menu-list-item-link-plus" class="ttfmake-menu-list-item">
-					<div>
-						<h4><?php esc_html_e( 'Get more.', 'make' ); ?></h4>
-						<p class="howto">
-							<?php
-							printf(
-								esc_html__( 'Looking for more sections and options? %s', 'make' ),
-								sprintf(
-									'<a href="%1$s" target="_blank">%2$s</a>',
-									ttfmake_get_plus_link(),
-									esc_html__( 'Upgrade to Make Plus.', 'make' )
-								)
-							);
-							?>
-						</p>
-					</div>
-				</li>
-			<?php endif; ?>
 			<?php
 			/**
 			 * Execute code after the builder menu items are displayed.

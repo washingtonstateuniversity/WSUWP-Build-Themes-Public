@@ -4,14 +4,7 @@
  */
 
 // Header Options
-$header_text     = get_theme_mod( 'header-text', false );
-$social_links    = ttfmake_get_social_links();
-$show_social     = (int) get_theme_mod( 'header-show-social', ttfmake_get_default( 'header-show-social' ) );
-$show_search     = (int) get_theme_mod( 'header-show-search', ttfmake_get_default( 'header-show-search' ) );
-$subheader_class = ( 1 === $show_social ) ? ' right-content' : '';
-$hide_site_title = (int) get_theme_mod( 'hide-site-title', ttfmake_get_default( 'hide-site-title' ) );
-$hide_tagline    = (int) get_theme_mod( 'hide-tagline', ttfmake_get_default( 'hide-tagline' ) );
-$menu_label      = get_theme_mod( 'navigation-mobile-label', ttfmake_get_default( 'navigation-mobile-label' ) );
+$subheader_class = ( make_get_thememod_value( 'header-show-social' ) ) ? ' right-content' : '';
 $header_bar_menu = wp_nav_menu( array(
 	'theme_location'  => 'header-bar',
 	'container_class' => 'header-bar-menu',
@@ -22,17 +15,22 @@ $header_bar_menu = wp_nav_menu( array(
 ?>
 
 <header id="site-header" class="<?php echo esc_attr( ttfmake_get_site_header_class() ); ?>" role="banner">
-	<?php // Only show Sub Header if it has content
-	if ( ! empty( $header_text ) || 1 === $show_search || ( ! empty ( $social_links ) && 1 === $show_social ) || ! empty( $header_bar_menu ) ) : ?>
+	<?php // Only show Header Bar if it has content
+	if (
+		make_get_thememod_value( 'header-text' )
+		||
+		( make_has_socialicons() && make_get_thememod_value( 'header-show-social' ) )
+		||
+		! empty( $header_bar_menu )
+	) : ?>
 	<div class="header-bar<?php echo esc_attr( $subheader_class ); ?>">
 		<div class="container">
-			<a class="skip-link screen-reader-text" href="#site-content"><?php esc_html_e( 'Skip to content', 'make' ); ?></a>
 			<?php // Social links
-			ttfmake_maybe_show_social_links( 'header' ); ?>
+			make_socialicons( 'header' ); ?>
 			<?php // Header text; shown only if there is no header menu
-			if ( ( ! empty( $header_text ) || ttfmake_is_preview() ) && empty( $header_bar_menu ) ) : ?>
+			if ( ( make_get_thememod_value( 'header-text' ) || is_customize_preview() ) && empty( $header_bar_menu ) ) : ?>
 				<span class="header-text">
-				<?php echo ttfmake_sanitize_text( $header_text ); ?>
+				<?php echo make_get_thememod_value( 'header-text' ); ?>
 				</span>
 			<?php endif; ?>
 			<?php echo $header_bar_menu; ?>
@@ -43,33 +41,30 @@ $header_bar_menu = wp_nav_menu( array(
 		<div class="container">
 			<div class="site-branding">
 				<?php // Logo
-				if ( ttfmake_get_logo()->has_logo() ) : ?>
-				<div class="custom-logo">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"></a>
-				</div>
+				if ( make_has_logo() ) : ?>
+					<?php make_logo(); ?>
 				<?php endif; ?>
 				<?php // Site title
 				if ( get_bloginfo( 'name' ) ) : ?>
-				<h1 class="site-title<?php if ( 1 === $hide_site_title ) echo ' screen-reader-text'; ?>">
+				<h1 class="site-title<?php if ( make_get_thememod_value( 'hide-site-title' ) ) echo ' screen-reader-text'; ?>">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 				</h1>
 				<?php endif; ?>
 				<?php // Tagline
 				if ( get_bloginfo( 'description' ) ) : ?>
-				<span class="site-description<?php if ( 1 === $hide_tagline ) echo ' screen-reader-text'; ?>">
+				<span class="site-description<?php if ( make_get_thememod_value( 'hide-tagline' ) ) echo ' screen-reader-text'; ?>">
 					<?php bloginfo( 'description' ); ?>
 				</span>
 				<?php endif; ?>
 			</div>
 
 			<?php // Search form
-			if ( 1 === $show_search ) :
+			if ( make_get_thememod_value( 'header-show-search' ) ) :
 				get_search_form();
 			endif; ?>
 
 			<nav id="site-navigation" class="site-navigation" role="navigation">
-				<span class="menu-toggle"><?php echo esc_html( $menu_label ); ?></span>
-				<a class="skip-link screen-reader-text" href="#site-content"><?php esc_html_e( 'Skip to content', 'make' ); ?></a>
+				<span class="menu-toggle"><?php echo make_get_thememod_value( 'navigation-mobile-label' ); ?></span>
 				<?php
 				wp_nav_menu( array(
 					'theme_location' => 'primary'

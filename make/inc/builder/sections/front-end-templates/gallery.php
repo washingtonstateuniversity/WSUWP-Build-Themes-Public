@@ -43,7 +43,7 @@ $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_
 					</div>
 					<?php elseif ( has_excerpt( $item['image-id'] ) ) : ?>
 					<div class="builder-gallery-description">
-						<?php echo ttfmake_sanitize_text( get_post( $item['image-id'] )->post_excerpt ); ?>
+						<?php echo Make()->sanitize()->sanitize_text( get_post( $item['image-id'] )->post_excerpt ); ?>
 					</div>
 					<?php endif; ?>
 				</div>

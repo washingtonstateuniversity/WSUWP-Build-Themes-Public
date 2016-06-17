@@ -4,14 +4,14 @@
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Build a website that means business. With Make’s powerful drag and drop page builder and hundreds of Customizer options, you can effortlessly brand your site without touching a line of code. Add full-width banners, columns, and galleries to showcase your best work. The intuitive builder delivers clean, lean code — not shortcodes — so you can trust your content remains portable. Make lets you control page layout options, including sidebar display, on all your posts and pages. Choose from hundreds of Google Fonts and upload custom backgrounds everywhere. Built on a fully responsive grid, Make renders as beautifully on tablets and phone screens as it does on desktop. Make scales with your business and is fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and others. For documentation on the page builder and getting started with Make, see: https://thethemefoundry.com/make-help/
- * Version:     1.6.7
+ * Version:     1.7.4
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
  * Domain Path: /languages/
- * Tags:        black, blue, green, gray, orange, red, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, responsive-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, photoblogging
+ * Tags:        one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, grid-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, footer-widgets, blog, e-commerce, education, entertainment, food-and-drink, holiday, news, photography, portfolio
  *
- * Make WordPress Theme, Copyright 2014 The Theme Foundry
+ * Make WordPress Theme, Copyright 2014-2016 The Theme Foundry
  * Make is distributed under the terms of the GNU GPL
  */
 
@@ -322,6 +322,7 @@ a img {
 .site-content,
 .site-footer,
 .gallery,
+.entry-header .entry-meta,
 .entry-content,
 .builder-section,
 .site-content .container,
@@ -340,6 +341,7 @@ div.sharedaddy {
 .site-content:before,
 .site-footer:before,
 .gallery:before,
+.entry-header .entry-meta:before,
 .entry-content:before,
 .builder-section:before,
 .site-content .container:before,
@@ -355,6 +357,7 @@ div.sharedaddy:before,
 .site-content:after,
 .site-footer:after,
 .gallery:after,
+.entry-header .entry-meta:after,
 .entry-content:after,
 .builder-section:after,
 .site-content .container:after,
@@ -374,6 +377,7 @@ div.sharedaddy:after {
 .site-content:after,
 .site-footer:after,
 .gallery:after,
+.entry-header .entry-meta:after,
 .entry-content:after,
 .builder-section:after,
 .site-content .container:after,
@@ -566,7 +570,11 @@ a {
 	text-align: center;
 }
 
-.header-layout-2 .custom-logo {
+.header-layout-2 a.custom-logo-link {
+	display: inline-block;
+}
+
+.header-layout-2 div.custom-logo {
 	display: inline-block;
 }
 
@@ -686,7 +694,21 @@ a {
  Custom logo (_scaffolding.scss)
 -------------------------------------------------------- */
 
-.custom-logo {
+/* Core */
+a.custom-logo-link {
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 11px;
+	margin-bottom: 1.1rem;
+}
+
+img.custom-logo {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Legacy */
+div.custom-logo {
 	display: block;
 	max-width: 100%;
 	margin-bottom: 11px;
@@ -696,7 +718,7 @@ a {
 	background-size: contain;
 }
 
-.custom-logo a {
+div.custom-logo a {
 	display: block;
 	width: 100%;
 	height: 0;
@@ -706,7 +728,7 @@ a {
 	text-decoration: none;
 }
 
-.no-site-title.no-site-tagline .custom-logo {
+.no-site-title.no-site-tagline div.custom-logo {
 	margin-bottom: 0;
 }
 
@@ -993,6 +1015,10 @@ a {
 		float: right;
 		margin-bottom: 0;
 	}
+}
+
+.header-social-links ul {
+	margin-bottom: 0;
 }
 
 .header-social-links li a {
@@ -1487,17 +1513,6 @@ a {
 	text-decoration: none;
 }
 
-.site-footer .site-info .theme-by,
-.site-footer .site-info a .theme-by {
-	padding: 0 4px;
-	padding: 0 0.4rem;
-	font-weight: normal;
-	font-style: italic;
-	letter-spacing: 1px;
-	letter-spacing: 0.1rem;
-	text-transform: lowercase;
-}
-
 .footer-widget-container {
 	float: left;
 	width: 100%;
@@ -1531,6 +1546,10 @@ a {
 		font-size: 17px;
 		font-size: 1.7rem;
 	}
+}
+
+.footer-social-links ul {
+	margin-bottom: 0;
 }
 
 .infinite-scroll.neverending #site-footer {
@@ -1802,6 +1821,8 @@ Content (_elements.scss)
 b,
 strong {
 	font-weight: bold;
+
+	-webkit-font-smoothing: antialiased;
 }
 
 dfn,
@@ -2152,13 +2173,37 @@ img {
 	margin: 0 auto;
 }
 
-.screen-reader-text,
-.social-links li i span {
+.screen-reader-text {
 	overflow: hidden;
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
 	width: 1px;
 	height: 1px;
+}
+
+.screen-reader-text:focus {
+	display: block;
+	clip: auto !important;
+	z-index: 100000;
+	top: 5px;
+	left: 5px;
+	width: auto;
+	height: auto;
+	padding: 15px 23px 14px;
+	border-radius: 3px;
+	color: #21759b;
+	background-color: #f1f1f1;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	line-height: normal;
+	text-decoration: none;
+	/* Above WP toolbar. */
+}
+
+#site-content[tabindex="-1"]:focus {
+	outline: 0;
 }
 
 img.wp-smiley {
@@ -3693,6 +3738,7 @@ select {
 -------------------------------------------------------- */
 
 .ttfmake-button,
+.site-main .gform_wrapper .gform_footer input.button,
 button,
 input[type="button"],
 input[type="reset"],
@@ -3713,7 +3759,9 @@ input[type="submit"] {
 }
 
 .ttfmake-button:hover,
+.site-main .gform_wrapper .gform_footer input.button:hover,
 .ttfmake-button:focus,
+.site-main .gform_wrapper .gform_footer input.button:focus,
 button:hover,
 button:focus,
 input[type="button"]:hover,
@@ -3726,6 +3774,7 @@ input[type="submit"]:focus {
 }
 
 .ttfmake-button.color-primary-background,
+.site-main .gform_wrapper .gform_footer input.color-primary-background.button,
 button.color-primary-background,
 input[type="button"].color-primary-background,
 input[type="reset"].color-primary-background,
@@ -3734,6 +3783,7 @@ input[type="submit"].color-primary-background {
 }
 
 .ttfmake-button.color-secondary-background,
+.site-main .gform_wrapper .gform_footer input.color-secondary-background.button,
 button.color-secondary-background,
 input[type="button"].color-secondary-background,
 input[type="reset"].color-secondary-background,
@@ -3742,6 +3792,7 @@ input[type="submit"].color-secondary-background {
 }
 
 .ttfmake-button.ttfmake-success,
+.site-main .gform_wrapper .gform_footer input.ttfmake-success.button,
 button.ttfmake-success,
 input[type="button"].ttfmake-success,
 input[type="reset"].ttfmake-success,
@@ -3750,6 +3801,7 @@ input[type="submit"].ttfmake-success {
 }
 
 .ttfmake-button.ttfmake-error,
+.site-main .gform_wrapper .gform_footer input.ttfmake-error.button,
 button.ttfmake-error,
 input[type="button"].ttfmake-error,
 input[type="reset"].ttfmake-error,
@@ -3758,6 +3810,7 @@ input[type="submit"].ttfmake-error {
 }
 
 .ttfmake-button.ttfmake-important,
+.site-main .gform_wrapper .gform_footer input.ttfmake-important.button,
 button.ttfmake-important,
 input[type="button"].ttfmake-important,
 input[type="reset"].ttfmake-important,
@@ -3766,6 +3819,7 @@ input[type="submit"].ttfmake-important {
 }
 
 .ttfmake-button.ttfmake-download:after,
+.site-main .gform_wrapper .gform_footer input.ttfmake-download.button:after,
 button.ttfmake-download:after,
 input[type="button"].ttfmake-download:after,
 input[type="reset"].ttfmake-download:after,
@@ -3848,34 +3902,34 @@ input::-moz-focus-inner {
  Gravity Forms (_support.scss)
 -------------------------------------------------------- */
 
-.gform_wrapper textarea,
-.gform_wrapper input[type="date"],
-.gform_wrapper input[type="datetime"],
-.gform_wrapper input[type="datetime-local"],
-.gform_wrapper input[type="email"],
-.gform_wrapper input[type="month"],
-.gform_wrapper input[type="number"],
-.gform_wrapper input[type="password"],
-.gform_wrapper input[type="search"],
-.gform_wrapper input[type="tel"],
-.gform_wrapper input[type="text"],
-.gform_wrapper input[type="time"],
-.gform_wrapper input[type="url"],
-.gform_wrapper input[type="week"] {
+.site-main .gform_wrapper textarea,
+.site-main .gform_wrapper input[type="date"],
+.site-main .gform_wrapper input[type="datetime"],
+.site-main .gform_wrapper input[type="datetime-local"],
+.site-main .gform_wrapper input[type="email"],
+.site-main .gform_wrapper input[type="month"],
+.site-main .gform_wrapper input[type="number"],
+.site-main .gform_wrapper input[type="password"],
+.site-main .gform_wrapper input[type="search"],
+.site-main .gform_wrapper input[type="tel"],
+.site-main .gform_wrapper input[type="text"],
+.site-main .gform_wrapper input[type="time"],
+.site-main .gform_wrapper input[type="url"],
+.site-main .gform_wrapper input[type="week"] {
 	padding: 6px 8px !important;
 }
 
-.gform_wrapper .top_label .gfield_label {
+.site-main .gform_wrapper .top_label .gfield_label {
 	margin-top: 22px !important;
 }
 
-.gform_wrapper .ginput_complex label,
-.gform_wrapper .gfield_time_hour label,
-.gform_wrapper .gfield_time_minute label,
-.gform_wrapper .gfield_date_month label,
-.gform_wrapper .gfield_date_day label,
-.gform_wrapper .gfield_date_year label,
-.gform_wrapper .instruction {
+.site-main .gform_wrapper .ginput_complex label,
+.site-main .gform_wrapper .gfield_time_hour label,
+.site-main .gform_wrapper .gfield_time_minute label,
+.site-main .gform_wrapper .gfield_date_month label,
+.site-main .gform_wrapper .gfield_date_day label,
+.site-main .gform_wrapper .gfield_date_year label,
+.site-main .gform_wrapper .instruction {
 	font-size: 13px !important;
 }
 

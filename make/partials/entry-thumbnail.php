@@ -7,18 +7,13 @@ if ( is_attachment() ) :
 	// Always show post-header style image on Attachment view
 	$thumb_option   = 'post-header';
 	$thumbnail_id   = get_post()->ID;
-	$thumbnail_size = 'full';
+	$thumbnail_size = make_get_entry_thumbnail_size( $thumb_option );
+
 	$thumbnail_html = '<a href="' . wp_get_attachment_url() . '">' . wp_get_attachment_image( $thumbnail_id, $thumbnail_size ) . '</a>';
 else:
-	$thumb_key    = 'layout-' . ttfmake_get_view() . '-featured-images';
-	$thumb_option = ttfmake_sanitize_choice( get_theme_mod( $thumb_key, ttfmake_get_default( $thumb_key ) ), $thumb_key );
+	$thumb_option = make_get_thememod_value( 'layout-' . make_get_current_view() . '-featured-images' );
 	$thumbnail_id = get_post_thumbnail_id();
-
-	if ( 'post-header' === $thumb_option ) :
-		$thumbnail_size = 'large';
-	else :
-		$thumbnail_size = ( is_singular() ) ? 'medium' : 'thumbnail';
-	endif;
+	$thumbnail_size = make_get_entry_thumbnail_size( $thumb_option );
 
 	$thumbnail_html = get_the_post_thumbnail( get_the_ID(), $thumbnail_size );
 endif;
@@ -31,7 +26,7 @@ endif;
 	<?php if ( ! is_singular() ) : ?></a><?php endif; ?>
 	<?php if ( is_singular() && has_excerpt( $thumbnail_id ) ) : ?>
 	<figcaption class="entry-thumbnail-caption">
-		<?php echo ttfmake_sanitize_text( get_post( $thumbnail_id )->post_excerpt ); ?>
+		<?php echo Make()->sanitize()->sanitize_text( get_post( $thumbnail_id )->post_excerpt ); ?>
 	</figcaption>
 	<?php endif; ?>
 </figure>

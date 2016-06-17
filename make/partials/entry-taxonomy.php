@@ -3,11 +3,11 @@
  * @package Make
  */
 
-$taxonomy_view   = ttfmake_get_view();
+$taxonomy_view   = make_get_current_view();
 $category_key    = 'layout-' . $taxonomy_view . '-show-categories';
 $tag_key         = 'layout-' . $taxonomy_view . '-show-tags';
-$category_option = (bool) get_theme_mod( $category_key, ttfmake_get_default( $category_key ) );
-$tag_option      = (bool) get_theme_mod( $tag_key, ttfmake_get_default( $tag_key ) );
+$category_option = make_get_thememod_value( $category_key );
+$tag_option      = make_get_thememod_value( $tag_key );
 ?>
 
 <?php if ( ( $category_option || $tag_option ) && ( ( has_category() && ttfmake_categorized_blog() ) || has_tag() ) ) : ?>

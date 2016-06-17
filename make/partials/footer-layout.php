@@ -4,10 +4,8 @@
  */
 
 // Footer Options
-$footer_layout = (int) get_theme_mod( 'footer-layout', ttfmake_get_default( 'footer-layout' ) );
-$sidebar_count = (int) get_theme_mod( 'footer-widget-areas', ttfmake_get_default( 'footer-widget-areas' ) );
-$social_links  = ttfmake_get_social_links();
-$show_social   = (int) get_theme_mod( 'footer-show-social', ttfmake_get_default( 'footer-show-social' ) );
+$footer_layout = make_get_thememod_value( 'footer-layout' );
+$sidebar_count = make_get_thememod_value( 'footer-widget-areas' );
 
 // Test for enabled sidebars that contain widgets
 $has_active_sidebar = false;
@@ -40,6 +38,6 @@ if ( $sidebar_count > 0 ) {
 		<?php // Footer text and credit line
 		get_template_part( 'partials/footer', 'credit' ); ?>
 
-		<?php ttfmake_maybe_show_social_links( 'footer' ); ?>
+		<?php make_socialicons( 'footer' ); ?>
 	</div>
 </footer>

@@ -43,19 +43,19 @@ class TTFMAKE_Builder_Base {
 	 */
 	public function __construct() {
 		// Include the API
-		require get_template_directory() . '/inc/builder/core/api.php';
+		require_once get_template_directory() . '/inc/builder/core/api.php';
 
 		// Include the configuration helpers
-		require get_template_directory() . '/inc/builder/core/configuration-helpers.php';
+		require_once get_template_directory() . '/inc/builder/core/configuration-helpers.php';
 
 		// Add the core sections
-		require get_template_directory() . '/inc/builder/sections/section-definitions.php';
+		require_once get_template_directory() . '/inc/builder/sections/section-definitions.php';
 
 		// Include the save routines
-		require get_template_directory() . '/inc/builder/core/save.php';
+		require_once get_template_directory() . '/inc/builder/core/save.php';
 
 		// Include the front-end helpers
-		require get_template_directory() . '/inc/builder/sections/section-front-end-helpers.php';
+		require_once get_template_directory() . '/inc/builder/sections/section-front-end-helpers.php';
 
 		// Set up actions
 		add_action( 'admin_init', array( $this, 'register_post_type_support_for_builder' ) );
@@ -66,10 +66,6 @@ class TTFMAKE_Builder_Base {
 		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
 		add_action( 'post_submitbox_misc_actions', array( $this, 'builder_toggle' ) );
-
-		if ( false === ttfmake_is_plus() ) {
-			add_action( 'post_submitbox_misc_actions', array( $this, 'post_submitbox_misc_actions' ) );
-		}
 	}
 
 	/**
@@ -241,7 +237,7 @@ class TTFMAKE_Builder_Base {
 		// Enqueue the CSS
 		wp_enqueue_style(
 			'ttfmake-builder',
-			get_template_directory_uri() . '/inc/builder/core/css/builder.css',
+			Make()->scripts()->get_css_directory_uri() . '/builder/core/builder.css',
 			array(),
 			TTFMAKE_VERSION
 		);
@@ -261,7 +257,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_register_script(
 			'ttfmake-builder/js/models/section.js',
-			get_template_directory_uri() . '/inc/builder/core/js/models/section.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/models/section.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -269,7 +265,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_register_script(
 			'ttfmake-builder/js/collections/sections.js',
-			get_template_directory_uri() . '/inc/builder/core/js/collections/sections.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/collections/sections.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -277,7 +273,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_register_script(
 			'ttfmake-builder/js/views/menu.js',
-			get_template_directory_uri() . '/inc/builder/core/js/views/menu.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/views/menu.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -285,7 +281,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_register_script(
 			'ttfmake-builder/js/views/section.js',
-			get_template_directory_uri() . '/inc/builder/core/js/views/section.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/views/section.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -293,7 +289,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_register_script(
 			'ttfmake-builder/js/views/overlay.js',
-			get_template_directory_uri() . '/inc/builder/core/js/views/overlay.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/views/overlay.js',
 			array(),
 			TTFMAKE_VERSION,
 			true
@@ -307,7 +303,7 @@ class TTFMAKE_Builder_Base {
 		 * @param array    $dependencies    The list of dependencies.
 		 */
 		$dependencies = apply_filters(
-			'ttfmake_builder_js_dependencies',
+			'make_builder_js_dependencies',
 			array_merge(
 				$dependencies,
 				array(
@@ -322,7 +318,7 @@ class TTFMAKE_Builder_Base {
 
 		wp_enqueue_script(
 			'ttfmake-builder',
-			get_template_directory_uri() . '/inc/builder/core/js/app.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/app.js',
 			$dependencies,
 			TTFMAKE_VERSION,
 			true
@@ -338,6 +334,37 @@ class TTFMAKE_Builder_Base {
 		wp_localize_script(
 			'ttfmake-builder',
 			'ttfmakeBuilderData',
+			$data
+		);
+
+		// Modifications to Edit Page UI
+		global $pagenow;
+
+		wp_enqueue_script(
+			'ttfmake-builder-edit-page',
+			Make()->scripts()->get_js_directory_uri() . '/builder/core/edit-page.js',
+			array( 'jquery' ),
+			TTFMAKE_VERSION,
+			true
+		);
+
+		$data = array(
+			'featuredImage' => esc_html__( 'Note: the Builder Template does not display a featured image.', 'make' ),
+			'pageNow'       => esc_js( $pagenow ),
+		);
+
+		/**
+		 * Filter: Modify whether new pages default to the Builder template.
+		 *
+		 * @since 1.7.0.
+		 *
+		 * @param bool $is_default
+		 */
+		$data['defaultTemplate'] = apply_filters( 'make_builder_is_default', true );
+
+		wp_localize_script(
+			'ttfmake-builder-edit-page',
+			'ttfmakeEditPageData',
 			$data
 		);
 	}
@@ -395,22 +422,8 @@ class TTFMAKE_Builder_Base {
 		if ( ttfmake_post_type_supports_builder( get_post_type() ) ) {
 			if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && ttfmake_is_builder_page() ) ) {
 				$classes .= ' ttfmake-builder-active';
-
-				// Add a class to denote Make Plus
-				if ( ttfmake_is_plus() ) {
-					$classes .= ' make-plus-enabled';
-				} else {
-					$classes .= ' make-plus-disabled';
-				}
 			} else {
 				$classes .= ' ttfmake-default-active';
-			}
-
-			// Add a class to denote Make Plus
-			if ( ttfmake_is_plus() ) {
-				$classes .= ' make-plus-enabled';
-			} else {
-				$classes .= ' make-plus-disabled';
 			}
 		}
 
@@ -638,34 +651,6 @@ class TTFMAKE_Builder_Base {
 	 */
 	function create_array_from_meta_keys( $arr ) {
 		return ttfmake_create_array_from_meta_keys( $arr );
-	}
-
-	/**
-	 * Display information about duplicating posts.
-	 *
-	 * @since  1.1.0.
-	 *
-	 * @return void
-	 */
-	public function post_submitbox_misc_actions() {
-		global $typenow;
-		if ( 'page' === $typenow ) : ?>
-		<div class="misc-pub-section ttfmake-duplicator">
-			<p style="font-style:italic;margin:0 0 7px 3px;">
-				<?php
-				printf(
-					esc_html__( 'Duplicate this page with %s.', 'make' ),
-					sprintf(
-						'<a href="%1$s" target="_blank">%2$s</a>',
-						esc_url( ttfmake_get_plus_link( 'duplicator' ) ),
-						'Make Plus'
-					)
-				);
-				?>
-			</p>
-			<div class="clear"></div>
-		</div>
-	<?php endif;
 	}
 }
 endif;
@@ -1027,41 +1012,3 @@ function ttfmake_register_placeholder_image( $id, $data ) {
 	$ttfmake_placeholder_images[ $id ] = $data;
 }
 endif;
-
-/**
- * Add information about Quick Start.
- *
- * @since  1.0.6.
- *
- * @return void
- */
-function ttfmake_plus_quick_start() {
-	if ( false !== ttfmake_is_plus() || 'page' !== get_post_type() ) {
-		return;
-	}
-
-	$section_ids        = get_post_meta( get_the_ID(), '_ttfmake-section-ids', true );
-	$additional_classes = ( ! empty( $section_ids ) ) ? ' ttfmp-import-message-hide' : '';
-	?>
-	<div id="message" class="error below-h2 ttfmp-import-message<?php echo esc_attr( $additional_classes ); ?>">
-		<p>
-			<strong><?php esc_html_e( 'Want some ideas?', 'make' ); ?></strong><br />
-			<?php
-			printf(
-				esc_html__( '%s and get a quick start with pre-made designer builder templates.', 'make' ),
-				sprintf(
-					'<a href="%1$s" target="_blank">%2$s</a>',
-					esc_url( ttfmake_get_plus_link( 'quick-start' ) ),
-					sprintf(
-						esc_html__( 'Upgrade to %s', 'make' ),
-						'Make Plus'
-					)
-				)
-			);
-			?>
-		</p>
-	</div>
-<?php
-}
-
-add_action( 'edit_form_after_title', 'ttfmake_plus_quick_start' );

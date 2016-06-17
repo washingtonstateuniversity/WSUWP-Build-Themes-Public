@@ -9,8 +9,8 @@ if ( is_singular() ) :
 
 // Blog, Archives, Search Results
 else :
-	$content_key    = 'layout-' . ttfmake_get_view() . '-auto-excerpt';
-	$content_option = (bool) get_theme_mod( $content_key, ttfmake_get_default( $content_key ) );
+	$content_key    = 'layout-' . make_get_current_view() . '-auto-excerpt';
+	$content_option = make_get_thememod_value( $content_key );
 
 	if ( $content_option || has_excerpt() ) :
 		echo wpautop( get_the_excerpt() . "\n\n" . ttfmake_get_read_more() );

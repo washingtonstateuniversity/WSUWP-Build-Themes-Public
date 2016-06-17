@@ -14,6 +14,7 @@ if ( ! function_exists( 'ttfmake_comment' ) ) :
  * @param  array    $comment    The current comment object.
  * @param  array    $args       The comment configuration arguments.
  * @param  mixed    $depth      Depth of the current comment.
+ *
  * @return void
  */
 function ttfmake_comment( $comment, $args, $depth ) {
@@ -91,49 +92,35 @@ if ( ! function_exists( 'ttfmake_categorized_blog' ) ) :
 /**
  * Returns true if a blog has more than 1 category.
  *
- * @since  1.0.0.
+ * @since 1.0.0.
+ * @since 1.7.0. Updated to match Twenty Sixteen's functionality.
  *
- * @return bool    Determine if the site has more than one active category.
+ * @return bool
  */
 function ttfmake_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
+	if ( false === ( $all_the_cool_cats = get_transient( 'make_category_count' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
-			'hide_empty' => 1,
+			'fields'     => 'ids',
+			// We only need to know if there is more than one category.
+			'number'     => 2,
 		) );
 
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( 'all_the_cool_cats', $all_the_cool_cats, DAY_IN_SECONDS );
+		set_transient( 'make_category_count', $all_the_cool_cats, WEEK_IN_SECONDS );
 	}
 
-	if ( '1' != $all_the_cool_cats ) {
-		// This blog has more than 1 category so ttfmake_categorized_blog should return true.
+	if ( $all_the_cool_cats > 1 ) {
+		// This blog has more than 1 category so return true.
 		return true;
 	} else {
-		// This blog has only 1 category so ttfmake_categorized_blog should return false.
+		// This blog does not have more than 1 category so return false.
 		return false;
 	}
 }
 endif;
-
-if ( ! function_exists( 'ttfmake_category_transient_flusher' ) ) :
-/**
- * Flush out the transients used in ttfmake_categorized_blog.
- *
- * @since  1.0.0.
- *
- * @return void
- */
-function ttfmake_category_transient_flusher() {
-	delete_transient( 'all_the_cool_cats' );
-	ttfmake_categorized_blog();
-}
-endif;
-
-add_action( 'edit_category', 'ttfmake_category_transient_flusher' );
-add_action( 'save_post',     'ttfmake_category_transient_flusher' );
 
 if ( ! function_exists( 'ttfmake_get_read_more' ) ) :
 /**
@@ -145,32 +132,48 @@ if ( ! function_exists( 'ttfmake_get_read_more' ) ) :
  *
  * @param  string    $before    HTML before the text.
  * @param  string    $after     HTML after the text.
+ *
  * @return string               Full read more HTML.
  */
-function ttfmake_get_read_more( $before = '<a class="read-more" href="%s">', $after = '</a>' ) {
-	if ( strpos( $before, '%s' ) ) {
+function ttfmake_get_read_more( $before = '<a class="more-link" href="%s">', $after = '</a>' ) {
+	// Add the permalink
+	if ( false !== strpos( $before, '%s' ) ) {
 		$before = sprintf(
 			$before,
 			get_permalink()
 		);
 	}
 
-	/**
-	 * Deprecated: Filter the value of the read more text.
-	 *
-	 * This filter hook has been deprecated in favor of a theme option in the Customizer. The theme option
-	 * will only be available if no filters have been added to the hook.
-	 *
-	 * @since 1.2.3.
-	 * @deprecated 1.5.0.
-	 *
-	 * @param string $read_more_text The read more text value.
-	 */
-	$more = apply_filters( 'make_read_more_text', false );
+	$more = false;
+
+	// Check for deprecated filter
+	if ( has_filter( 'make_read_more_text' ) ) {
+		Make()->compatibility()->deprecated_hook(
+			'make_read_more_text',
+			'1.5.0',
+			esc_html__( '
+				The hook has been replaced with a theme option in the Customizer.
+				The theme option will only be available if no filters have been added to the hook.
+			', 'make' )
+		);
+
+		/**
+		 * Deprecated: Filter the value of the read more text.
+		 *
+		 * This filter hook has been deprecated in favor of a theme option in the Customizer. The theme option
+		 * will only be available if no filters have been added to the hook.
+		 *
+		 * @since 1.2.3.
+		 * @deprecated 1.5.0.
+		 *
+		 * @param string $read_more_text The read more text value.
+		 */
+		$more = apply_filters( 'make_read_more_text', $more );
+	}
 
 	// No filters, get the theme option.
 	if ( false === $more ) {
-		$more = esc_html( get_theme_mod( 'label-read-more', ttfmake_get_default( 'label-read-more' ) ) );
+		$more = make_get_thememod_value( 'label-read-more' );
 	}
 
 	return $before . $more . $after;
@@ -192,15 +195,15 @@ function ttfmake_maybe_show_site_region( $region ) {
 	}
 
 	// Get the view
-	$view = ttfmake_get_view();
+	$view = make_get_current_view();
 
 	// Get the relevant option
-	$hide_region = (bool) get_theme_mod( 'layout-' . $view . '-hide-' . $region, ttfmake_get_default( 'layout-' . $view . '-hide-' . $region ) );
+	$hide_region = make_get_thememod_value( 'layout-' . $view . '-hide-' . $region );
 
 	if ( true !== $hide_region ) {
 		get_template_part(
 			'partials/' . $region . '-layout',
-			get_theme_mod( $region . '-layout', ttfmake_get_default( $region . '-layout' ) )
+			make_get_thememod_value( $region . '-layout' )
 		);
 	}
 }
@@ -215,25 +218,38 @@ if ( ! function_exists( 'ttfmake_get_site_header_class' ) ) :
  * @return string
  */
 function ttfmake_get_site_header_class() {
+	// Collector
+	$classes = array();
+
 	// Base
-	$class = 'site-header';
+	$classes[] = 'site-header';
 
 	// Layout
-	$class .= ' header-layout-' . get_theme_mod( 'header-layout', ttfmake_get_default( 'header-layout' ) );
+	$classes[] = 'header-layout-' . make_get_thememod_value( 'header-layout' );
 
 	// Title
-	$hide_site_title = (int) get_theme_mod( 'hide-site-title', ttfmake_get_default( 'hide-site-title' ) );
-	if ( 1 === $hide_site_title || ! get_bloginfo( 'name' ) ) {
-		$class .= ' no-site-title';
+	$hide_site_title = make_get_thememod_value( 'hide-site-title' );
+	if ( $hide_site_title || ! get_bloginfo( 'name' ) ) {
+		$classes[] = 'no-site-title';
 	}
 
 	// Tagline
-	$hide_tagline    = (int) get_theme_mod( 'hide-tagline', ttfmake_get_default( 'hide-tagline' ) );
-	if ( 1 === $hide_tagline || ! get_bloginfo( 'description' ) ) {
-		$class .= ' no-site-tagline';
+	$hide_tagline = make_get_thememod_value( 'hide-tagline' );
+	if ( $hide_tagline || ! get_bloginfo( 'description' ) ) {
+		$classes[] = 'no-site-tagline';
 	}
 
-	return esc_attr( $class );
+	/**
+	 * Filter: Modify the classes applied to the site header element.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @param array $classes
+	 */
+	$classes = apply_filters( 'make_site_header_class', $classes );
+
+	// Convert array to string and return
+	return implode( ' ', $classes );
 }
 endif;
 
@@ -249,66 +265,16 @@ if ( ! function_exists( 'ttfmake_maybe_show_sidebar' ) ) :
  * @since  1.0.0.
  *
  * @param  string    $location    The sidebar location (e.g., left, right).
+ *
  * @return void
  */
 function ttfmake_maybe_show_sidebar( $location ) {
 	// Get sidebar status
-	$show_sidebar = ttfmake_has_sidebar( $location );
+	$show_sidebar = make_has_sidebar( $location );
 
 	// Output the sidebar
 	if ( true === $show_sidebar ) {
 		get_sidebar( $location );
-	}
-}
-endif;
-
-if ( ! function_exists( 'ttfmake_maybe_show_social_links' ) ) :
-/**
- * Show the social links markup if the theme options and/or menus are configured for it.
- *
- * @since  1.0.0.
- *
- * @param  string    $region    The site region (header or footer).
- * @return void
- */
-function ttfmake_maybe_show_social_links( $region ) {
-	if ( ! in_array( $region, array( 'header', 'footer' ) ) ) {
-		return;
-	}
-
-	$show_social = (bool) get_theme_mod( $region . '-show-social', ttfmake_get_default( $region . '-show-social' ) );
-
-	if ( true === $show_social ) {
-		// First look for the alternate custom menu method
-		if ( has_nav_menu( 'social' ) ) {
-			wp_nav_menu(
-				array(
-					'theme_location' => 'social',
-					'container'      => false,
-					'menu_id'        => '',
-					'menu_class'     => 'social-menu social-links ' . $region . '-social-links',
-					'depth'          => 1,
-					'fallback_cb'    => '',
-				)
-			);
-		}
-		// Then look for the Customizer theme option method
-		else {
-			$social_links = ttfmake_get_social_links();
-			if ( ! empty( $social_links ) ) { ?>
-				<ul class="social-customizer social-links <?php echo $region; ?>-social-links">
-				<?php foreach ( $social_links as $key => $link ) : ?>
-					<li class="<?php echo esc_attr( $key ); ?>">
-						<a href="<?php echo esc_url( $link['url'] ); ?>">
-							<i class="fa fa-fw <?php echo esc_attr( $link['class'] ); ?>">
-								<span><?php echo esc_html( $link['title'] ); ?></span>
-							</i>
-						</a>
-					</li>
-				<?php endforeach; ?>
-				</ul>
-			<?php }
-		}
 	}
 }
 endif;
@@ -320,7 +286,8 @@ if ( ! function_exists( 'ttfmake_get_exif_data' ) ) :
  * @since  1.0.0.
  *
  * @param  int       $attachment_id    The attachment ID to get data from.
- * @return string                      The EXIF data.
+ *
+ * @return string                      The EXIF data with HTML markup.
  */
 function ttfmake_get_exif_data( $attachment_id = 0 ) {
 	// Validate attachment id
@@ -331,7 +298,7 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 	$output = '';
 
 	$attachment_meta = wp_get_attachment_metadata( $attachment_id );
-	$image_meta      = ( isset( $attachment_meta['image_meta'] ) ) ? array_filter( $attachment_meta['image_meta'], 'trim' ) : array();
+	$image_meta      = ( isset( $attachment_meta['image_meta'] ) ) ? $attachment_meta['image_meta'] : array();
 	if ( ! empty( $image_meta ) ) {
 		// Defaults
 		$defaults = array(
@@ -345,7 +312,7 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 		$image_meta = wp_parse_args( $image_meta, $defaults );
 
 		// Convert the shutter speed to a fraction and add units
-		if ( 0 !== $image_meta[ 'shutter_speed' ] ) {
+		if ( 0 != $image_meta[ 'shutter_speed' ] ) {
 			$raw_ss = floatval( $image_meta['shutter_speed'] );
 			$denominator = 1 / $raw_ss;
 			if ( $denominator > 1 ) {
@@ -370,15 +337,17 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 			 * Filter the shutter speed value.
 			 *
 			 * @since 1.2.3.
+			 * @since 1.7.0. Added $attachment_id parameter.
 			 *
 			 * @param string    $converted_as         The shutter speed value.
 			 * @param float     $raw_shutter_speed    The raw shutter speed value.
+			 * @param int       $attachment_id        The ID of the attachment.
 			 */
-			$image_meta['shutter_speed'] = apply_filters( 'make_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'] );
+			$image_meta['shutter_speed'] = apply_filters( 'make_exif_shutter_speed', $converted_ss, $image_meta['shutter_speed'], $attachment_id );
 		}
 
 		// Convert the aperture to an F-stop
-		if ( 0 !== $image_meta[ 'aperture' ] ) {
+		if ( 0 != $image_meta[ 'aperture' ] ) {
 			// Translators: this string denotes a camera f-stop. %s is a placeholder for the f-stop value. E.g. f/3.5
 			$f_stop = sprintf(
 				__( 'f/%s', 'make' ),
@@ -389,14 +358,14 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 			 * Filter the aperture value.
 			 *
 			 * @since 1.2.3.
+			 * @since 1.7.0. Added $attachment_id parameter.
 			 *
 			 * @param string    $f_stop          The aperture value.
 			 * @param int       $raw_aperture    The raw aperture value.
+			 * @param int       $attachment_id   The ID of the attachment.
 			 */
-			$image_meta['aperture'] = apply_filters( 'make_exif_aperture', $f_stop, $image_meta['aperture'] );
+			$image_meta['aperture'] = apply_filters( 'make_exif_aperture', $f_stop, $image_meta['aperture'], $attachment_id );
 		}
-
-		$output .= "<ul class=\"entry-exif-list\">\n";
 
 		// Camera
 		if ( ! empty( $image_meta['camera'] ) ) {
@@ -452,8 +421,11 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 				absint( $image_meta['iso'] )
 			);
 		}
+	}
 
-		$output .= "</ul>\n";
+	// Wrap list items
+	if ( '' !== $output ) {
+		$output = "<ul class=\"entry-exif-list\">\n" . $output . "</ul>\n";
 	}
 
 	/**
@@ -469,19 +441,231 @@ function ttfmake_get_exif_data( $attachment_id = 0 ) {
 endif;
 
 /**
- * Add the Yoast SEO breadcrumb, if the plugin is activated.
+ * Get a sanitized value for a Theme Mod setting.
  *
- * @since 1.6.4.
+ * @since 1.7.0.
+ *
+ * @param        $setting_id
+ * @param string $context
+ *
+ * @return mixed
+ */
+function make_get_thememod_value( $setting_id, $context = 'template' ) {
+	return Make()->thememod()->get_value( $setting_id, $context );
+}
+
+/**
+ * Get the default value for a Theme Mod setting.
+ *
+ * @since 1.7.0.
+ *
+ * @param $setting_id
+ *
+ * @return mixed
+ */
+function make_get_thememod_default( $setting_id ) {
+	return Make()->thememod()->get_default( $setting_id );
+}
+
+/**
+ * Get the current view.
+ *
+ * @since 1.7.0.
+ *
+ * @return mixed
+ */
+function make_get_current_view() {
+	return Make()->view()->get_current_view();
+}
+
+/**
+ * Check if the current view has a sidebar in the specified location (left or right).
+ *
+ * @since 1.7.0.
+ *
+ * @param $location
+ *
+ * @return mixed
+ */
+function make_has_sidebar( $location ) {
+	return Make()->widgets()->has_sidebar( $location );
+}
+
+/**
+ * Check if a custom logo has been set.
+ *
+ * @since 1.7.0.
+ *
+ * @return bool
+ */
+function make_has_logo() {
+	return Make()->logo()->has_logo();
+}
+
+/**
+ * Output the markup for a custom logo.
+ *
+ * @since 1.7.0.
+ *
+ * return void
+ */
+function make_logo() {
+	echo Make()->logo()->get_logo();
+}
+
+/**
+ * Check to see if social icons have been configured for display.
+ *
+ * @since 1.7.0.
+ *
+ * @return bool
+ */
+function make_has_socialicons() {
+	return Make()->socialicons()->has_icon_data();
+}
+
+/**
+ * Display social icons for the site header or footer.
+ *
+ * @since 1.7.0.
+ *
+ * @param $region
  *
  * @return void
  */
-function ttfmake_yoast_seo_breadcrumb() {
-	if ( function_exists( 'yoast_breadcrumb' ) ) {
-		$key    = 'layout-' . ttfmake_get_view() . '-yoast-breadcrumb';
-		$option = absint( get_theme_mod( $key, ttfmake_get_default( $key ) ) );
+function make_socialicons( $region ) {
+	if ( ! in_array( $region, array( 'header', 'footer' ) ) ) {
+		return;
+	}
 
-		if ( ( 1 === $option && ! is_front_page() ) || is_404() ) {
-			yoast_breadcrumb( '<p class="yoast-seo-breadcrumb">', '</p>' );
-		}
+	$show_icons = make_has_socialicons() && make_get_thememod_value( $region . '-show-social' );
+
+	if ( $show_icons || is_customize_preview() ) : ?>
+		<div class="<?php echo $region; ?>-social-links">
+	<?php endif;
+
+	if ( $show_icons ) : ?>
+		<?php echo Make()->socialicons()->render_icons(); ?>
+	<?php endif;
+
+	if ( $show_icons || is_customize_preview() ) : ?>
+		</div>
+	<?php endif;
+}
+
+/**
+ * Display a breadcrumb.
+ *
+ * @since 1.7.0.
+ *
+ * @param string $before
+ * @param string $after
+ *
+ * @return void
+ */
+function make_breadcrumb( $before = '<p class="yoast-seo-breadcrumb">', $after = '</p>' ) {
+	if ( Make()->integration()->has_integration( 'yoastseo' ) ) {
+		echo Make()->integration()->get_integration( 'yoastseo' )->maybe_render_breadcrumb( $before, $after );
 	}
 }
+
+/**
+ * Determine which image size to use to display a post's featured image.
+ *
+ * @since 1.7.4.
+ *
+ * @param string $layout_setting
+ *
+ * @return string
+ */
+function make_get_entry_thumbnail_size( $layout_setting = 'none' ) {
+	// Currently viewing an attachment
+	if ( is_attachment() ) {
+		$size = 'full';
+	}
+	// Currently viewing some other post type
+	else {
+		if ( 'post-header' === $layout_setting ) {
+			$size = 'large';
+		} else {
+			$size = ( is_singular() ) ? 'medium' : 'thumbnail';
+		}
+	}
+
+	/**
+	 * Filter: Modify the image size used to display a post's featured image (post thumbnail)
+	 *
+	 * @since 1.7.4.
+	 *
+	 * @param string $size              The ID of the image size to use.
+	 * @param string $layout_setting    The value of the featured image layout setting for the current view.
+	 */
+	return apply_filters( 'make_entry_thumbnail_size', $size, $layout_setting );
+}
+
+if ( ! function_exists( 'sanitize_hex_color' ) ) :
+/**
+ * Sanitizes a hex color.
+ *
+ * This replicates the core function that is unfortunately only available in the Customizer.
+ *
+ * @since  1.0.0.
+ *
+ * @param string $color    The proposed color.
+ *
+ * @return string    The sanitized color.
+ */
+function sanitize_hex_color( $color ) {
+	if ( '' === $color ) {
+		return '';
+	}
+
+	// 3 or 6 hex digits, or the empty string.
+	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
+		return $color;
+	}
+
+	return '';
+}
+endif;
+
+if ( ! function_exists( 'sanitize_hex_color_no_hash' ) ) :
+/**
+ * Sanitizes a hex color without a hash. Use sanitize_hex_color() when possible.
+ *
+ * This replicates the core function that is unfortunately only available in the Customizer.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string         $color    The proposed color.
+ * @return string|null              The sanitized color.
+ */
+function sanitize_hex_color_no_hash( $color ) {
+	$color = ltrim( $color, '#' );
+	if ( '' === $color ) {
+		return '';
+	}
+
+	return sanitize_hex_color( '#' . $color ) ? $color : null;
+}
+endif;
+
+if ( ! function_exists( 'maybe_hash_hex_color' ) ) :
+/**
+ * Ensures that any hex color is properly hashed.
+ *
+ * This replicates the core function that is unfortunately only available in the Customizer.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string         $color    The proposed color.
+ * @return string|null              The sanitized color.
+ */
+function maybe_hash_hex_color( $color ) {
+	if ( $unhashed = sanitize_hex_color_no_hash( $color ) ) {
+		return '#' . $unhashed;
+	}
+
+	return $color;
+}
+endif;

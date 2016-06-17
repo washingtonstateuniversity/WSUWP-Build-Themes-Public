@@ -4,6 +4,12 @@
  */
 
 get_header();
+
+// Section Header
+ob_start();
+make_breadcrumb();
+$section_header = trim( ob_get_clean() );
+
 global $post;
 ?>
 
@@ -11,6 +17,12 @@ global $post;
 
 <main id="site-main" class="site-main" role="main">
 <?php if ( have_posts() ) : ?>
+
+	<?php if ( $section_header ) : ?>
+	<header class="section-header">
+		<?php echo $section_header; ?>
+	</header>
+	<?php endif; ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
 		<?php

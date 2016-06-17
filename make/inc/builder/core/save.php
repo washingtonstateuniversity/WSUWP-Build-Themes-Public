@@ -334,10 +334,10 @@ class TTFMAKE_Builder_Save {
 	 */
 	public function generate_post_content( $data ) {
 		// Run wpautop when saving the data
-		add_filter( 'ttfmake_the_builder_content', 'wpautop' );
+		add_filter( 'make_the_builder_content', 'wpautop' );
 
 		// Handle oEmbeds correctly
-		add_filter( 'ttfmake_the_builder_content', array( $this, 'embed_handling' ), 8 );
+		add_filter( 'make_the_builder_content', array( $this, 'embed_handling' ), 8 );
 		add_filter( 'embed_handler_html', array( $this, 'embed_handler_html' ) , 10, 3 );
 		add_filter( 'embed_oembed_html', array( $this, 'embed_oembed_html' ) , 10, 4 );
 
@@ -547,7 +547,7 @@ class TTFMAKE_Builder_Save {
 		 * @param array    $current_section    The data for the current section.
 		 * @param array    $sections           The list of all sections.
 		 */
-		return apply_filters( 'make_get_next_section_data', $prev_section, $current_section, $sections );
+		return apply_filters( 'make_get_prev_section_data', $prev_section, $current_section, $sections );
 	}
 
 	/**
@@ -624,11 +624,23 @@ class TTFMAKE_Builder_Save {
 		 * Filter the content used for "post_content" when the builder is used to generate content.
 		 *
 		 * @since 1.2.3.
+		 * @deprecated 1.7.0.
+		 *
+		 * @param string    $content    The post content.
+		 */
+		$content = apply_filters( 'ttfmake_the_builder_content', $content );
+
+		/**
+		 * Filter the content used for "post_content" when the builder is used to generate content.
+		 *
+		 * @since 1.2.3.
 		 *
 		 * @param string    $content    The post content.
 		 */
 		$content = apply_filters( 'make_the_builder_content', $content );
+
 		$content = str_replace( ']]>', ']]&gt;', $content );
+
 		echo $content;
 	}
 

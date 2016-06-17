@@ -3,12 +3,12 @@
  * @package Make
  */
 
-$thumb_key    = 'layout-' . ttfmake_get_view() . '-featured-images';
-$thumb_option = ttfmake_sanitize_choice( get_theme_mod( $thumb_key, ttfmake_get_default( $thumb_key ) ), $thumb_key );
+$thumb_key    = 'layout-' . make_get_current_view() . '-featured-images';
+$thumb_option = make_get_thememod_value( $thumb_key );
 
 // Header
 ob_start();
-ttfmake_yoast_seo_breadcrumb();
+make_breadcrumb();
 get_template_part( 'partials/entry', 'meta-top' );
 get_template_part( 'partials/entry', 'sticky' );
 if ( 'post-header' === $thumb_option ) :

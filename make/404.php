@@ -8,7 +8,7 @@ get_header();
 <main id="site-main" class="site-main" role="main">
 	<article class="error-404 not-found">
 		<header class="entry-header">
-			<?php ttfmake_yoast_seo_breadcrumb(); ?>
+			<?php make_breadcrumb(); ?>
 			<h1 class="entry-title">
 				<?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'make' ); ?>
 			</h1>
