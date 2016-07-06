@@ -282,8 +282,8 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 */
 	public function customizer_add_section_info( WP_Customize_Manager $wp_customize ) {
 		// Add section for Typekit
-		$wp_customize->add_section( 'make_font-typekit', array(
-			'panel'       => 'make_typography',
+		$wp_customize->add_section( 'ttfmake_font-typekit', array(
+			'panel'       => 'ttfmake_typography',
 			'title'       => __( 'Typekit', 'make' ),
 			'description' => __( 'Looking to add premium fonts from Typekit to your website?', 'make' ),
 			'priority'    => $wp_customize->get_section( 'ttfmake_font-google' )->priority + 2
@@ -291,7 +291,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 
 		// Add control for Typekit
 		$wp_customize->add_control( new MAKE_Customizer_Control_Html( $wp_customize, 'ttfmake_font-typekit-update-text', array(
-			'section'     => 'make_font-typekit',
+			'section'     => 'ttfmake_font-typekit',
 			'description'  => sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
 				esc_url( $this->get_plus_link() ),
@@ -300,16 +300,16 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		) ) );
 
 		// Add section for White Label
-		$wp_customize->add_section( 'make_white-label', array(
-			'panel'       => 'make_general',
+		$wp_customize->add_section( 'ttfmake_white-label', array(
+			'panel'       => 'ttfmake_general',
 			'title'       => __( 'White Label', 'make' ),
 			'description' => __( 'Want to remove the theme byline from your website&#8217;s footer?', 'make' ),
 			'priority'    => $wp_customize->get_section( 'ttfmake_social' )->priority + 2
 		) );
 
 		// Add control for White Label
-		$wp_customize->add_control( new MAKE_Customizer_Control_Html( $wp_customize, 'make_footer-white-label-text', array(
-			'section'     => 'make_white-label',
+		$wp_customize->add_control( new MAKE_Customizer_Control_Html( $wp_customize, 'ttfmake_footer-white-label-text', array(
+			'section'     => 'ttfmake_white-label',
 			'description'  => sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
 				esc_url( $this->get_plus_link() ),

@@ -31,6 +31,11 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 		if ( $this->is_plugin_active( 'woocommerce/woocommerce.php' ) || defined( 'WC_VERSION' ) ) {
 			$this->add_integration( 'woocommerce', new MAKE_Integration_WooCommerce( $api ) );
 		}
+		
+		// WP Retina 2x
+		if ( $this->is_plugin_active( 'wp-retina-2x/wp-retina-2x.php' ) || function_exists( 'wr2x_init' ) ) {
+			$this->add_integration( 'wpretina2x', new MAKE_Integration_WPRetina2x( $api ) );
+		}
 
 		// Yoast SEO
 		if ( $this->is_plugin_active( 'wordpress-seo/wp-seo.php' ) || defined( 'WPSEO_VERSION' ) ) {

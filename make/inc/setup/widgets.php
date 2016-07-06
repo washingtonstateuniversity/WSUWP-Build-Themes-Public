@@ -217,7 +217,7 @@ final class MAKE_Setup_Widgets extends MAKE_Util_Modules implements MAKE_Setup_W
 
 		// Get the relevant theme mod
 		$setting_id = 'layout-' . $view . '-sidebar-' . $location;
-		$has_sidebar = $this->thememod()->get_value( $setting_id );
+		$has_sidebar = (bool) $this->thememod()->get_value( $setting_id );
 
 		// Builder template doesn't support sidebars
 		if ( 'template-builder.php' === get_page_template_slug() ) {

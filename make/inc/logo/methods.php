@@ -218,6 +218,7 @@ final class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_Met
 				'selectors' => 'img.custom-logo',
 				'declarations' => array(
 					'max-width' => "{$max_width}px",
+					'width'     => '100%',
 				),
 			) );
 		}
