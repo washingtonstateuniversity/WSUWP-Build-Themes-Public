@@ -67,7 +67,7 @@ var MakeFormatBuilder = MakeFormatBuilder || {};
 			colorTextHover: builder.userSettings.colorButtonTextHover || builder.userSettings.colorButtonText,
 			paddingHorz: '10',
 			paddingVert: '4',
-			borderRadius: '3',
+			borderRadius: '100',
 			icon: ''
 		},
 

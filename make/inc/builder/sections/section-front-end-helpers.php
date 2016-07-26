@@ -218,6 +218,40 @@ function ttfmake_builder_get_gallery_item_class( $item, $ttfmake_section_data, $
 }
 
 /**
+ * Generate the onclick action for a gallery item
+ *
+ * @since  1.7.6.
+ *
+ * @param  string    $link                    The item's link.
+ * @param  array     $ttfmake_section_data    The section data.
+ * @param  int       $i                       The current gallery item iterator
+ *
+ * @return string                             The onclick action.
+ */
+function ttfmake_builder_get_gallery_item_onclick( $link, $ttfmake_section_data, $i ) {
+	if ( ! ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) ) {
+		return '';
+	}
+
+	$onclick = ' onclick="return false;"';
+	if ( '' !== $link ) {
+		$onclick = ' onclick="window.location.href = \'' . esc_js( esc_url( $link ) ) . '\';"';
+	}
+
+	/**
+	 * Filter the class used for a gallery item.
+	 *
+	 * @since 1.7.6.
+	 *
+	 * @param string    $onclick                 The computed gallery onclick attribute.
+	 * @param string    $link                    The item's link.
+	 * @param array     $ttfmake_section_data    The section data.
+	 * @param int       $i                       The current gallery item number.
+	 */
+	return apply_filters( 'make_builder_get_gallery_item_onclick', $onclick, $link, $ttfmake_section_data, $i );
+}
+
+/**
  * Get the image for the gallery item.
  *
  * @since  1.0.0.

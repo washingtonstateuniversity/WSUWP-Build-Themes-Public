@@ -110,7 +110,6 @@ if ( $is_style_preview || ! $this->thememod()->is_default( 'color-secondary' ) )
 			'input[type="reset"].color-secondary-background',
 			'input[type="submit"].color-secondary-background',
 			'.sticky-post-label',
-			'.widget_tag_cloud a',
 		),
 		'declarations' => array(
 			'background-color' => $color
@@ -133,6 +132,8 @@ if ( $is_style_preview || ! $this->thememod()->is_default( 'color-secondary' ) )
 			'table th',
 			'table td',
 			'.header-layout-3 .site-navigation .menu',
+			'.widget_tag_cloud a',
+			'.widget_product_tag_cloud a',
 		),
 		'declarations' => array(
 			'border-color' => $color
@@ -153,6 +154,9 @@ if ( $is_style_preview || ! $this->thememod()->is_default( 'color-secondary' ) )
 		'selectors'    => array(
 			'.comment-body',
 			'.post',
+			'.page',
+			'.search article.post',
+			'.search article.page',
 			'.widget li',
 		),
 		'declarations' => array(

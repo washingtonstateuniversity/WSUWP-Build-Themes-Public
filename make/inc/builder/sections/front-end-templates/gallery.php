@@ -10,21 +10,15 @@ $captions = ( isset( $ttfmake_section_data[ 'captions' ] ) ) ? esc_attr( $ttfmak
 $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_section_data[ 'aspect' ] ) : 'square';
 ?>
 
-<section id="<?php echo esc_attr( ttfmake_get_builder_save()->section_html_id( $ttfmake_section_data ) ); ?>" class="builder-section<?php echo esc_attr( ttfmake_builder_get_gallery_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>" style="<?php echo esc_attr( ttfmake_builder_get_gallery_style( $ttfmake_section_data ) ); ?>">
+<section id="<?php echo esc_attr( ttfmake_get_builder_save()->section_html_id( $ttfmake_section_data ) ); ?>" class="builder-section<?php echo esc_attr( ttfmake_builder_get_gallery_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>" style="<?php echo ttfmake_builder_get_gallery_style( $ttfmake_section_data ); ?>">
 	<?php if ( '' !== $ttfmake_section_data['title'] ) : ?>
 	<h3 class="builder-gallery-section-title">
 		<?php echo apply_filters( 'the_title', $ttfmake_section_data['title'] ); ?>
 	</h3>
 	<?php endif; ?>
 	<div class="builder-section-content">
-		<?php if ( ! empty( $gallery ) ) : $i = 0; foreach ( $gallery as $item ) :
-			$onclick = ' onclick="return false;"';
-			if ( '' !== $item['link'] ) :
-				$onclick = ' onclick="window.location.href = \'' . esc_js( esc_url( $item['link'] ) ) . '\';"';
-			endif;
-			$i++;
-		?>
-		<div class="builder-gallery-item<?php echo esc_attr( ttfmake_builder_get_gallery_item_class( $item, $ttfmake_section_data, $i ) ); ?>"<?php echo $onclick; ?>>
+		<?php if ( ! empty( $gallery ) ) : $i = 0; foreach ( $gallery as $item ) : $i++; ?>
+		<div class="builder-gallery-item<?php echo esc_attr( ttfmake_builder_get_gallery_item_class( $item, $ttfmake_section_data, $i ) ); ?>"<?php echo ttfmake_builder_get_gallery_item_onclick( $item['link'], $ttfmake_section_data, $i ); ?>>
 			<?php $image = ttfmake_builder_get_gallery_item_image( $item, $aspect ); ?>
 			<?php if ( '' !== $image ) : ?>
 				<?php echo $image; ?>
