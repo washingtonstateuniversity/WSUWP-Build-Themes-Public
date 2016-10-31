@@ -26,6 +26,13 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.7.9 - October 26 2016 =
+* Bug fix: Previewing builder pages was corrupting sections data.
+
+= 1.7.8 - October 19 2016 =
+* Improved: Overcome server POST data cap. See: https://github.com/thethemefoundry/make/issues/264.
+* Bug fix: Drag handles for widgets in single widgetized columns were disappearing.
+
 = 1.7.7 - July 15 2016 =
 * Bug fix: The markup creating links in Gallery section items was broken.
 

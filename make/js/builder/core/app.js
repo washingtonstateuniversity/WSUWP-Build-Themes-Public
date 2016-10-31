@@ -52,11 +52,16 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 	};
 
 	oneApp.setOrder = function (order, $input) {
+		var sectionID = $input.closest('.ttfmake-section').attr('data-id');
+
 		// Use a comma separated list
 		order = order.join();
 
 		// Set the val of the input
 		$input.val(order);
+
+		oneApp.setActiveSectionID(sectionID);
+		oneApp.updateSectionJSON();
 	};
 
 	oneApp.addOrderValue = function (id, $input) {
@@ -145,6 +150,9 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 
 	oneApp.setTextArea = function (textAreaID) {
 		$('#' + textAreaID).val(oneApp.getMakeContent());
+
+		// update section JSON with new content
+		oneApp.updateSectionJSON();
 	};
 
 	oneApp.getMakeContent = function () {
@@ -194,6 +202,20 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 	oneApp.getActiveTextAreaID = function() {
 		if (oneApp.hasOwnProperty('activeTextAreaID')) {
 			return oneApp.activeTextAreaID;
+		} else {
+			return '';
+		}
+	};
+
+	oneApp.setActiveSectionID = function(sectionID) {
+		if (sectionID) {
+			oneApp.activeSectionID = sectionID;
+		}
+	};
+
+	oneApp.getActiveSectionID = function() {
+		if (oneApp.hasOwnProperty('activeSectionID')) {
+			return oneApp.activeSectionID;
 		} else {
 			return '';
 		}
@@ -260,6 +282,20 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		});
 	};
 
+	oneApp.updateSectionJSON = function() {
+		if (oneApp.hasOwnProperty('activeSectionID')) {
+			var sectionID = oneApp.activeSectionID;
+			var serialized = $('[name*="ttfmake-section['+sectionID+']"]').serializeJSON();
+
+			var serializedTtfMakeSectionContent = serialized['ttfmake-section'][sectionID];
+			var serializedCleaned = serializedTtfMakeSectionContent;
+
+			$('[name="ttfmake-section-json['+sectionID+']"]').val(JSON.stringify(serializedCleaned));
+		}
+
+		return false;
+	};
+
 	// Initialize color pickers
 	$oneApp.on('viewInit afterSectionViewAdded', function(evt, view) {
 		var $selector;
@@ -272,6 +308,44 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		}
 
 		$selector.wpColorPicker();
+	});
+
+	$oneApp.on('viewInit', function(evt, view) {
+		var sectionID = view.model.id;
+
+		oneApp.setActiveSectionID(sectionID);
+
+		view.$el.on('change', 'input, select', function() {
+			oneApp.setActiveSectionID(sectionID);
+			oneApp.updateSectionJSON();
+		});
+	});
+
+	// populate JSON with section data for widgetized columns, on page load
+	$(document).ready(function() {
+		if (typeof makePlusPluginInfo === 'object') {
+			// loop through all Columns components
+			$('.ttfmake-section-text').each(function() {
+				var $this = $(this);
+				var sectionID = $this.attr('data-id');
+
+				// check if it's widgetized
+				if ($this.find('.ttfmp-widget-area-overlay-region-active').length) {
+					oneApp.setActiveSectionID(sectionID);
+					oneApp.updateSectionJSON();
+				}
+			});
+
+			$('body').on('click', '.ttfmp-revert-widget-area', function() {
+				var $this = $(this);
+				var sectionID = $this.closest('.ttfmake-section').attr('data-id');
+
+				if (sectionID) {
+					oneApp.setActiveSectionID(sectionID);
+					oneApp.updateSectionJSON();
+				}
+			});
+		}
 	});
 
 	$('body').on('click', '.ttfmake-remove-image-from-modal', function(evt){
@@ -287,7 +361,28 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		// Remove the value from the input
 		$input.removeAttr('value');
 
+		// Update section JSON after removing image
+		oneApp.updateSectionJSON();
+
 		wp.media.frames.frame.close();
+	});
+
+	/**
+	 * Attach an event to 'Update' post/page submit to store all the ttfmake-section[] array fields to a single hidden input containing these fields serialized in JSON. Then remove the fields to prevent those from being submitted.
+	 */
+	$('form#post').on('submit', function(e) {
+		var $target					= $(e.target);
+		var $sectionInputs	= $target.find('[name^="ttfmake-section["]');
+		var $wpPreviewInput = $('input[name=wp-preview]');
+		
+		// Only disable inputs when form is actually submitted so it's not triggered on Preview
+		if ($wpPreviewInput.val() !== 'dopreview') {
+			// Set ttfmake-section[] array fields to disabled and remove name for those to prevent them from being submitted
+			$sectionInputs.attr({
+				'name': '',
+				'disabled': 'true'
+			});
+		}
 	});
 
 	wp.media.view.Sidebar = wp.media.view.Sidebar.extend({

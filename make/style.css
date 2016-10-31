@@ -1,10 +1,11 @@
+@charset "UTF-8";
 /**
  * Theme Name:  Make
  * Theme URI:   https://thethemefoundry.com/make/
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Build a website that means business. With Make’s powerful drag and drop page builder and hundreds of Customizer options, you can effortlessly brand your site without touching a line of code. Add full-width banners, columns, and galleries to showcase your best work. The intuitive builder delivers clean, lean code — not shortcodes — so you can trust your content remains portable. Make lets you control page layout options, including sidebar display, on all your posts and pages. Choose from hundreds of Google Fonts and upload custom backgrounds everywhere. Built on a fully responsive grid, Make renders as beautifully on tablets and phone screens as it does on desktop. Make scales with your business and is fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and others. For documentation on the page builder and getting started with Make, see: https://thethemefoundry.com/make-help/
- * Version:     1.7.7
+ * Version:     1.7.9
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
@@ -1602,15 +1603,20 @@ h6 {
 h1 a,
 a h1,
 h2 a,
-a h2,
+a
+  h2,
 h3 a,
-a h3,
+a
+  h3,
 h4 a,
-a h4,
+a
+  h4,
 h5 a,
-a h5,
+a
+  h5,
 h6 a,
-a h6 {
+a
+  h6 {
 	color: inherit;
 	text-decoration: none;
 }
@@ -2132,7 +2138,7 @@ Notices / Alerts (_elements.scss)
 }
 
 .ttfmake-alert.ttfmake-important {
-	border: 1px solid #fff365;
+	border: 1px solid #fff366;
 	color: #f89e01;
 	background-color: #fffde5;
 }

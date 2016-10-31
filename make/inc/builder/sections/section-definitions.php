@@ -158,7 +158,7 @@ class TTFMAKE_Section_Definitions {
 			$clean_data['background-image'] = ttfmake_sanitize_image_id( $data['background-image']['image-id'] );
 		}
 
-		if ( isset( $data['darken'] ) ) {
+		if ( isset( $data['darken'] ) && $data['darken'] == 1 ) {
 			$clean_data['darken'] = 1;
 		} else {
 			$clean_data['darken'] = 0;
@@ -347,7 +347,7 @@ class TTFMAKE_Section_Definitions {
 			$clean_data['background-image'] = ttfmake_sanitize_image_id( $data['background-image']['image-id'] );
 		}
 
-		if ( isset( $data['darken'] ) ) {
+		if ( isset( $data['darken'] ) && (int) $data['darken'] == 1 ) {
 			$clean_data['darken'] = 1;
 		} else {
 			$clean_data['darken'] = 0;
@@ -538,7 +538,7 @@ class TTFMAKE_Section_Definitions {
 			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
 		}
 
-		if ( isset( $data['darken'] ) ) {
+		if ( isset( $data['darken'] ) && (int) $data['darken'] == 1 ) {
 			$clean_data['darken'] = 1;
 		} else {
 			$clean_data['darken'] = 0;
@@ -703,7 +703,7 @@ class TTFMAKE_Section_Definitions {
 		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
 			return;
 		}
-		
+
 		/**
 		 * Array of items to print as JS templates in the footer of the Builder screen.
 		 *

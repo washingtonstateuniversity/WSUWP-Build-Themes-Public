@@ -256,6 +256,14 @@ class TTFMAKE_Builder_Base {
 		);
 
 		wp_register_script(
+			'ttfmake-builder/js/libs/serializejson/jquery.serializejson.min.js',
+			Make()->scripts()->get_js_directory_uri() . '/builder/libs/serializejson/jquery.serializejson.min.js',
+			array(),
+			TTFMAKE_VERSION,
+			true
+		);
+
+		wp_register_script(
 			'ttfmake-builder/js/models/section.js',
 			Make()->scripts()->get_js_directory_uri() . '/builder/core/models/section.js',
 			array(),
@@ -307,11 +315,12 @@ class TTFMAKE_Builder_Base {
 			array_merge(
 				$dependencies,
 				array(
+					'ttfmake-builder/js/libs/serializejson/jquery.serializejson.min.js',
 					'ttfmake-builder/js/models/section.js',
 					'ttfmake-builder/js/collections/sections.js',
 					'ttfmake-builder/js/views/menu.js',
 					'ttfmake-builder/js/views/section.js',
-					'ttfmake-builder/js/views/overlay.js',
+					'ttfmake-builder/js/views/overlay.js'
 				)
 			)
 		);
@@ -367,6 +376,14 @@ class TTFMAKE_Builder_Base {
 			'ttfmakeEditPageData',
 			$data
 		);
+
+		// Expose Make Plus version number, if active
+		$installed_plugins = get_plugins();
+
+		if ( Make()->plus()->is_plus() ) {
+			$plugin_data = array('Version' => Make()->plus()->get_plus_version() );
+			wp_localize_script( 'ttfmake-builder-edit-page', 'makePlusPluginInfo', $plugin_data );
+		}
 	}
 
 	/**
@@ -1010,5 +1027,42 @@ if ( ! function_exists( 'ttfmake_register_placeholder_image' ) ) :
 function ttfmake_register_placeholder_image( $id, $data ) {
 	global $ttfmake_placeholder_images;
 	$ttfmake_placeholder_images[ $id ] = $data;
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_encode_section_json' ) ) :
+/**
+ * Encodes a section data as json
+ *
+ * @since  1.7.8.
+ *
+ * @param  array    $section_data    The section configuration data.
+ * @return void
+ */
+function ttfmake_encode_section_json( $section_data ) {
+	// Section background images
+	if ( array_key_exists( 'background-image', $section_data ) ) {
+		$image_id = $section_data['background-image'];
+		$section_data['background-image'] = array( 'image-id' => $image_id );
+	}
+
+	// Ordering
+	if ( array_key_exists( 'item-order', $section_data ) && is_array( $section_data['item-order'] ) ) {
+		$section_data['item-order'] = implode( ',', $section_data['item-order'] );
+	}
+
+	if ( array_key_exists( 'columns-order', $section_data ) && is_array( $section_data['columns-order'] ) ) {
+		$section_data['columns-order'] = implode( ',', $section_data['columns-order'] );
+	}
+
+	if ( array_key_exists( 'banner-slide-order', $section_data ) && is_array( $section_data['banner-slide-order'] ) ) {
+		$section_data['banner-slide-order'] = implode( ',', $section_data['banner-slide-order'] );
+	}
+
+	if ( array_key_exists( 'gallery-item-order', $section_data ) && is_array( $section_data['gallery-item-order'] ) ) {
+		$section_data['gallery-item-order'] = implode( ',', $section_data['gallery-item-order'] );
+	}
+
+	return json_encode( $section_data );
 }
 endif;

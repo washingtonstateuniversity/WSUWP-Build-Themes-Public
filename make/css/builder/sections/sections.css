@@ -72,8 +72,8 @@
 	display: none;
 	width: 0%;
 }
-.ttfmake-text-columns-1 .ttfmake-sortable-handle {
-	visibility: hidden;
+.ttfmake-text-columns-1 > .ttfmake-text-column > .ttfmake-sortable-handle {
+	display: none;
 }
 /*---------------------------------------------------------
  Text: Two column (sections.css)

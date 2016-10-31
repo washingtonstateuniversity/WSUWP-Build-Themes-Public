@@ -3,7 +3,7 @@
  * @package Make
  */
 
-// Updated: 2016-07-15T17:15:19+00:00
+// Updated: 2016-10-26T08:09:09+00:00
 
 // Bail if this isn't being included inside of MAKE_Font_Source_Google.
 if ( ! isset( $this ) || ! $this instanceof MAKE_Font_Source_Google ) {
@@ -32,6 +32,22 @@ $this->load_font_data( array(
 			'latin',
 		),
 		'category' => 'sans-serif',
+	),
+	'Abhaya Libre' => array(
+		'label' => 'Abhaya Libre',
+		'variants' => array(
+			'500',
+			'600',
+			'700',
+			'800',
+			'regular',
+		),
+		'subsets' => array(
+			'latin',
+			'latin-ext',
+			'sinhala',
+		),
+		'category' => 'serif',
 	),
 	'Abril Fatface' => array(
 		'label' => 'Abril Fatface',
@@ -1024,6 +1040,32 @@ $this->load_font_data( array(
 		),
 		'category' => 'display',
 	),
+	'Baloo Bhaina' => array(
+		'label' => 'Baloo Bhaina',
+		'variants' => array(
+			'regular',
+		),
+		'subsets' => array(
+			'latin',
+			'latin-ext',
+			'oriya',
+			'vietnamese',
+		),
+		'category' => 'display',
+	),
+	'Baloo Chettan' => array(
+		'label' => 'Baloo Chettan',
+		'variants' => array(
+			'regular',
+		),
+		'subsets' => array(
+			'latin',
+			'latin-ext',
+			'malayalam',
+			'vietnamese',
+		),
+		'category' => 'display',
+	),
 	'Baloo Da' => array(
 		'label' => 'Baloo Da',
 		'variants' => array(
@@ -1031,6 +1073,32 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'bengali',
+			'latin',
+			'latin-ext',
+			'vietnamese',
+		),
+		'category' => 'display',
+	),
+	'Baloo Paaji' => array(
+		'label' => 'Baloo Paaji',
+		'variants' => array(
+			'regular',
+		),
+		'subsets' => array(
+			'gurmukhi',
+			'latin',
+			'latin-ext',
+			'vietnamese',
+		),
+		'category' => 'display',
+	),
+	'Baloo Tamma' => array(
+		'label' => 'Baloo Tamma',
+		'variants' => array(
+			'regular',
+		),
+		'subsets' => array(
+			'kannada',
 			'latin',
 			'latin-ext',
 			'vietnamese',

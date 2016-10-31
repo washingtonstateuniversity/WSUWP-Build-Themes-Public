@@ -7,7 +7,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	oneApp.TextView = oneApp.SectionView.extend({
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'change .ttfmake-text-columns' : 'handleColumns'
+				'change .ttfmake-text-columns' : 'handleColumns',
+				'mouseup .ttfmake-text-column' : 'updateJSONOnSlide'
 			});
 		},
 
@@ -19,6 +20,13 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 			$stage.removeClass('ttfmake-text-columns-1 ttfmake-text-columns-2 ttfmake-text-columns-3 ttfmake-text-columns-4');
 			$stage.addClass('ttfmake-text-columns-' + parseInt(columns, 10));
+		},
+
+		updateJSONOnSlide: function(evt) {
+			if (typeof makePlusPluginInfo !== 'undefined') {
+				oneApp.setActiveSectionID(this.model.get('id'));
+				oneApp.updateSectionJSON();
+			}
 		}
 	});
 

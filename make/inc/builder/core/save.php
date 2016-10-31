@@ -654,7 +654,14 @@ class TTFMAKE_Builder_Save {
 	public function get_sanitized_sections() {
 		if ( empty( $this->_sanitized_sections ) ) {
 			if ( isset( $_POST['ttfmake-section-order'] ) ) {
-				$data = ( isset( $_POST['ttfmake-section'] ) ) ? $_POST['ttfmake-section'] : array();
+				$data = ( isset( $_POST['ttfmake-section-json'] ) ) ? $_POST['ttfmake-section-json'] : array();
+
+				if ( !empty( $data ) ) {
+					foreach ( $data as $section_id => $section_data ) {
+						$data[$section_id] = json_decode( stripslashes ( $section_data ), true );
+					}
+				}
+
 				$this->_sanitized_sections = $this->prepare_data( $data, $_POST['ttfmake-section-order'] );
 			}
 		}

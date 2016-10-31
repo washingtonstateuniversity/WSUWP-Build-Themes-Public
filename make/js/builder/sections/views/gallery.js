@@ -59,7 +59,16 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	// Makes gallery items sortable
 	oneApp.initializeGalleryItemSortables = function(view) {
-		$('.ttfmake-gallery-items-stage', view).sortable({
+		var $selector;
+		view = view || '';
+
+		if (view.$el) {
+			$selector = $('.ttfmake-gallery-items-stage', view.$el);
+		} else {
+			$selector = $('.ttfmake-gallery-items-stage');
+		}
+
+		$selector.sortable({
 			handle: '.ttfmake-sortable-handle',
 			placeholder: 'sortable-placeholder',
 			distance: 2,
