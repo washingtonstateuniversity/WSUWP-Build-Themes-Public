@@ -26,6 +26,9 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.7.10 - November 16 2016 =
+* Bug fix: Unconsistent HTML entity decoding was causing random data loss.
+
 = 1.7.9 - October 26 2016 =
 * Bug fix: Previewing builder pages was corrupting sections data.
 

@@ -118,6 +118,9 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 				el: $('#' + idAttr),
 				serverRendered: true
 			});
+
+			// Update section json
+			oneApp.updateSectionJSON(id);
 		});
 	};
 
@@ -282,16 +285,17 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		});
 	};
 
-	oneApp.updateSectionJSON = function() {
-		if (oneApp.hasOwnProperty('activeSectionID')) {
-			var sectionID = oneApp.activeSectionID;
-			var serialized = $('[name*="ttfmake-section['+sectionID+']"]').serializeJSON();
+	oneApp.updateSectionJSON = function(sectionID) {
+		sectionID = sectionID || oneApp.activeSectionID;
 
-			var serializedTtfMakeSectionContent = serialized['ttfmake-section'][sectionID];
-			var serializedCleaned = serializedTtfMakeSectionContent;
-
-			$('[name="ttfmake-section-json['+sectionID+']"]').val(JSON.stringify(serializedCleaned));
+		if (!sectionID) {
+			return false;
 		}
+
+		var serialized = $('[name*="ttfmake-section['+sectionID+']"]').serializeJSON();
+		var serializedTtfMakeSectionContent = serialized['ttfmake-section'][sectionID];
+		var serializedCleaned = serializedTtfMakeSectionContent;
+		$('[name="ttfmake-section-json['+sectionID+']"]').val(JSON.stringify(serializedCleaned));
 
 		return false;
 	};
@@ -374,7 +378,7 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		var $target					= $(e.target);
 		var $sectionInputs	= $target.find('[name^="ttfmake-section["]');
 		var $wpPreviewInput = $('input[name=wp-preview]');
-		
+
 		// Only disable inputs when form is actually submitted so it's not triggered on Preview
 		if ($wpPreviewInput.val() !== 'dopreview') {
 			// Set ttfmake-section[] array fields to disabled and remove name for those to prevent them from being submitted
