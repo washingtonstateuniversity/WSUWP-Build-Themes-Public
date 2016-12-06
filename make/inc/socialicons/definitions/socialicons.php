@@ -59,6 +59,7 @@ $this->add_icons( array(
 	'weibo.com'          => array( 'title' => _x( 'Sina Weibo', 'brand name', 'make' ), 'class' => array( 'fa', 'fa-fw', 'fa-weibo' ) ),
 	'weixin.qq.com'      => array( 'title' => _x( 'Wei Xin', 'brand name', 'make' ), 'class' => array( 'fa', 'fa-fw', 'fa-weixin' ) ),
 	'wordpress.com'      => array( 'title' => _x( 'WordPress', 'brand name', 'make' ), 'class' => array( 'fa', 'fa-fw', 'fa-wordpress' ) ),
+	'wordpress.org'      => array( 'title' => _x( 'WordPress', 'brand name', 'make' ), 'class' => array( 'fa', 'fa-fw', 'fa-wordpress' ) ),
 	'xing.com'           => array( 'title' => _x( 'XING', 'brand name', 'make' ), 'class' => array( 'fa', 'fa-fw', 'fa-xing' ) ),
 	'yahoo.com'          => array( 'title' => _x( 'Yahoo', 'brand name', 'make' ), 'class' => array( 'fa', 'fa-fw', 'fa-yahoo' ) ),
 	'yelp.com'           => array( 'title' => _x( 'Yelp', 'brand name', 'make' ), 'class' => array( 'fa', 'fa-fw', 'fa-yelp' ) ),

@@ -197,23 +197,23 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 		$this->panel_definitions = array(
 			'general'           => array(
 				'title'    => __( 'General', 'make' ),
-				'priority' => 100
+				'priority' => 10
 			),
 			'typography'        => array(
 				'title'    => __( 'Typography', 'make' ),
-				'priority' => 200
+				'priority' => 20
 			),
 			'color'             => array(
 				'title'    => __( 'Color', 'make' ),
-				'priority' => 300
+				'priority' => 30
 			),
 			'background-images' => array(
 				'title'    => __( 'Background Images', 'make' ),
-				'priority' => 400
+				'priority' => 40
 			),
 			'layout'            => array(
 				'title'    => __( 'Layout', 'make' ),
-				'priority' => 500
+				'priority' => 50
 			),
 		);
 
