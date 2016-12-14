@@ -3,7 +3,7 @@
  * @package Make
  */
 
-// Updated: 2016-12-06T10:52:33+00:00
+// Updated: 2016-12-09T14:57:43+00:00
 
 // Bail if this isn't being included inside of MAKE_Font_Source_Google.
 if ( ! isset( $this ) || ! $this instanceof MAKE_Font_Source_Google ) {
@@ -778,6 +778,8 @@ $this->load_font_data( array(
 	'Asap' => array(
 		'label' => 'Asap',
 		'variants' => array(
+			'500',
+			'500italic',
 			'700',
 			'700italic',
 			'italic',
@@ -786,6 +788,7 @@ $this->load_font_data( array(
 		'subsets' => array(
 			'latin',
 			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'sans-serif',
 	),
@@ -1572,6 +1575,8 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'sans-serif',
 	),
@@ -1585,6 +1590,8 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'sans-serif',
 	),
@@ -4081,7 +4088,6 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
-			'latin-ext',
 		),
 		'category' => 'sans-serif',
 	),
@@ -4230,6 +4236,7 @@ $this->load_font_data( array(
 		'subsets' => array(
 			'latin',
 			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'monospace',
 	),
@@ -6131,13 +6138,25 @@ $this->load_font_data( array(
 	'Muli' => array(
 		'label' => 'Muli',
 		'variants' => array(
+			'200',
+			'200italic',
 			'300',
 			'300italic',
+			'600',
+			'600italic',
+			'700',
+			'700italic',
+			'800',
+			'800italic',
+			'900',
+			'900italic',
 			'italic',
 			'regular',
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'sans-serif',
 	),
@@ -6438,12 +6457,50 @@ $this->load_font_data( array(
 	'Nunito' => array(
 		'label' => 'Nunito',
 		'variants' => array(
+			'200',
+			'200italic',
 			'300',
+			'300italic',
+			'600',
+			'600italic',
 			'700',
+			'700italic',
+			'800',
+			'800italic',
+			'900',
+			'900italic',
+			'italic',
 			'regular',
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
+		),
+		'category' => 'sans-serif',
+	),
+	'Nunito Sans' => array(
+		'label' => 'Nunito Sans',
+		'variants' => array(
+			'200',
+			'200italic',
+			'300',
+			'300italic',
+			'600',
+			'600italic',
+			'700',
+			'700italic',
+			'800',
+			'800italic',
+			'900',
+			'900italic',
+			'italic',
+			'regular',
+		),
+		'subsets' => array(
+			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'sans-serif',
 	),
@@ -6794,6 +6851,8 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'handwriting',
 	),
@@ -7462,11 +7521,14 @@ $this->load_font_data( array(
 		'label' => 'Quicksand',
 		'variants' => array(
 			'300',
+			'500',
 			'700',
 			'regular',
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'sans-serif',
 	),
@@ -9122,6 +9184,7 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
 		),
 		'category' => 'sans-serif',
 	),
@@ -9500,6 +9563,8 @@ $this->load_font_data( array(
 		),
 		'subsets' => array(
 			'latin',
+			'latin-ext',
+			'vietnamese',
 		),
 		'category' => 'monospace',
 	),

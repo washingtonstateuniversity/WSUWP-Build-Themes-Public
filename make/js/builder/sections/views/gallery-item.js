@@ -16,7 +16,7 @@ var oneApp = oneApp || {};
 			this.model = options.model;
 			this.idAttr = 'ttfmake-gallery-item-' + this.model.get('id');
 			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
-			this.template = _.template($('#tmpl-ttfmake-gallery-item').html());
+			this.template = _.template($('#tmpl-ttfmake-gallery-item').html(), oneApp.templateSettings);
 		},
 
 		render: function () {

@@ -19,6 +19,12 @@ var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 		$makeTextArea: $('#make')
 	};
 
+	oneApp.templateSettings = {
+		evaluate   : /<#([\s\S]+?)#>/g,
+		interpolate: /\{\{\{([\s\S]+?)\}\}\}/g,
+		escape     : /\{\{([^\}]+?)\}\}(?!\})/g
+	};
+
 	oneApp.initSortables = function () {
 		$('.ttfmake-stage').sortable({
 			handle: '.ttfmake-section-header',

@@ -17,7 +17,7 @@ var oneApp = oneApp || {};
 			this.model = options.model;
 			this.idAttr = 'ttfmake-banner-slide-' + this.model.get('id');
 			this.serverRendered = ( options.serverRendered ) ? options.serverRendered : false;
-			this.template = _.template($('#tmpl-ttfmake-banner-slide').html());
+			this.template = _.template($('#tmpl-ttfmake-banner-slide').html(), oneApp.templateSettings);
 		},
 
 		render: function () {
