@@ -135,7 +135,7 @@ if ( ! function_exists( 'ttfmake_get_read_more' ) ) :
  *
  * @return string               Full read more HTML.
  */
-function ttfmake_get_read_more( $before = '<a class="more-link" href="%s">', $after = '</a>' ) {
+function ttfmake_get_read_more( $before = ' <a class="more-link" href="%s">', $after = '</a>' ) {
 	// Add the permalink
 	if ( false !== strpos( $before, '%s' ) ) {
 		$before = sprintf(
@@ -564,9 +564,32 @@ function make_socialicons( $region ) {
  * @return void
  */
 function make_breadcrumb( $before = '<p class="yoast-seo-breadcrumb">', $after = '</p>' ) {
-	if ( Make()->integration()->has_integration( 'yoastseo' ) ) {
-		echo Make()->integration()->get_integration( 'yoastseo' )->maybe_render_breadcrumb( $before, $after );
+	$breadcrumb = '';
+
+	$breadcrumb_override = apply_filters( 'make_breadcrumb_override', false );
+
+	if ( false === $breadcrumb_override ) {
+		if ( Make()->integration()->has_integration( 'yoastseo' ) ) {
+			$breadcrumb = Make()->integration()->get_integration( 'yoastseo' )->maybe_render_breadcrumb( $before, $after );
+		}
+	} else {
+		$show_breadcrumbs = Make()->thememod()->get_value( 'layout-' . make_get_current_view() . '-breadcrumb' );
+
+		if ( ( $show_breadcrumbs && ! is_front_page() ) || is_404() ) {
+			/**
+			 * Filter: Modify the output of breadcrumb
+			 *
+			 * @since 1.8.9.
+			 *
+			 * @param string $breadcrumb        The breadcrumb markup.
+			 * @param string $before            The wrapper opening markup.
+			 * @param string $after             The wrapper closing markup.
+			 */
+			$breadcrumb = apply_filters( 'make_breadcrumb_output', $breadcrumb, $before, $after );
+		}
 	}
+
+	echo $breadcrumb;
 }
 
 /**

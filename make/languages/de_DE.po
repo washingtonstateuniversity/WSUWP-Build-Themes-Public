@@ -198,8 +198,8 @@ msgstr "Rechts"
 
 #: inc/builder/sections/builder-templates/banner-slide.php:77
 #: inc/builder/sections/section-definitions.php:375
-msgid "Darken background to improve readability"
-msgstr "Hintergrund abdunkeln für bessere Lesbarkeit"
+msgid "Darken"
+msgstr "Abdunkeln"
 
 #: inc/builder/sections/builder-templates/banner-slide.php:83
 #: inc/builder/sections/section-definitions.php:391

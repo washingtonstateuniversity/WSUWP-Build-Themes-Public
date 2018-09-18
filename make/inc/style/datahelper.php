@@ -77,6 +77,9 @@ class MAKE_Style_DataHelper extends MAKE_Util_Modules implements MAKE_Style_Data
 							$declarations[ $property . '-px' ]  = $sanitized_value . 'px';
 							$declarations[ $property . '-rem' ] = $this->convert_px_to_rem( $sanitized_value ) . 'rem';
 							break;
+						case 'font-weight' :
+							$declarations[ $property ] = $sanitized_value;
+							break;
 						case 'letter-spacing' :
 						case 'word-spacing' :
 							$declarations[ $property ] = $sanitized_value . 'px';

@@ -7,7 +7,7 @@
  * Class MAKE_API
  *
  * Class to manage and provide access to all of the modules that make up the Make API.
- * 
+ *
  * Access this class via the global Make() function.
  *
  * @since 1.7.0.
@@ -44,6 +44,7 @@ final class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		'integration'         => 'MAKE_Integration_ManagerInterface',
 		'setup'               => 'MAKE_Setup_MiscInterface',
 		'head'                => 'MAKE_Setup_HeadInterface',
+		'sections'			  => 'MAKE_Sections_SetupInterface'
 	);
 
 	/**
@@ -77,6 +78,7 @@ final class MAKE_API extends MAKE_Util_Modules implements MAKE_APIInterface {
 		'integration'         => 'MAKE_Integration_Manager',
 		'setup'               => 'MAKE_Setup_Misc',
 		'head'                => 'MAKE_Setup_Head',
+		'sections'			  => 'MAKE_Sections_Setup'
 	);
 
 	/**

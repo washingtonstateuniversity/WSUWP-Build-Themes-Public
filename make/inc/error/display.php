@@ -496,36 +496,19 @@ final class MAKE_Error_Display extends MAKE_Util_Modules implements MAKE_Error_D
 				<div class="callout-warning">
 					<p><strong><?php esc_html_e( 'What is a Make notice?', 'make' ); ?></strong></p>
 					<p>
-						<?php echo $this->sanitize_message( __( '
-							Make notices occur when Make\'s functionality is used incorrectly. Often these notices are
-							triggered by code errors in a child theme or plugin that extends the theme. The notice
-							messages help you to identify the cause of the errors so they can be fixed.
-						', 'make' ) ); ?>
+						<?php echo $this->sanitize_message( __( 'Make notices occur when Make\'s functionality is used incorrectly. Often these notices are triggered by code errors in a child theme or plugin that extends the theme. The notice messages help you to identify the cause of the errors so they can be fixed.', 'make' ) ); ?>
 					</p>
 					<p><strong><?php esc_html_e( 'Is it important to fix these notices?', 'make' ); ?></strong></p>
 					<p>
-						<?php echo $this->sanitize_message( __( '
-							Absolutely! These notices may indicate that some part of your site is not working correctly.
-							We don\'t want that.
-						', 'make' ) ); ?>
+						<?php echo $this->sanitize_message( __( 'Absolutely! These notices may indicate that some part of your site is not working correctly. We don\'t want that.', 'make' ) ); ?>
 					</p>
 					<p><strong><?php esc_html_e( 'How do I fix a Make notice?', 'make' ); ?></strong></p>
 					<p>
-						<?php echo $this->sanitize_message( sprintf( __( '
-							Check to see if your child theme or plugin has an update available, as a new version may
-							include changes that fix the errors. If it is caused by custom code, you will need to modify
-							the code to fix the errors. Check out our article about <a href="%s" target="_blank">dealing
-							with Make Notices</a> to learn more.
-						', 'make' ), 'https://thethemefoundry.com/docs/make-docs/guides/make-notices/' ) ); ?>
+						<?php echo $this->sanitize_message( sprintf( __( 'Check to see if your child theme or plugin has an update available, as a new version may include changes that fix the errors. If it is caused by custom code, you will need to modify the code to fix the errors. Check out our article about <a href="%s" target="_blank">dealing with Make Notices</a> to learn more.', 'make' ), 'https://thethemefoundry.com/docs/make-docs/guides/make-notices/' ) ); ?>
 					</p>
 					<p><strong><?php esc_html_e( 'How can I hide this notification?', 'make' ); ?></strong></p>
 					<p>
-						<?php echo $this->sanitize_message( sprintf( __( '
-							This notification is only visible to users who are logged in and have the capability to
-							install themes. To hide it completely, add this code to your functions.php file: %s
-						', 'make' ), '
-							<code>add_filter( \'make_show_errors\', \'__return_false\' );</code>
-						' ) ); ?>
+						<?php echo $this->sanitize_message( sprintf( __( 'This notification is only visible to users who are logged in and have the capability to install themes. To hide it completely, add this code to your functions.php file: %s', 'make' ), '<code>add_filter( \'make_show_errors\', \'__return_false\' );</code>' ) ); ?>
 					</p>
 				</div>
 				<?php foreach ( $this->error()->get_codes() as $code ) : ?>

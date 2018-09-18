@@ -153,11 +153,7 @@ final class MAKE_Compatibility_SettingsMigration extends MAKE_Util_Modules imple
 			<h1><?php esc_html_e( 'Migrate Theme Settings', 'make' ); ?></h1>
 		</div>
 
-		<p><?php esc_html_e( '
-			This site is currently using a child theme. Any changes made in the Customizer to the Make parent theme
-			before the child theme was activated do not carry over. You can use this tool to import these settings
-			into the child theme so you don\'t have to start over again!
-		', 'make' );?></p>
+		<p><?php esc_html_e( 'This site is currently using a child theme. Any changes made in the Customizer to the Make parent theme before the child theme was activated do not carry over. You can use this tool to import these settings into the child theme so you don\'t have to start over again!', 'make' );?></p>
 
 		<h2><?php esc_html_e( 'Import settings from the parent theme', 'make' ); ?></h2>
 		<?php if ( ! empty( $parent_mods ) ) : ?>

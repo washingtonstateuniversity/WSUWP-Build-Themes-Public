@@ -6,7 +6,7 @@
 /**
  * The current version of the theme.
  */
-define( 'TTFMAKE_VERSION', '1.7.13' );
+define( 'TTFMAKE_VERSION', '1.9.15' );
 
 /**
  * The minimum version of WordPress required for Make.
@@ -42,6 +42,7 @@ do_action( 'make_api_loaded', $Make );
 // Template tags
 require_once get_template_directory() . '/inc/template-tags.php';
 
+if ( ! function_exists( 'Make' ) ) :
 /**
  * Get the global Make API object.
  *
@@ -63,6 +64,7 @@ function Make() {
 
 	return $Make;
 }
+endif;
 
 /**
  * Add or update a choice set.

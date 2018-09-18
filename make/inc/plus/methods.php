@@ -148,7 +148,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 	 * @return string
 	 */
 	public function get_plus_link() {
-		return 'https://thethemefoundry.com/make-buy/';
+		return 'https://thethemefoundry.com/wordpress-themes/make/#get-started';
 	}
 
 	/**
@@ -253,11 +253,7 @@ final class MAKE_Plus_Methods implements MAKE_Plus_MethodsInterface, MAKE_Util_H
 		<script type="application/javascript">
 			(function($) {
 				$(document).ready(function() {
-					var plus = $('<a class="ttfmake-customize-plus"></a>')
-						.attr('href', '<?php echo esc_js( $this->get_plus_link() ); ?>')
-						.attr('target', '_blank')
-						.text('<?php esc_html_e( 'Upgrade to Make Plus', 'make' ); ?>')
-					;
+					var plus = '<div class="ttfmake-customize-plus"><p><?php esc_html_e( 'Looking for more style controls?', 'make' ); ?></p><a href="<?php echo esc_js( $this->get_plus_link() ); ?>" target="_blank"><?php esc_html_e( 'Upgrade to Make Plus', 'make' ); ?></a></div>';
 					$('#accordion-section-themes .accordion-section-title .change-theme').before(plus);
 					// Remove accordion click event
 					$('.ttfmake-customize-plus').on('click', function(e) {

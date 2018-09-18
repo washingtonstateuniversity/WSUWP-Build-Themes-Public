@@ -155,6 +155,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			'MAKE_Customizer_Control_BackgroundPosition',
 			'MAKE_Customizer_Control_Html',
 			'MAKE_Customizer_Control_Radio',
+			'MAKE_Customizer_Control_Select',
 			'MAKE_Customizer_Control_Range',
 			'MAKE_Customizer_Control_SocialIcons',
 		);
@@ -251,6 +252,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 			'site-title-tagline',
 			'static-front-page',
 			'widgets',
+			'menu',
 		);
 
 		foreach ( $file_bases as $name ) {

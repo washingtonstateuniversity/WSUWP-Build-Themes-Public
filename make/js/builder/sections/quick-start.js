@@ -1,18 +1,18 @@
 /* global jQuery */
-var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
+var oneApp = oneApp || {};
 
-(function($, $oneApp) {
+(function($, oneApp) {
 	'use strict';
 
 	var layoutTemplates = {
 		init: function() {
 			var $messageBox = $('.ttfmp-import-message');
 
-			$oneApp.on('afterSectionViewAdded', function() {
+			oneApp.builder.$el.on('afterSectionViewAdded', function() {
 				$messageBox.addClass('ttfmp-import-message-hide');
 			});
 
-			$oneApp.on('afterSectionViewRemoved', function() {
+			oneApp.builder.$el.on('afterSectionViewRemoved', function() {
 				if ($('.ttfmake-section').length < 1) {
 					$messageBox.removeClass('ttfmp-import-message-hide');
 				}
@@ -21,4 +21,4 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	};
 
 	layoutTemplates.init();
-})(jQuery, $oneApp);
+})(jQuery, oneApp);

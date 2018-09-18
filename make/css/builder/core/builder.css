@@ -19,7 +19,7 @@
 	box-sizing: border-box;
 }
 .ttfmake-titlediv .ttfmake-title:focus {
-	border: 1px solid #ddd;
+	border: 1px solid #e5e5e5;
 	-webkit-box-shadow: none; /*reset*/
 	box-shadow: none; /*reset*/
 }
@@ -74,10 +74,10 @@
 }
 .ttfmake-menu-list a {
 	text-decoration: none; /*reset*/
-	color: #777777 !important;
+	color: #82878c !important;
 }
 .ttfmake-menu-list a:hover {
-	color: #333333 !important;
+	color: #23282d !important;
 }
 .ttfmake-menu-list a .ttfmake-menu-list-item-link-icon {
 	display: block;
@@ -103,7 +103,7 @@
 	box-sizing: border-box;
 }
 .ttfmake-menu-list-item:hover .ttfmake-menu-list-item-link-icon-wrapper {
-	border-color: #bbbbbb;
+	border-color: #b4b9be;
 }
 .ttfmake-menu-list-item:last-of-type {
 	margin-right: 0; /*reset*/
@@ -144,7 +144,7 @@
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 70px 60px;
-	border: 1px solid #dfdfdf;
+	border: 1px solid #e5e5e5;
 }
 .section-type-description {
 	margin-top: 18px;
@@ -187,10 +187,10 @@
 .ttfmake-sortable-handle {
 	position: relative;
 	width: 100%;
-	height: 20px;
-	border: 1px solid #d9d9d9;
+	height: 35px;
+	border: 1px solid #e5e5e5;
 	border-bottom: 0; /*reset*/
-	background-color: #eee;
+	background-color: #fafafa;
 	cursor: move;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -199,9 +199,7 @@
 .sortable-background,
 .ttfmp-widget-list li .sortable-background {
 	display: block;
-	height: 18px;
-	background: url(images/sortable-background.png) center center repeat-x;
-	opacity: .5;
+	height: 32px;
 }
 .ttfmake-gallery-item:hover .sortable-background,
 .ttfmake-text-column:hover .sortable-background.column-sortable-background,
@@ -222,10 +220,10 @@
 }
 .ttfmake-section input[type=text]:focus,
 .ttfmake-section input[type=number]:focus {
-	border-color: #ddd;
+	border-color: #e5e5e5;
 }
 .ttfmake-configuration-overlay-input-wrap select {
-	border: 1px solid #ddd;
+	border: 1px solid #e5e5e5;
 }
 /*---------------------------------------------------------
  Sections (builder.css)
@@ -250,7 +248,7 @@
 	box-sizing: border-box;
 }
 .ttfmake-section-open {
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 .ttfmake-section-open .ttfmake-section-body {
 	display: block; /*reset*/
@@ -258,6 +256,21 @@
 .ttfmake-section-header-title {
 	max-width: 90%;
 	display: inline-block;
+}
+.ttfmake-section-header h3.has-title .ttfmake-section-header-title {
+	padding-left: 10px;
+	padding-right: 12px;
+}
+.ttfmake-section .ttfmake-section-badge {
+	display: none;
+	position: relative;
+	margin-left: 10px;
+}
+.ttfmake-section .ttfmake-section-badge-inner {
+	padding: 3px 10px;
+	font-weight: 600;
+	border-radius: 25px;
+	color: #fff;
 }
 .ttfmake-section h4 {
 	margin: 20px 0 10px;
@@ -271,7 +284,7 @@
 	width: 100%;
 	margin: 0;
 	padding: 8px 12px;
-	color: #23282d;
+	color: #777;
 	font-size: 13px !important;
 	font-weight: 700 !important;
 	font-family: 'Open Sans', sans-serif !important;
@@ -288,30 +301,28 @@
 	-ms-transition: background-color 300ms ease;
 	transition: background-color 300ms ease;
 }
-.ttfmake-section:hover .ttfmake-section-header h3 {
-	border-color: #999;
-}
 .ttfmake-section-open .ttfmake-section-header h3 {
-	color: #fff;
-	border-color: #23282d;
-	background-color: #23282d;
+	color: #777;
+	border-color: #e5e5e5;
+	background-color: #fafafa;
 }
 .ttfmake-section-open:hover .ttfmake-section-header h3 {
-	border-color: #23282d;
+	border-color: #e5e5e5;
 }
 .ttfmake-section-header span {
 	font-weight: bold;
 	font-weight: 600;
+	color: #23282d;
 }
 .ttfmake-section-header em {
 	margin-left: 10px;
-	color: #777;
-	font-size: 12px;
+	color: #82878c;
+	font-size: 13px;
 	font-weight: normal !important;
 	font-style: normal !important;
 }
-.ttfmake-section-open .ttfmake-section-header em {
-	color: #bbb;
+.ttfmake-section-header h3.has-title em {
+	margin-left: 0;
 }
 .ttfmake-section-toggle:focus {
 	border: none !important;
@@ -343,13 +354,13 @@
 	display: inline-block;
 	height: 100%;
 	padding: 0 8px;
-	color: #aaa;
+	color: #b4b9be;
 	text-decoration: none;  /*reset*/
 }
 .ttfmake-section-open .ttfmake-section-remove,
 .ttfmake-section-open .ttfmake-section-configure,
 .ttfmake-section-open .ttfmp-duplicate-section {
-	color: #bbb;
+	color: #b4b9be;
 }
 /*---------------------------------------------------------
  Hide Configure Section button when closed (builder.css)
@@ -382,7 +393,7 @@
 .ttfmake-section-open .ttfmake-section-remove:hover,
 .ttfmake-section-open .ttfmake-section-configure:hover,
 .ttfmake-section-open .ttfmp-duplicate-section:hover {
-	color: #fff;
+	color: #23282d;
 }
 /*---------------------------------------------------------
  Section header icons (builder.css)
@@ -417,7 +428,7 @@
 	display: block;
 	width: 100%;
 	height: 220px;
-	border: 1px solid #dfdfdf;
+	border: 1px solid #e5e5e5;
 	background-color: #fafafa;
 	background-position: center;
 	background-size: cover;
@@ -432,7 +443,7 @@
 .ttfmake-media-uploader-placeholder:before {
 	content: "\f128";
 	display: block;
-	color: #d9d9d9;
+	color: #cbcdce;
 	font: 60px/220px dashicons;
 	text-align: center;
 }
@@ -440,7 +451,7 @@
  Media placeholder hover state (builder.css)
 -------------------------------------------------------- */
 .ttfmake-media-uploader-placeholder:hover:before {
-	color: #c7c7c7;
+	color: #b4b9be;
 }
 .ttfmake-media-uploader-placeholder img {
 	position: absolute;
@@ -458,68 +469,72 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.ttfmake-section-body iframe {
-	background: #fff !important;
-}
 /*---------------------------------------------------------
  Media placeholder if has image set (builder.css)
 -------------------------------------------------------- */
-.ttfmake-has-image-set {
+.ttfmake-has-image-set .ttfmake-media-uploader-placeholder {
 	background-color: #fff;
 }
 .ttfmake-has-image-set .ttfmake-media-uploader-placeholder:before {
 	content: none;
 }
-.ttfmake-has-image-set:hover .ttfmake-media-uploader-placeholder {
+.ttfmake-media-uploader-placeholder:hover {
 	opacity: .8;
+}
+
+.ttfmake-configuration-media-related-wrap {
+	display: none;
+}
+
+.ttfmake-has-image-set ~ .ttfmake-configuration-media-related-wrap {
+	display: block;
 }
 /*---------------------------------------------------------
  Overlay (builder.css)
 -------------------------------------------------------- */
 .ttfmake-overlay {
 	display: none;
-	z-index: 99999;
+	z-index: 50000;
+	tabindex: 0;
 	position: fixed;
 	top: 0; /*reset*/
 	left: 0; /*reset*/
 	right: 0; /*reset*/
 	bottom: 0; /*reset*/
+	width: 100%;
+	height: 100%;
 	background: url(images/background.png) top left repeat;
-	background: rgba(0, 0, 0, 0.7) ;
+	background: rgba(0, 0, 0, 0.7);
 }
 .ttfmake-overlay-wrapper {
-	position: fixed !important;
-	top: 50% !important;
-	left: 50% !important;
-	min-height: 150px !important;
-	padding-bottom: 20px !important;
-	background-color: #fff;
-	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.3);
-	box-shadow: 0 3px 6px rgba(0,0,0,.3);
-	/* Fix webkit bug. @link https://github.com/mgcrea/angular-strap/issues/1234#issuecomment-61913920 */
-	-webkit-transform: translate3d(0,0,0);
+	display: table-cell;
+	vertical-align: middle;
+}
+.ttfmake-overlay-dialog {
+	position: relative;
+	margin: 30px auto;
+	background-color: #ffffff;
 }
 .ttfmake-overlay-window-head {
 	padding: 0; /*reser*/
-	min-height: 36px;
+	height: 49px;
 	background: #fcfcfc;
 }
 .ttfmake-overlay-title {
-	  width: 300px;
 	margin: 0;
-	padding: 0 36px 0 10px;
+	padding: 0 16px;
 	color: #444;
-	font-size: 18px;
+	font-size: 22px;
 	font-weight: 600;
-	line-height: 36px;
+	line-height: 50px;
 	text-rendering: optimizelegibility;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	float: left;
 }
 .ttfmake-overlay-close {
 	display: block;
-	position: absolute;
 	top: 0; /*reset*/
 	right: 0; /*reset*/
 	padding: 0 10px;
@@ -534,29 +549,22 @@
 .ttfmake-configuration-overlay-input-wrap  .ttfmake-uploader {
 	width: 100%;
 }
-.ttfmake-configuration-overlay .ttfmake-overlay-wrapper {
-	margin-left: -200px;
+.ttfmake-configuration-overlay .ttfmake-overlay-dialog {
 	width: 400px;
 }
-#ttfmake-tinymce-overlay .ttfmake-overlay-wrapper {
+#ttfmake-tinymce-overlay .ttfmake-overlay-dialog {
 	width: 800px !important;
-	height: 500px !important;
-	margin-left: -400px !important;
-	margin-top: -250px !important;
-}
-#ttfmake-tinymce-overlay .ttfmake-overlay-body {
-	overflow-y: hidden;
 }
 .ttfmake-overlay-wrapper * {
 	-webkit-font-smoothing: subpixel-antialiased !important;
 }
 .ttfmake-overlay-header {
-	border-bottom: 1px solid #dfdfdf;
+	border-bottom: 1px solid #ddd;
 }
 .ttfmake-overlay-header h2 {
 	float: left;
 }
-.ttfmake-overlay-header .ttfmake-overlay-close {
+.ttfmake-overlay-header .ttfmake-overlay-close-discard {
 	float: right;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -564,8 +572,8 @@
 	user-select: none;
 }
 .ttfmake-configuration-overlay-input-wrap {
-	padding: 20px 0 !important;
-	border-bottom: 1px solid #efefef !important;
+	padding: 20px 0;
+	border-bottom: 1px solid #efefef;
 }
 .ttfmake-configuration-overlay-input-wrap {
 	zoom: 1;
@@ -577,6 +585,47 @@
 }
 .ttfmake-configuration-overlay-input-wrap:after {
 	clear: both;
+}
+.ttfmake-configuration-overlay-input-wrap {
+	padding: 20px 0;
+	border-bottom: 1px solid #efefef;
+}
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-divider-wrap {
+	position: relative;
+	margin: -1px -20px 0 -20px;
+	padding: 15px 20px;
+	font-size: 14px;
+	font-weight: 600;
+	background: #fff;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	cursor: pointer;
+}
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-divider-wrap:hover,
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-divider-wrap.open-wrap {
+	background: #f5f5f5;
+}
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-divider-wrap:after {
+	display: inline-block;
+	position: absolute;
+	right: 20px;
+	content: '\f140';
+	font-family: dashicons;
+	font-size: 18px;
+	color: #82878c;
+}
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-divider-wrap.open-wrap:after {
+	content: '\f142';
+}
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-divider-wrap:hover:after,
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-divider-wrap.open-wrap:after {
+	color: #23282d;
+}
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-divider-wrap + div {
+	display: none;
+}
+.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-divider-wrap.open-wrap + div {
+	display: block;
 }
 .ttfmake-configuration-overlay-input-wrap label {
 	position: relative;
@@ -617,12 +666,12 @@
 .ttfmake-overlay-body {
 	padding: 20px !important;
 	clear: both;
-	overflow-y: scroll;
-	max-height: 500px;
+	overflow-y: auto;
+	max-height: 450px;
+	border-bottom: 1px solid #ddd;
 }
 .ttfmake-overlay-body .ttfmake-configuration-overlay-input-wrap:last-of-type {
-	padding-bottom: 0 !important;
-	border-bottom: 0 !important;
+	border-bottom: 0;
 }
 .ttfmake-configuration-title {
 	width: 100%;
@@ -631,36 +680,25 @@
 	font-size: 19px;
 }
 .ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-title-wrap {
-	padding-top: 0 !important; /*reset*/
-	border-bottom: 0 !important; /*reset*/
+	border-bottom: 0; /*reset*/
 }
 .ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-media-wrap {
 	display: block; /*reset*/
 	clear: both;
 	width: 100%;
 }
-/*---------------------------------------------------------
- Color picker (builder.css)
--------------------------------------------------------- */
-.wp-color-result.wp-picker-open:after {
-	display: none;
-}
-.ttfmake-configuration-overlay-input-wrap .wp-picker-container .button {
-	margin-left: 0; /*reset*/
-	margin-right: 4px; /*reset*/
-}
-.ttfmake-configuration-overlay-input-wrap .wp-picker-container .wp-picker-holder {
-	margin-left: -8px;
-}
-.ttfmake-configuration-overlay-input-wrap .wp-picker-container .iris-picker {
-	border: 0; /*reset*/
+.ttfmake-overlay-footer {
+	background-color: #fcfcfc;
+	text-align: right;
+	padding: 15px;
 }
 /*---------------------------------------------------------
  iFrame (builder.css)
 -------------------------------------------------------- */
 .ttfmake-iframe-wrapper {
 	position: relative;
-	border: 1px solid #ddd;
+	z-index: 3;
+	border: 1px solid #e5e5e5;
 }
 .ttfmake-iframe-wrapper iframe {
 	overflow: hidden;
@@ -674,28 +712,53 @@
 	top: 0;
 	left: 0;
 	width: 100%; /* same as iframe */
-	height: 300px; /* same as iframe */
+	height: 100%; /* same as iframe */
 }
 .ttfmake-iframe-overlay .edit-content-link {
-	display: block;
+	position: relative;
+	z-index: 2;
+	display: table;
 	width: 100%;
 	height: 100%;
+	text-align: center;
+	text-decoration: none;
+	color: inherit;
 }
+
+.ttfmake-iframe-content-placeholder {
+	position: absolute;
+	top: 50%;
+	z-index: 1;
+	display: none;
+	width: 100%;
+	font-size: 14px;
+	text-align: center;
+	color: #b4b9be;
+}
+
+.ttfmake-iframe-content-placeholder.show {
+	display: block;
+}
+
+.ttfmake-iframe-overlay .edit-content-link.item-has-content .ttfmake-iframe-content-placeholder {
+	display: none;
+}
+
 /*---------------------------------------------------------
  Media Modal (builder.css)
 -------------------------------------------------------- */
-.ttfmake-remove-current-image {
+.ttfmake-builder-uploader .ttfmake-media-overlay-remove-image {
 	display: none;
-}
-.ttfmake-builder-uploader .ttfmake-remove-current-image {
-	display: block;
 	float: left;
 }
-.ttfmake-builder-uploader .ttfmake-remove-current-image a.ttfmake-remove-image-from-modal {
+.ttfmake-builder-uploader.ttfmake-media-selected .ttfmake-media-overlay-remove-image {
+	display: block;
+}
+.ttfmake-builder-uploader .ttfmake-media-overlay-remove-image a {
 	color: #bc0b0b;
 	text-decoration: none; /*reset*/
 }
-.ttfmake-builder-uploader .ttfmake-remove-current-image a.ttfmake-remove-image-from-modal:hover {
+.ttfmake-builder-uploader .ttfmake-media-overlay-remove-image a:hover {
 	color: red;
 }
 /*---------------------------------------------------------
@@ -710,19 +773,14 @@
 	line-height: 40px;
 }
 .ttfmake-section:hover .ttfmake-section-toggle__wrapper {
-	border-color: #999;
-}
-.ttfmake-section-open:hover .ttfmake-section-toggle__wrapper {
 	border-color: #e5e5e5;
 }
-.ttfmake-section-toggle__indicator {
-	color: #bbb;
+
+.ttfmake-section .ttfmake-section-toggle__wrapper .ttfmake-section-toggle__indicator {
+	color: #82878c;
 }
 .ttfmake-section .ttfmake-section-toggle__wrapper:hover .ttfmake-section-toggle__indicator {
 	color: #23282d;
-}
-.ttfmake-section-open .ttfmake-section-toggle__wrapper:hover .ttfmake-section-toggle__indicator {
-	color: #fff;
 }
 .ttfmake-section-toggle__indicator:before {
 	content: '\f140';
@@ -730,4 +788,231 @@
 }
 .ttfmake-section-open .ttfmake-section-toggle__indicator:before {
 	content: '\f142';
+}
+.ttfmake-configure-item-button {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	clear: both;
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin-bottom: 0;
+	outline: none !important;
+	color: #aaaaaa;
+	text-decoration: none;
+	text-indent: -9999px;
+	background: url(images/menu-icon.png) no-repeat center center;
+	background-size: 25px 25px;
+	transition: all 0.15s ease-out;
+}
+.ttfmake-configure-item-button:hover {
+	background-image: url(images/menu-icon-hover.png);
+}
+
+.ttfmake-configure-item-button.active {
+	top: 4px;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+/*---------------------------------------------------------
+ Background position buttonset (builder.css)
+-------------------------------------------------------- */
+.ttfmake-configuration-background-position-wrap > label {
+	margin-bottom: 20px;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position {
+	clear: both;
+	position: relative;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label {
+	float: left;
+	display: block;
+	position: static;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position span.label {
+	position: absolute;
+	left: 110px;
+	top: 36px;
+	display: none;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position input[type="radio"]:checked ~ span.label {
+	display: block;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(4),
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(7) {
+	clear: left;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label input {
+	display: none;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label span.icon,
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label span.icon i,
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label span.icon i:before {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label span.icon {
+	border: 1px solid #ccc;
+	background: #f7f7f7;
+	vertical-align: top;
+	margin: -1px -1px 0 0;
+	z-index: 0;
+	position: relative;
+	color: #555;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position input[type="radio"]:checked + span.icon {
+	background-color: #eee;
+	border-color: #999;
+	-webkit-box-shadow: inset 0 2px 5px -3px rgba(0,0,0,.5);
+    box-shadow: inset 0 2px 5px -3px rgba(0,0,0,.5);
+    z-index: 1;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label span.icon i {
+	display: inline-block;
+	font-style: normal;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label span.icon i:before {
+	font-family: dashicons;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(1) span.icon {
+	border-top-left-radius: 3px;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(3) span.icon {
+	border-top-right-radius: 3px;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(7) span.icon {
+	border-bottom-left-radius: 3px;
+	box-shadow: 0 1px 0 #ccc;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(8) span.icon {
+	box-shadow: 0 1px 0 #ccc;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(9) span.icon {
+	border-bottom-right-radius: 3px;
+	box-shadow: 0 1px 0 #ccc;
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(1) span.icon i:before,
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(2) span.icon i:before,
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(3) span.icon i:before {
+	content: "\f342";
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(4) span.icon i:before {
+	content: "\f340";
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(5) span.icon i:before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	background-color: #555;
+	border-radius: 50%;
+	-webkit-transform: translate(0, -1px);
+	-ms-transform: translate(0, -1px);
+	transform: translate(0, -1px);
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(6) span.icon i:before {
+	content: "\f344";
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(7) span.icon i:before,
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(8) span.icon i:before,
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(9) span.icon i:before {
+	content: "\f346";
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(1) span.icon i {
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(3) span.icon i {
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(7) span.icon i {
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-background-position label:nth-child(9) span.icon i {
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+/*---------------------------------------------------------
+ Color picker (builder.css)
+-------------------------------------------------------- */
+.ttfmake-configuration-overlay-input-wrap .wp-color-result {
+	pointer-events: none;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-color-result-text {
+	display: none !important;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-clear {
+	position: absolute;
+	left: 0;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-color-result.wp-picker-open:after {
+	display: none !important;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-input-wrap > label {
+	position: absolute;
+	left: 65px;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-input-wrap input[type="text"] {
+	width: 256px !important;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-input-wrap > label input {
+	/* 4.9 only */
+	margin-top: -2px !important;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-container {
+    position: relative !important;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-container .iris-picker {
+	border: 0;
+}
+.ttfmake-configuration-overlay-input-wrap .iris-picker.iris-border {
+    width: 100% !important;
+}
+
+.ttfmake-configuration-overlay-input-wrap .iris-picker.iris-border .iris-picker-inner {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+}
+.ttfmake-configuration-overlay-input-wrap .iris-picker.iris-border .iris-picker-inner .iris-slider.iris-strip {
+    right: 0 !important;
+    position: absolute !important;
+}
+.ttfmake-configuration-overlay-input-wrap .iris-picker.iris-border .iris-picker-inner .iris-square {
+    margin-right: 0 !important;
+    width: auto !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 40px !important;
+}
+.ttfmake-configuration-overlay-input-wrap .iris-picker.iris-border .iris-palette-container {
+    left: 0 !important;
+    bottom: 0 !important;
+    width: auto !important;
+}
+.ttfmake-configuration-overlay-input-wrap .iris-picker.iris-border .iris-palette-container .iris-palette {
+    width: 31px !important;
+    height: 31px !important;
+    margin-left: 8px !important;
+}
+.ttfmake-configuration-overlay-input-wrap .wp-picker-input-wrap {
+    position: absolute !important;
+    left: 38px !important;
+    right: 0 !important;
+}
+.ttfmake-configuration-overlay-input-wrap .iris-picker.iris-border .iris-palette-container .iris-palette:first-child {
+    margin-left: 0 !important;
 }

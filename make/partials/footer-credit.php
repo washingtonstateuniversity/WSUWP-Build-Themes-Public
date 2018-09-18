@@ -13,22 +13,24 @@
 $footer_credit = apply_filters( 'make_show_footer_credit', true );
 ?>
 
-<?php if ( make_get_thememod_value( 'footer-text' ) || is_customize_preview() ) : ?>
-<div class="footer-text">
-	<?php echo make_get_thememod_value( 'footer-text' ); ?>
-</div>
-<?php endif; ?>
-
-<?php if ( true === $footer_credit ) : ?>
 <div class="site-info">
-	<?php
-	printf(
-		wp_kses(
-			__( 'Built with <a class="theme-name" href="%s" target="_blank">Make</a>. Your friendly small business site builder.', 'make' ),
-			array( 'a' => array( 'class' => true, 'href' => true, 'target' => true ) )
-		),
-		'https://thethemefoundry.com/make/'
-	);
-	?>
+	<?php if ( make_get_thememod_value( 'footer-text' ) || is_customize_preview() ) : ?>
+	<div class="footer-text">
+		<?php echo make_get_thememod_value( 'footer-text' ); ?>
+	</div>
+	<?php endif; ?>
+
+	<?php if ( true === $footer_credit ) : ?>
+	<div class="footer-credit">
+		<?php
+		printf(
+			wp_kses(
+				__( 'Built with <a class="theme-name" href="%s" target="_blank">Make</a>. Your friendly WordPress page builder theme.', 'make' ),
+				array( 'a' => array( 'class' => true, 'href' => true, 'target' => true ) )
+			),
+			'https://thethemefoundry.com/make/'
+		);
+		?>
+	</div>
+	<?php endif; ?>
 </div>
-<?php endif; ?>

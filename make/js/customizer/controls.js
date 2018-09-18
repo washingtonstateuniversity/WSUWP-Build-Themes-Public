@@ -139,18 +139,7 @@
 				$container = control.container.find('.make-backgroundposition-container');
 
 			// Initialize the buttonset.
-			$container.buttonset({
-				create : function(event) {
-					var $control = $(event.target),
-						$positionButton = $control.find('label'),
-						$caption = $control.parent().find('.background-position-caption');
-
-					$positionButton.on('click', function() {
-						var label = $(this).data('label');
-						$caption.text(label);
-					});
-				}
-			});
+			$container.buttonset();
 
 			// Listen for changes to the buttonset.
 			$container.on('change', 'input:radio', function() {
@@ -190,6 +179,25 @@
 			// Update the radio group if the setting changes.
 			control.setting.bind(function(value) {
 				$container.find('input:radio').filter('[value=' + value + ']').prop('checked', true);
+			});
+		}
+	});
+
+	/**
+	 * Initialize instances of MAKE_Customizer_Control_Radio
+	 *
+	 * @since 1.8.4.
+	 */
+	api.controlConstructor.make_select = api.Control.extend({
+		ready: function() {
+			var control = this,
+				$container = control.container.find('.make-select-container'),
+				$input = $('select', $container);
+
+			// Listen for changes to the radio group.
+			$input.on('change', function() {
+				var value = $(this).val();
+				control.setting.set(value);
 			});
 		}
 	});

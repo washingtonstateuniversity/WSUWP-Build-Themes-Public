@@ -63,6 +63,7 @@ var MakeFrontEnd = MakeFrontEnd || {};
 				self.skipLinkFocusFix();
 				self.navigationHoverFix();
 				self.fitVidsInit( $('.ttfmake-embed-wrapper') );
+				self.handleGalleryOverlayOnMobileDevices();
 			} );
 
 			// Infinite Scroll support
@@ -83,13 +84,13 @@ var MakeFrontEnd = MakeFrontEnd || {};
 		navigationInit: function() {
 			var container, button, menu, links, subMenus;
 
-			container = document.getElementById( 'site-navigation' );
-			if ( ! container ) {
+			button = document.getElementsByClassName( 'menu-toggle' )[0];
+			if ( 'undefined' === typeof button ) {
 				return;
 			}
 
-			button = container.getElementsByTagName( 'span' )[0];
-			if ( 'undefined' === typeof button ) {
+			container = button.parentElement;
+			if ( ! container ) {
 				return;
 			}
 
@@ -122,37 +123,17 @@ var MakeFrontEnd = MakeFrontEnd || {};
 			links    = menu.getElementsByTagName( 'a' );
 			subMenus = menu.getElementsByTagName( 'ul' );
 
+			var $links = $(links);
+
+			$links.focus(function() {
+				$(this).parents('li').addClass('focus');
+			}).blur(function() {
+				$(this).parents('li').removeClass('focus');
+			});
+
 			// Set menu items with submenus to aria-haspopup="true".
 			for ( var i = 0, len = subMenus.length; i < len; i++ ) {
 				subMenus[i].parentNode.setAttribute( 'aria-haspopup', 'true' );
-			}
-
-			// Each time a menu link is focused or blurred, toggle focus.
-			for ( i = 0, len = links.length; i < len; i++ ) {
-				links[i].addEventListener( 'focus', toggleFocus, true );
-				links[i].addEventListener( 'blur', toggleFocus, true );
-			}
-
-			/**
-			 * Sets or removes .focus class on an element.
-			 */
-			function toggleFocus() {
-				var self = this;
-
-				// Move up through the ancestors of the current link until we hit .nav-menu.
-				while ( -1 === self.className.indexOf( 'nav-menu' ) ) {
-
-					// On li elements toggle the class .focus.
-					if ( 'li' === self.tagName.toLowerCase() ) {
-						if ( -1 !== self.className.indexOf( 'focus' ) ) {
-							self.className = self.className.replace( ' focus', '' );
-						} else {
-							self.className += ' focus';
-						}
-					}
-
-					self = self.parentElement;
-				}
 			}
 		},
 
@@ -237,6 +218,27 @@ var MakeFrontEnd = MakeFrontEnd || {};
 			// Fix padding issue with Blip.tv. Note that this *must* happen after Fitvids runs.
 			// The selector finds the Blip.tv iFrame, then grabs the .fluid-width-video-wrapper div sibling.
 			$container.find('.fluid-width-video-wrapper:nth-child(2)').css({ 'paddingTop': 0 });
+		},
+
+		/**
+		 * Handle gallery overlay show / hide on mobile devices "hover".
+		 *
+		 * @since  1.8.6
+		 *
+		 * @return void
+		 */
+		handleGalleryOverlayOnMobileDevices: function() {
+			$('.builder-section-gallery .builder-gallery-item').on('touchstart', function() {
+				var $this = $(this);
+
+				if ($this.find('.builder-gallery-content').length) {
+					$this.addClass('touchstart');
+				}
+			});
+
+			$('body:not(.builder-gallery-item)').on('touchstart', function() {
+				$('.builder-gallery-item').removeClass('touchstart');
+			});
 		}
 	});
 

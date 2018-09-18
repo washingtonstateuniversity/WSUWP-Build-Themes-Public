@@ -83,18 +83,40 @@ class MAKE_Customizer_Control_BackgroundPosition extends WP_Customize_Control {
 			<span class="description customize-control-description">{{{ data.description }}}</span>
 		<# } #>
 
-		<div id="input_{{ data.id }}" class="make-backgroundposition-container">
-		<# var i = 1;
-		for ( key in data.choices ) { #>
-			<input id="{{ data.id }}{{ key }}" name="_customize-radio-{{ data.id }}" type="radio" value="{{ key }}" {{{ data.link }}}<# if (key === data.value) { #> checked="checked" <# } #> />
-			<label for="{{ data.id }}{{ key }}" class="choice-{{ i }}" data-label="{{ data.choices[ key ] }}"></label>
-		<# i++;
-		} #>
-		</div>
-		<div class="background-position-caption">
-			<# if (data.value) { #>
-				{{ data.choices[ data.value ] }}
-			<# } #>
+		<div class="customize-control-content">
+			<fieldset>
+				<div id="input_{{ data.id }}" class="make-backgroundposition-container background-position-control">
+					<div class="button-group">
+						<#
+						var i = 1;
+						var icons = [
+							'dashicons dashicons-arrow-left-alt',
+							'dashicons dashicons-arrow-up-alt',
+							'dashicons dashicons-arrow-right-alt',
+							'dashicons dashicons-arrow-left-alt',
+							'background-position-center-icon',
+							'dashicons dashicons-arrow-right-alt',
+							'dashicons dashicons-arrow-left-alt',
+							'dashicons dashicons-arrow-down-alt',
+							'dashicons dashicons-arrow-right-alt'
+						];
+
+						for ( key in data.choices ) { #>
+							<label for="{{ data.id }}{{ key }}" class="choice-{{ i }}" data-label="{{ data.choices[ key ] }}">
+								<input id="{{ data.id }}{{ key }}" class="screen-reader-text" name="_customize-radio-{{ data.id }}" type="radio" value="{{ key }}" {{{ data.link }}}<# if (key === data.value) { #> checked="checked" <# } #> />
+								<span class="button display-options position">
+									<span class="{{icons[i - 1]}}" aria-hidden="true"></span>
+								</span>
+							</label>
+						<# i++; #>
+					<# if (i < 9 && (i - 1) % 3 == 0) { #>
+					</div>
+					<div class="button-group">
+					<# } #>
+						<# } #>
+					</div>
+				</div>
+			</fieldset>
 		</div>
 	<?php
 	}

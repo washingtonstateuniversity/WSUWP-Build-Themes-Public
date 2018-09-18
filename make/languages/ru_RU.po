@@ -197,8 +197,8 @@ msgstr "Справа"
 
 #: inc/builder/sections/builder-templates/banner-slide.php:77
 #: inc/builder/sections/section-definitions.php:375
-msgid "Darken background to improve readability"
-msgstr "Темнее фон для улучшения читабельности"
+msgid "Darken"
+msgstr "Tемнеть"
 
 #: inc/builder/sections/builder-templates/banner-slide.php:83
 #: inc/builder/sections/section-definitions.php:391

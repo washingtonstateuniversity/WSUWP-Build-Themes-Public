@@ -2,7 +2,7 @@
 var MakeIconPicker = MakeIconPicker || {};
 
 (function($, picker) {
-	var iconWindow, iconInsert, iconRemove, iconValue, iconUnicode;
+	var iconWindow, iconInsert, iconRemove, iconValue, iconUnicode, iconStyle;
 
 	picker = $.extend(picker, {
 		/**
@@ -25,6 +25,7 @@ var MakeIconPicker = MakeIconPicker || {};
 		 * @since 1.7.0.
 		 */
 		icons: {},
+		iconCategories: {},
 
 		/**
 		 * Load the JSON data for all the icons.
@@ -35,6 +36,12 @@ var MakeIconPicker = MakeIconPicker || {};
 			if ($.isEmptyObject(picker.icons)) {
 				$.getJSON(picker.sources.fontawesome, function(data) {
 					picker.icons = data;
+				});
+			}
+
+			if ($.isEmptyObject(picker.iconCategories)) {
+				$.getJSON(picker.sources.fontawesomecats, function (data) {
+					picker.iconCategories = data;
 				});
 			}
 		},
@@ -85,6 +92,15 @@ var MakeIconPicker = MakeIconPicker || {};
 						}
 					},
 					{
+						type: 'textbox',
+						name: 'chosenIconStyle',
+						hidden: true,
+						value: '',
+						onPostRender: function() {
+							iconStyle = this;
+						}
+					},
+					{
 						type: 'container',
 						layout: 'flex',
 						align: 'stretch',
@@ -117,11 +133,11 @@ var MakeIconPicker = MakeIconPicker || {};
 			var items = [],
 				category, grid;
 
-			$.each(picker.icons, function(cat, icons) {
+			$.each(picker.iconCategories, function(index, cat) {
 				// Icon category label.
 				category = {
 					type: 'container',
-					html: '<span>' + tinymce.i18n.translate(cat) + '</span>',
+					html: '<span>' + tinymce.i18n.translate(cat.label) + '</span>',
 					style: 'padding: 20px 0 10px;'
 				};
 				items.push(category);
@@ -140,7 +156,7 @@ var MakeIconPicker = MakeIconPicker || {};
 						border: '1 1 1 1',
 						style: 'border-color: #ffffff; border-style: solid;'
 					},
-					items: picker.getIconGrid(icons)
+					items: picker.getIconGrid(cat.icons)
 				};
 				items.push(grid);
 			});
@@ -161,6 +177,8 @@ var MakeIconPicker = MakeIconPicker || {};
 				icon;
 
 			$.each(icons, function(index, data) {
+				var iconData = picker.icons[data];
+				
 				function highlight( self ) {
 					picker.el = self.getEl();
 					picker.el.style.borderColor = '#d9d9d9';
@@ -173,17 +191,19 @@ var MakeIconPicker = MakeIconPicker || {};
 					picker.el = {};
 				}
 
+				var style = (iconData.style.indexOf('brands') !== -1) ? 'fab': 'fas';
+
 				icon = {
-					html: '<div data-icon-value="' + data.id + '" data-icon-unicode="' + data.unicode + '" style="padding: 4px 0; text-align: center;"><i title="' + data.name + '" class="fa ' + data.id + '"></i></div>',
+					html: '<div data-icon-value="' + iconData.id + '" data-icon-style="' + style + '" data-icon-unicode="' + iconData.unicode + '" style="padding: 4px 0; text-align: center;"><i title="' + iconData.label + '" class="' + style + ' ' + iconData.id + '"></i></div>',
 					onPostRender: function() {
 						var currentValue = picker.getChosenIcon();
-						if ( currentValue == data.id ) {
+						if ( currentValue == iconData.id ) {
 							// Highlight the selected icon.
 							highlight( this );
 						}
 					},
 					onclick: function() {
-						var value, unicode;
+						var value, unicode, style;
 
 						// Un-highlight the previously selected icon.
 						if ( 'undefined' !== typeof picker.el.style ) {
@@ -195,9 +215,11 @@ var MakeIconPicker = MakeIconPicker || {};
 
 						// Get the icon ID and unicode and store them in the hidden text fields.
 						value = $( picker.el ).find( '[data-icon-value]' ).data( 'icon-value' );
+						style = $( picker.el ).find( '[data-icon-style]' ).data( 'icon-style' );
 						unicode = $( picker.el ).find( '[data-icon-unicode]' ).data( 'icon-unicode' );
 						iconWindow.find( '#chosenIcon' ).value( value );
 						iconWindow.find( '#chosenIconUnicode' ).value( unicode );
+						iconWindow.find( '#chosenIconStyle' ).value( style );
 
 						// Enable the insert button
 						iconInsert.disabled( false );
@@ -231,11 +253,12 @@ var MakeIconPicker = MakeIconPicker || {};
 				onclick: function() {
 					// Get the currently selected icon.
 					var value = picker.getChosenIcon(),
-						unicode = picker.getChosenUnicode();
+						unicode = picker.getChosenUnicode(),
+						style = picker.getChosenStyle();
 
 					if ( 'function' === typeof picker.callback ) {
 						// Fire the callback.
-						picker.callback(value, unicode);
+						picker.callback(value, unicode, style);
 
 						// Close the modal.
 						iconWindow.fire( 'submit' );
@@ -303,6 +326,10 @@ var MakeIconPicker = MakeIconPicker || {};
 		 */
 		getChosenUnicode: function() {
 			return iconUnicode.value();
+		},
+
+		getChosenStyle: function() {
+			return iconStyle.value();
 		}
 	});
 

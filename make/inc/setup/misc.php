@@ -225,14 +225,26 @@ final class MAKE_Setup_Misc extends MAKE_Util_Modules implements MAKE_Setup_Misc
 			$classes[] = 'header-bar-flipped';
 		}
 
+		$has_sidebar = false;
+
 		// Left Sidebar
 		if ( true === make_has_sidebar( 'left' ) ) {
 			$classes[] = 'has-left-sidebar';
+			$has_sidebar = true;
 		}
 
 		// Right Sidebar
 		if ( true === make_has_sidebar( 'right' ) ) {
 			$classes[] = 'has-right-sidebar';
+			$has_sidebar = true;
+		}
+
+		if ( !$has_sidebar ) {
+			$classes[] = 'no-sidebar';
+		}
+
+		if ( ttfmake_is_builder_page() ) {
+			$classes[] = 'builder-enabled';
 		}
 
 		return $classes;

@@ -5,12 +5,12 @@
  * Author:      The Theme Foundry
  * Author URI:  https://thethemefoundry.com
  * Description: Build a website that means business. With Make’s powerful drag and drop page builder and hundreds of Customizer options, you can effortlessly brand your site without touching a line of code. Add full-width banners, columns, and galleries to showcase your best work. The intuitive builder delivers clean, lean code — not shortcodes — so you can trust your content remains portable. Make lets you control page layout options, including sidebar display, on all your posts and pages. Choose from hundreds of Google Fonts and upload custom backgrounds everywhere. Built on a fully responsive grid, Make renders as beautifully on tablets and phone screens as it does on desktop. Make scales with your business and is fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and others. For documentation on the page builder and getting started with Make, see: https://thethemefoundry.com/make-help/
- * Version:     1.7.13
+ * Version:     1.9.15
  * License:     GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: make
  * Domain Path: /languages/
- * Tags:        one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, grid-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, footer-widgets, blog, e-commerce, education, entertainment, food-and-drink, holiday, news, photography, portfolio
+ * Tags:        one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, grid-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, footer-widgets, blog, e-commerce, portfolio
  *
  * Make WordPress Theme, Copyright 2014-2016 The Theme Foundry
  * Make is distributed under the terms of the GNU GPL
@@ -188,10 +188,6 @@ html {
 	-ms-text-size-adjust: 100%;
 }
 
-a:focus {
-	outline: none;
-}
-
 article,
 aside,
 details,
@@ -296,10 +292,6 @@ textarea {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-}
-
-a:focus {
-	outline: thin dotted;
 }
 
 a:hover,
@@ -743,6 +735,8 @@ div.custom-logo a {
 	border-bottom: 1px solid #171717;
 	color: #fff;
 	background-color: #171717;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
 }
 
 @media screen and (min-width: 1100px) {
@@ -839,8 +833,7 @@ div.custom-logo a {
 }
 
 .header-bar .menu {
-	margin: 11px 0 22px;
-	margin: 1.1rem 0 2.2rem;
+	margin: 0.8em 0;
 	padding: 0;
 	text-align: center;
 	list-style: none;
@@ -880,10 +873,79 @@ div.custom-logo a {
 	font-weight: normal;
 }
 
+.header-navigation .mobile-menu {
+	min-height: 5px;
+}
+
+.header-navigation .mobile-menu ul.menu {
+	display: none;
+	margin: 0;
+	padding: 0;
+}
+
+@media screen and (min-width: 800px) {
+	.header-navigation .mobile-menu ul.menu {
+		display: block;
+	}
+}
+
+.header-navigation .mobile-menu ul.menu li {
+	display: block;
+	text-align: left;
+	list-style: none;
+}
+
+.header-navigation .mobile-menu ul.menu li a {
+	display: block;
+	padding: 11px 0;
+	padding: 1.1rem 0;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+	font-size: 14px;
+	font-size: 1.4rem;
+	font-weight: normal;
+	line-height: 1.8;
+	text-decoration: none;
+}
+
+.header-navigation .mobile-menu ul.menu li:last-child a {
+	border-bottom: none;
+}
+
+@media screen and (min-width: 800px) {
+	.header-navigation .mobile-menu ul.menu {
+		margin: 0.8em 0;
+		padding: 0;
+		text-align: left;
+		list-style: none;
+	}
+
+	.header-navigation .mobile-menu ul.menu li {
+		display: inline-block;
+		padding-right: 16px;
+		padding-right: 1.6rem;
+		text-align: left;
+	}
+
+	.header-navigation .mobile-menu ul.menu li:last-of-type {
+		padding-right: 0;
+	}
+
+	.header-navigation .mobile-menu ul.menu li a {
+		padding: 0;
+		border-bottom: none;
+		font-size: 13px;
+		font-size: 1.3rem;
+		font-weight: normal;
+	}
+}
+
+.header-navigation.toggled .mobile-menu ul.menu {
+	display: block;
+}
+
 .header-text {
 	display: block;
-	margin-bottom: 22px;
-	margin-bottom: 2.2rem;
 	font-size: 13px;
 	font-size: 1.3rem;
 	text-align: center;
@@ -892,15 +954,13 @@ div.custom-logo a {
 @media screen and (min-width: 1100px) {
 	.header-text {
 		float: left;
-		margin-top: 2px;
-		margin-top: 0.2rem;
-		padding: 11px 0;
-		padding: 1.1rem 0;
 	}
 }
 
 @media screen and (min-width: 800px) {
 	.header-text {
+		padding: 11px 0;
+		padding: 1.1rem 0;
 		text-align: left;
 	}
 }
@@ -920,7 +980,7 @@ div.custom-logo a {
 	user-select: none;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 800px) {
 	.social-links {
 		padding-top: 0;
 	}
@@ -942,8 +1002,8 @@ div.custom-logo a {
 	color: #808080;
 }
 
-.social-links a:hover .fa.fa-facebook-official,
-.social-links a:focus .fa.fa-facebook-official {
+.social-links a:hover .fa.fa-facebook-square,
+.social-links a:focus .fa.fa-facebook-square {
 	color: #3b5999;
 }
 
@@ -1066,7 +1126,7 @@ div.custom-logo a {
 	}
 
 	.branding-right .header-layout-3 .site-navigation {
-		float: right;
+		float: left;
 		text-align: right;
 	}
 }
@@ -1154,10 +1214,10 @@ div.custom-logo a {
 	.site-navigation .menu .children,
 	.site-navigation .nav-menu .sub-menu,
 	.site-navigation .nav-menu .children {
-		display: none;
 		overflow: hidden;
 		position: absolute;
-		z-index: 99999;
+		z-index: -1;
+		height: 0;
 		background-color: #eaecee;
 	}
 
@@ -1202,14 +1262,16 @@ div.custom-logo a {
 	.site-navigation .nav-menu .sub-menu .menu-item-has-children a:after,
 	.site-navigation .nav-menu .children .page_item_has_children a:after,
 	.site-navigation .nav-menu .children .menu-item-has-children a:after {
+		display: inline-block;
 		float: right;
 		position: relative;
 		top: 4px;
 		top: 0.4rem;
-		font-family: FontAwesome;
+		font-family: "Font Awesome 5 Free";
 		font-size: 10px;
 		font-size: 1rem;
-		font-weight: normal;
+		font-weight: 900;
+		text-decoration: none;
 		content: "  \f054";
 	}
 
@@ -1278,15 +1340,17 @@ div.custom-logo a {
 @media screen and (min-width: 800px) {
 	.site-navigation .page_item_has_children a:after,
 	.site-navigation .menu-item-has-children a:after {
+		display: inline-block;
 		position: relative;
 		top: -1px;
 		padding-left: 2px;
 		padding-left: 0.2rem;
 		color: #b9bcbf;
-		font-family: FontAwesome;
+		font-family: "Font Awesome 5 Free";
 		font-size: 10px;
 		font-size: 1rem;
-		font-weight: normal;
+		font-weight: 900;
+		text-decoration: none;
 		content: "  \f078";
 	}
 
@@ -1316,11 +1380,206 @@ div.custom-logo a {
 	.site-navigation .menu ul li:hover > ul,
 	.site-navigation ul.menu .focus > ul,
 	.site-navigation .menu .focus > ul {
-		display: block;
 		overflow: inherit;
+		z-index: 99999;
 		width: inherit;
 		height: inherit;
 	}
+}
+
+.site-navigation .desktop-menu .menu,
+.site-navigation .desktop-menu .nav-menu {
+	display: block;
+	margin-bottom: 0;
+	padding-left: 0;
+}
+
+.site-navigation .desktop-menu .menu ul,
+.site-navigation .desktop-menu .menu ol,
+.site-navigation .desktop-menu .nav-menu ul,
+.site-navigation .desktop-menu .nav-menu ol {
+	margin-left: 0;
+}
+
+.site-navigation .desktop-menu .menu li,
+.site-navigation .desktop-menu .nav-menu li {
+	display: inline-block;
+	position: relative;
+}
+
+.site-navigation .desktop-menu .menu li a,
+.site-navigation .desktop-menu .nav-menu li a {
+	padding: 11px 16px;
+	padding: 1.1rem 1.6rem;
+	border-bottom: 0;
+	line-height: 1.4;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu,
+.site-navigation .desktop-menu .menu .children,
+.site-navigation .desktop-menu .nav-menu .sub-menu,
+.site-navigation .desktop-menu .nav-menu .children {
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+	background-color: #eaecee;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu li,
+.site-navigation .desktop-menu .menu .children li,
+.site-navigation .desktop-menu .nav-menu .sub-menu li,
+.site-navigation .desktop-menu .nav-menu .children li {
+	width: 100%;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu li:first-of-type a,
+.site-navigation .desktop-menu .menu .children li:first-of-type a,
+.site-navigation .desktop-menu .nav-menu .sub-menu li:first-of-type a,
+.site-navigation .desktop-menu .nav-menu .children li:first-of-type a {
+	padding: 15px 16px;
+	padding: 1.5rem 1.6rem;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu a,
+.site-navigation .desktop-menu .menu .children a,
+.site-navigation .desktop-menu .nav-menu .sub-menu a,
+.site-navigation .desktop-menu .nav-menu .children a {
+	padding: 15px 16px;
+	padding: 1.5rem 1.6rem;
+	border-bottom: 1px solid #b9bcbf;
+	font-size: 13px;
+	font-size: 1.3rem;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu a:after,
+.site-navigation .desktop-menu .menu .children a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu a:after,
+.site-navigation .desktop-menu .nav-menu .children a:after {
+	content: none;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu .page_item_has_children a:after,
+.site-navigation .desktop-menu .menu .sub-menu .menu-item-has-children a:after,
+.site-navigation .desktop-menu .menu .children .page_item_has_children a:after,
+.site-navigation .desktop-menu .menu .children .menu-item-has-children a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .page_item_has_children a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .menu-item-has-children a:after,
+.site-navigation .desktop-menu .nav-menu .children .page_item_has_children a:after,
+.site-navigation .desktop-menu .nav-menu .children .menu-item-has-children a:after {
+	float: right;
+	position: relative;
+	top: 4px;
+	top: 0.4rem;
+	font-family: "Font Awesome 5 Free";
+	font-size: 10px;
+	font-size: 1rem;
+	font-weight: 900;
+	content: "  \f054";
+}
+
+.site-navigation .desktop-menu .menu .sub-menu .sub-menu li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .menu .sub-menu .sub-menu li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .menu .sub-menu .children li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .menu .sub-menu .children li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .menu .children .sub-menu li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .menu .children .sub-menu li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .menu .children .children li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .menu .children .children li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .sub-menu li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .sub-menu li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .children li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .nav-menu .sub-menu .children li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .nav-menu .children .sub-menu li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .nav-menu .children .sub-menu li:not(.page_item_has_children) a:after,
+.site-navigation .desktop-menu .nav-menu .children .children li:not(.menu-item-has-children) a:after,
+.site-navigation .desktop-menu .nav-menu .children .children li:not(.page_item_has_children) a:after {
+	content: none;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu li,
+.site-navigation .desktop-menu .menu .children li,
+.site-navigation .desktop-menu .nav-menu .sub-menu li,
+.site-navigation .desktop-menu .nav-menu .children li {
+	padding-left: 0;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu li a:before,
+.site-navigation .desktop-menu .menu .children li a:before,
+.site-navigation .desktop-menu .nav-menu .sub-menu li a:before,
+.site-navigation .desktop-menu .nav-menu .children li a:before {
+	content: none;
+}
+
+.site-navigation .desktop-menu .menu .sub-menu ul,
+.site-navigation .desktop-menu .menu .children ul,
+.site-navigation .desktop-menu .nav-menu .sub-menu ul,
+.site-navigation .desktop-menu .nav-menu .children ul {
+	top: 0;
+	left: 100%;
+}
+
+.site-navigation .desktop-menu .menu .current_page_item > a,
+.site-navigation .desktop-menu .menu .current_page_ancestor > a,
+.site-navigation .desktop-menu .menu .current-menu-item > a,
+.site-navigation .desktop-menu .menu .current-menu-ancestor > a,
+.site-navigation .desktop-menu .nav-menu .current_page_item > a,
+.site-navigation .desktop-menu .nav-menu .current_page_ancestor > a,
+.site-navigation .desktop-menu .nav-menu .current-menu-item > a,
+.site-navigation .desktop-menu .nav-menu .current-menu-ancestor > a {
+	font-weight: bold;
+}
+
+.site-navigation .desktop-menu .menu .current_page_item > a,
+.site-navigation .desktop-menu .menu .current-menu-item > a,
+.site-navigation .desktop-menu .nav-menu .current_page_item > a,
+.site-navigation .desktop-menu .nav-menu .current-menu-item > a {
+	font-weight: bold;
+}
+
+.site-navigation .desktop-menu .page_item_has_children a:after,
+.site-navigation .desktop-menu .menu-item-has-children a:after {
+	position: relative;
+	top: -1px;
+	padding-left: 2px;
+	padding-left: 0.2rem;
+	color: #b9bcbf;
+	font-family: "Font Awesome 5 Free";
+	font-size: 10px;
+	font-size: 1rem;
+	font-weight: 900;
+	content: "  \f078";
+}
+
+.site-navigation .desktop-menu ul.menu ul a,
+.site-navigation .desktop-menu .menu ul ul a {
+	min-width: 180px;
+	max-width: 250px;
+	margin: 0;
+}
+
+.site-navigation .desktop-menu ul.menu ul a:hover,
+.site-navigation .desktop-menu ul.menu ul a:focus,
+.site-navigation .desktop-menu .menu ul ul a:hover,
+.site-navigation .desktop-menu .menu ul ul a:focus {
+	color: #fff;
+	background-color: #3070d1;
+}
+
+.site-navigation .desktop-menu ul.menu ul a:hover:after,
+.site-navigation .desktop-menu ul.menu ul a:focus:after,
+.site-navigation .desktop-menu .menu ul ul a:hover:after,
+.site-navigation .desktop-menu .menu ul ul a:focus:after {
+	color: #fff;
+}
+
+.site-navigation .desktop-menu ul.menu li:hover > ul,
+.site-navigation .desktop-menu .menu ul li:hover > ul,
+.site-navigation .desktop-menu ul.menu .focus > ul,
+.site-navigation .desktop-menu .menu .focus > ul {
+	overflow: inherit;
+	z-index: 99999;
+	width: inherit;
+	height: inherit;
 }
 
 .menu-toggle {
@@ -1343,8 +1602,13 @@ div.custom-logo a {
 .menu-toggle:before {
 	padding-right: 6px;
 	padding-right: 0.6rem;
-	font-family: FontAwesome;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
 	content: "\f0c9";
+}
+
+.header-navigation .menu-toggle {
+	margin-top: 0;
 }
 
 .menu-toggle,
@@ -1618,6 +1882,7 @@ h6 a,
 a
   h6 {
 	color: inherit;
+	font-weight: inherit;
 	text-decoration: none;
 }
 
@@ -1884,30 +2149,35 @@ ul.ttfmake-list li:before,
 ol.ttfmake-list li:before {
 	padding-right: 10.6666666667px;
 	padding-right: 1.0666666667rem;
-	font-family: FontAwesome;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
 }
 
 ul.ttfmake-list-check li:before,
 ol.ttfmake-list-check li:before {
 	color: #339d56;
+	font-weight: 900;
 	content: "\f14a";
 }
 
 ul.ttfmake-list-check2 li:before,
 ol.ttfmake-list-check2 li:before {
 	color: #339d56;
+	font-weight: 400;
 	content: "\f046";
 }
 
 ul.ttfmake-list-star li:before,
 ol.ttfmake-list-star li:before {
 	color: #f89e01;
+	font-weight: 900;
 	content: "\f005";
 }
 
 ul.ttfmake-list-dot li:before,
 ol.ttfmake-list-dot li:before {
 	color: #3070d1;
+	font-weight: 400;
 	content: "\f192";
 }
 
@@ -2106,9 +2376,10 @@ Notices / Alerts (_elements.scss)
 	bottom: -12px;
 	bottom: -1.2rem;
 	opacity: 0.1;
-	font-family: FontAwesome;
+	font-family: "Font Awesome 5 Free";
 	font-size: 72px;
 	font-size: 7.2rem;
+	font-weight: 900;
 	line-height: 1;
 	content: "\f05a";
 }
@@ -2124,6 +2395,7 @@ Notices / Alerts (_elements.scss)
 }
 
 .ttfmake-alert.ttfmake-error:before {
+	font-weight: 900;
 	content: "\f06a";
 }
 
@@ -2134,6 +2406,7 @@ Notices / Alerts (_elements.scss)
 }
 
 .ttfmake-alert.ttfmake-success:before {
+	font-weight: 900;
 	content: "\f058";
 }
 
@@ -2144,6 +2417,7 @@ Notices / Alerts (_elements.scss)
 }
 
 .ttfmake-alert.ttfmake-important:before {
+	font-weight: 900;
 	content: "\f06a";
 }
 
@@ -2188,32 +2462,28 @@ img {
 }
 
 .screen-reader-text {
-	overflow: hidden;
-	clip: rect(1px, 1px, 1px, 1px);
-	position: absolute !important;
-	width: 1px;
-	height: 1px;
+	position: absolute;
+	top: 0;
+	left: -10000em;
 }
 
 .screen-reader-text:focus {
 	display: block;
-	clip: auto !important;
 	z-index: 100000;
-	top: 5px;
-	left: 5px;
+	top: 7px;
+	left: 6px;
 	width: auto;
 	height: auto;
 	padding: 15px 23px 14px;
-	border-radius: 3px;
-	color: #21759b;
-	background-color: #f1f1f1;
+	color: #0073aa;
+	background: #f1f1f1;
+	-webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-size: 14px;
-	font-size: 0.875rem;
-	font-weight: bold;
+	font-weight: 600;
 	line-height: normal;
 	text-decoration: none;
-	/* Above WP toolbar. */
 }
 
 #site-content[tabindex="-1"]:focus {
@@ -2280,15 +2550,19 @@ div.wp-video-shortcode {
  Google maps (_patterns.scss)
 -------------------------------------------------------- */
 
-.entry-content iframe[src*="google.com/maps"] {
-	width: 100%;
-	height: 300px;
+@media screen and (max-width: 800px) {
+	.entry-content iframe[src*="google.com/maps"] {
+		width: 100%;
+	}
 }
 
-@media screen and (min-width: 800px) {
-	.entry-content iframe[src*="google.com/maps"] {
-		height: 600px;
-	}
+
+/*---------------------------------------------------------
+ Icons (_patterns.scss)
+-------------------------------------------------------- */
+
+.share-icon {
+	text-rendering: auto;
 }
 
 
@@ -2452,7 +2726,8 @@ div.wp-video-shortcode {
 	padding-right: 8px;
 	padding-right: 0.8rem;
 	color: #b9bcbf;
-	font-family: FontAwesome;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
 	content: "\f075";
 }
 
@@ -2614,8 +2889,8 @@ div.wp-video-shortcode {
 #infinite-handle a:after,
 #infinite-handle span:before,
 #infinite-handle span:after {
-	font-family: FontAwesome;
-	font-weight: normal;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
 }
 
 [class*="navigation"] .nav-previous {
@@ -2623,7 +2898,7 @@ div.wp-video-shortcode {
 }
 
 [class*="navigation"] .nav-previous a:before {
-	content: "\f177  ";
+	content: "\f30a  ";
 }
 
 [class*="navigation"] .nav-next,
@@ -2636,7 +2911,7 @@ div.wp-video-shortcode {
 [class*="navigation"] .nav-next span:after,
 #infinite-handle a:after,
 #infinite-handle span:after {
-	content: "  \f178";
+	content: "  \f30b";
 }
 
 .infinite-scroll .paging-navigation {
@@ -2756,11 +3031,58 @@ div.wp-video-shortcode {
 	padding: 0 3.2rem;
 }
 
+.single.builder-enabled.no-sidebar .site-content > .container,
+.single.builder-enabled.no-sidebar .site-content > .infinite-footer-container,
+.single.builder-enabled.no-sidebar .page-template-template-builder-php .entry-content.site-content > .twitter-share,
+.page-template-template-builder-php .single.builder-enabled.no-sidebar .entry-content.site-content > .twitter-share {
+	width: 100%;
+	max-width: none;
+	padding: 0;
+}
+
+.single.builder-enabled.no-sidebar .entry-header,
+.single.builder-enabled.no-sidebar .entry-footer,
+.single.builder-enabled.no-sidebar .builder-section-header,
+.single.builder-enabled.no-sidebar .comments-area,
+.single.builder-enabled.no-sidebar .post-navigation {
+	max-width: 1024px;
+	margin: 0 auto;
+	padding: 0 32px;
+	padding: 0 3.2rem;
+}
+
+.single.builder-enabled.no-sidebar .builder-section-full-width .builder-section-content {
+	max-width: none;
+	padding: 0 32px;
+	padding: 0 3.2rem;
+}
+
 .builder-section-gallery .builder-section-content,
 .builder-section-text .builder-section-content,
 .builder-section-blank .builder-section-content {
 	max-width: 1024px;
 	margin: 0 auto;
+	padding: 0 32px;
+	padding: 0 3.2rem;
+}
+
+.builder-section-gallery.builder-section-full-width .builder-section-content,
+.builder-section-text.builder-section-full-width .builder-section-content,
+.builder-section-blank.builder-section-full-width .builder-section-content {
+	max-width: 100%;
+}
+
+.single .builder-section-gallery .builder-section-content,
+.single .builder-section-text .builder-section-content,
+.blog .builder-section-gallery .builder-section-content,
+.blog .builder-section-text .builder-section-content {
+	max-width: 1024px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.single.no-sidebar .builder-section-gallery .builder-section-content,
+.single.no-sidebar .builder-section-text .builder-section-content {
 	padding: 0 32px;
 	padding: 0 3.2rem;
 }
@@ -2793,6 +3115,22 @@ div.wp-video-shortcode {
 	margin-left: auto;
 	padding: 0 32px;
 	padding: 0 3.2rem;
+}
+
+.single.no-sidebar .builder-text-section-title,
+.single.no-sidebar .builder-gallery-section-title,
+.single.no-sidebar .builder-banner-section-title {
+	padding: 0 32px;
+	padding: 0 3.2rem;
+}
+
+.single .builder-text-section-title,
+.single .builder-gallery-section-title,
+.single .builder-banner-section-title,
+.blog .builder-text-section-title,
+.blog .builder-gallery-section-title,
+.blog .builder-banner-section-title {
+	padding: 0;
 }
 
 .builder-text-section-title {
@@ -2830,6 +3168,14 @@ div.wp-video-shortcode {
  Text section: Columns (_pages.scss)
 -------------------------------------------------------- */
 
+.builder-text-row:after {
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	content: "";
+}
+
 .builder-text-column {
 	float: left;
 	width: 100%;
@@ -2851,12 +3197,40 @@ div.wp-video-shortcode {
 		width: 48.3333333333%;
 	}
 
+	.builder-text-columns-2 .builder-text-column:nth-child(2n+2) {
+		margin-right: 0;
+	}
+
 	.builder-text-columns-3 .builder-text-column {
 		width: 31.1111111111%;
 	}
 
+	.builder-text-columns-3 .builder-text-column:nth-child(3n+3) {
+		margin-right: 0;
+	}
+
 	.builder-text-columns-4 .builder-text-column {
 		width: 22.5%;
+	}
+
+	.builder-text-columns-4 .builder-text-column:nth-child(4n+4) {
+		margin-right: 0;
+	}
+
+	.builder-text-columns-5 .builder-text-column {
+		width: 17.3333333333%;
+	}
+
+	.builder-text-columns-5 .builder-text-column:nth-child(5n+5) {
+		margin-right: 0;
+	}
+
+	.builder-text-columns-6 .builder-text-column {
+		width: 13.8888888889%;
+	}
+
+	.builder-text-columns-6 .builder-text-column:nth-child(6n+6) {
+		margin-right: 0;
 	}
 }
 
@@ -2916,6 +3290,10 @@ div.wp-video-shortcode {
 	background-size: cover;
 }
 
+.builder-banner-slide:not(:first-child) {
+	display: none;
+}
+
 
 /*---------------------------------------------------------
  Banner section: Content (_pages.scss)
@@ -2951,9 +3329,10 @@ div.wp-video-shortcode {
 	}
 }
 
-.cycle-slide .builder-banner-content {
-	padding: 11px 96px;
-	padding: 1.1rem 9.6rem;
+.cycle-prev ~ .builder-banner-slide .builder-banner-content,
+.cycle-next ~ .builder-banner-slide .builder-banner-content {
+	padding: 0 96px;
+	padding: 0 9.6rem;
 }
 
 @media screen and (min-width: 800px) {
@@ -2980,11 +3359,11 @@ div.wp-video-shortcode {
 }
 
 .builder-banner-inner-content {
-	display: inline-block;
 	position: relative;
 	top: 50%;
-	width: 100%;
-	max-width: 100%;
+	max-width: 1024px;
+	margin: 0 auto;
+	padding: 0;
 	vertical-align: middle;
 	-webkit-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
@@ -3002,6 +3381,7 @@ div.wp-video-shortcode {
 
 .builder-section-banner .cycle-pager,
 .ttfmake-shortcode-slider .cycle-pager {
+	height: 40px;
 	color: #eaecee;
 	font-size: 40px;
 	font-size: 4rem;
@@ -3055,9 +3435,10 @@ div.wp-video-shortcode {
 	top: -34px;
 	top: -3.4rem;
 	color: #eaecee;
-	font-family: FontAwesome;
+	font-family: "Font Awesome 5 Free";
 	font-size: 34px;
 	font-size: 3.4rem;
+	font-weight: 900;
 	line-height: 1;
 }
 
@@ -3151,6 +3532,7 @@ div.wp-video-shortcode {
 }
 
 .builder-gallery-captions-reveal .builder-gallery-item:hover .builder-gallery-content,
+.builder-gallery-item.touchstart .builder-gallery-content,
 .builder-gallery-captions-overlay .builder-gallery-item .builder-gallery-content {
 	visibility: visible;
 }
@@ -3159,7 +3541,8 @@ div.wp-video-shortcode {
 	display: none;
 }
 
-.builder-gallery-captions-overlay .builder-gallery-item:hover .builder-gallery-content {
+.builder-gallery-captions-overlay .builder-gallery-item:hover .builder-gallery-content,
+.builder-gallery-item.touchstart .builder-gallery-content {
 	visibility: hidden;
 }
 
@@ -3846,7 +4229,8 @@ input[type="reset"].ttfmake-download:after,
 input[type="submit"].ttfmake-download:after {
 	padding-left: 6px;
 	padding-left: 0.6rem;
-	font-family: FontAwesome;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
 	content: "\f0ab";
 }
 

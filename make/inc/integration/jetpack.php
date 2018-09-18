@@ -89,6 +89,9 @@ final class MAKE_Integration_Jetpack extends MAKE_Util_Modules implements MAKE_U
 			'footer_widgets'  => array( 'footer-1', 'footer-2', 'footer-3', 'footer-4' ),
 			'render'          => $this->get_infinite_scroll_render_callback(),
 		) );
+
+		// Responsive Videos
+		add_theme_support( 'jetpack-responsive-videos' );
 	}
 
 	/**

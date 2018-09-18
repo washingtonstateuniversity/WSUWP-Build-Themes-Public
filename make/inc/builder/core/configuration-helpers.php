@@ -20,12 +20,16 @@ function ttfmake_create_config_select( $section_name, $args, $section_data ) {
 		$label  = ( isset( $args['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $args['label'] ) . '</label>' : '';
 		$class  = ( isset( $args['class'] ) ) ? ' class="' . esc_attr( $args['class'] ) . '"' : '';
 		$description = ( isset( $args['description'] ) ) ? '<div class="ttfmake-configuration-description">' . esc_html( $args['description'] ) . '</div>': '';
-		$select = '<select id="' . $id . '"' . $class .' name="' . $id . '">%s</select>';
+		$select = '<select id="' . $id . '"' . $class .' data-model-attr="' . $args['name'] .'">%s</select>';
 
 		$options = '';
 
+		if ($current_value == '') {
+			$current_value = '{{ get("'. $args['name'] .'") }}';
+		}
+
 		foreach ( $args['options'] as $key => $value ) {
-			$options .= '<option value="' . esc_attr( $key ) . '"' . selected( $key, $current_value, false ) . '>' . esc_html( $value ) . '</option>';
+			$options .= '<option value="' . esc_attr( $key ) . '" {{ (get("'. $args['name'] .'") && get("'. $args['name'] .'").toString() === "'. $key .'".toString()) ? " selected" : "" }}>' . esc_html( $value ) . '</option>';
 		}
 
 		$return = $label . sprintf( $select, $options ) . $description;
@@ -50,8 +54,13 @@ function ttfmake_create_config_checkbox( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
 	$id          = $section_name . '[' . esc_attr( $args['name'] ) . ']';
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $args['label'] ) . '</label>' : '';
+
+	if ($current_value == '') {
+		$current_value = '{{ get("'. $args['name'] .'") }}';
+	}
+
 	$description = ( isset( $args['description'] ) ) ? '<div class="ttfmake-configuration-description">' . esc_html( $args['description'] ) . '</div>': '';
-	$args        = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1"' . checked( 1, $current_value, false ) . '>' . $description;
+	$args        = '<input id="' . $id . '" type="checkbox" name="' . $id . '" value="1" data-model-attr="' . $args['name'] .'" {{ (parseInt(get("'. $args['name' ] .'"), 10) === 1) ? " checked": "" }}>' . $description;
 
 	return  $label . $args;
 }
@@ -73,7 +82,11 @@ function ttfmake_create_config_text( $section_name, $args, $section_data ) {
 	$id          = $section_name . '[' . esc_attr( $args['name'] ) . ']';
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $id . '">' . esc_html( $args['label'] ) . '</label>' : '';
 
-	return  $label . '<input type="text" id="' . $id . '" name="' . $id . '" value="' . esc_attr( $current_value ) . '" />';
+	if ($current_value == '') {
+		$current_value = '{{ get("'. $args['name'] .'") }}';
+	}
+
+	return  $label . '<input type="text" id="' . $id . '" name="' . $id . '" value="{{ get(\'' . $args['name'] . '\') }}" data-model-attr="' . $args['name'] . '" />';
 }
 endif;
 
@@ -92,7 +105,11 @@ function ttfmake_create_config_image( $section_name, $args, $section_data ) {
 	$current_value = ttfmake_get_current_configuration_value( $section_data, $args );
 	$name        = $section_name . '[' . esc_attr( $args['name'] ) . ']';
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $name . '">' . esc_html( $args['label'] ) . '</label>' : '';
-	
+
+	if ($current_value == '') {
+		$current_value = '{{ get("'. $args['name'] .'") }}';
+	}
+
 	return $label . ttfmake_get_builder_base()->add_uploader( $name, $current_value, __( 'Set image', 'make' ) );
 }
 endif;
@@ -114,7 +131,11 @@ function ttfmake_create_config_color( $section_name, $args, $section_data ) {
 	$label       = ( isset( $args['label'] ) ) ? '<label for="' . $name . '">' . esc_html( $args['label'] ) . '</label>' : '';
 	$class       = ( isset( $args['class'] ) ) ? ' class="' . esc_attr( $args['class'] ) . '"' : '';
 
-	return  $label . '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' value="' . esc_attr( $current_value ) . '" />';
+	if ($current_value == '') {
+		$current_value = '{{ get("'. $args['name'] .'") }}';
+	}
+
+	return  $label . '<input id="' . $name . '" type="text" name="' . $name . '" ' . $class . ' value="{{ get("' . $args['name'] . '") }}" data-model-attr="' . $args['name'] . '" />';
 }
 endif;
 
@@ -135,7 +156,35 @@ function ttfmake_create_config_section_title( $section_name, $args, $section_dat
 	$name        = 'name="' . $section_name . '[' . esc_attr( $args['name'] ) . ']"';
 	$class       = ( isset( $args['class'] ) ) ? ' ' . esc_attr( $args['class'] ) : '';
 
-	return  '<input' . $placeholder . ' type="text" ' . $name . ' value="' . esc_attr( $current_value ) . '" class="ttfmake-title' . $class . '" autocomplete="off">';
+	if ($current_value == '') {
+		$current_value = '{{ get("'. $args['name'] .'") }}';
+	}
+
+	return  '<input' . $placeholder . ' type="text" ' . $name . ' value="' . esc_attr( $current_value ) . '" class="ttfmake-title' . $class . '" data-model-attr="' . $args['name'] . '" autocomplete="off">';
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_create_config_divider' ) ) :
+/**
+ * Generate a section divider for settings controls
+ *
+ * @since  1.8.8.
+ *
+ * @param  string    $section_name    The section prefix for the divider.
+ * @param  array     $args            Arguments for creating the divider.
+ * @param  array     $section_data    The data for the current section.
+ * @return string                     The full input string.
+ */
+function ttfmake_create_config_divider( $section_name, $args, $section_data ) {
+	$label = ( isset( $args['label'] ) ) ? $args['label']: '';
+	$name = ( isset( $args['name'] ) ) ? $args['name']: '';
+	ob_start(); ?>
+
+	<span data-name="<?php echo $name; ?>"><?php echo $label; ?></span>
+
+	<?php
+	$output = ob_get_clean();
+	return $output;
 }
 endif;
 

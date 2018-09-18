@@ -18,6 +18,7 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 */
 	protected $dependencies = array(
 		'scripts' => 'MAKE_Setup_ScriptsInterface',
+		'plus'    => 'MAKE_Plus_MethodsInterface',
 	);
 
 	/**
@@ -40,6 +41,9 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	public function __construct( MAKE_APIInterface $api, array $modules = array() ) {
 		parent::__construct( $api, $modules );
 
+		// Include the API
+		require_once get_template_directory() . '/inc/builder/core/api.php';
+
 		// Load backend files
 		if ( is_admin() ) {
 			require_once get_template_directory() . '/inc/builder/core/base.php';
@@ -60,7 +64,11 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_builder_scripts' ) );
 		add_action( 'make_style_loaded', array( $this, 'builder_styles' ) );
-		add_action( 'make_builder_banner_css', array( $this, 'builder_banner_styles' ), 10, 3 );
+		add_filter( 'make_get_section_data', array( $this, 'read_layout' ), 10, 2 );
+
+		if ( is_admin() && ! $this->plus()->is_plus() ) {
+			add_action( 'add_meta_boxes', array( $this, 'add_upsell_meta_box' ), 1 );
+		}
 
 		// Hooking has occurred.
 		self::$hooked = true;
@@ -77,6 +85,70 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 		return self::$hooked;
 	}
 
+	public function read_layout( $sections, $post_id ) {
+		$layout = get_post_meta( $post_id, '_ttfmake_layout', true );
+
+		if ( ! empty( $layout ) ) {
+			$layout = maybe_unserialize( $layout );
+			$sections = array();
+
+			foreach ( $layout as $section_id ) {
+				$section = get_post_meta( $post_id, "_ttfmake_section_{$section_id}", true );
+				$section = maybe_unserialize( $section );
+				$sections[] = $section;
+			}
+		}
+
+		return $sections;
+	}
+
+	/**
+	 * Register an upsell metabox for post builder support.
+	 *
+	 * @since 1.9.7.
+	 *
+	 * @hooked action add_meta_boxes
+	 *
+	 * @return void
+	 */
+	public function add_upsell_meta_box() {
+		// Only show the builder upsell on posts
+		if ( 'post' !== get_post_type() ) {
+			return;
+		}
+
+		add_meta_box(
+			'ttfmake-builder-toggle-upsell',
+			esc_html__( 'Post Builder', 'make' ),
+			array( $this, 'display_builder_toggle_upsell' ),
+			'post',
+			'side',
+			'high'
+		);
+	}
+
+	/**
+	 * Render the upsell metabox for post builder support.
+	 *
+	 * @since 1.9.7.
+	 *
+	 * @return void
+	 */
+	public function display_builder_toggle_upsell() {
+		?>
+		<p>
+			<input type="checkbox" disabled />
+			&nbsp;<label for="use-builder"><?php esc_html_e( 'Enable post builder', 'make' ); ?></label>
+		</p>
+		<p style="color: #666;">
+			<em><?php _e( 'Did you know: with Make Plus you can use the Make builder on posts, too.', 'make'  ) ?></em>
+		<p>
+		<p>
+			<a href="<?php echo esc_url( 'https://thethemefoundry.com/wordpress-themes/make/?utm_source=app&utm_campaign=post-builder#get-started' ); ?>" target="_blank" class="button button-primary button-large"><?php _e( 'Upgrade to Make Plus Now', 'make' ); ?></a>
+		</p>
+		<?php
+	}
+
 	/**
 	 * Handle frontend scripts for use with the existing sections on the current Builder page.
 	 *
@@ -88,21 +160,20 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 */
 	public function frontend_builder_scripts() {
 		if ( ttfmake_is_builder_page() ) {
-			$sections = ttfmake_get_section_data( get_the_ID() );
-
+			$sections = ttfmake_get_post_section_data( get_the_ID() );
 			// Bail if there are no sections
 			if ( empty( $sections ) ) {
 				return;
 			}
-
 			// Parse the sections included on the page.
 			$section_types = wp_list_pluck( $sections, 'section-type' );
-
 			foreach ( $section_types as $section_id => $section_type ) {
 				switch ( $section_type ) {
 					default :
 						break;
 					case 'banner' :
+					case 'postlist' :
+					case 'productgrid' :
 						// Add Cycle2 as a dependency for the Frontend script
 						$this->scripts()->add_dependency( 'make-frontend', 'cycle2', 'script' );
 						if ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) {
@@ -129,8 +200,7 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 	 */
 	public function builder_styles( MAKE_Style_ManagerInterface $style ) {
 		if ( ttfmake_is_builder_page() ) {
-			$sections = ttfmake_get_section_data( get_the_ID() );
-
+			$sections = ttfmake_get_post_section_data( get_the_ID() );
 			if ( ! empty( $sections ) ) {
 				foreach ( $sections as $id => $data ) {
 					if ( isset( $data['section-type'] ) ) {
@@ -150,74 +220,23 @@ class MAKE_Builder_Setup extends MAKE_Util_Modules implements MAKE_Builder_Setup
 			}
 		}
 	}
-
-	/**
-	 * Add frontend CSS rules for Banner sections based on certain section options.
-	 *
-	 * @since 1.4.5
-	 *
-	 * @hooked action make_builder_banner_css
-	 *
-	 * @param array                       $data     The banner's section data.
-	 * @param int                         $id       The banner's section ID.
-	 * @param MAKE_Style_ManagerInterface $style    The style manager instance.
-	 *
-	 * @return void
-	 */
-	public function builder_banner_styles( array $data, $id, MAKE_Style_ManagerInterface $style ) {
-		$prefix = 'builder-section-';
-		$id = sanitize_title_with_dashes( $data['id'] );
-		/**
-		 * This filter is documented in inc/builder/core/save.php
-		 */
-		$section_id = apply_filters( 'make_section_html_id', $prefix . $id, $data );
-
-		$responsive = ( isset( $data['responsive'] ) ) ? $data['responsive'] : 'balanced';
-		$slider_height = absint( $data['height'] );
-		if ( 0 === $slider_height ) {
-			$slider_height = 600;
-		}
-		$slider_ratio = ( $slider_height / 960 ) * 100;
-
-		if ( 'aspect' === $responsive ) {
-			$style->css()->add( array(
-				'selectors'    => array( '#' . esc_attr( $section_id ) . ' .builder-banner-slide' ),
-				'declarations' => array(
-					'padding-bottom' => $slider_ratio . '%'
-				),
-			) );
-		} else {
-			$style->css()->add( array(
-				'selectors'    => array( '#' . esc_attr( $section_id ) . ' .builder-banner-slide' ),
-				'declarations' => array(
-					'padding-bottom' => $slider_height . 'px'
-				),
-			) );
-			$style->css()->add( array(
-				'selectors'    => array( '#' . esc_attr( $section_id ) . ' .builder-banner-slide' ),
-				'declarations' => array(
-					'padding-bottom' => $slider_ratio . '%'
-				),
-				'media'        => 'screen and (min-width: 600px) and (max-width: 960px)'
-			) );
-		}
-	}
 }
 
 /**
  * Global Builder functions
  */
 
-if ( ! function_exists( 'ttfmake_get_section_data' ) ) :
+if ( ! function_exists( 'ttfmake_get_post_section_data' ) ) :
 /**
  * Retrieve all of the data for the sections.
  *
- * @since  1.2.0.
+ * @since  1.8.12.
  *
- * @param  string    $post_id    The post to retrieve the data from.
- * @return array                 The combined data.
+ * @param  string    $post_id        The post to retrieve the data from.
+ * @param  string    $section_id     The optional section_id to retrieve data for.
+ * @return array                     The combined data.
  */
-function ttfmake_get_section_data( $post_id ) {
+function ttfmake_get_post_section_data( $post_id, $section_id = false ) {
 	$ordered_data = array();
 	$ids          = get_post_meta( $post_id, '_ttfmake-section-ids', true );
 	$ids          = ( ! empty( $ids ) && is_array( $ids ) ) ? array_map( 'strval', $ids ) : $ids;
@@ -249,15 +268,32 @@ function ttfmake_get_section_data( $post_id ) {
 		}
 	}
 
-	/**
-	 * Filter the section data for a post.
-	 *
-	 * @since 1.2.3.
-	 *
-	 * @param array    $ordered_data    The array of section data.
-	 * @param int      $post_id         The post ID for the retrieved data.
-	 */
-	return apply_filters( 'make_get_section_data', $ordered_data, $post_id );
+
+	if ( ! isset( $GLOBALS['ttfmake_sections'] ) ) {
+		/**
+		 * Filter the section data for a post.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $ordered_data    The array of section data.
+		 * @param int      $post_id         The post ID for the retrieved data.
+		 */
+		$ttfmake_sections = apply_filters( 'make_get_section_data', $ordered_data, $post_id );
+	} else {
+		global $ttfmake_sections;
+	}
+
+	if ( false !== $section_id ) {
+		foreach( $ttfmake_sections as $section_data ) {
+			if ( strval( $section_id ) === $section_data['id'] ) {
+				return $section_data;
+			}
+		}
+
+		return false;
+	}
+
+	return $ttfmake_sections;
 }
 endif;
 

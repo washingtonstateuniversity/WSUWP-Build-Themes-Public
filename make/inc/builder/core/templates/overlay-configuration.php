@@ -1,24 +1,74 @@
-<?php
-global $ttfmake_overlay_class, $ttfmake_section_data, $ttfmake_is_js_template, $ttfmake_overlay_title;
-$ttfmake_overlay_class = 'ttfmake-configuration-overlay';
-$ttfmake_overlay_title = __( 'Configure section', 'make' );
-$section_name          = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
+<script type="text/html" id="tmpl-ttfmake-overlay-configuration">
+<?php get_template_part( '/inc/builder/core/templates/overlay', 'header' ); ?>
+<?php get_template_part( '/inc/builder/core/templates/overlay', 'footer' ); ?>
+</div>
+</script>
 
-// Include the header
-get_template_part( '/inc/builder/core/templates/overlay', 'header' );
+<script type="text/html" id="tmpl-ttfmake-settings-divider">
+<span data-name="{{ data.name }}" class="{{ data.class }}">{{ data.label }}</span>
+</script>
 
-// Sort the config in case 3rd party code added another input
-ksort( $ttfmake_section_data['section']['config'], SORT_NUMERIC );
+<script type="text/html" id="tmpl-ttfmake-settings-section_title">
+<input placeholder="{{ data.label }}" type="text" value="" class="{{ data.class }}" autocomplete="off"">
+</script>
 
-// Print the inputs
-$output = '';
+<script type="text/html" id="tmpl-ttfmake-settings-select">
+<label>{{ data.label }}</label>
+<select class="{{ data.class }}" {{ data.disabled ? 'disabled' : '' }}>
+	<# for( var o in data.options ) { #>
+	<option value="{{ o }}">{{ data.options[o] }}</option>
+	<# } #>
+</select>
+<# if ( data.description ) { #>
+<div class="ttfmake-configuration-description">{{ data.description }}</div>
+<# } #>
+</script>
 
-foreach ( $ttfmake_section_data['section']['config'] as $input ) {
-	if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
-		$output .= ttfmake_create_input( $section_name, $input, $ttfmake_section_data['data'] );
-	}
-}
+<script type="text/html" id="tmpl-ttfmake-settings-checkbox">
+<label>{{ data.label }}</label>
+<input type="checkbox" value="1" class="{{ data.class }}"<# if( data.disabled ) { #>{{ disabled="disabled" }}<# } #>>
+<# if ( data.description ) { #>
+<div class="ttfmake-configuration-description">{{{ data.description }}}</div>
+<# } #>
+</script>
 
-echo $output;
+<script type="text/html" id="tmpl-ttfmake-settings-text">
+<label>{{ data.label }}</label>
+<input type="text" value="" class="{{ data.class }}">
+<# if ( data.description ) { #>
+<div class="ttfmake-configuration-description">{{ data.description }}</div>
+<# } #>
+</script>
 
-get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
+<script type="text/html" id="tmpl-ttfmake-settings-image">
+<label>{{ data.label }}</label>
+<div class="ttfmake-uploader">
+	<div data-title="Set image" class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add {{ data.class }}"></div>
+</div>
+<# if ( data.description ) { #>
+<div class="ttfmake-configuration-description">{{ data.description }}</div>
+<# } #>
+</script>
+
+<script type="text/html" id="tmpl-ttfmake-settings-color">
+<label>{{ data.label }}</label>
+<input type="text" class="ttfmake-text-background-color ttfmake-configuration-color-picker {{ data.class }}" value="">
+<# if ( data.description ) { #>
+<div class="ttfmake-configuration-description">{{ data.description }}</div>
+<# } #>
+</script>
+
+<script type="text/html" id="tmpl-ttfmake-settings-description">
+<# if ( data.description ) { #>
+<div class="ttfmake-configuration-description" style="margin-top: 0;">{{{ data.description }}}</div>
+<# } #>
+</script>
+
+<script type="text/html" id="tmpl-ttfmake-media-frame-remove-image">
+<div class="ttfmake-remove-current-image">
+	<h3><?php esc_html_e( 'Current image', 'make' ); ?></h3>
+	<a href="#" class="ttfmake-media-frame-remove-image">
+		<?php esc_html_e( 'Remove Current Image', 'make' ); ?>
+	</a>
+</div>
+</script>

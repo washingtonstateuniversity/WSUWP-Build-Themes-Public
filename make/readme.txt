@@ -1,10 +1,10 @@
 === Make ===
 
 Contributors: thethemefoundry
-Tags: black, blue, green, gray, orange, red, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, responsive-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, photoblogging
+Tags: black, blue, green, gray, orange, red, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, grid-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, footer-widgets, blog, e-commerce, portfolio, accessibility-ready, custom-logo, featured-image-header, rtl-language-support
 
-Requires at least: 4.4
-Tested up to: 4.7
+Requires at least: 4.7
+Tested up to: 4.9.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,195 @@ Build a website that means business. With Make’s powerful drag and drop page b
 Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
+
+= 1.9.15 - September 15 2018 =
+* Bugfix: Limit the appearance of HappyForms banner to Posts and Pages only.
+
+= 1.9.14 - September 13 2018 =
+* Bugfix: Fixed untranslatable strings in code by removing extra line breaks.
+
+= 1.9.13 - July 17 2018 =
+* New feature: Mobile Menu Trigger background color setting in Customizer's Menu Items color section.
+* Improvement: Search form meets accessibility standards better now.
+* Improvement: Bumped version of Font Awesome CSS.
+* Bugfix: Old version of TinyMCE noneditable plugin was causing issues with editor extensions.
+
+= 1.9.12 - July 3 2018 =
+* Bug fix: Icons in List format builder were not displaying.
+
+= 1.9.11 - Jun 20 2018 =
+* Improvement: Upgraded Font Awesome from v4 to the latest v5.
+* Bug fix: Format builder buttons hover background color and text color was not applying to button.
+* Bug fix: Font weight set in Customizer was not applying to H1.
+
+= 1.9.10 - May 3 2018 =
+* Improvement: disable Customize styles in section previews to avoid white-on-white scenarios.
+* Bug fix: Hide HappyForms notice if Make Plus is active.
+
+= 1.9.9 - May 2 2018 =
+* Improvement: added a Custom CSS option to Button format for easier global customization.
+* Bug fix: Column sorting was messing up column resizing in Content sections.
+* Bug fix: Global discussion settings were being ignored in posts and pages.
+* Bug fix: Make color picker customizations were interfering with core and third party color pickers.
+* Bug fix: Headings font weight configuration didn't apply correctly.
+* Bug fix: Content section was ignoring filtered default amount of columns.
+
+= 1.9.8 - November 14 2017 =
+* Bug fix: Color picker controls misbehave on WordPress 4.9.
+* Improved: Removed double serialization of Make data which was causing issues with migration plugins.
+
+= 1.9.7 - November 1 2017 =
+* Bug fix: Content editor was ignoring background color settings in Customize screen.
+
+= 1.9.6 - October 7 2017 =
+* Bug fix: Typography settings weren't applying correctly to the mobile menu.
+* Bug fix: Section tiled backgrounds were misbehaving.
+
+= 1.9.5 - September 8 2017 =
+* Bug fix: A missing check in post save routines resulted in a PHP notice.
+* Bug fix: Typography settings didn't apply correctly to the header and header bar.
+* Improved: Header Bar border now respects opacity settings.
+* Updated: Theme screenshot.
+
+= 1.9.4 - August 26 2017 =
+* Updated: Theme screenshot.
+
+= 1.9.3 - August 24 2017 =
+* Bug fix: Gallery items at the end of rows were missing the correct CSS class.
+
+= 1.9.2 - August 22 2017 =
+* Bug fix: Content embed filters weren't running causing embeds to disappear.
+* Bug fix: Background images saved on versions 1.8.x were being preserved, resulting in image duplication.
+
+= 1.9.1 - August 18 2017 =
+* Bug fix: Clearing the background color of a section wouldn't reset the corresponding setting.
+* Bug fix: `wpautop` wasn't running on section content, resulting in line breaks being ignored.
+* Bug fix: The tinyMCE content editor was being referenced when not initialized, preventing content from being applied.
+* Improved: Auto disabling Make Plus prevents fatal errors from popping up when Make and Make Plus aren't both on 1.9.x.
+
+= 1.9.0 - August 15 2017 =
+* Improved: Refactored code to support rendering sections through shortcodes.
+* Improved: Unified Section API now covers data, settings and template helpers.
+* Improved: Reduced the number of scripts and refactored logic for overlay and setting controls in the Builder.
+* Bug fix: Minor fixes on Banner display.
+* Bug fix: Fixed section IDs being incorrectly parsed on some systems.
+* Bug fix: Fixed Typography bug in Customizer which didn't allow to set Menu font to Open Sans.
+* Bug fix: Fixed Typography bug in Customizer which didn't allow to set font-weight on headings.
+* Bug fix: Screen reader text appearing on pages with long content.
+
+= 1.8.11 - August 4 2017 =
+* Bug fix: Screen reader text was causing horizontal scrolling in Firefox.
+* Bug fix: The format overlay wasn't appearing on Wordpress 4.8.1.
+
+= 1.8.10 - June 10 2017 =
+* Bug fix: Fixed site navigation menu float styles.
+
+= 1.8.9 - June 8 2017 =
+* New feature: Added a setting to hide the Post title in single Post view.
+* New feature: Added a setting to toggle Post navigation in single Post view.
+* Improved: Better styling and accessibility for the Skip To Content link.
+* Improved: Added support for Jetpack responsive videos.
+* Improved: Media selection frame now shows selected attachment and metadata.
+* Improved: Refactored header templates into partials for easier customization.
+* Improved: Google Maps embeds now honor user defined attributes.
+* Improved: Added a general setting to toggle breadcrumbs in single Page and Post view.
+* Improved: Swatches in the Background Color setting get populated from Customizer color settings.
+* Improved: Better alignment of text, theme credits and social icons in the footer.
+* Improved: Header, containers and footer expand to full width when Full Width layout is on.
+* Improved: Logo and navigation width is more flexible now, allowing more space for navigation.
+* New filter: `make_breadcrumb_output` to control the output of breadcrumbs.
+* New filter: `make_breadcrumb_override` to allow custom defined breadcrumbs.
+* Bug fix: Fixed the "Failed to decode downloaded font" error with Jetpack share icon.
+
+= 1.8.8 - May 10 2017 =
+* New feature: Added a setting to control background position for sections.
+* Improved: Settings in overlays are now categorized into expandable sections.
+* Improved: Better styling for the background color picker.
+* Improved: Settings backend specification for sections was refactored for easier tweaking.
+* Improved: Background controls in the overlay now show up only when a background media is selected.
+* Improved: Media overlay sidebars are now contextual to the selected media.
+* Improved: Compatibility with WooCommerce 3.0 product galleries.
+* Improved: Removed legacy General -> Logo panel from Customizer.
+* Improved: Wording of input labels in various builder sections.
+* Bug fix: Added CSS styling to avoid layout glitches during Banners initialization.
+* Bug fix: Dropdown controls in overlays now correctly preserve the selected value.
+* Improved: Better grouping of options in Banner settings overlay.
+
+= 1.8.7 - April 5 2017 =
+* Bug fix: Additional empty columns were created in builder when coming from older versions.
+* Bug fix: Sidebar wasn't displaying on search results and archives page sometimes.
+* Bug fix: Background controls in the Customizer were clashing with 4.7.0 core updates.
+
+= 1.8.6 - March 30 2017 =
+* New feature: Columns now support additional rows.
+* Improved: Columns now support up to 6 columns per row.
+* Improved: Section and items configuration links are now grouped in a dropdown.
+* Improved: New UI for the Builder, with more focus on content and less waste of space.
+* Improved: Better color scheme integration with current WordPress.
+* Improved: Columns previews in the Builder now resize with content.
+* Improved: Columns images and titles are now treated as pure content.
+* Bug fix: Changing Columns column count option didn't refresh the view in the builder.
+* Bug fix: Changing Gallery column count option didn't refresh the view in the builder.
+* Bug fix: Gallery caption overlay was not working properly on mobile devices.
+* Bug fix: Content overlays were partially cut out on mobile devices.
+* Bug fix: Link popovers were still on screen after closing the overlay.
+* Bug fix: Content overlays didn't pick up the section's background color.
+* Bug fix: Banner text content wasn't vertically aligned, and sizing was partially wrong.
+* Bug fix: Sections were erroneously given a "builder-section-last" CSS class.
+* Bug fix: Overlays were carrying around stale attributes causing data corruption.
+
+= 1.8.5 - February 24 2017 =
+* Bug fix: Wrong event bubbling prevented Columns section titles from being refreshed in the builder.
+* Bug fix: Content preview of columns wouldn't refresh after dragging around columns.
+* Bug fix: Overlays were erroneously carrying around configuration data.
+
+= 1.8.4 - February 16 2017 =
+* New feature: Added an option to open Gallery item links in a new tab.
+* New feature: Added option to configure what menu turns into a mobile menu.
+* New feature: Added option for closing the configuration overlay without applying changes.
+* New feature: Added button and keyboard shortcut for closing the configuration overlay.
+* New feature: Added contextual labels to configuration overlay buttons.
+* Improved: Removed a limitation preventing HTML links inside Gallery items content.
+* Bug fix: Added missing default font to mobile menu toggles.
+* Bug fix: Removed PHP notice caused by missing image fields in Columns section.
+* Bug fix: Fixed a bug preventing titles from inheriting customizer typography settings.
+* Bug fix: Fixed CSS rules preventing typography and color settings from correctly applying to mobile menus.
+* Bug fix: Fixed a bug resulting in content duplication when creating multiple Columns sections.
+
+= 1.8.3 - January 20 2017 =
+* Improved: Increased the maximum number of columns in Columns sections from four to six.
+* New feature: Added an option so builder sections can now be set to span the full width of your page.
+* Updated: Font Awesome 4.7.
+* Improved: Overhauled builder overlay styles to match core WordPress.
+* Bug fix: Fixed an issue in the Banner section causing misplaced content.
+
+= 1.8.2 - January 10 2017 =
+* Bug fix: issue with notices incorrectly displaying when Make Plus wasn't installed.
+* Bug fix: Banner sections "Darken background to improve readability" setting.
+* Bug fix: error with Gallery images when "Aspect Ratio" was set to "None".
+* Bug fix: Posts List "Type" field wasn't updating "From" dropdown with the correct data.
+* Improved: Minor fixes and cleanup to Columns template file.
+
+= 1.8.1 - January 5 2017 =
+* Changed: added notice about Make being compatible only with Plus >= 1.8.0
+* Improved: pass the view object along with `view-ready` event.
+
+= 1.8.0 - January 4 2017 =
+* Improved: Make builder application was rewritten as a Backbone based Javascript application.
+* Improved: Make builder GUI is now based on Backbone views, with better event management and faster rendering times.
+* Improved: Builder templates are now Underscore template strings stored in a Javascript object. No template script tags are being rendered in DOM anymore.
+* Improved: Section data is now handled as an array of json strings. This greatly increases the maximum amount of storable sections.
+* Updated: `add_section` `$path` parameter now accepts a hash of key => path. An optional `$custom` parameter has been added which allows for custom attributes to be appended to the section.
+* Changed: `ttfmake_add_section` was updated to reflect changes to `add_section`.
+* New feature: builder section defaults are now available as a Javascript object, `ttfMakeSectionDefaults`.
+* New feature: builder section saved data is now available as a Javascript object, `ttfMakeSectionData`.
+* New feature: builder section templates are now available as a Javascript object, `ttfMakeSectionTemplates`.
+* Improved: `load_section` now accepts an optional `$return` parameter. If true, the function now returns the template as a string.
+* Changed: `ttfmake_load_section_template` was updated to reflect changes to `load_section`.
+* Improved: `ttfmake_get_image_src` now returns the image url, if found.
+* New filter: `make_get_section_json` allows for decorating a section JSON representation.
+* New feature: Make core builder application parts are now better scoped and available in the Javascript object `oneApp`.
+* Improved: Folder and file organization has been updated to better split Make core section components.
 
 = 1.7.13 - December 9 2016 =
 * Hotfix: Some templates were being parsed with default templateSettings, breaking functionality of the builder.
@@ -424,6 +613,81 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.9.15 =
+* Limit appearance of HappyForms banner to Posts and Pages edit screen.
+
+= 1.9.14 =
+* Removed line breaks from couple of strings in code to make translation possible.
+
+= 1.9.13 =
+* New color setting for mobile menu trigger background, accessibility improvements.
+
+= 1.9.12 =
+* Fixed icons in List format builder items.
+
+= 1.9.11 =
+* Font Awesome upgraded to the latest version, minor bug fixes.
+
+= 1.9.10 =
+* Minor bug fixes and improvements.
+
+= 1.9.9 =
+* Miscellaneous bug fixes and improvements.
+
+= 1.9.8 =
+* Compatibility bug fixes and improvements.
+
+= 1.9.7 =
+* Minor bug fixes.
+
+= 1.9.6 =
+* Mobile menu typography and tiled background fixes.
+
+= 1.9.5 =
+* Header typography and other minor fixes, updated theme screenshot.
+
+= 1.9.4 =
+* Updated theme screenshot.
+
+= 1.9.3 =
+Fix for Gallery items at the end of rows.
+
+= 1.9.2 =
+Embeds and Column background images fixes.
+
+= 1.9.1 =
+Content editor bug fixes, better compatibility handling.
+
+= 1.9.0 =
+Builder improvements, minor fixes for Banners, typography and general layout.
+
+= 1.8.11 =
+Minor bug fixes.
+
+= 1.8.10 =
+Bug fix for float styles of site navigation menu.
+
+= 1.8.9 =
+Improvements and bug fixes in templates, Customize screen, breadcrumbs and builder sections configuration.
+
+= 1.8.8 =
+Better background control, improved settings overlay, bug fixes.
+
+= 1.8.7 =
+Bug fixes.
+
+= 1.8.6 =
+Column rows, refreshed builder design, bug fixes.
+
+= 1.8.2 =
+Bug fixes for a number of small glitches introduced in 1.8.0.
+
+= 1.8.1 =
+Support changes for Make Plus 1.8.0
+
+= 1.8.0 =
+Refactored big parts of builder and components to support future development and overcome server limitations.
 
 = 1.7.7 =
 Fixed a bug that was causing Gallery section item links to not work.

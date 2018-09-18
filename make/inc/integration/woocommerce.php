@@ -82,6 +82,10 @@ final class MAKE_Integration_WooCommerce extends MAKE_Util_Modules implements MA
 	function setup() {
 		// Theme support
 		add_theme_support( 'woocommerce' );
+		// Adding support for WooCommerce 3.0 product galleries
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
 
 		// Content wrapper
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper' );

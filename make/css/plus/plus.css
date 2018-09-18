@@ -1,17 +1,24 @@
-a.ttfmake-customize-plus {
+div.ttfmake-customize-plus p {
+	font-weight: 200;
+	font-size: 13px;
+	color: #555d66;
+}
+div.ttfmake-customize-plus a {
 	display: inline-block;
 	position: relative;
 	top: -1px;
 	margin-left: 8px;
-	padding: 3px 6px !important;
+	padding: 10px 15px !important;
 	line-height: 1.5 !important;
 	font-size: 9px !important;
 	color: #ffffff !important;
 	background-color: #d54e21;
 	letter-spacing: 1px;
 	text-transform: uppercase;
+	text-decoration: none;
 	-webkit-font-smoothing: subpixel-antialiased !important;
 	margin-left: 0;
+	border-radius: 17px;
 }
 #ttfmake-plus-metabox h3:after,
 #customize-control-ttfmake_footer-whitelabel-heading span:after,
@@ -20,7 +27,8 @@ a.ttfmake-customize-plus {
 .make-plus-products .ttfmake-menu-list-item-link-icon-wrapper:before,
 .ttfmp-import-message strong:after,
 #accordion-section-ttfmake_stylekit h3:before,
-#ttfmake-menu-list-item-link-plus h4:after {
+#ttfmake-menu-list-item-link-plus h4:after,
+#ttfmake-builder-toggle-upsell h2:after {
 	content: "Plus";
 	position: relative;
 	top: -1px;

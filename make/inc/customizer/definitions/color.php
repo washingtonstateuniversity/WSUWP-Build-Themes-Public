@@ -335,6 +335,19 @@ $this->add_section_definitions( 'color-main-menu', array(
 				),
 			),
 		),
+		'color-group-mobile-menu-trigger-item' => array(
+			'control' => array(
+				'control_type' => 'MAKE_Customizer_Control_Html',
+				'html'  => '<h4 class="make-group-title">' . esc_html__( 'Mobile Menu Trigger', 'make' ) . '</h4>',
+			),
+		),
+		'color-nav-mobile-menu-trigger-background' => array(
+			'setting' => true,
+			'control' => array(
+				'control_type' => 'WP_Customize_Color_Control',
+				'label'        => __( 'Background Color', 'make' ),
+			),
+		),
 		'color-group-current-item' => array(
 			'control' => array(
 				'control_type' => 'MAKE_Customizer_Control_Html',

@@ -585,7 +585,8 @@ class MAKE_Formatting_Manager extends MAKE_Util_Modules implements MAKE_Formatti
 				'MakeIconPicker',
 				array(
 					'sources' => array(
-						'fontawesome' => $this->scripts()->get_js_directory_uri() . '/formatting/icon-picker/fontawesome.json'
+						'fontawesome' => $this->scripts()->get_js_directory_uri() . '/formatting/icon-picker/fontawesome.json',
+						'fontawesomecats' => $this->scripts()->get_js_directory_uri() . '/formatting/icon-picker/fontawesomecats.json'
 					)
 				)
 			);

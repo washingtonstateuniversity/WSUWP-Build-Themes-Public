@@ -201,8 +201,8 @@ msgstr "Rechts"
 
 #: inc/builder/sections/builder-templates/banner-slide.php:84
 #: inc/builder/sections/section-definitions.php:375
-msgid "Darken background to improve readability"
-msgstr "Verduister achtergrond voor betere leesbaarheid"
+msgid "Darken"
+msgstr "Verduister"
 
 #: inc/builder/sections/builder-templates/banner-slide.php:90
 #: inc/builder/sections/section-definitions.php:391

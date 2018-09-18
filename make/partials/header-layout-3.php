@@ -5,13 +5,19 @@
 
 // Header Options
 $subheader_class = ( make_get_thememod_value( 'header-show-social' ) ) ? ' right-content' : '';
+$mobile_menu = make_get_thememod_value( 'mobile-menu' );
+$header_menu_container_class = 'header-bar-menu' . ( 'header-bar' === $mobile_menu ? ' mobile-menu': ' desktop-menu' );
+
 $header_bar_menu = wp_nav_menu( array(
 	'theme_location'  => 'header-bar',
-	'container_class' => 'header-bar-menu',
+	'container_class' => $header_menu_container_class,
 	'depth'           => 1,
 	'fallback_cb'     => false,
 	'echo'            => false,
 ) );
+
+set_query_var( 'mobile_menu', $mobile_menu );
+set_query_var( 'header_bar_menu', $header_bar_menu );
 ?>
 
 <header id="site-header" class="<?php echo esc_attr( ttfmake_get_site_header_class() ); ?>" role="banner">
@@ -33,7 +39,8 @@ $header_bar_menu = wp_nav_menu( array(
 				<?php echo make_get_thememod_value( 'header-text' ); ?>
 				</span>
 			<?php endif; ?>
-			<?php echo $header_bar_menu; ?>
+
+			<?php get_template_part( 'partials/nav', 'header-bar' ); ?>
 		</div>
 	</div>
 	<?php endif; ?>
@@ -63,14 +70,7 @@ $header_bar_menu = wp_nav_menu( array(
 				get_search_form();
 			endif; ?>
 
-			<nav id="site-navigation" class="site-navigation" role="navigation">
-				<span class="menu-toggle"><?php echo make_get_thememod_value( 'navigation-mobile-label' ); ?></span>
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'primary'
-				) );
-				?>
-			</nav>
+			<?php get_template_part( 'partials/nav', 'header-main' ); ?>
 		</div>
 	</div>
 </header>

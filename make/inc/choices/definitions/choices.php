@@ -85,7 +85,7 @@ $this->add_choice_sets( array(
 	'header-layout' => array(
 		1  => __( 'Traditional', 'make' ),
 		2  => __( 'Centered', 'make' ),
-		3  => __( 'Navigation Below', 'make' ),
+		3  => __( 'Navigation Below (Primary)', 'make' ),
 	),
 	'link-underline' => array(
 		'always' => __( 'Always', 'make' ),
@@ -118,4 +118,6 @@ $this->add_choice_sets( array(
 		'uppercase' => __( 'Uppercase', 'make' ),
 		'lowercase' => __( 'Lowercase', 'make' ),
 	),
+
+	'mobile-menu' => get_registered_nav_menus()
 ) );

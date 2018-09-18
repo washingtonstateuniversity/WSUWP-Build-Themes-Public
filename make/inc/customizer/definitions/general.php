@@ -11,51 +11,6 @@ if ( ! isset( $this ) || ! $this instanceof MAKE_Customizer_ControlsInterface ) 
 // Panel ID
 $panel = $this->prefix . 'general';
 
-// Logo
-// TODO remove this when WP 4.5 is no longer supported
-if ( $this->logo()->custom_logo_is_supported() ) {
-	$this->add_section_definitions( 'logo', array(
-		'panel'    => $panel,
-		'title'    => __( 'Logo', 'make' ),
-		'controls' => array(
-			'logo-notice' => array(
-				'control' => array(
-					'control_type' => 'MAKE_Customizer_Control_Html',
-					'label'        => __( 'Regular & Retina Logos', 'make' ),
-					'description'  => esc_html__( '
-						These settings have been deprecated in favor of the Site Logo setting provided by WordPress core.
-						Please visit the Site Identity section to configure your site logo.
-					', 'make' ),
-				),
-			),
-		)
-	) ); // Overwrite to add additional controls to the section
-} else {
-	$this->add_section_definitions( 'logo', array(
-		'panel'    => $panel,
-		'title'    => __( 'Logo', 'make' ),
-		'controls' => array(
-			'logo-regular' => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'WP_Customize_Image_Control',
-					'label'        => __( 'Regular Logo', 'make' ),
-					'context'      => $this->prefix . 'logo-regular',
-				),
-			),
-			'logo-retina'  => array(
-				'setting' => true,
-				'control' => array(
-					'control_type' => 'WP_Customize_Image_Control',
-					'label'        => __( 'Retina Logo (2x)', 'make' ),
-					'description'  => esc_html__( 'The Retina Logo should be twice the size of the Regular Logo.', 'make' ),
-					'context'      => $this->prefix . 'logo-retina',
-				),
-			),
-		),
-	) );
-}
-
 // Labels
 $this->add_section_definitions( 'labels', array(
 	'panel'    => $panel,

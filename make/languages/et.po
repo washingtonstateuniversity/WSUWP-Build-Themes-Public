@@ -194,8 +194,8 @@ msgstr "Paremal"
 
 #: inc/builder/sections/builder-templates/banner-slide.php:77
 #: inc/builder/sections/section-definitions.php:375
-msgid "Darken background to improve readability"
-msgstr "Tumenda tausta, et lugemist parandada"
+msgid "Darken"
+msgstr "Tumestama"
 
 #: inc/builder/sections/builder-templates/banner-slide.php:83
 #: inc/builder/sections/section-definitions.php:391
